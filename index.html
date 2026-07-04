@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fekra Tech Academy | Master the Future</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./logo-main.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+    }
+
+    html[dir="rtl"] {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    html[dir="rtl"] .logo-font {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .logo-font {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    /* NEW Image Name */
+    .hero-bg {
+      background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('./bg-main.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .timeline-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .timeline-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 selection:bg-blue-500 selection:text-white transition-all duration-300">
+
+  <nav class="bg-white/90 backdrop-blur-md text-slate-900 p-4 shadow-md sticky top-0 z-40 transition-all">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+        <!-- NEW Image Name -->
+        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain">
+        <h1 class="text-2xl font-black tracking-widest text-blue-900 hidden sm:block logo-font uppercase">Fekra Tech
+        </h1>
+      </div>
+      <ul class="flex space-x-6 text-sm font-semibold text-slate-600 items-center rtl:space-x-reverse">
+        <li><a href="#tracks" class="hover:text-blue-600 transition" data-i18n="navTracks">Tracks</a></li>
+        <li><a href="#team" class="hover:text-blue-600 transition" data-i18n="navTeam">Team</a></li>
+        <li>
+          <button onclick="toggleLanguage()"
+            class="flex items-center gap-1 text-slate-500 hover:text-blue-600 font-bold transition bg-slate-100 px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+            <i class="fa-solid fa-globe"></i> <span id="langBtnText">عربي</span>
+          </button>
+        </li>
+        <li><a href="#contact"
+            class="bg-blue-600 text-white hover:bg-blue-700 px-5 py-2 rounded-full shadow-md transition transform hover:scale-105"
+            data-i18n="navContact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero-bg py-32 text-center border-b-4 border-blue-600 overflow-hidden">
+    <div class="container mx-auto px-4" data-aos="zoom-out" data-aos-duration="1000">
+      <!-- NEW Image Name -->
+      <img src="./logo-main.png" alt="Fekra Tech Logo"
+        class="h-28 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] animate-pulse">
+      <h2 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight logo-font uppercase"
+        data-i18n="heroTitle">Master the Future</h2>
+      <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light" data-i18n="heroDesc">Comprehensive training
+        in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.</p>
+      <div class="flex justify-center gap-4">
+        <a href="#tracks"
+          class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.6)] transform hover:-translate-y-1"
+          data-i18n="btnExplore">Explore Tracks</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="tracks" class="py-20 container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h3 class="text-4xl font-extrabold text-slate-900 mb-4 logo-font" data-i18n="tracksTitle">OUR TRACKS</h3>
+      <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div
+        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-blue-600 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
+        data-aos="fade-right" data-aos-delay="100">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-blue-100 p-4 rounded-xl text-blue-600 text-3xl"><i class="fa-solid fa-code"></i></div>
+            <h4 class="text-2xl font-bold text-slate-900" data-i18n="progTitle">Programming Masterclass</h4>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm" data-i18n="progDesc">From complete beginner to full-stack developer.
+            Master Python, Web Dev, Game Engines, and IoT integration.</p>
+        </div>
+        <button onclick="openModal('programming')"
+          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition flex items-center justify-center gap-2 group">
+          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
+            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-slate-800 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
+        data-aos="fade-left" data-aos-delay="200">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-slate-100 p-4 rounded-xl text-slate-800 text-3xl"><i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-slate-900" data-i18n="cybTitle">Cybersecurity</h4>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm" data-i18n="cybDesc">Defend networks, understand ethical hacking, and
+            secure the digital landscape against modern threats.</p>
+        </div>
+        <button onclick="openModal('cyber')"
+          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition flex items-center justify-center gap-2 group">
+          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
+            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-indigo-600 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
+        data-aos="fade-right" data-aos-delay="300">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-indigo-100 p-4 rounded-xl text-indigo-600 text-3xl"><i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-slate-900" data-i18n="netTitle">Networking</h4>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm" data-i18n="netDesc">Build, configure, and troubleshoot robust
+            infrastructure. Learn the backbone of how global systems communicate.</p>
+        </div>
+        <button onclick="openModal('networking')"
+          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 transition flex items-center justify-center gap-2 group">
+          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
+            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
+        data-aos="fade-left" data-aos-delay="400">
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-pink-100 p-4 rounded-xl text-pink-500 text-3xl"><i class="fa-solid fa-bezier-curve"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-slate-900" data-i18n="desTitle">Graphic Design</h4>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm" data-i18n="desDesc">Transform ideas into stunning visuals. Master
+            industry-standard design tools and creative problem-solving.</p>
+        </div>
+        <button onclick="openModal('design')"
+          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-pink-500 transition flex items-center justify-center gap-2 group">
+          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
+            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="py-20 bg-slate-200">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h3 class="text-4xl font-extrabold text-slate-900 mb-4 logo-font" data-i18n="teamTitle">THE EXPERTS</h3>
+        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-white p-8 rounded-2xl shadow-xl relative group flex flex-col h-full" data-aos="fade-up"
+          data-aos-delay="100">
+          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-600 to-blue-800 z-0 rounded-t-2xl">
+          </div>
+          <div class="relative z-10 text-center mb-6">
+            <!-- NEW Image Name -->
+            <img src="./sief-pic.jpeg" alt="Sief Daabes"
+              class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <h4 class="text-2xl font-bold text-slate-900 mb-1">Sief Daabes</h4>
+            <p class="text-blue-600 text-sm font-semibold uppercase tracking-wider" data-i18n="siefRole">Instructor &
+              Security Specialist</p>
+          </div>
+
+          <div class="flex-grow flex items-center px-2">
+            <p class="text-slate-500 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4"
+              data-i18n="siefBio">
+              Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing
+              Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors
+              Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming
+              and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and
+              incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified
+              Ethical Hacker (CEH), and Fortinet Certified Associate.
+            </p>
+          </div>
+
+          <div class="text-center mt-8">
+            <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank"
+              class="inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 transition shadow-md">
+              <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-xl relative group flex flex-col h-full" data-aos="fade-up"
+          data-aos-delay="200">
+          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-slate-700 to-slate-900 z-0 rounded-t-2xl">
+          </div>
+          <div class="relative z-10 text-center mb-6">
+            <!-- NEW Image Name -->
+            <img src="./ahmed-pic.jpeg" alt="Ahmed Galal"
+              class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-lg transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
+            <h4 class="text-2xl font-bold text-slate-900 mb-1">Ahmed Galal</h4>
+            <p class="text-slate-800 text-sm font-semibold uppercase tracking-wider" data-i18n="ahmedRole">IT Specialist
+              & Instructor</p>
+          </div>
+
+          <div class="flex-grow flex items-center px-2">
+            <p class="text-slate-500 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4"
+              data-i18n="ahmedBio">
+              Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in
+              Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he
+              has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously
+              served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications
+              Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA),
+              CCNA, and Cisco Certified CyberOps Associate.
+            </p>
+          </div>
+
+          <div class="text-center mt-8">
+            <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank"
+              class="inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 transition shadow-md">
+              <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-slate-900 text-white py-16">
+    <div class="container mx-auto px-4 max-w-5xl text-center" data-aos="fade-up">
+      <h3 class="text-3xl font-bold mb-8 logo-font uppercase" data-i18n="contactTitle">Initialize Connection</h3>
+      <p class="text-slate-400 mb-10 max-w-xl mx-auto" data-i18n="contactDesc">Get in touch with us to find the right
+        track, ask questions about our curriculum, or finalize your registration.</p>
+
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+        <a href="https://wa.me/201099995519" target="_blank"
+          class="flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg w-full md:w-auto justify-center transform hover:scale-105">
+          <i class="fa-brands fa-whatsapp text-2xl"></i> <span data-i18n="waText">Chat with us</span>
+        </a>
+
+        <a href="mailto:fekratechacademy@gmail.com"
+          class="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg w-full md:w-auto justify-center transform hover:scale-105">
+          <i class="fa-solid fa-envelope text-xl"></i> <span data-i18n="emailText">Email Us</span>
+        </a>
+      </div>
+
+      <hr class="border-slate-700 mb-8">
+
+      <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+        <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank"
+            class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" class="hover:text-[#1877F2] transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="hover:text-[#E4405F] transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DYNAMIC COURSE & ENROLLMENT MODAL -->
+  <div id="courseModal"
+    class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onclick="closeModal()"></div>
+
+    <div
+      class="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 transition-transform duration-300"
+      id="modalContent">
+
+      <button onclick="closeModal()"
+        class="absolute top-4 right-4 bg-slate-100 text-slate-500 hover:bg-red-100 hover:text-red-600 w-10 h-10 rounded-full flex items-center justify-center transition z-20 shadow">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+
+      <!-- LEFT SIDE: Dynamic Roadmap -->
+      <div
+        class="md:w-1/2 bg-slate-50 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 rtl:border-r-0 rtl:border-l">
+        <span
+          class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block"
+          data-i18n="modalTrackTag">Track Roadmap</span>
+        <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 mb-2 logo-font"></h3>
+        <p id="modalCourseDesc" class="text-slate-600 mb-8 text-sm"></p>
+
+        <div
+          class="relative border-l-2 border-blue-200 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3"
+          id="roadmapContainer">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Enrollment Form -->
+      <div class="md:w-1/2 p-8 overflow-y-auto bg-white">
+        <form id="enrollmentForm" onsubmit="submitForm(event)">
+          <h4 class="text-2xl font-bold text-slate-800 mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
+
+          <input type="hidden" id="selectedCourseInput" name="selectedCourse">
+
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblName">Student Full Name</label>
+            <input type="text" required
+              class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800">
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblAge">Student Age</label>
+              <input type="number" required
+                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblExp">Prior Experience</label>
+              <select
+                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800">
+                <option data-i18n="exp1">Complete Beginner</option>
+                <option data-i18n="exp2">Some Knowledge</option>
+                <option data-i18n="exp3">Advanced</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblWa1">Student/Primary
+                WhatsApp</label>
+              <input type="tel" required placeholder="+20..."
+                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800"
+                dir="ltr">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblWa2">Parent's WhatsApp
+                (Optional)</label>
+              <input type="tel" placeholder="+20..."
+                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800"
+                dir="ltr">
+            </div>
+          </div>
+
+          <button type="submit"
+            class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg text-lg flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane rtl:rotate-180"></i> <span data-i18n="btnSubmitForm">Submit
+              Application</span>
+          </button>
+          <p class="text-[11px] text-slate-500 mt-4 text-center leading-relaxed font-medium" data-i18n="formDisclaimer">
+            By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via
+            WhatsApp to discuss scheduling, payments, and placement tests if necessary.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 50 });
+
+    const i18n = {
+      en: {
+        navTracks: "Tracks", navTeam: "Team", navContact: "Contact Us",
+        heroTitle: "Master the Future", heroDesc: "Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.", btnExplore: "Explore Tracks",
+        tracksTitle: "OUR TRACKS",
+        progTitle: "Programming Masterclass", progDesc: "From complete beginner to full-stack developer. Master Python, Web Dev, Game Engines, and IoT integration.",
+        cybTitle: "Cybersecurity", cybDesc: "Defend networks, understand ethical hacking, and secure the digital landscape against modern threats.",
+        netTitle: "Networking", netDesc: "Build, configure, and troubleshoot robust infrastructure. Learn the backbone of how global systems communicate.",
+        desTitle: "Graphic Design", desDesc: "Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.",
+        btnEnroll: "View Roadmap & Enroll",
+        teamTitle: "THE EXPERTS", btnConnect: "Connect",
+        siefRole: "Instructor & Security Specialist", siefBio: "Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.",
+        ahmedRole: "IT Specialist & Instructor", ahmedBio: "Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.",
+        contactTitle: "Initialize Connection", contactDesc: "Get in touch with us to find the right track, ask questions about our curriculum, or finalize your registration.",
+        waText: "Chat with us", emailText: "Email Us", rightsText: "© 2026 Fekra Tech Academy. All rights reserved.",
+        modalTrackTag: "Track Roadmap", modalEnrollTitle: "Enrollment Application",
+        lblName: "Student Full Name", lblAge: "Student Age", lblExp: "Prior Experience",
+        exp1: "Complete Beginner", exp2: "Some Knowledge", exp3: "Advanced",
+        lblWa1: "Student/Primary WhatsApp", lblWa2: "Parent's WhatsApp (Optional)",
+        btnSubmitForm: "Submit Application", formDisclaimer: "By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary."
+      },
+      ar: {
+        navTracks: "المسارات", navTeam: "فريقنا", navContact: "تواصل معانا",
+        heroTitle: "اصنع مستقبلك", heroDesc: "تدريب شامل في البرمجة، الأمن السيبراني، الشبكات، والتصميم. ابني مستقبلك في التكنولوجيا.", btnExplore: "اكتشف المسارات",
+        tracksTitle: "مساراتنا",
+        progTitle: "كورس البرمجة الشامل", progDesc: "من الصفر لحد ما تبقى مطور شامل. اتعلم بايثون، تطوير الويب، برمجة الألعاب، وإنترنت الأشياء.",
+        cybTitle: "الأمن السيبراني", cybDesc: "احمي الشبكات، وافهم الاختراق الأخلاقي، وأمن الأنظمة الرقمية ضد التهديدات الحديثة.",
+        netTitle: "الشبكات", netDesc: "ابني وظبط البنية التحتية، واتعلم أساسيات ربط الأنظمة العالمية ببعضها.",
+        desTitle: "التصميم الجرافيكي", desDesc: "حول أفكارك لتصميمات مبهرة. اتعلم أهم أدوات التصميم الجرافيكي وابتكر.",
+        btnEnroll: "شوف الخطة وسجل",
+        teamTitle: "خبرائنا", btnConnect: "تواصل",
+        siefRole: "مدرب وأخصائي أمن سيبراني", siefBio: "سيف خريج متخصص في الأمن السيبراني معاه بكالوريوس في أنظمة الكمبيوتر والشبكات والاتصالات من الجامعة العربية المفتوحة. بصفته رئيس فريق المدربين في مبادرة المبرمج الصغير، درب ووجه أكتر من 500 طالب في البرمجة والشبكات. متخصص في عمليات السوك (SOC) واكتشاف التهديدات والاستجابة ليها. معاه شهادات معتمدة عالمياً زي CCNA و CEH و Fortinet Certified Associate.",
+        ahmedRole: "أخصائي تكنولوجيا معلومات ومدرب", ahmedBio: "أحمد أخصائي IT وخريج أمن سيبراني معاه بكالوريوس مزدوج في علوم الكمبيوتر من الجامعة العربية المفتوحة والجامعة المفتوحة في بريطانيا. كمدرب تقني، علم أكتر من 2000 طالب في بايثون، وتطوير الويب، والشبكات، والاختراق الأخلاقي. كان سفير لأكاديمية هواوي في مصر وأسس نادي طلاب هواوي. معاه شهادات قوية زي MCSA و CCNA و Cisco CyberOps Associate.",
+        contactTitle: "يلا نبدأ", contactDesc: "تواصل معانا عشان تلاقي المسار المناسب ليك، أو تسألنا عن المناهج، أو تخلص تسجيلك معانا.",
+        waText: "دردش معانا", emailText: "ابعتلنا إيميل", rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة.",
+        modalTrackTag: "خطة المسار", modalEnrollTitle: "طلب التسجيل",
+        lblName: "الاسم الرباعي للطالب", lblAge: "عمر الطالب", lblExp: "الخبرة السابقة",
+        exp1: "مبتدئ تماماً", exp2: "عندي خلفية", exp3: "متقدم",
+        lblWa1: "رقم الواتساب الأساسي/للطالب", lblWa2: "رقم واتساب ولي الأمر (اختياري)",
+        btnSubmitForm: "إرسال الطلب", formDisclaimer: "بتسجيلك، إنت بتحجز مكانك في الدفعة الجاية. إدارة فكرة تك هتتواصل معاك على الواتساب عشان نرتب المواعيد، وطرق الدفع، وامتحانات تحديد المستوى لو لزم الأمر."
+      }
+    };
+
+    const courseData = {
+      programming: {
+        en: {
+          title: "Programming Masterclass", desc: "Our flagship zero-to-hero track designed to take you from a complete beginner to a versatile developer capable of building web apps, games, and hardware integrations.",
+          roadmap: [
+            { step: "Phase 1", title: "Python: Zero to Hero", details: "3 intensive levels (8 sessions each). Master logic, data structures, and advanced algorithms." },
+            { step: "Phase 2", title: "Web Architecture", details: "Build the internet. Master HTML, CSS, JavaScript, React, SQL, and PHP." },
+            { step: "Phase 3", title: "Game & Software Dev", details: "Bring worlds to life using Game Engines, C++, and C#." },
+            { step: "Phase 4", title: "IoT Project Maker", details: "Bridge code and reality. Hardware integration and robotics through Arduino." }
+          ]
+        },
+        ar: {
+          title: "كورس البرمجة الشامل", desc: "كورس من الصفر للقمة متصمم عشان يخليك مطور شامل يقدر يبني تطبيقات ويب، ألعاب، ومشاريع هاردوير.",
+          roadmap: [
+            { step: "المرحلة الأولى", title: "بايثون: من الصفر", details: "3 مستويات مكثفة (8 حصص للمستوى). اتعلم المنطق، الخوارزميات، وهياكل البيانات." },
+            { step: "المرحلة التانية", title: "برمجة الويب", details: "ابني الإنترنت. اتعلم HTML, CSS, JavaScript, React, SQL, PHP." },
+            { step: "المرحلة التالتة", title: "برمجة الألعاب", details: "انقل أفكارك للواقع باستخدام محركات الألعاب ولغات C++, C#." },
+            { step: "المرحلة الرابعة", title: "إنترنت الأشياء", details: "اربط الكود بالواقع باستخدام Arduino والروبوتات." }
+          ]
+        }
+      },
+      cyber: {
+        en: {
+          title: "Cybersecurity", desc: "Enter the world of digital defense. Learn to identify vulnerabilities, secure networks, and protect infrastructure against modern cyber threats.",
+          roadmap: [
+            { step: "Phase 1", title: "Network Fundamentals", details: "Understand how data travels, OSI models, and IP protocols." },
+            { step: "Phase 2", title: "System Administration", details: "Master Linux/Windows command lines and system configurations." },
+            { step: "Phase 3", title: "Ethical Hacking", details: "Learn penetration testing methodologies and vulnerability assessments." },
+            { step: "Phase 4", title: "Defense & Cert Prep", details: "Secure architecture design and preparation for industry standard certs." }
+          ]
+        },
+        ar: {
+          title: "الأمن السيبراني", desc: "ادخل عالم الحماية الرقمية. اتعلم إزاي تكتشف الثغرات، وتحمي الشبكات، وتأمن الأنظمة ضد الهجمات الحديثة.",
+          roadmap: [
+            { step: "المرحلة الأولى", title: "أساسيات الشبكات", details: "افهم إزاي البيانات بتتنقل وبروتوكولات الـ IP والـ OSI Model." },
+            { step: "المرحلة التانية", title: "إدارة الأنظمة", details: "اتحكم في أنظمة Linux و Windows وافهم الـ Command Line." },
+            { step: "المرحلة التالتة", title: "الاختراق الأخلاقي", details: "اتعلم طرق تقييم الثغرات واختبار الاختراق." },
+            { step: "المرحلة الرابعة", title: "الحماية والشهادات", details: "صمم أنظمة آمنة واستعد للشهادات العالمية المعتمدة." }
+          ]
+        }
+      },
+      networking: {
+        en: {
+          title: "Networking", desc: "Become the backbone of IT. Master the hardware and protocols that keep the world's communication systems running seamlessly.",
+          roadmap: [
+            { step: "Phase 1", title: "Infrastructure Basics", details: "Cabling, topologies, and introductory network models." },
+            { step: "Phase 2", title: "Routing & Switching", details: "Configuring enterprise-level Cisco switches and routers." },
+            { step: "Phase 3", title: "Wireless & Cloud", details: "Integrating wireless networks and understanding cloud infrastructure." },
+            { step: "Phase 4", title: "Advanced Troubleshooting", details: "Diagnosing and fixing complex network failures." }
+          ]
+        },
+        ar: {
+          title: "الشبكات", desc: "خليك الأساس اللي بيقوم عليه الـ IT. اتعلم هاردوير وبروتوكولات التواصل العالمية.",
+          roadmap: [
+            { step: "المرحلة الأولى", title: "أساسيات البنية التحتية", details: "الكابلات، التوصيلات، ومقدمة لموديلات الشبكات." },
+            { step: "المرحلة التانية", title: "الراوتر والسويتش", details: "برمجة وتجهيز أجهزة سيسكو زي الـ Routers والـ Switches." },
+            { step: "المرحلة التالتة", title: "الشبكات اللاسلكية", details: "أنظمة الوايرلس والبنية التحتية السحابية." },
+            { step: "المرحلة الرابعة", title: "حل المشاكل المتقدمة", details: "تشخيص وإصلاح أعطال الشبكات المعقدة." }
+          ]
+        }
+      },
+      design: {
+        en: {
+          title: "Graphic Design", desc: "Transform ideas into stunning visual assets. Master industry-standard design tools, branding, and user experience.",
+          roadmap: [
+            { step: "Phase 1", title: "Design Principles", details: "Color theory, typography, and UI/UX fundamentals." },
+            { step: "Phase 2", title: "Vector Graphics", details: "Mastering Adobe Illustrator for logos and scalable art." },
+            { step: "Phase 3", title: "Photo Manipulation", details: "Advanced Adobe Photoshop techniques and digital painting." },
+            { step: "Phase 4", title: "Portfolio & Branding", details: "Creating a professional portfolio and corporate brand identity." }
+          ]
+        },
+        ar: {
+          title: "التصميم الجرافيكي", desc: "حول أفكارك لصور وتصميمات مبهرة، واتعلم أهم برامج التصميم وصناعة الهوية.",
+          roadmap: [
+            { step: "المرحلة الأولى", title: "أساسيات التصميم", details: "نظرية الألوان، الخطوط، وأساسيات الـ UI/UX." },
+            { step: "المرحلة التانية", title: "الفيكتور جرافيكس", details: "احتراف Adobe Illustrator للوجوهات والرسومات." },
+            { step: "المرحلة التالتة", title: "تعديل الصور", details: "تقنيات متقدمة في Adobe Photoshop والدمج الرقمي." },
+            { step: "المرحلة الرابعة", title: "البورتفوليو والهوية", details: "عمل بورتفوليو احترافي وتصميم الهوية التجارية كاملة." }
+          ]
+        }
+      }
+    };
+
+    let currentLang = 'en';
+    let currentOpenTrack = null;
+
+    function toggleLanguage() {
+      const htmlTag = document.documentElement;
+      const btnText = document.getElementById('langBtnText');
+
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+
+      htmlTag.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      btnText.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) {
+          el.textContent = i18n[currentLang][key];
+        }
+      });
+
+      if (currentOpenTrack) {
+        renderModalData(currentOpenTrack);
+      }
+    }
+
+    const modal = document.getElementById('courseModal');
+    const modalContent = document.getElementById('modalContent');
+
+    function renderModalData(trackKey) {
+      const data = courseData[trackKey][currentLang];
+
+      document.getElementById('modalCourseTitle').textContent = data.title;
+      document.getElementById('modalCourseDesc').textContent = data.desc;
+      document.getElementById('selectedCourseInput').value = data.title;
+
+      const roadmapContainer = document.getElementById('roadmapContainer');
+      roadmapContainer.innerHTML = '';
+
+      data.roadmap.forEach(item => {
+        const node = document.createElement('div');
+        node.className = "relative pl-6 rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 rtl:-ml-[2px]";
+        node.innerHTML = `
+                    <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[9px] rtl:-right-[9px] top-1 border-4 border-slate-50 shadow-sm"></div>
+                    <span class="text-xs font-bold text-blue-600 tracking-widest uppercase">${item.step}</span>
+                    <h5 class="text-lg font-bold text-slate-800 mt-1">${item.title}</h5>
+                    <p class="text-sm text-slate-600 mt-1">${item.details}</p>
+                `;
+        roadmapContainer.appendChild(node);
+      });
+    }
+
+    function openModal(trackKey) {
+      currentOpenTrack = trackKey;
+      renderModalData(trackKey);
+
+      modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalContent.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      modalContent.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+        currentOpenTrack = null;
+      }, 300);
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      const msg = currentLang === 'ar' ?
+        "تم استلام طلبك بنجاح! هنتواصل معاك في أسرع وقت على الواتساب." :
+        "Application received successfully! Our team will contact you shortly on WhatsApp.";
+      alert(msg);
+      closeModal();
+      e.target.reset();
+    }
+  </script>
+</body>
+
+</html>
