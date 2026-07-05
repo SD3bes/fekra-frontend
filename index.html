@@ -6,14 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fekra Tech Academy | Master the Future</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="./logo-main.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -34,7 +36,6 @@
       font-family: 'Orbitron', sans-serif;
     }
 
-    /* NEW Image Name */
     .hero-bg {
       background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('./bg-main.jpeg');
       background-size: cover;
@@ -46,6 +47,7 @@
     }
 
     .timeline-scroll::-webkit-scrollbar {
+      height: 6px;
       width: 6px;
     }
 
@@ -53,381 +55,433 @@
       background: #cbd5e1;
       border-radius: 4px;
     }
+    
+    .dark .timeline-scroll::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    body, nav, section, div, h1, h2, h3, h4, h5, p, span, a, button, input, select, textarea, img, i {
+      transition: background-color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  border-color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  box-shadow 250ms cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+
+    .btn-premium {
+      transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+
+    .btn-premium:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-premium:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    .btn-premium:hover i {
+      transform: scale(1.12) rotate(4deg);
+    }
+    
+    .glow-blue:hover { box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35); }
+    .glow-green:hover { box-shadow: 0 10px 22px rgba(37, 211, 102, 0.35); }
+    .glow-slate:hover { box-shadow: 0 10px 22px rgba(15, 23, 42, 0.25); }
+    .dark .glow-slate:hover { box-shadow: 0 10px 22px rgba(51, 65, 85, 0.4); }
+    .glow-indigo:hover { box-shadow: 0 10px 22px rgba(79, 70, 229, 0.35); }
+    .glow-pink:hover { box-shadow: 0 10px 22px rgba(236, 72, 153, 0.35); }
+    .glow-linkedin:hover { box-shadow: 0 10px 22px rgba(10, 102, 194, 0.35); }
+
+    #courseModal, #modalContent {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
   </style>
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
 </head>
 
-<body class="bg-slate-50 text-slate-800 selection:bg-blue-500 selection:text-white transition-all duration-300">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white">
 
-  <nav class="bg-white/90 backdrop-blur-md text-slate-900 p-4 shadow-md sticky top-0 z-40 transition-all">
+  <nav class="bg-white/90 dark:bg-slate-900/80 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md dark:shadow-slate-950/20 sticky top-0 z-40 border-b border-transparent dark:border-slate-800/50">
     <div class="container mx-auto flex justify-between items-center">
       <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-        <!-- NEW Image Name -->
-        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain">
-        <h1 class="text-2xl font-black tracking-widest text-blue-900 hidden sm:block logo-font uppercase">Fekra Tech
-        </h1>
+        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden">
+        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block">
+        <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
       </div>
-      <ul class="flex space-x-6 text-sm font-semibold text-slate-600 items-center rtl:space-x-reverse">
-        <li><a href="#tracks" class="hover:text-blue-600 transition" data-i18n="navTracks">Tracks</a></li>
-        <li><a href="#team" class="hover:text-blue-600 transition" data-i18n="navTeam">Team</a></li>
-        <li>
-          <button onclick="toggleLanguage()"
-            class="flex items-center gap-1 text-slate-500 hover:text-blue-600 font-bold transition bg-slate-100 px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+      <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
+        <li><a href="#tracks" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTracks">Tracks</a></li>
+        <li><a href="#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
+        <li class="flex items-center gap-2">
+          <button onclick="toggleDarkMode()" id="darkModeBtn" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
+            <i id="darkBtnIcon" class="fa-solid fa-moon"></i>
+          </button>
+          <button onclick="toggleLanguage()" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
             <i class="fa-solid fa-globe"></i> <span id="langBtnText">عربي</span>
           </button>
         </li>
-        <li><a href="#contact"
-            class="bg-blue-600 text-white hover:bg-blue-700 px-5 py-2 rounded-full shadow-md transition transform hover:scale-105"
-            data-i18n="navContact">Contact Us</a></li>
+        <li>
+          <a href="#contact" class="btn-premium glow-blue bg-blue-600 text-white hover:bg-blue-700 px-5 py-2 rounded-full shadow-md inline-block" data-i18n="navContact">Contact Us</a>
+        </li>
       </ul>
     </div>
   </nav>
 
   <header class="hero-bg py-32 text-center border-b-4 border-blue-600 overflow-hidden">
     <div class="container mx-auto px-4" data-aos="zoom-out" data-aos-duration="1000">
-      <!-- NEW Image Name -->
-      <img src="./logo-main.png" alt="Fekra Tech Logo"
-        class="h-28 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] animate-pulse">
-      <h2 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight logo-font uppercase"
-        data-i18n="heroTitle">Master the Future</h2>
-      <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light" data-i18n="heroDesc">Comprehensive training
-        in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.</p>
+      <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-28 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] animate-pulse dark:hidden">
+      <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-28 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] animate-pulse hidden dark:block">
+      <h2 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight logo-font uppercase" data-i18n="heroTitle">Master the Future</h2>
+      <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light" data-i18n="heroDesc">Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.</p>
       <div class="flex justify-center gap-4">
-        <a href="#tracks"
-          class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-blue-500 transition shadow-[0_0_20px_rgba(37,99,235,0.6)] transform hover:-translate-y-1"
-          data-i18n="btnExplore">Explore Tracks</a>
+        <a href="#tracks" class="btn-premium glow-blue bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-blue-500 shadow-md" data-i18n="btnExplore">Explore Tracks</a>
       </div>
     </div>
   </header>
 
-  <section id="tracks" class="py-20 container mx-auto px-4 max-w-6xl">
+  <section id="tracks" class="py-20 container mx-auto px-4 max-w-7xl overflow-hidden">
     <div class="text-center mb-16" data-aos="fade-up">
-      <h3 class="text-4xl font-extrabold text-slate-900 mb-4 logo-font" data-i18n="tracksTitle">OUR TRACKS</h3>
+      <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 logo-font" data-i18n="tracksTitle">OUR TRACKS</h3>
       <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <div
-        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-blue-600 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
-        data-aos="fade-right" data-aos-delay="100">
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="bg-blue-100 p-4 rounded-xl text-blue-600 text-3xl"><i class="fa-solid fa-code"></i></div>
-            <h4 class="text-2xl font-bold text-slate-900" data-i18n="progTitle">Programming Masterclass</h4>
+    <div class="relative w-full flex items-center px-4 md:px-12" data-aos="fade-up">
+      <button onclick="slideTracks('left')" type="button" aria-label="Slide Left" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute left-2 md:left-4 select-none">
+        <i class="fa-solid fa-chevron-left text-lg rtl:rotate-180"></i>
+      </button>
+
+      <div id="tracksCarousel" class="flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start">
+        <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-blue-600 dark:border-t-blue-500 flex flex-col justify-between hover:dark:border-blue-500/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-blue-100 dark:bg-blue-950/60 p-4 rounded-xl text-blue-600 dark:text-blue-400 text-3xl"><i class="fa-solid fa-code"></i></div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="progTitle">Programming Masterclass</h4>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="progDesc">From complete beginner to full-stack developer. Master Python, Web Dev, Game Engines, and IoT integration.</p>
           </div>
-          <p class="text-slate-600 mb-6 text-sm" data-i18n="progDesc">From complete beginner to full-stack developer.
-            Master Python, Web Dev, Game Engines, and IoT integration.</p>
+          <button onclick="openModal('programming')" class="btn-premium glow-blue w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 dark:hover:bg-blue-600 flex items-center justify-center gap-2 group">
+            <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+          </button>
         </div>
-        <button onclick="openModal('programming')"
-          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition flex items-center justify-center gap-2 group">
-          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
-            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
-        </button>
+
+        <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between hover:dark:border-slate-400/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-slate-100 dark:bg-slate-800/80 p-4 rounded-xl text-slate-800 dark:text-slate-200 text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="cybTitle">Cybersecurity</h4>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="cybDesc">Defend networks, understand ethical hacking, and secure the digital landscape against modern threats.</p>
+          </div>
+          <button onclick="openModal('cyber')" class="btn-premium glow-slate w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 dark:hover:bg-slate-700 flex items-center justify-center gap-2 group">
+            <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between hover:dark:border-indigo-500/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-indigo-100 dark:bg-indigo-950/60 p-4 rounded-xl text-indigo-600 dark:text-indigo-400 text-3xl"><i class="fa-solid fa-network-wired"></i></div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="netTitle">Networking</h4>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="netDesc">Build, configure, and troubleshoot robust infrastructure. Learn the backbone of how global systems communicate.</p>
+          </div>
+          <button onclick="openModal('networking')" class="btn-premium glow-indigo w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 dark:hover:bg-indigo-600 flex items-center justify-center gap-2 group">
+            <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+          </button>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-pink-500 dark:border-t-pink-500 flex flex-col justify-between hover:dark:border-pink-500/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-pink-100 dark:bg-pink-955/60 p-4 rounded-xl text-pink-500 dark:text-pink-400 text-3xl"><i class="fa-solid fa-bezier-curve"></i></div>
+              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="desTitle">Graphic Design</h4>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="desDesc">Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.</p>
+          </div>
+          <button onclick="openModal('design')" class="btn-premium glow-pink w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-pink-500 dark:hover:bg-pink-500 flex items-center justify-center gap-2 group">
+            <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
+          </button>
+        </div>
       </div>
 
-      <div
-        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-slate-800 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
-        data-aos="fade-left" data-aos-delay="200">
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="bg-slate-100 p-4 rounded-xl text-slate-800 text-3xl"><i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h4 class="text-2xl font-bold text-slate-900" data-i18n="cybTitle">Cybersecurity</h4>
-          </div>
-          <p class="text-slate-600 mb-6 text-sm" data-i18n="cybDesc">Defend networks, understand ethical hacking, and
-            secure the digital landscape against modern threats.</p>
-        </div>
-        <button onclick="openModal('cyber')"
-          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition flex items-center justify-center gap-2 group">
-          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
-            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
-        </button>
-      </div>
+      <button onclick="slideTracks('right')" type="button" aria-label="Slide Right" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute right-2 md:right-4 select-none">
+        <i class="fa-solid fa-chevron-right text-lg rtl:rotate-180"></i>
+      </button>
+    </div>
 
-      <div
-        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-indigo-600 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
-        data-aos="fade-right" data-aos-delay="300">
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="bg-indigo-100 p-4 rounded-xl text-indigo-600 text-3xl"><i class="fa-solid fa-network-wired"></i>
-            </div>
-            <h4 class="text-2xl font-bold text-slate-900" data-i18n="netTitle">Networking</h4>
-          </div>
-          <p class="text-slate-600 mb-6 text-sm" data-i18n="netDesc">Build, configure, and troubleshoot robust
-            infrastructure. Learn the backbone of how global systems communicate.</p>
-        </div>
-        <button onclick="openModal('networking')"
-          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 transition flex items-center justify-center gap-2 group">
-          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
-            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
-        </button>
-      </div>
-
-      <div
-        class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-pink-500 hover:shadow-2xl transition duration-300 flex flex-col justify-between"
-        data-aos="fade-left" data-aos-delay="400">
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="bg-pink-100 p-4 rounded-xl text-pink-500 text-3xl"><i class="fa-solid fa-bezier-curve"></i>
-            </div>
-            <h4 class="text-2xl font-bold text-slate-900" data-i18n="desTitle">Graphic Design</h4>
-          </div>
-          <p class="text-slate-600 mb-6 text-sm" data-i18n="desDesc">Transform ideas into stunning visuals. Master
-            industry-standard design tools and creative problem-solving.</p>
-        </div>
-        <button onclick="openModal('design')"
-          class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-pink-500 transition flex items-center justify-center gap-2 group">
-          <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i
-            class="fa-solid fa-arrow-right rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
-        </button>
-      </div>
+    <div class="text-center mt-12" data-aos="fade-up">
+      <a href="./courses.html" id="toggleTracksBtn" class="btn-premium glow-blue bg-blue-600 text-white font-bold px-6 py-3 rounded-full shadow-md text-sm inline-flex items-center gap-2">
+        <i class="fa-solid fa-table-cells-large"></i> <span data-i18n="btnShowAll">Show All Tracks</span>
+      </a>
     </div>
   </section>
 
-  <section id="team" class="py-20 bg-slate-200">
+  <section id="team" class="py-20 bg-slate-200 dark:bg-slate-900/60 border-y border-transparent dark:border-slate-800/40">
     <div class="container mx-auto px-4 max-w-5xl">
       <div class="text-center mb-16" data-aos="fade-up">
-        <h3 class="text-4xl font-extrabold text-slate-900 mb-4 logo-font" data-i18n="teamTitle">THE EXPERTS</h3>
+        <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 logo-font" data-i18n="teamTitle">THE EXPERTS</h3>
         <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-12">
-        <div class="bg-white p-8 rounded-2xl shadow-xl relative group flex flex-col h-full" data-aos="fade-up"
-          data-aos-delay="100">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-600 to-blue-800 z-0 rounded-t-2xl">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 z-0 rounded-t-2xl"></div>
+          <div class="relative z-10 text-center mb-2">
+            <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-955 shadow-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Sief Daabes</h4>
+            <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider" data-i18n="siefRole">Instructor & Security Specialist</p>
           </div>
-          <div class="relative z-10 text-center mb-6">
-            <!-- NEW Image Name -->
-            <img src="./sief-pic.jpeg" alt="Sief Daabes"
-              class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
-            <h4 class="text-2xl font-bold text-slate-900 mb-1">Sief Daabes</h4>
-            <p class="text-blue-600 text-sm font-semibold uppercase tracking-wider" data-i18n="siefRole">Instructor &
-              Security Specialist</p>
-          </div>
-
-          <div class="flex-grow flex items-center px-2">
-            <p class="text-slate-500 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4"
-              data-i18n="siefBio">
-              Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing
-              Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors
-              Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming
-              and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and
-              incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified
-              Ethical Hacker (CEH), and Fortinet Certified Associate.
+          <div id="siefBioPanel" class="hidden my-4 px-2 overflow-hidden">
+            <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="siefBio">
+              Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.
             </p>
           </div>
-
-          <div class="text-center mt-8">
-            <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank"
-              class="inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 transition shadow-md">
+          <div class="flex justify-center items-center gap-3 mt-6">
+            <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
               <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
             </a>
+            <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+              <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
+            </button>
           </div>
         </div>
 
-        <div class="bg-white p-8 rounded-2xl shadow-xl relative group flex flex-col h-full" data-aos="fade-up"
-          data-aos-delay="200">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-slate-700 to-slate-900 z-0 rounded-t-2xl">
+        <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-955 z-0 rounded-t-2xl"></div>
+          <div class="relative z-10 text-center mb-2">
+            <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-955 shadow-lg transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
+            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Ahmed Galal</h4>
+            <p class="text-slate-800 dark:text-slate-300 text-sm font-semibold uppercase tracking-wider" data-i18n="ahmedRole">IT Specialist & Instructor</p>
           </div>
-          <div class="relative z-10 text-center mb-6">
-            <!-- NEW Image Name -->
-            <img src="./ahmed-pic.jpeg" alt="Ahmed Galal"
-              class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-lg transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
-            <h4 class="text-2xl font-bold text-slate-900 mb-1">Ahmed Galal</h4>
-            <p class="text-slate-800 text-sm font-semibold uppercase tracking-wider" data-i18n="ahmedRole">IT Specialist
-              & Instructor</p>
-          </div>
-
-          <div class="flex-grow flex items-center px-2">
-            <p class="text-slate-500 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4"
-              data-i18n="ahmedBio">
-              Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in
-              Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he
-              has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously
-              served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications
-              Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA),
-              CCNA, and Cisco Certified CyberOps Associate.
+          <div id="ahmedBioPanel" class="hidden my-4 px-2 overflow-hidden">
+            <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="ahmedBio">
+              Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.
             </p>
           </div>
-
-          <div class="text-center mt-8">
-            <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank"
-              class="inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 transition shadow-md">
+          <div class="flex justify-center items-center gap-3 mt-6">
+            <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
               <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
             </a>
+            <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+              <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="bg-slate-900 text-white py-16">
+  <footer id="contact" class="bg-slate-900 dark:bg-slate-950 text-white py-16 border-t border-transparent dark:border-slate-900">
     <div class="container mx-auto px-4 max-w-5xl text-center" data-aos="fade-up">
       <h3 class="text-3xl font-bold mb-8 logo-font uppercase" data-i18n="contactTitle">Initialize Connection</h3>
-      <p class="text-slate-400 mb-10 max-w-xl mx-auto" data-i18n="contactDesc">Get in touch with us to find the right
-        track, ask questions about our curriculum, or finalize your registration.</p>
+      <p class="text-slate-400 mb-10 max-w-xl mx-auto" data-i18n="contactDesc">Get in touch with us to find the right track, ask questions about our curriculum, or finalize your registration.</p>
 
       <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-        <a href="https://wa.me/201099995519" target="_blank"
-          class="flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg w-full md:w-auto justify-center transform hover:scale-105">
+        <a href="https://wa.me/201099995519" target="_blank" class="btn-premium glow-green flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
           <i class="fa-brands fa-whatsapp text-2xl"></i> <span data-i18n="waText">Chat with us</span>
         </a>
-
-        <a href="mailto:fekratechacademy@gmail.com"
-          class="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg w-full md:w-auto justify-center transform hover:scale-105">
+        <a href="mailto:fekratechacademy@gmail.com" class="btn-premium glow-blue flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
           <i class="fa-solid fa-envelope text-xl"></i> <span data-i18n="emailText">Email Us</span>
         </a>
       </div>
 
-      <hr class="border-slate-700 mb-8">
+      <hr class="border-slate-700/60 mb-8">
 
       <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
         <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
         <div class="flex gap-4 mt-4 md:mt-0">
-          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank"
-            class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
           <a href="#" class="hover:text-[#1877F2] transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
           <a href="#" class="hover:text-[#E4405F] transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
         </div>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- DYNAMIC COURSE & ENROLLMENT MODAL -->
-  <div id="courseModal"
-    class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onclick="closeModal()"></div>
-
-    <div
-      class="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 transition-transform duration-300"
-      id="modalContent">
-
-      <button onclick="closeModal()"
-        class="absolute top-4 right-4 bg-slate-100 text-slate-500 hover:bg-red-100 hover:text-red-600 w-10 h-10 rounded-full flex items-center justify-center transition z-20 shadow">
+  <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 border border-transparent dark:border-slate-800" id="modalContent">
+      <button onclick="closeModal()" class="btn-premium absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-955/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
 
-      <!-- LEFT SIDE: Dynamic Roadmap -->
-      <div
-        class="md:w-1/2 bg-slate-50 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 rtl:border-r-0 rtl:border-l">
-        <span
-          class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block"
-          data-i18n="modalTrackTag">Track Roadmap</span>
-        <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 mb-2 logo-font"></h3>
-        <p id="modalCourseDesc" class="text-slate-600 mb-8 text-sm"></p>
-
-        <div
-          class="relative border-l-2 border-blue-200 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3"
-          id="roadmapContainer">
-          <!-- Injected via JS -->
-        </div>
+      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-955/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
+        <span class="bg-blue-100 dark:bg-blue-955/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
+        <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
+        <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-8 text-sm leading-relaxed"></p>
+        <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
       </div>
 
-      <!-- RIGHT SIDE: Enrollment Form -->
-      <div class="md:w-1/2 p-8 overflow-y-auto bg-white">
+      <div class="md:w-1/2 p-8 overflow-y-auto bg-white dark:bg-slate-900">
         <form id="enrollmentForm" onsubmit="submitForm(event)">
-          <h4 class="text-2xl font-bold text-slate-800 mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
-
+          <h4 class="text-2xl font-bold text-slate-800 dark:text-white mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
           <input type="hidden" id="selectedCourseInput" name="selectedCourse">
-
           <div class="mb-4">
-            <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblName">Student Full Name</label>
-            <input type="text" required
-              class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800">
+            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
+            <input type="text" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
           </div>
-
           <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblAge">Student Age</label>
-              <input type="number" required
-                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800">
+              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblAge">Student Age</label>
+              <input type="number" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblExp">Prior Experience</label>
-              <select
-                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800">
+              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblExp">Prior Experience</label>
+              <select class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
                 <option data-i18n="exp1">Complete Beginner</option>
                 <option data-i18n="exp2">Some Knowledge</option>
                 <option data-i18n="exp3">Advanced</option>
               </select>
             </div>
           </div>
-
           <div class="grid grid-cols-2 gap-4 mb-6">
             <div>
-              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblWa1">Student/Primary
-                WhatsApp</label>
-              <input type="tel" required placeholder="+20..."
-                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800"
-                dir="ltr">
+              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa1">Student/Primary WhatsApp</label>
+              <input type="tel" required placeholder="+20..." class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-700 mb-1" data-i18n="lblWa2">Parent's WhatsApp
-                (Optional)</label>
-              <input type="tel" placeholder="+20..."
-                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-slate-800"
-                dir="ltr">
+              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa2">Parent's WhatsApp (Optional)</label>
+              <input type="tel" placeholder="+20..." class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
           </div>
-
-          <button type="submit"
-            class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition shadow-lg text-lg flex items-center justify-center gap-2">
-            <i class="fa-solid fa-paper-plane rtl:rotate-180"></i> <span data-i18n="btnSubmitForm">Submit
-              Application</span>
+          <button type="submit" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 shadow-lg text-lg flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane rtl:rotate-180"></i> <span data-i18n="btnSubmitForm">Submit Application</span>
           </button>
-          <p class="text-[11px] text-slate-500 mt-4 text-center leading-relaxed font-medium" data-i18n="formDisclaimer">
-            By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via
-            WhatsApp to discuss scheduling, payments, and placement tests if necessary.
-          </p>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-4 text-center leading-relaxed font-medium" data-i18n="formDisclaimer">By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.</p>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ once: true, offset: 50 });
+
+    let originalCardsCount = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDarkModeButton();
+      
+      const carousel = document.getElementById('tracksCarousel');
+      if (!carousel) return;
+
+      const originals = Array.from(carousel.children);
+      originalCardsCount = originals.length;
+      
+      originals.forEach(card => carousel.appendChild(card.cloneNode(true)));
+      originals.slice().reverse().forEach(card => carousel.insertBefore(card.cloneNode(true), carousel.firstChild));
+
+      setTimeout(() => {
+        const card = carousel.querySelector('.snap-center');
+        if (card) {
+          carousel.scrollLeft = originalCardsCount * (card.offsetWidth + 24);
+        }
+      }, 100);
+    });
+
+    function slideTracks(direction) {
+      const carousel = document.getElementById('tracksCarousel');
+      if (!carousel) return;
+      const card = carousel.querySelector('.snap-center');
+      if (!card) return;
+      
+      const scrollAmount = card.offsetWidth + 24; 
+      const setWidth = originalCardsCount * scrollAmount;
+      const vectorFactor = document.documentElement.getAttribute('dir') === 'rtl' ? -1 : 1;
+
+      if (carousel.scrollLeft >= (setWidth * 2) - scrollAmount) {
+        carousel.style.scrollBehavior = 'auto';
+        carousel.scrollLeft -= setWidth;
+        carousel.offsetHeight; 
+      } else if (carousel.scrollLeft <= scrollAmount) {
+        carousel.style.scrollBehavior = 'auto';
+        carousel.scrollLeft += setWidth;
+        carousel.offsetHeight; 
+      }
+
+      carousel.style.scrollBehavior = 'smooth';
+      setTimeout(() => {
+        if (direction === 'left') {
+          carousel.scrollLeft -= scrollAmount * vectorFactor;
+        } else {
+          carousel.scrollLeft += scrollAmount * vectorFactor;
+        }
+      }, 10);
+    }
+
+    function toggleDarkMode() {
+      const htmlTag = document.documentElement;
+      const goingDark = !htmlTag.classList.contains('dark');
+      htmlTag.classList.toggle('dark', goingDark);
+      localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      updateDarkModeButton();
+    }
+
+    function updateDarkModeButton() {
+      const darkIcon = document.getElementById('darkBtnIcon');
+      if (darkIcon) {
+        darkIcon.className = document.documentElement.classList.contains('dark') ? "fa-solid fa-sun text-amber-400" : "fa-solid fa-moon text-slate-500";
+      }
+    }
+
+    function toggleBio(id) {
+      document.getElementById(`${id}BioPanel`)?.classList.toggle('hidden');
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+      });
+      if (currentOpenTrack) renderModalData(currentOpenTrack);
+    }
 
     const i18n = {
       en: {
         navTracks: "Tracks", navTeam: "Team", navContact: "Contact Us",
         heroTitle: "Master the Future", heroDesc: "Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.", btnExplore: "Explore Tracks",
-        tracksTitle: "OUR TRACKS",
+        tracksTitle: "OUR TRACKS", btnShowAll: "Show All Tracks",
         progTitle: "Programming Masterclass", progDesc: "From complete beginner to full-stack developer. Master Python, Web Dev, Game Engines, and IoT integration.",
         cybTitle: "Cybersecurity", cybDesc: "Defend networks, understand ethical hacking, and secure the digital landscape against modern threats.",
         netTitle: "Networking", netDesc: "Build, configure, and troubleshoot robust infrastructure. Learn the backbone of how global systems communicate.",
         desTitle: "Graphic Design", desDesc: "Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.",
-        btnEnroll: "View Roadmap & Enroll",
-        teamTitle: "THE EXPERTS", btnConnect: "Connect",
+        btnEnroll: "View Roadmap & Enroll", teamTitle: "THE EXPERTS", btnConnect: "Connect", btnInfo: "Info",
         siefRole: "Instructor & Security Specialist", siefBio: "Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.",
         ahmedRole: "IT Specialist & Instructor", ahmedBio: "Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.",
         contactTitle: "Initialize Connection", contactDesc: "Get in touch with us to find the right track, ask questions about our curriculum, or finalize your registration.",
         waText: "Chat with us", emailText: "Email Us", rightsText: "© 2026 Fekra Tech Academy. All rights reserved.",
-        modalTrackTag: "Track Roadmap", modalEnrollTitle: "Enrollment Application",
-        lblName: "Student Full Name", lblAge: "Student Age", lblExp: "Prior Experience",
-        exp1: "Complete Beginner", exp2: "Some Knowledge", exp3: "Advanced",
-        lblWa1: "Student/Primary WhatsApp", lblWa2: "Parent's WhatsApp (Optional)",
-        btnSubmitForm: "Submit Application", formDisclaimer: "By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary."
+        modalTrackTag: "Track Roadmap", modalEnrollTitle: "Enrollment Application", lblName: "Student Full Name", lblAge: "Student Age", lblExp: "Prior Experience", exp1: "Complete Beginner", exp2: "Some Knowledge", exp3: "Advanced", lblWa1: "Student/Primary WhatsApp", lblWa2: "Parent's WhatsApp (Optional)", btnSubmitForm: "Submit Application", formDisclaimer: "By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary."
       },
       ar: {
         navTracks: "المسارات", navTeam: "فريقنا", navContact: "تواصل معانا",
         heroTitle: "اصنع مستقبلك", heroDesc: "تدريب شامل في البرمجة، الأمن السيبراني، الشبكات، والتصميم. ابني مستقبلك في التكنولوجيا.", btnExplore: "اكتشف المسارات",
-        tracksTitle: "مساراتنا",
+        tracksTitle: "مساراتنا", btnShowAll: "عرض جميع المسارات",
         progTitle: "كورس البرمجة الشامل", progDesc: "من الصفر لحد ما تبقى مطور شامل. اتعلم بايثون، تطوير الويب، برمجة الألعاب، وإنترنت الأشياء.",
         cybTitle: "الأمن السيبراني", cybDesc: "احمي الشبكات، وافهم الاختراق الأخلاقي، وأمن الأنظمة الرقمية ضد التهديدات الحديثة.",
         netTitle: "الشبكات", netDesc: "ابني وظبط البنية التحتية، واتعلم أساسيات ربط الأنظمة العالمية ببعضها.",
         desTitle: "التصميم الجرافيكي", desDesc: "حول أفكارك لتصميمات مبهرة. اتعلم أهم أدوات التصميم الجرافيكي وابتكر.",
-        btnEnroll: "شوف الخطة وسجل",
-        teamTitle: "خبرائنا", btnConnect: "تواصل",
+        btnEnroll: "شوف الخطة وسجل", teamTitle: "خبرائنا", btnConnect: "تواصل", btnInfo: "معلومات",
         siefRole: "مدرب وأخصائي أمن سيبراني", siefBio: "سيف خريج متخصص في الأمن السيبراني معاه بكالوريوس في أنظمة الكمبيوتر والشبكات والاتصالات من الجامعة العربية المفتوحة. بصفته رئيس فريق المدربين في مبادرة المبرمج الصغير، درب ووجه أكتر من 500 طالب في البرمجة والشبكات. متخصص في عمليات السوك (SOC) واكتشاف التهديدات والاستجابة ليها. معاه شهادات معتمدة عالمياً زي CCNA و CEH و Fortinet Certified Associate.",
         ahmedRole: "أخصائي تكنولوجيا معلومات ومدرب", ahmedBio: "أحمد أخصائي IT وخريج أمن سيبراني معاه بكالوريوس مزدوج في علوم الكمبيوتر من الجامعة العربية المفتوحة والجامعة المفتوحة في بريطانيا. كمدرب تقني، علم أكتر من 2000 طالب في بايثون، وتطوير الويب، والشبكات، والاختراق الأخلاقي. كان سفير لأكاديمية هواوي في مصر وأسس نادي طلاب هواوي. معاه شهادات قوية زي MCSA و CCNA و Cisco CyberOps Associate.",
         contactTitle: "يلا نبدأ", contactDesc: "تواصل معانا عشان تلاقي المسار المناسب ليك، أو تسألنا عن المناهج، أو تخلص تسجيلك معانا.",
         waText: "دردش معانا", emailText: "ابعتلنا إيميل", rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة.",
-        modalTrackTag: "خطة المسار", modalEnrollTitle: "طلب التسجيل",
-        lblName: "الاسم الرباعي للطالب", lblAge: "عمر الطالب", lblExp: "الخبرة السابقة",
-        exp1: "مبتدئ تماماً", exp2: "عندي خلفية", exp3: "متقدم",
-        lblWa1: "رقم الواتساب الأساسي/للطالب", lblWa2: "رقم واتساب ولي الأمر (اختياري)",
-        btnSubmitForm: "إرسال الطلب", formDisclaimer: "بتسجيلك، إنت بتحجز مكانك في الدفعة الجاية. إدارة فكرة تك هتتواصل معاك على الواتساب عشان نرتب المواعيد، وطرق الدفع، وامتحانات تحديد المستوى لو لزم الأمر."
+        modalTrackTag: "خطة المسار", modalEnrollTitle: "طلب التسجيل", lblName: "الاسم الرباعي للطالب", lblAge: "عمر الطالب", lblExp: "الخبرة السابقة", exp1: "مبتدئ تماماً", exp2: "عندي خلفية", exp3: "متقدم", lblWa1: "رقم الواتساب الأساسي/للطالب", lblWa2: "رقم واتساب ولي الأمر (اختياري)", btnSubmitForm: "إرسال الطلب", formDisclaimer: "بتسجيلك، إنت بتحجز مكانك في الدفعة الجاية. إدارة فكرة تك هتتواصل معاك على الواتساب عشان نرتب المواعيد، وطرق الدفع، وامتحانات تحديد المستوى لو لزم الأمر."
       }
     };
 
@@ -514,60 +568,32 @@
       }
     };
 
-    let currentLang = 'en';
-    let currentOpenTrack = null;
-
-    function toggleLanguage() {
-      const htmlTag = document.documentElement;
-      const btnText = document.getElementById('langBtnText');
-
-      currentLang = currentLang === 'en' ? 'ar' : 'en';
-
-      htmlTag.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-      btnText.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (i18n[currentLang][key]) {
-          el.textContent = i18n[currentLang][key];
-        }
-      });
-
-      if (currentOpenTrack) {
-        renderModalData(currentOpenTrack);
-      }
-    }
-
     const modal = document.getElementById('courseModal');
     const modalContent = document.getElementById('modalContent');
 
     function renderModalData(trackKey) {
       const data = courseData[trackKey][currentLang];
-
       document.getElementById('modalCourseTitle').textContent = data.title;
       document.getElementById('modalCourseDesc').textContent = data.desc;
       document.getElementById('selectedCourseInput').value = data.title;
 
-      const roadmapContainer = document.getElementById('roadmapContainer');
-      roadmapContainer.innerHTML = '';
-
+      const container = document.getElementById('roadmapContainer');
+      container.innerHTML = '';
       data.roadmap.forEach(item => {
         const node = document.createElement('div');
-        node.className = "relative pl-6 rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 rtl:-ml-[2px]";
+        node.className = "relative pl-6 rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 dark:rtl:border-blue-900/60 rtl:-ml-[2px]";
         node.innerHTML = `
-                    <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[9px] rtl:-right-[9px] top-1 border-4 border-slate-50 shadow-sm"></div>
-                    <span class="text-xs font-bold text-blue-600 tracking-widest uppercase">${item.step}</span>
-                    <h5 class="text-lg font-bold text-slate-800 mt-1">${item.title}</h5>
-                    <p class="text-sm text-slate-600 mt-1">${item.details}</p>
-                `;
-        roadmapContainer.appendChild(node);
+          <div class="absolute w-4 h-4 bg-blue-600 dark:bg-blue-500 rounded-full -left-[9px] rtl:-right-[9px] top-1 border-4 border-slate-50 dark:border-slate-900 shadow-sm"></div>
+          <span class="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">${item.step}</span>
+          <h5 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-1">${item.title}</h5>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>`;
+        container.appendChild(node);
       });
     }
 
     function openModal(trackKey) {
       currentOpenTrack = trackKey;
       renderModalData(trackKey);
-
       modal.classList.remove('hidden');
       document.body.classList.add('modal-open');
       setTimeout(() => {
@@ -588,10 +614,7 @@
 
     function submitForm(e) {
       e.preventDefault();
-      const msg = currentLang === 'ar' ?
-        "تم استلام طلبك بنجاح! هنتواصل معاك في أسرع وقت على الواتساب." :
-        "Application received successfully! Our team will contact you shortly on WhatsApp.";
-      alert(msg);
+      alert(currentLang === 'ar' ? "تم استلام طلبك بنجاح! هنتواصل معاك في أسرع وقت." : "Application received successfully! Our team will contact you shortly.");
       closeModal();
       e.target.reset();
     }
