@@ -317,8 +317,12 @@
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
 
-      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-955/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
-        <span class="bg-blue-100 dark:bg-blue-955/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
+      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <span class="bg-blue-100 dark:bg-blue-955/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
+          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-sm px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800"></div>
+        </div>
+        
         <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
         <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-8 text-sm leading-relaxed"></p>
         <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
@@ -328,37 +332,42 @@
         <form id="enrollmentForm" onsubmit="submitForm(event)">
           <h4 class="text-2xl font-bold text-slate-800 dark:text-white mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
           <input type="hidden" id="selectedCourseInput" name="selectedCourse">
+          
           <div class="mb-4">
             <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
-            <input type="text" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
+            <input type="text" id="studentFullName" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
           </div>
+          
           <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblAge">Student Age</label>
-              <input type="number" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
+              <input type="number" id="studentAge" min="7" max="80" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
             </div>
             <div>
               <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblExp">Prior Experience</label>
-              <select class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
-                <option data-i18n="exp1">Complete Beginner</option>
-                <option data-i18n="exp2">Some Knowledge</option>
-                <option data-i18n="exp3">Advanced</option>
+              <select id="studentExp" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100">
+                <option value="Complete Beginner" data-i18n="exp1">Complete Beginner</option>
+                <option value="Some Knowledge" data-i18n="exp2">Some Knowledge</option>
+                <option value="Advanced" data-i18n="exp3">Advanced</option>
               </select>
             </div>
           </div>
+          
           <div class="grid grid-cols-2 gap-4 mb-6">
             <div>
               <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa1">Student/Primary WhatsApp</label>
-              <input type="tel" required placeholder="+20..." class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100" dir="ltr">
+              <input type="tel" id="studentWa" required placeholder="010XXXXXXXX" pattern="[0-9+]{10,14}" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
             <div>
               <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa2">Parent's WhatsApp (Optional)</label>
-              <input type="tel" placeholder="+20..." class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100" dir="ltr">
+              <input type="tel" id="parentWa" placeholder="010XXXXXXXX" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500/50 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
           </div>
-          <button type="submit" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 shadow-lg text-lg flex items-center justify-center gap-2">
-            <i class="fa-solid fa-paper-plane rtl:rotate-180"></i> <span data-i18n="btnSubmitForm">Submit Application</span>
+          
+          <button type="submit" id="submitAppBtn" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 shadow-lg text-lg flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-xl"></i> <span id="submitBtnText" data-i18n="btnSubmitForm">Submit Application</span>
           </button>
+          
           <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-4 text-center leading-relaxed font-medium" data-i18n="formDisclaimer">By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.</p>
         </form>
       </div>
@@ -369,7 +378,13 @@
   <script>
     AOS.init({ once: true, offset: 50 });
 
+    let currentLang = 'en';
+    let currentOpenTrack = null;
     let originalCardsCount = 0;
+
+    // Optional: Add your Google Apps Script URL here if saving to Google Sheets
+    const GOOGLE_SHEET_URL = ""; 
+    const ACADEMY_WHATSAPP_NUMBER = "201099995519";
 
     document.addEventListener("DOMContentLoaded", () => {
       updateDarkModeButton();
@@ -485,8 +500,10 @@
       }
     };
 
+    // Course Data with Egyptian Pound (EGP) Pricing
     const courseData = {
       programming: {
+        price: { en: "2,800 EGP", ar: "2,800 ج.م" },
         en: {
           title: "Programming Masterclass", desc: "Our flagship zero-to-hero track designed to take you from a complete beginner to a versatile developer capable of building web apps, games, and hardware integrations.",
           roadmap: [
@@ -507,6 +524,7 @@
         }
       },
       cyber: {
+        price: { en: "3,200 EGP", ar: "3,200 ج.م" },
         en: {
           title: "Cybersecurity", desc: "Enter the world of digital defense. Learn to identify vulnerabilities, secure networks, and protect infrastructure against modern cyber threats.",
           roadmap: [
@@ -527,6 +545,7 @@
         }
       },
       networking: {
+        price: { en: "2,500 EGP", ar: "2,500 ج.م" },
         en: {
           title: "Networking", desc: "Become the backbone of IT. Master the hardware and protocols that keep the world's communication systems running seamlessly.",
           roadmap: [
@@ -547,6 +566,7 @@
         }
       },
       design: {
+        price: { en: "2,200 EGP", ar: "2,200 ج.م" },
         en: {
           title: "Graphic Design", desc: "Transform ideas into stunning visual assets. Master industry-standard design tools, branding, and user experience.",
           roadmap: [
@@ -573,8 +593,11 @@
 
     function renderModalData(trackKey) {
       const data = courseData[trackKey][currentLang];
+      const priceText = courseData[trackKey].price[currentLang];
+
       document.getElementById('modalCourseTitle').textContent = data.title;
       document.getElementById('modalCourseDesc').textContent = data.desc;
+      document.getElementById('modalPriceBadge').textContent = priceText;
       document.getElementById('selectedCourseInput').value = data.title;
 
       const container = document.getElementById('roadmapContainer');
@@ -612,11 +635,76 @@
       }, 300);
     }
 
-    function submitForm(e) {
+    // Handles Customer Data: Google Sheets Sync + Instant WhatsApp Redirect
+    async function submitForm(e) {
       e.preventDefault();
-      alert(currentLang === 'ar' ? "تم استلام طلبك بنجاح! هنتواصل معاك في أسرع وقت." : "Application received successfully! Our team will contact you shortly.");
-      closeModal();
-      e.target.reset();
+
+      const btn = document.getElementById('submitAppBtn');
+      const btnText = document.getElementById('submitBtnText');
+      const originalText = btnText.textContent;
+
+      const studentName = document.getElementById('studentFullName').value.trim();
+      const studentAge = document.getElementById('studentAge').value.trim();
+      const studentExp = document.getElementById('studentExp').value;
+      const studentWa = document.getElementById('studentWa').value.trim();
+      const parentWa = document.getElementById('parentWa').value.trim() || 'N/A';
+      const selectedCourse = document.getElementById('selectedCourseInput').value;
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        studentName,
+        studentAge,
+        studentExp,
+        studentWa,
+        parentWa,
+        course: selectedCourse
+      };
+
+      btn.disabled = true;
+      btnText.textContent = currentLang === 'ar' ? 'جاري التحويل...' : 'Redirecting...';
+
+      // 1. Send data to Google Sheets (if URL configured)
+      if (GOOGLE_SHEET_URL) {
+        try {
+          await fetch(GOOGLE_SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.warn('Google Sheet submission skipped:', err);
+        }
+      }
+
+      // 2. Format WhatsApp Message
+      let waMessage = "";
+      if (currentLang === 'ar') {
+        waMessage = `*طلب تسجيل جديد - Fekra Tech Academy*%0A%0A` +
+          `*المسار:* ${encodeURIComponent(selectedCourse)}%0A` +
+          `*اسم الطالب:* ${encodeURIComponent(studentName)}%0A` +
+          `*العمر:* ${encodeURIComponent(studentAge)}%0A` +
+          `*الخبرة السابقة:* ${encodeURIComponent(studentExp)}%0A` +
+          `*رقم الطالب:* ${encodeURIComponent(studentWa)}%0A` +
+          `*رقم ولي الأمر:* ${encodeURIComponent(parentWa)}`;
+      } else {
+        waMessage = `*New Enrollment Application - Fekra Tech Academy*%0A%0A` +
+          `*Track:* ${encodeURIComponent(selectedCourse)}%0A` +
+          `*Student Name:* ${encodeURIComponent(studentName)}%0A` +
+          `*Age:* ${encodeURIComponent(studentAge)}%0A` +
+          `*Experience:* ${encodeURIComponent(studentExp)}%0A` +
+          `*Student WhatsApp:* ${encodeURIComponent(studentWa)}%0A` +
+          `*Parent WhatsApp:* ${encodeURIComponent(parentWa)}`;
+      }
+
+      // 3. Open WhatsApp & Clean up
+      setTimeout(() => {
+        window.open(`https://wa.me/${ACADEMY_WHATSAPP_NUMBER}?text=${waMessage}`, '_blank');
+        btn.disabled = false;
+        btnText.textContent = originalText;
+        closeModal();
+        e.target.reset();
+      }, 500);
     }
   </script>
 </body>
