@@ -163,12 +163,14 @@
       </button>
 
       <div id="tracksCarousel" class="flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start">
+        <!-- Programming -->
         <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-blue-600 dark:border-t-blue-500 flex flex-col justify-between hover:dark:border-blue-500/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
-            <div class="flex items-center gap-4 mb-6">
+            <div class="flex items-center justify-between mb-4">
               <div class="bg-blue-100 dark:bg-blue-950/60 p-4 rounded-xl text-blue-600 dark:text-blue-400 text-3xl"><i class="fa-solid fa-code"></i></div>
-              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="progTitle">Programming Masterclass</h4>
+              <span class="text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-900">4,000 EGP</span>
             </div>
+            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="progTitle">Programming Masterclass</h4>
             <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="progDesc">From complete beginner to full-stack developer. Master Python, Web Dev, Game Engines, and IoT integration.</p>
           </div>
           <button onclick="openModal('programming')" class="btn-premium glow-blue w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 dark:hover:bg-blue-600 flex items-center justify-center gap-2 group">
@@ -176,12 +178,14 @@
           </button>
         </div>
 
+        <!-- Cybersecurity -->
         <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between hover:dark:border-slate-400/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
-            <div class="flex items-center gap-4 mb-6">
+            <div class="flex items-center justify-between mb-4">
               <div class="bg-slate-100 dark:bg-slate-800/80 p-4 rounded-xl text-slate-800 dark:text-slate-200 text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
-              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="cybTitle">Cybersecurity</h4>
+              <span class="text-sm font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">4,800 EGP</span>
             </div>
+            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="cybTitle">Cybersecurity</h4>
             <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="cybDesc">Defend networks, understand ethical hacking, and secure the digital landscape against modern threats.</p>
           </div>
           <button onclick="openModal('cyber')" class="btn-premium glow-slate w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 dark:hover:bg-slate-700 flex items-center justify-center gap-2 group">
@@ -189,12 +193,14 @@
           </button>
         </div>
 
+        <!-- Networking -->
         <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between hover:dark:border-indigo-500/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
-            <div class="flex items-center gap-4 mb-6">
+            <div class="flex items-center justify-between mb-4">
               <div class="bg-indigo-100 dark:bg-indigo-950/60 p-4 rounded-xl text-indigo-600 dark:text-indigo-400 text-3xl"><i class="fa-solid fa-network-wired"></i></div>
-              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="netTitle">Networking</h4>
+              <span class="text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-900">5,000 EGP</span>
             </div>
+            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="netTitle">Networking</h4>
             <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="netDesc">Build, configure, and troubleshoot robust infrastructure. Learn the backbone of how global systems communicate.</p>
           </div>
           <button onclick="openModal('networking')" class="btn-premium glow-indigo w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 dark:hover:bg-indigo-600 flex items-center justify-center gap-2 group">
@@ -202,12 +208,14 @@
           </button>
         </div>
 
+        <!-- Graphic Design -->
         <div class="bg-white dark:bg-slate-900/40 backdrop-blur-sm p-8 rounded-2xl shadow-lg dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/60 border-t-4 dark:border-t-4 border-t-2 border-t-pink-500 dark:border-t-pink-500 flex flex-col justify-between hover:dark:border-pink-500/40 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
-            <div class="flex items-center gap-4 mb-6">
+            <div class="flex items-center justify-between mb-4">
               <div class="bg-pink-100 dark:bg-pink-955/60 p-4 rounded-xl text-pink-500 dark:text-pink-400 text-3xl"><i class="fa-solid fa-bezier-curve"></i></div>
-              <h4 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="desTitle">Graphic Design</h4>
+              <span class="text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-3 py-1 rounded-full border border-pink-200 dark:border-pink-900">3,000 EGP</span>
             </div>
+            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="desTitle">Graphic Design</h4>
             <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="desDesc">Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.</p>
           </div>
           <button onclick="openModal('design')" class="btn-premium glow-pink w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-pink-500 dark:hover:bg-pink-500 flex items-center justify-center gap-2 group">
@@ -239,7 +247,7 @@
         <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col" data-aos="fade-up" data-aos-delay="100">
           <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 z-0 rounded-t-2xl"></div>
           <div class="relative z-10 text-center mb-2">
-            <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-955 shadow-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
+            <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg transition-transform duration-500 group-hover:rotate-3 group-hover:scale-105">
             <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Sief Daabes</h4>
             <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider" data-i18n="siefRole">Instructor & Security Specialist</p>
           </div>
@@ -259,9 +267,9 @@
         </div>
 
         <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-955 z-0 rounded-t-2xl"></div>
+          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950 z-0 rounded-t-2xl"></div>
           <div class="relative z-10 text-center mb-2">
-            <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-955 shadow-lg transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
+            <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
             <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Ahmed Galal</h4>
             <p class="text-slate-800 dark:text-slate-300 text-sm font-semibold uppercase tracking-wider" data-i18n="ahmedRole">IT Specialist & Instructor</p>
           </div>
@@ -310,16 +318,18 @@
     </div>
   </footer>
 
+  <!-- Enrollment & Roadmap Modal -->
   <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeModal()"></div>
     <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 border border-transparent dark:border-slate-800" id="modalContent">
-      <button onclick="closeModal()" class="btn-premium absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-955/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
+      <button onclick="closeModal()" class="btn-premium absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
 
+      <!-- Left Column: Roadmap & Pricing Display -->
       <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
         <div class="flex items-center justify-between gap-2 mb-3">
-          <span class="bg-blue-100 dark:bg-blue-955/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
+          <span class="bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
           <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-sm px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800"></div>
         </div>
         
@@ -328,10 +338,12 @@
         <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
       </div>
 
+      <!-- Right Column: Registration Form -->
       <div class="md:w-1/2 p-8 overflow-y-auto bg-white dark:bg-slate-900">
         <form id="enrollmentForm" onsubmit="submitForm(event)">
           <h4 class="text-2xl font-bold text-slate-800 dark:text-white mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
           <input type="hidden" id="selectedCourseInput" name="selectedCourse">
+          <input type="hidden" id="selectedCoursePrice" name="selectedCoursePrice">
           
           <div class="mb-4">
             <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
@@ -382,8 +394,8 @@
     let currentOpenTrack = null;
     let originalCardsCount = 0;
 
-    // Optional: Add your Google Apps Script URL here if saving to Google Sheets
-    const GOOGLE_SHEET_URL = ""; 
+    // Integrated Google Apps Script URL
+    const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwJvM_HnSTdW15J9788gLhi5YzPnsaSI7sAPn8X4eBnGDmSH2YiyyfEzvD0JXoOU3yE/exec"; 
     const ACADEMY_WHATSAPP_NUMBER = "201099995519";
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -500,10 +512,11 @@
       }
     };
 
-    // Course Data with Egyptian Pound (EGP) Pricing
+    // Course Pricing configuration
     const courseData = {
       programming: {
-        price: { en: "2,800 EGP", ar: "2,800 ج.م" },
+        price: { en: "4,000 EGP", ar: "4,000 ج.م" },
+        numericPrice: "4000 EGP",
         en: {
           title: "Programming Masterclass", desc: "Our flagship zero-to-hero track designed to take you from a complete beginner to a versatile developer capable of building web apps, games, and hardware integrations.",
           roadmap: [
@@ -524,7 +537,8 @@
         }
       },
       cyber: {
-        price: { en: "3,200 EGP", ar: "3,200 ج.م" },
+        price: { en: "4,800 EGP", ar: "4,800 ج.م" },
+        numericPrice: "4800 EGP",
         en: {
           title: "Cybersecurity", desc: "Enter the world of digital defense. Learn to identify vulnerabilities, secure networks, and protect infrastructure against modern cyber threats.",
           roadmap: [
@@ -545,7 +559,8 @@
         }
       },
       networking: {
-        price: { en: "2,500 EGP", ar: "2,500 ج.م" },
+        price: { en: "5,000 EGP", ar: "5,000 ج.م" },
+        numericPrice: "5000 EGP",
         en: {
           title: "Networking", desc: "Become the backbone of IT. Master the hardware and protocols that keep the world's communication systems running seamlessly.",
           roadmap: [
@@ -566,7 +581,8 @@
         }
       },
       design: {
-        price: { en: "2,200 EGP", ar: "2,200 ج.م" },
+        price: { en: "3,000 EGP", ar: "3,000 ج.م" },
+        numericPrice: "3000 EGP",
         en: {
           title: "Graphic Design", desc: "Transform ideas into stunning visual assets. Master industry-standard design tools, branding, and user experience.",
           roadmap: [
@@ -594,11 +610,13 @@
     function renderModalData(trackKey) {
       const data = courseData[trackKey][currentLang];
       const priceText = courseData[trackKey].price[currentLang];
+      const numericPrice = courseData[trackKey].numericPrice;
 
       document.getElementById('modalCourseTitle').textContent = data.title;
       document.getElementById('modalCourseDesc').textContent = data.desc;
       document.getElementById('modalPriceBadge').textContent = priceText;
       document.getElementById('selectedCourseInput').value = data.title;
+      document.getElementById('selectedCoursePrice').value = numericPrice;
 
       const container = document.getElementById('roadmapContainer');
       container.innerHTML = '';
@@ -649,21 +667,22 @@
       const studentWa = document.getElementById('studentWa').value.trim();
       const parentWa = document.getElementById('parentWa').value.trim() || 'N/A';
       const selectedCourse = document.getElementById('selectedCourseInput').value;
+      const selectedPrice = document.getElementById('selectedCoursePrice').value;
 
       const payload = {
-        timestamp: new Date().toISOString(),
         studentName,
+        course: selectedCourse,
+        price: selectedPrice,
         studentAge,
         studentExp,
         studentWa,
-        parentWa,
-        course: selectedCourse
+        parentWa
       };
 
       btn.disabled = true;
-      btnText.textContent = currentLang === 'ar' ? 'جاري التحويل...' : 'Redirecting...';
+      btnText.textContent = currentLang === 'ar' ? 'جاري الحفظ والتحويل...' : 'Saving & Redirecting...';
 
-      // 1. Send data to Google Sheets (if URL configured)
+      // 1. Send data to Google Sheets
       if (GOOGLE_SHEET_URL) {
         try {
           await fetch(GOOGLE_SHEET_URL, {
@@ -673,7 +692,7 @@
             body: JSON.stringify(payload)
           });
         } catch (err) {
-          console.warn('Google Sheet submission skipped:', err);
+          console.warn('Google Sheet submission warning:', err);
         }
       }
 
@@ -681,7 +700,7 @@
       let waMessage = "";
       if (currentLang === 'ar') {
         waMessage = `*طلب تسجيل جديد - Fekra Tech Academy*%0A%0A` +
-          `*المسار:* ${encodeURIComponent(selectedCourse)}%0A` +
+          `*المسار:* ${encodeURIComponent(selectedCourse)} (${encodeURIComponent(selectedPrice)})%0A` +
           `*اسم الطالب:* ${encodeURIComponent(studentName)}%0A` +
           `*العمر:* ${encodeURIComponent(studentAge)}%0A` +
           `*الخبرة السابقة:* ${encodeURIComponent(studentExp)}%0A` +
@@ -689,7 +708,7 @@
           `*رقم ولي الأمر:* ${encodeURIComponent(parentWa)}`;
       } else {
         waMessage = `*New Enrollment Application - Fekra Tech Academy*%0A%0A` +
-          `*Track:* ${encodeURIComponent(selectedCourse)}%0A` +
+          `*Track:* ${encodeURIComponent(selectedCourse)} (${encodeURIComponent(selectedPrice)})%0A` +
           `*Student Name:* ${encodeURIComponent(studentName)}%0A` +
           `*Age:* ${encodeURIComponent(studentAge)}%0A` +
           `*Experience:* ${encodeURIComponent(studentExp)}%0A` +
@@ -704,7 +723,7 @@
         btnText.textContent = originalText;
         closeModal();
         e.target.reset();
-      }, 500);
+      }, 700);
     }
   </script>
 </body>
