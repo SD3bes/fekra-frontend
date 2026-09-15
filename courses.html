@@ -422,15 +422,20 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-6 text-center text-xs text-slate-400">
-    <div class="container mx-auto px-4">
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-8 text-slate-500 text-sm">
+    <div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4">
       <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
+      <div class="flex gap-5 items-center">
+        <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-xl"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@fekratechacad" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-black dark:hover:text-white transition text-xl"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Global variable initializations
     let currentLang = 'en';
     let currentOpenTrack = null;
     let currentActiveFilterGroup = 'all';
