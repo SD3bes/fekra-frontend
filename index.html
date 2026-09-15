@@ -257,7 +257,7 @@
             </p>
           </div>
           <div class="flex justify-center items-center gap-3 mt-6">
-            <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
+            <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
               <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
             </a>
             <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
@@ -279,7 +279,7 @@
             </p>
           </div>
           <div class="flex justify-center items-center gap-3 mt-6">
-            <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
+            <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
               <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
             </a>
             <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
@@ -297,7 +297,7 @@
       <p class="text-slate-400 mb-10 max-w-xl mx-auto" data-i18n="contactDesc">Get in touch with us to find the right track, ask questions about our curriculum, or finalize your registration.</p>
 
       <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-        <a href="https://wa.me/201099995519" target="_blank" class="btn-premium glow-green flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
+        <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
           <i class="fa-brands fa-whatsapp text-2xl"></i> <span data-i18n="waText">Chat with us</span>
         </a>
         <a href="mailto:fekratechacademy@gmail.com" class="btn-premium glow-blue flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
@@ -309,10 +309,11 @@
 
       <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
         <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
-        <div class="flex gap-4 mt-4 md:mt-0">
-          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" class="hover:text-[#1877F2] transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#" class="hover:text-[#E4405F] transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+        <div class="flex gap-5 mt-4 md:mt-0 items-center">
+          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@fekratechacad" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-black dark:hover:text-white transition text-2xl"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
     </div>
@@ -394,7 +395,6 @@
     let currentOpenTrack = null;
     let originalCardsCount = 0;
 
-    // Integrated Google Apps Script URL
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwJvM_HnSTdW15J9788gLhi5YzPnsaSI7sAPn8X4eBnGDmSH2YiyyfEzvD0JXoOU3yE/exec"; 
     const ACADEMY_WHATSAPP_NUMBER = "201099995519";
 
@@ -512,7 +512,6 @@
       }
     };
 
-    // Course Pricing configuration
     const courseData = {
       programming: {
         price: { en: "4,000 EGP", ar: "4,000 ج.م" },
@@ -653,7 +652,6 @@
       }, 300);
     }
 
-    // Handles Customer Data: Google Sheets Sync + Instant WhatsApp Redirect
     async function submitForm(e) {
       e.preventDefault();
 
@@ -682,7 +680,6 @@
       btn.disabled = true;
       btnText.textContent = currentLang === 'ar' ? 'جاري الحفظ والتحويل...' : 'Saving & Redirecting...';
 
-      // 1. Send data to Google Sheets
       if (GOOGLE_SHEET_URL) {
         try {
           await fetch(GOOGLE_SHEET_URL, {
@@ -696,7 +693,6 @@
         }
       }
 
-      // 2. Format WhatsApp Message
       let waMessage = "";
       if (currentLang === 'ar') {
         waMessage = `*طلب تسجيل جديد - Fekra Tech Academy*%0A%0A` +
@@ -716,7 +712,6 @@
           `*Parent WhatsApp:* ${encodeURIComponent(parentWa)}`;
       }
 
-      // 3. Open WhatsApp & Clean up
       setTimeout(() => {
         window.open(`https://wa.me/${ACADEMY_WHATSAPP_NUMBER}?text=${waMessage}`, '_blank');
         btn.disabled = false;
