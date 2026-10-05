@@ -78,8 +78,8 @@
     .glow-card-blue:hover { box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.5); }
     .dark .glow-card-blue:hover { box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.35); border-color: rgba(37, 99, 235, 0.6); }
 
-    .glow-card-emerald:hover { box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.5); }
-    .dark .glow-card-emerald:hover { box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.35); border-color: rgba(16, 185, 129, 0.6); }
+    .glow-card-emerald:hover { box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.5); }
+    .dark .glow-card-emerald:hover { box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.4); border-color: rgba(16, 185, 129, 0.6); }
 
     .glow-card-indigo:hover { box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.5); }
     .dark .glow-card-indigo:hover { box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.35); border-color: rgba(99, 102, 241, 0.6); }
@@ -232,6 +232,14 @@
           <p id="modalStudentCredit" class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
+        <!-- Dynamic Modal Video Container (Shows up only for projects with media) -->
+        <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800">
+          <video id="modalVideoPlayer" controls class="w-full max-h-72 object-contain bg-black">
+            <source src="./smart-home-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
         <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
           <div>
             <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-1" data-i18n="modalOverviewHeader">Project Overview & Objectives</h4>
@@ -285,7 +293,7 @@
         statHandsOn: "Hands-On Code", statProjects: "Shipped Projects", statAges: "Target Age Range", statGamified: "Toy / Filler Content",
         filterAll: "All Work", filterWeb: "Web & Apps", filterPython: "Python & AI", filterIoT: "Robotics & IoT", filterSecurity: "Networks & Cyber", filterDesign: "Design & Media",
         noResultsTitle: "No matching projects found", noResultsDesc: "Try adjusting your search query or reset the category filters above.",
-        btnCaseStudy: "View Case Study",
+        btnCaseStudy: "View Case Study & Video",
         ctaTitle: "Ready for your child to build real technology?",
         ctaDesc: "Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.",
         ctaViewCourses: "View Tracks & Syllabi", ctaChatWA: "WhatsApp Academy Direct",
@@ -301,7 +309,7 @@
         statHandsOn: "أكواد ومشاريع عملية 100%", statProjects: "مشروع منجز", statAges: "أعمار الطلاب المستهدفة", statGamified: "بدون ألعاب مجتزأة",
         filterAll: "كل المشاريع", filterWeb: "الويب والتطبيقات", filterPython: "بايثون والذكاء الاصطناعي", filterIoT: "الروبوتات وإنترنت الأشياء", filterSecurity: "الشبكات والأمن السيبراني", filterDesign: "التصميم والهوية",
         noResultsTitle: "لم يتم العثور على نتائج مطابقة", noResultsDesc: "جرّب تغيير كلمات البحث أو إعادة ضبط الفلاتر بالأعلى.",
-        btnCaseStudy: "تفاصيل المشروع والتقنيات",
+        btnCaseStudy: "تفاصيل المشروع والفيديو",
         ctaTitle: "جاهز تخلي ابنك يبني مشاريع حقيقية بنفسه؟",
         ctaDesc: "ابعد عن الألعاب والبرمجة الصورية السطحية. انضم لبرنامج تدريبي تطبيقي يركز على المشاريع الملموسة ويتخرج منه الطالب ببورتفوليو قوي.",
         ctaViewCourses: "عرض المسارات والمناهج", ctaChatWA: "تواصل واتساب مع الإدارة",
@@ -317,11 +325,12 @@
         id: "apple-homekit-smart-home",
         category: "iot",
         badgeColor: "emerald",
-        tags: "esp32 apple homekit siri iot smart home automation hap c++ embedded sensors homespan إنترنت الأشياء منزل ذكي أبل هوم كيت سيري سنسورات أردوينو",
+        tags: "esp32 apple homekit siri iot smart home automation hap c++ embedded sensors homespan video إنترنت الأشياء منزل ذكي أبل هوم كيت سيري سنسورات أردوينو فيديو",
         icon: "fa-house-signal",
+        videoUrl: "./smart-home-demo.mp4",
         en: {
           title: "Native Apple HomeKit & Siri Smart Villa (IoT)",
-          summary: "A two-story smart villa model powered by an ESP32 microcontroller running the native Apple HomeKit Accessory Protocol (HAP) with zero cloud bridges and voice control via Siri.",
+          summary: "A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.",
           student: "Academy Milestone Capstone • Embedded IoT & Robotics Track",
           overview: "Engineered as an end-to-end hardware-software demonstration showing how microcontrollers interface directly with the Apple ecosystem. The scale model features multi-room lighting, presence detection via PIR sensors, safety monitoring with gas/smoke sensors, acoustic alerting, and local telemetry on an I2C LCD.",
           architecture: "Firmware engineered in C++ using the HomeSpan framework implementing Apple HAP over local 2.4GHz Wi-Fi. Features multi-room accessories mapped into Apple Home, real-time Siri voice recognition triggers, and hardware interrupts for safety overrides.",
@@ -518,6 +527,19 @@
           card.className = `bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
           card.setAttribute('data-aos', 'fade-up');
 
+          // Optional In-Card Video Preview for featured builds
+          const mediaHtml = item.videoUrl ? `
+            <div class="relative w-full rounded-xl overflow-hidden mb-4 bg-black border border-slate-200 dark:border-slate-800 group aspect-video">
+              <video class="w-full h-full object-cover" muted loop playsinline controls preload="metadata">
+                <source src="${item.videoUrl}" type="video/mp4">
+              </video>
+              <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span>DEMO VIDEO</span>
+              </div>
+            </div>
+          ` : '';
+
           card.innerHTML = `
             <div>
               <div class="flex justify-between items-center mb-4">
@@ -528,6 +550,7 @@
                   ${item.category.toUpperCase()}
                 </span>
               </div>
+              ${mediaHtml}
               <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-snug">${langData.title}</h4>
               <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-3">${langData.student}</p>
               <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-6">${langData.summary}</p>
@@ -573,11 +596,25 @@
       const data = project[currentLang];
       const modal = document.getElementById('projectModal');
       const modalCard = document.getElementById('modalCard');
+      const videoContainer = document.getElementById('modalVideoContainer');
+      const videoPlayer = document.getElementById('modalVideoPlayer');
 
       document.getElementById('modalTitle').textContent = data.title;
       document.getElementById('modalStudentCredit').textContent = data.student;
       document.getElementById('modalDescription').textContent = data.overview;
       document.getElementById('modalArchitecture').textContent = data.architecture;
+
+      // Modal Video Handler
+      if (project.videoUrl) {
+        videoContainer.classList.remove('hidden');
+        videoPlayer.src = project.videoUrl;
+        videoPlayer.currentTime = 0;
+        videoPlayer.play().catch(() => {});
+      } else {
+        videoContainer.classList.add('hidden');
+        videoPlayer.pause();
+        videoPlayer.removeAttribute('src');
+      }
 
       const catBadge = document.getElementById('modalCategoryBadge');
       catBadge.textContent = project.category.toUpperCase();
@@ -596,11 +633,10 @@
         techContainer.appendChild(pill);
       });
 
-      // Special action link configuration
       const actionLink = document.getElementById('modalActionLink');
       const actionText = document.getElementById('modalActionText');
       if (projectId === 'apple-homekit-smart-home') {
-        actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20am%20interested%20in%20the%20Apple%20HomeKit%20IoT%20Project!';
+        actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20saw%20the%20Apple%20HomeKit%20Smart%20Home%20video%20and%20want%20to%20enroll!';
         actionText.textContent = currentLang === 'ar' ? 'اطلب كورس إنترنت الأشياء وسيري' : 'Enroll in HomeKit IoT Track';
       } else {
         actionLink.href = 'https://wa.me/201099995519';
@@ -618,6 +654,12 @@
     function closeProjectModal() {
       const modal = document.getElementById('projectModal');
       const modalCard = document.getElementById('modalCard');
+      const videoPlayer = document.getElementById('modalVideoPlayer');
+
+      if (videoPlayer) {
+        videoPlayer.pause();
+      }
+
       modal.classList.add('opacity-0');
       modalCard.classList.add('scale-95');
       setTimeout(() => {
