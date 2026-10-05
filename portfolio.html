@@ -75,8 +75,8 @@
       transform: translateY(-1px) scale(0.98);
     }
 
-    .glow-card-blue:hover { box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.5); }
-    .dark .glow-card-blue:hover { box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.35); border-color: rgba(37, 99, 235, 0.6); }
+    .glow-card-blue:hover { box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.25); border-color: rgba(37, 99, 235, 0.5); }
+    .dark .glow-card-blue:hover { box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.4); border-color: rgba(37, 99, 235, 0.6); }
 
     .glow-card-emerald:hover { box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.25); border-color: rgba(16, 185, 129, 0.5); }
     .dark .glow-card-emerald:hover { box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.4); border-color: rgba(16, 185, 129, 0.6); }
@@ -232,12 +232,23 @@
           <p id="modalStudentCredit" class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
-        <!-- Dynamic Modal Video Container (Shows up only for projects with media) -->
-        <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800">
-          <video id="modalVideoPlayer" controls class="w-full max-h-72 object-contain bg-black">
-            <source src="./smart-home-demo.mp4" type="video/mp4">
+        <!-- Dynamic Modal Video Player Container with Custom Web Voiceover Controller -->
+        <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800 relative group">
+          <video id="modalVideoPlayer" muted playsinline controls class="w-full max-h-72 object-contain bg-black">
+            <source id="modalVideoSource" src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <!-- Audio/Voiceover Control Overlay Bar -->
+          <div class="bg-slate-900/90 backdrop-blur-md px-4 py-2 flex items-center justify-between text-xs text-white border-t border-slate-800">
+            <span class="flex items-center gap-2 text-slate-300">
+              <i class="fa-solid fa-volume-xmark text-amber-400"></i>
+              <span data-i18n="rawMutedText">Original audio muted</span>
+            </span>
+            <button id="voiceoverToggleBtn" onclick="toggleVoiceover()" class="btn-premium bg-blue-600 hover:bg-blue-500 text-white font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow">
+              <i id="voiceoverIcon" class="fa-solid fa-microphone-lines"></i>
+              <span id="voiceoverBtnLabel">Play AI Voiceover Walkthrough</span>
+            </button>
+          </div>
         </div>
 
         <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
@@ -258,7 +269,12 @@
         </div>
 
         <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <span class="text-xs text-slate-400 italic" data-i18n="modalVerifiedText">Verified curriculum capstone project by Fekra Tech Academy</span>
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-slate-400 italic" data-i18n="modalVerifiedText">Verified curriculum capstone project by Fekra Tech Academy</span>
+            <a id="modalExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="modalLiveLink">Live Demo</span>
+            </a>
+          </div>
           <a id="modalActionLink" href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2.5 rounded-full shadow inline-flex items-center gap-2">
             <i class="fa-solid fa-graduation-cap"></i> <span id="modalActionText" data-i18n="modalBuildSimilar">Learn How to Build This</span>
           </a>
@@ -284,6 +300,8 @@
   <script>
     let currentLang = 'en';
     let currentFilter = 'all';
+    let activeSpeakingUtterance = null;
+    let isVoiceoverPlaying = false;
 
     const i18n = {
       en: {
@@ -299,6 +317,10 @@
         ctaViewCourses: "View Tracks & Syllabi", ctaChatWA: "WhatsApp Academy Direct",
         modalOverviewHeader: "Project Overview & Objectives", modalArchitectureHeader: "Engineering Architecture & Stack",
         modalTechStackHeader: "Technologies & Libraries Applied", modalVerifiedText: "Verified curriculum capstone project by Fekra Tech Academy",
+        modalLiveLink: "Visit Live Platform",
+        rawMutedText: "Original background audio muted",
+        voiceoverPlay: "Play Voiceover Walkthrough",
+        voiceoverStop: "Stop Voiceover",
         modalBuildSimilar: "Learn How to Build This",
         rightsText: "© 2026 Fekra Tech Academy. All rights reserved."
       },
@@ -315,6 +337,10 @@
         ctaViewCourses: "عرض المسارات والمناهج", ctaChatWA: "تواصل واتساب مع الإدارة",
         modalOverviewHeader: "نظرة عامة وأهداف المشروع", modalArchitectureHeader: "الهيكلية البرمجية والتنفيذ",
         modalTechStackHeader: "التقنيات والمكتبات المستخدمة", modalVerifiedText: "مشروع تخرج تطبيقي معتمد من أكاديمية فكرة تك",
+        modalLiveLink: "معاينة المنصة الحية",
+        rawMutedText: "تم كتم الصوت الأصلي للمعاينة",
+        voiceoverPlay: "تشغيل التعليق الصوتي للمشروع",
+        voiceoverStop: "إيقاف التعليق الصوتي",
         modalBuildSimilar: "اتعلم إزاي تبني مشروع زيه",
         rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة."
       }
@@ -322,12 +348,45 @@
 
     const projectsData = [
       {
+        id: "coens-tradein-platform",
+        category: "web",
+        badgeColor: "blue",
+        tags: "fullstack web react tailwind vercel ecommerce trade-in frontend design javascript nodejs منصة ويب متجر تجارة إلكترونية فرونت إند",
+        icon: "fa-laptop-code",
+        videoUrl: "./20261005-1703-48.3580028.mp4",
+        liveUrl: "https://coen-s-redesign-page.vercel.app/",
+        voiceoverText: {
+          en: "Welcome to the Coen's Commercial Platform redesign, engineered at Fekra Tech Academy. We rebuilt the user journey focusing on clean UI hierarchy, an interactive trade-in valuation engine, and high-performance cloud deployment on Vercel.",
+          ar: "أهلاً بكم في مشروع إعادة تصميم وتطوير منصة Coen's التجارية من أكاديمية فكرة تك. قمنا ببناء واجهات تفاعلية متجاوبة بالكامل مع نظام تسعير فوري للأجهزة المستعملة واستضافة سريعة على Vercel."
+        },
+        en: {
+          title: "Coen's Commercial Tech Redesign & Trade-In Platform",
+          summary: "A production-grade commercial web platform redesign built with responsive component architecture, interactive trade-in device valuation workflows, and high-performance Vercel deployment.",
+          student: "Advanced Full-Stack Engineering Capstone • Web Architecture Track",
+          overview: "Designed as an industry-standard commercial redesign. The platform transforms the user experience into an intuitive, conversion-focused interface featuring modular trade-in calculators, real-time product assessments, and fluid responsive design across all viewports.",
+          architecture: "Engineered with modern frontend components using Tailwind CSS for streamlined utility styling and optimized assets. Deployed continuously on Vercel with automated CI/CD builds, SEO metadata structuring, and sub-second page performance.",
+          techStack: ["Modern JavaScript", "Tailwind CSS", "Responsive UI/UX", "Component State", "Vercel Cloud", "RESTful Integration"]
+        },
+        ar: {
+          title: "منصة Coen's الرقمية لإعادة التصميم واستبدال الأجهزة (Full-Stack)",
+          summary: "إعادة تصميم متكاملة لمنصة تجارية احترافية بواجهات تفاعلية متقدمة، نظام تقييم واستبدال فوري للأجهزة، واستضافة سحابية فائقة السرعة على Vercel.",
+          student: "مشروع تخرج متقدم • مسار هندسة الويب وتطبيقات الـ Full-Stack",
+          overview: "مشروع يحاكي بيئات العمل التجارية الكبرى. تم بناء المنصة لتحسين تجربة المستخدم وتحويلها لنظام سلس وسريع لحساب تقييمات الأجهزة المستعملة وتصفح الخدمات مع توافق كامل مع كافة مقاسات الشاشات.",
+          architecture: "بناء واجهات أمامية باستخدام Tailwind CSS ومكونات تفاعلية خفيفة الحجم، مع ربط المشروع بنظام نشر سحابي فوري عبر Vercel لتأمين أداء فائق وسرعة استجابة فورية.",
+          techStack: ["جافاسكريبت حديثة", "Tailwind CSS", "تصميم تجربة المستخدم UI/UX", "معمارية المكونات", "استضافة Vercel", "ربط API"]
+        }
+      },
+      {
         id: "apple-homekit-smart-home",
         category: "iot",
         badgeColor: "emerald",
         tags: "esp32 apple homekit siri iot smart home automation hap c++ embedded sensors homespan video إنترنت الأشياء منزل ذكي أبل هوم كيت سيري سنسورات أردوينو فيديو",
         icon: "fa-house-signal",
         videoUrl: "./smart-home-demo.mp4",
+        voiceoverText: {
+          en: "This is our physical IoT Smart Villa project. Powered by an ESP32 microcontroller, it interfaces natively with Apple HomeKit and Siri for real-time lighting, presence alerts, and fire safety.",
+          ar: "هذا مشروع الفيلا الذكية المصغرة بتقنيات إنترنت الأشياء، تعمل بمعالج ESP32 ومتصلة مباشرة بنظام Apple HomeKit للتحكم الكامل بالإضاءة والأمان عبر سيري."
+        },
         en: {
           title: "Native Apple HomeKit & Siri Smart Villa (IoT)",
           summary: "A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.",
@@ -527,15 +586,15 @@
           card.className = `bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
           card.setAttribute('data-aos', 'fade-up');
 
-          // Optional In-Card Video Preview for featured builds
+          // Clean muted video preview container inside the project card
           const mediaHtml = item.videoUrl ? `
             <div class="relative w-full rounded-xl overflow-hidden mb-4 bg-black border border-slate-200 dark:border-slate-800 group aspect-video">
               <video class="w-full h-full object-cover" muted loop playsinline controls preload="metadata">
                 <source src="${item.videoUrl}" type="video/mp4">
               </video>
-              <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
+              <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/75 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                <span>DEMO VIDEO</span>
+                <span>PROJECT DEMO</span>
               </div>
             </div>
           ` : '';
@@ -589,31 +648,47 @@
       renderProjects();
     }
 
+    let activeModalProject = null;
+
     function openProjectModal(projectId) {
+      stopVoiceover();
       const project = projectsData.find(p => p.id === projectId);
       if (!project) return;
+      activeModalProject = project;
 
       const data = project[currentLang];
       const modal = document.getElementById('projectModal');
       const modalCard = document.getElementById('modalCard');
       const videoContainer = document.getElementById('modalVideoContainer');
       const videoPlayer = document.getElementById('modalVideoPlayer');
+      const externalLink = document.getElementById('modalExternalLink');
+      const voiceoverBtnLabel = document.getElementById('voiceoverBtnLabel');
 
       document.getElementById('modalTitle').textContent = data.title;
       document.getElementById('modalStudentCredit').textContent = data.student;
       document.getElementById('modalDescription').textContent = data.overview;
       document.getElementById('modalArchitecture').textContent = data.architecture;
 
-      // Modal Video Handler
+      // Handle video embedding inside the modal
       if (project.videoUrl) {
         videoContainer.classList.remove('hidden');
         videoPlayer.src = project.videoUrl;
+        videoPlayer.muted = true; // strictly muted
         videoPlayer.currentTime = 0;
         videoPlayer.play().catch(() => {});
+        voiceoverBtnLabel.textContent = i18n[currentLang].voiceoverPlay;
       } else {
         videoContainer.classList.add('hidden');
         videoPlayer.pause();
         videoPlayer.removeAttribute('src');
+      }
+
+      // Handle external live URL button if available
+      if (project.liveUrl) {
+        externalLink.classList.remove('hidden');
+        externalLink.href = project.liveUrl;
+      } else {
+        externalLink.classList.add('hidden');
       }
 
       const catBadge = document.getElementById('modalCategoryBadge');
@@ -633,11 +708,15 @@
         techContainer.appendChild(pill);
       });
 
+      // Context-aware CTA button logic
       const actionLink = document.getElementById('modalActionLink');
       const actionText = document.getElementById('modalActionText');
       if (projectId === 'apple-homekit-smart-home') {
         actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20saw%20the%20Apple%20HomeKit%20Smart%20Home%20video%20and%20want%20to%20enroll!';
         actionText.textContent = currentLang === 'ar' ? 'اطلب كورس إنترنت الأشياء وسيري' : 'Enroll in HomeKit IoT Track';
+      } else if (projectId === 'coens-tradein-platform') {
+        actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20saw%20the%20Full-Stack%20Web%20Platform%20demo%20and%20want%20to%20learn%20more!';
+        actionText.textContent = currentLang === 'ar' ? 'سجل في مسار تطوير الويب الكامل' : 'Enroll in Full-Stack Track';
       } else {
         actionLink.href = 'https://wa.me/201099995519';
         actionText.textContent = i18n[currentLang].modalBuildSimilar;
@@ -651,7 +730,52 @@
       }, 10);
     }
 
+    function toggleVoiceover() {
+      if (isVoiceoverPlaying) {
+        stopVoiceover();
+      } else {
+        playVoiceover();
+      }
+    }
+
+    function playVoiceover() {
+      if (!('speechSynthesis' in window) || !activeModalProject || !activeModalProject.voiceoverText) return;
+
+      window.speechSynthesis.cancel();
+      const textToSpeak = activeModalProject.voiceoverText[currentLang] || activeModalProject.voiceoverText['en'];
+      
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = currentLang === 'ar' ? 'ar-EG' : 'en-US';
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+
+      utterance.onend = () => {
+        stopVoiceover();
+      };
+
+      utterance.onerror = () => {
+        stopVoiceover();
+      };
+
+      window.speechSynthesis.speak(utterance);
+      isVoiceoverPlaying = true;
+      document.getElementById('voiceoverIcon').className = "fa-solid fa-stop text-red-400";
+      document.getElementById('voiceoverBtnLabel').textContent = i18n[currentLang].voiceoverStop;
+    }
+
+    function stopVoiceover() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      isVoiceoverPlaying = false;
+      const btnIcon = document.getElementById('voiceoverIcon');
+      const btnLabel = document.getElementById('voiceoverBtnLabel');
+      if (btnIcon) btnIcon.className = "fa-solid fa-microphone-lines";
+      if (btnLabel) btnLabel.textContent = i18n[currentLang].voiceoverPlay;
+    }
+
     function closeProjectModal() {
+      stopVoiceover();
       const modal = document.getElementById('projectModal');
       const modalCard = document.getElementById('modalCard');
       const videoPlayer = document.getElementById('modalVideoPlayer');
@@ -684,6 +808,7 @@
     }
 
     function toggleLanguage() {
+      stopVoiceover();
       currentLang = currentLang === 'en' ? 'ar' : 'en';
       document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
       document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
