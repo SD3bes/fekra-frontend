@@ -300,7 +300,6 @@
   <script>
     let currentLang = 'en';
     let currentFilter = 'all';
-    let activeSpeakingUtterance = null;
     let isVoiceoverPlaying = false;
 
     const i18n = {
@@ -402,52 +401,6 @@
           overview: "تم بناء هذا النموذج المصغر لربط الهاردوير الفعلي بالأنظمة العالمية. يحتوي المجسم على توزيع إضاءة للغرف، حساسات حركة (PIR) للتشغيل التلقائي، حساسات غاز ودخان (MQ) للحماية من الحرائق مع إنذار صوتي، وشاشة LCD لعرض حالة الاتصال والشبكة.",
           architecture: "برمجة شريحة ESP32 بلغة C++ عبر إطار عمل HomeSpan المتوافق مع بروتوكول HAP من أبل، مما يسمح بإضافة المجسم كملحق رسمي في تطبيق Apple Home مع تشغيل الأوامر الصوتية والسيناريوهات التلقائية لحظياً.",
           techStack: ["شريحة ESP32", "بروتوكول Apple HomeKit", "أوامر Siri الصوتية", "إطار عمل HomeSpan", "حساسات حركة PIR", "حساسات غاز MQ", "شاشة I2C LCD", "C++ Embedded"]
-        }
-      },
-      {
-        id: "smart-iot-hub",
-        category: "iot",
-        badgeColor: "emerald",
-        tags: "arduino iot c++ sensors electronics hardware esp8266 robotics روبوت أردوينو إنترنت الأشياء هاردوير",
-        icon: "fa-microchip",
-        en: {
-          title: "Smart Home Automation & Telemetry Hub",
-          summary: "A complete multi-room micro-controller network integrating temperature sensors, motion-triggered alarms, and dynamic relay switches controlled via an online dashboard.",
-          student: "Built by Youssef M. (Age 14 • Phase 4 IoT)",
-          overview: "Designed as a Phase 4 IoT capstone. The student combined Arduino microcontrollers with an ESP8266 Wi-Fi module to monitor ambient living conditions and trigger automated relays when parameters surpass safe levels.",
-          architecture: "C++ embedded logic running on Arduino Uno communicating via UART with NodeMCU ESP8266. REST API triggers send real-time sensor packets to a cloud dashboard.",
-          techStack: ["Arduino C++", "ESP8266 Wi-Fi", "Ultrasonic Sensors", "DHT11 Temp/Humidity", "Relay Control Boards"]
-        },
-        ar: {
-          title: "نظام المنزل الذكي والتحكم عن بعد (IoT)",
-          summary: "نظام تحكم متكامل للغرف يربط بين حساسات الحرارة، أجهزة الإنذار عند الحركة، وتشغيل الإضاءة عن بُعد عبر لوحة تحكم سحابية.",
-          student: "تنفيذ الطالب: يوسف م. (14 سنة • مرحلة الـ IoT)",
-          overview: "مشروع تخرج للمرحلة الرابعة لإنترنت الأشياء. الطالب قام ببرمجة لوحات الأردوينو وربطها بموديل الواي فاي للتحكم في الأجهزة الكهربائية ومراقبة قراءات الحساسات لحظياً.",
-          architecture: "كود برمجي بلغة C++ على لوحة Arduino Uno يتصل عبر الـ UART بشريحة ESP8266، مع إرسال حزم البيانات عبر REST API لسيرفر المراقبة.",
-          techStack: ["أردوينو C++", "شريحة ESP8266", "حساسات حركة", "حساس DHT11 للحرارة", "ريلاي تشغيل إلكتروني"]
-        }
-      },
-      {
-        id: "fullstack-store",
-        category: "web",
-        badgeColor: "blue",
-        tags: "react javascript html css web nodejs express mongodb database store متجر ويب رياكت جافاسكريبت",
-        icon: "fa-store",
-        en: {
-          title: "Full-Stack Tech Hardware E-Commerce Portal",
-          summary: "A production-ready store featuring interactive cart state, localized payment checkout gateways, product filtering, and persistent user order histories.",
-          student: "Built by Omar K. (Age 16 • Phase 2 Web Architecture)",
-          overview: "The student built an end-to-end shopping application capable of managing product inventories, processing simulated checkouts, and validating client sessions securely.",
-          architecture: "Frontend engineered with React.js using responsive Tailwind CSS styling. Backend REST endpoints powered by Node.js/Express, persisting documents in MongoDB Atlas.",
-          techStack: ["React.js", "Node.js", "Express", "MongoDB Atlas", "Tailwind CSS", "RESTful API"]
-        },
-        ar: {
-          title: "منصة متجر إلكتروني متكاملة (Full-Stack)",
-          summary: "متجر تفاعلي لشراء الإلكترونيات يتيح تصفح المنتجات، سلة مشتريات ديناميكية، ومحاكاة عمليات الدفع مع حفظ بيانات الطلبات.",
-          student: "تنفيذ الطالب: عمر خ. (16 سنة • مرحلة هندسة الويب)",
-          overview: "مشروع تطبيقي لبناء منصة تجارة إلكترونية كاملة من الصفر، تشمل ربط واجهة المستخدم بقاعدة البيانات، والتحقق من الجلسات، وإدارة حركة المخزون.",
-          architecture: "واجهة أمامية باستخدام React.js وتنسيقات Tailwind CSS، مع خادم خلفي Node.js/Express متصل بقاعدة بيانات MongoDB Atlas السحابية.",
-          techStack: ["React.js", "Node.js", "Express", "MongoDB Atlas", "Tailwind CSS", "RESTful API"]
         }
       },
       {
