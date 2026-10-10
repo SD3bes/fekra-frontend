@@ -16,9 +16,18 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [data-aos] {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
     html {
       scroll-behavior: smooth;
       font-family: 'Inter', sans-serif;
@@ -37,6 +46,7 @@
     }
 
     .hero-bg {
+      background-color: #0f172a;
       background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.96)), url('./bg-main.jpeg');
       background-size: cover;
       background-position: center;
@@ -69,10 +79,14 @@
     .glow-green:hover { box-shadow: 0 10px 22px rgba(37, 211, 102, 0.35); }
   </style>
   <script>
-    if (localStorage.getItem('theme') === 'dark') {
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (e) {
       document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
     }
   </script>
 </head>
@@ -80,11 +94,11 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white flex flex-col min-h-screen justify-between">
 
   <!-- Navigation -->
-  <nav class="bg-white/90 dark:bg-slate-900/80 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md dark:shadow-slate-950/20 sticky top-0 z-40 border-b border-transparent dark:border-slate-800/50">
+  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md dark:shadow-slate-950/20 sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
       <a href="./index.html" class="flex items-center gap-3 cursor-pointer">
-        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden">
-        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block">
+        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
         <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
       </a>
       <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
@@ -108,26 +122,26 @@
   </nav>
 
   <!-- Hero Header -->
-  <header class="hero-bg py-24 text-center border-b-4 border-blue-600 overflow-hidden">
-    <div class="container mx-auto px-4" data-aos="zoom-out" data-aos-duration="900">
+  <header class="hero-bg py-20 sm:py-28 text-center border-b-4 border-blue-600 overflow-hidden">
+    <div class="container mx-auto px-4">
       <div class="inline-block bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4" data-i18n="heroBadge">
         Turnkey Tech & Engineering Services
       </div>
       <h2 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight logo-font uppercase" data-i18n="servicesHeroTitle">
         Portfolio To Production
       </h2>
-      <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="servicesHeroDesc">
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="servicesHeroDesc">
         We turn our academy's tested engineering architectures into production client solutions — delivering commercial-grade software and infrastructure at 30% below market cost.
       </p>
     </div>
   </header>
 
   <!-- Services Grid -->
-  <main class="py-20 container mx-auto px-4 max-w-7xl">
+  <main class="py-16 sm:py-20 container mx-auto px-4 max-w-7xl flex-grow">
     <div class="grid md:grid-cols-2 gap-8 items-stretch">
 
       <!-- Service 1: Landing Pages -->
-      <div class="bg-white dark:bg-slate-900/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/70 border-t-4 border-t-blue-600 flex flex-col justify-between" data-aos="fade-up">
+      <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-blue-600 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800" data-i18n="saveTag">Save 30% vs Market</span>
@@ -163,7 +177,7 @@
       </div>
 
       <!-- Service 2: Corporate Portal -->
-      <div class="bg-white dark:bg-slate-900/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/70 border-t-4 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+      <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800" data-i18n="saveTag">Save 30% vs Market</span>
@@ -199,7 +213,7 @@
       </div>
 
       <!-- Service 3: Full-Stack App & E-Commerce -->
-      <div class="bg-white dark:bg-slate-900/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/70 border-t-4 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between" data-aos="fade-up">
+      <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800" data-i18n="saveTag">Save 30% vs Market</span>
@@ -235,7 +249,7 @@
       </div>
 
       <!-- Service 4: Network & Security Hardening -->
-      <div class="bg-white dark:bg-slate-900/50 backdrop-blur-sm p-8 rounded-2xl shadow-xl dark:shadow-2xl/20 border border-slate-100 dark:border-slate-800/70 border-t-4 border-t-pink-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+      <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-pink-500 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800" data-i18n="saveTag">Save 30% vs Market</span>
@@ -274,7 +288,180 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 dark:bg-slate-950 text-white py-12 border-t border-transparent dark:border-slate-900">
+  <footer class="bg-slate-900 dark:bg-slate-950 text-white py-12 border-t border-slate-800">
     <div class="container mx-auto px-4 max-w-5xl text-center">
       <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-        <p data-i18n="rightsText">&copy
+        <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
+        <div class="flex gap-5 mt-4 md:mt-0 items-center">
+          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@fekratechacad" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-black dark:hover:text-white transition text-2xl"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = 'en';
+    const ACADEMY_WHATSAPP_NUMBER = "201099995519";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDarkModeButton();
+    });
+
+    function toggleDarkMode() {
+      const htmlTag = document.documentElement;
+      const goingDark = !htmlTag.classList.contains('dark');
+      htmlTag.classList.toggle('dark', goingDark);
+      try {
+        localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      } catch (e) {}
+      updateDarkModeButton();
+    }
+
+    function updateDarkModeButton() {
+      const darkIcon = document.getElementById('darkBtnIcon');
+      if (darkIcon) {
+        darkIcon.className = document.documentElement.classList.contains('dark') ? "fa-solid fa-sun text-amber-400" : "fa-solid fa-moon text-slate-500";
+      }
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang] && i18n[currentLang][key]) {
+          el.textContent = i18n[currentLang][key];
+        }
+      });
+    }
+
+    function requestService(serviceName, price) {
+      let waMessage = "";
+      if (currentLang === 'ar') {
+        waMessage = `*طلب خدمة برمجية جديدة - Fekra Tech Academy*%0A%0A` +
+          `*الخدمة:* ${encodeURIComponent(serviceName)}%0A` +
+          `*السعر بعد الخصم (30%):* ${encodeURIComponent(price)}%0A%0A` +
+          `أرغب في الاستفسار عن تفاصيل ومواعيد البدء في الخدمة.`;
+      } else {
+        waMessage = `*New Agency Service Inquiry - Fekra Tech Academy*%0A%0A` +
+          `*Service:* ${encodeURIComponent(serviceName)}%0A` +
+          `*Discounted Price (-30%):* ${encodeURIComponent(price)}%0A%0A` +
+          `I would like to inquire about the timeline and implementation details.`;
+      }
+
+      window.open(`https://wa.me/${ACADEMY_WHATSAPP_NUMBER}?text=${waMessage}`, '_blank');
+    }
+
+    const i18n = {
+      en: {
+        navTracks: "Tracks",
+        navPortfolio: "Portfolio",
+        navServices: "Services",
+        navTeam: "Team",
+        navContact: "Contact Us",
+        heroBadge: "Turnkey Tech & Engineering Services",
+        servicesHeroTitle: "Portfolio To Production",
+        servicesHeroDesc: "We turn our academy's tested engineering architectures into production client solutions — delivering commercial-grade software and infrastructure at 30% below market cost.",
+        saveTag: "Save 30% vs Market",
+        marketPrice: "Market",
+        curr: "EGP",
+        btnOrder: "Request Proposal",
+        rightsText: "© 2026 Fekra Tech Academy. All rights reserved.",
+        
+        s1Category: "Web Engineering",
+        s1Title: "High-Speed Landing Page & Lead Funnel",
+        s1Desc: "Ultra-fast, responsive landing sites engineered for high conversion rates. Built with the same lightweight performance standards as our academy web builds.",
+        turnaround1: "3 - 5 Days Delivery",
+        s1f1: "Mobile-first responsive UI & instant load speed",
+        s1f2: "Automated WhatsApp direct-connect button & lead form",
+        s1f3: "Sub-1.5 second loading speed optimization",
+        s1f4: "Free domain linking & SSL setup support",
+
+        s2Category: "Bilingual CMS",
+        s2Title: "Corporate Platform & Dynamic CMS",
+        s2Desc: "Full-scale business platform featuring complete English/Arabic localization, custom content editing dashboard, and on-page SEO integration.",
+        turnaround2: "7 - 10 Days Delivery",
+        s2f1: "Full Arabic & English bilingual support (RTL/LTR)",
+        s2f2: "Admin dashboard for updating articles, team, and services",
+        s2f3: "Complete Google SEO schema, OpenGraph & meta tags",
+        s2f4: "Custom domain and business email configuration",
+
+        s3Category: "Full-Stack SaaS",
+        s3Title: "Full-Stack Web App & E-Commerce",
+        s3Desc: "Production-grade database web app with role-based authentication, administrative inventory control, and payment gateway integration.",
+        turnaround3: "14 - 21 Days Delivery",
+        s3f1: "Scalable backend API & database architecture",
+        s3f2: "Fawry / Paymob / Instapay payment checkout flow",
+        s3f3: "Secure auth with role permissions (Admin, User, Staff)",
+        s3f4: "Automated cloud backups & CI/CD deployment pipeline",
+
+        s4Category: "Cyber & Network",
+        s4Title: "Network & Cybersecurity Hardening",
+        s4Desc: "Rigorous security audit, perimeter vulnerability assessment, and enterprise-grade router/firewall configuration following Cisco and Fortinet standards.",
+        turnaround4: "3 - 5 Days Audit",
+        s4f1: "Perimeter scan & firewall policy vulnerability check",
+        s4f2: "Encrypted remote-work VPN gateway setup",
+        s4f3: "Network segmentation & device access security rules",
+        s4f4: "Technical assessment report & mitigation action plan"
+      },
+      ar: {
+        navTracks: "المسارات",
+        navPortfolio: "معرض المشاريع",
+        navServices: "الخدمات",
+        navTeam: "فريقنا",
+        navContact: "تواصل معانا",
+        heroBadge: "حلول تقنية وهندسية جاهزة للتشغيل",
+        servicesHeroTitle: "مشاريعنا كخدمات لشركتك",
+        servicesHeroDesc: "بنحول حلولنا الهندسية ومشاريع الأكاديمية لخدمات تقنية جاهزة للإنتاج لعملائنا — بنقدملك برمجيات وشبكات على أعلى مستوى بخصم 30% عن سعر السوق.",
+        saveTag: "خصم 30% عن سعر السوق",
+        marketPrice: "سعر السوق",
+        curr: "ج.م",
+        btnOrder: "اطلب عرض سعر",
+        rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة.",
+
+        s1Category: "تطوير الويب",
+        s1Title: "صفحة هبوط فائقة السرعة وجذب العملاء",
+        s1Desc: "صفحات هبوط تسويقية متوافقة مع الموبايل وسريعة جداً لتحقيق أعلى نسب تحويل للعملاء ومبنية بأحدث المعايير البرمجية.",
+        turnaround1: "تسليم خلال 3 - 5 أيام",
+        s1f1: "تصميم متجاوب وسرعة تصفح فائقة للموبايل",
+        s1f2: "ربط فوري بالواتساب ونماذج جمع بيانات العملاء",
+        s1f3: "تحسين سرعة التحميل لأقل من 1.5 ثانية",
+        s1f4: "ربط الدومين وشهادات الأمان SSL مجاناً",
+
+        s2Category: "مواقع الشركات",
+        s2Title: "موقع تعريفي للشركات ونظام إدارة محتوى",
+        s2Desc: "موقع متكامل للشركات يدعم اللغتين العربية والإنجليزية بلوحة تحكم سهلة لإدارة المقالات والخدمات وتهيئة لمحركات البحث.",
+        turnaround2: "تسليم خلال 7 - 10 أيام",
+        s2f1: "دعم كامل للغتين العربية والإنجليزية (RTL / LTR)",
+        s2f2: "لوحة تحكم لتعديل وتحديث بيانات الموقع والمقالات",
+        s2f3: "تهيئة كاملة للظهور في محركات بحث جوجل (SEO)",
+        s2f4: "إعداد البريد الإلكتروني الرسمي والدومين الخاص",
+
+        s3Category: "تطبيقات الويب والمتاجر",
+        s3Title: "تطبيق ويب متكامل ومتجر إلكتروني",
+        s3Desc: "أنظمة برمجية متكاملة وقواعد بيانات مع لوحة تحكم كاملة، إدارة المستخدمين، والربط مع بوابات الدفع الإلكترونية المحلية.",
+        turnaround3: "تسليم خلال 14 - 21 يوم",
+        s3f1: "بنية برمجية سحابية وقواعد بيانات سريعة وقابلة للتوسع",
+        s3f2: "ربط بوابات الدفع الإلكتروني (فوري، باي موب، إنستاباي)",
+        s3f3: "نظام تسجيل دخول وحماية بصلاحيات المستخدمين والمدراء",
+        s3f4: "نسخ احتياطي تلقائي ونشر سحابي مستمر (CI/CD)",
+
+        s4Category: "الشبكات والأمن السيبراني",
+        s4Title: "تأمين وفحص الشبكات والأمن السيبراني",
+        s4Desc: "فحص شامل لنقاط الضعف بالبنية التحتية، وتأمين الراوترات والجدران النارية طبقاً لمعايير سيسكو وفورتينت العالمية.",
+        turnaround4: "فحص خلال 3 - 5 أيام",
+        s4f1: "فحص أمني للثغرات واختبار كفاءة جدار الحماية (Firewall)",
+        s4f2: "إعداد شبكات VPN مشفرة للعمل عن بعد بأمان",
+        s4f3: "تقسيم الشبكة الداخلية (Segmentation) وحماية الأجهزة",
+        s4f4: "تقرير فني مفصل بالثغرات وخطة المعالجة الفورية"
+      }
+    };
+  </script>
+</body>
+
+</html>
