@@ -16,9 +16,18 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [data-aos] {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
     html {
       scroll-behavior: smooth;
       font-family: 'Inter', sans-serif;
@@ -88,6 +97,9 @@
     .glow-card-pink:hover { box-shadow: 0 15px 30px -5px rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.4); }
     .dark .glow-card-pink:hover { box-shadow: 0 15px 30px -5px rgba(236, 72, 153, 0.3); border-color: rgba(242, 108, 178, 0.5); }
 
+    .glow-card-cyan:hover { box-shadow: 0 15px 30px -5px rgba(6, 182, 212, 0.2); border-color: rgba(6, 182, 212, 0.5); }
+    .dark .glow-card-cyan:hover { box-shadow: 0 15px 30px -5px rgba(6, 182, 212, 0.35); border-color: rgba(6, 182, 212, 0.6); }
+
     .search-focus:focus-within {
       box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4);
       border-color: rgba(37, 99, 235, 0.5);
@@ -98,10 +110,14 @@
     }
   </style>
   <script>
-    if (localStorage.getItem('theme') === 'dark') {
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (e) {
       document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
     }
   </script>
 </head>
@@ -109,15 +125,17 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
 
   <!-- Navigation -->
-  <nav class="bg-white/90 dark:bg-slate-900/80 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md sticky top-0 z-40 border-b border-transparent dark:border-slate-800/50">
+  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
       <a href="./index.html" class="flex items-center gap-3 cursor-pointer">
-        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden">
-        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block">
+        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
         <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
       </a>
       <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
         <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navHome">Home</a></li>
+        <li><a href="./portfolio.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navPortfolio">Portfolio</a></li>
+        <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navServices">Services (-30%)</a></li>
         <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
         <li class="flex items-center gap-2">
           <button onclick="toggleDarkMode()" id="darkModeBtn" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
@@ -134,46 +152,48 @@
   <!-- Header -->
   <header class="py-12 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
     <div class="container mx-auto px-4 max-w-6xl text-center space-y-8">
-      <div data-aos="fade-up">
-        <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-3 logo-font uppercase tracking-tight" data-i18n="catalogTitle">Curriculum Ecosystem & Pricing</h2>
+      <div>
+        <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-3 logo-font uppercase tracking-tight" data-i18n="catalogTitle">Curriculum Ecosystem & Tuition</h2>
         <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base mt-3" data-i18n="tuitionHighlight">Tuition: 4,000 EGP per Phase (1 Month) • 8 Sessions (2 sessions/week, 2.0 hrs each = 16 training hours/phase)</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-delay="50">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
         <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">4</span>
+          <span class="block text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">5</span>
           <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statTracks">Specialized Tracks</span>
         </div>
         <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-indigo-600 dark:text-indigo-400 logo-font">16+</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statPhases">Total Phases</span>
+          <span class="block text-xl font-bold text-cyan-500 dark:text-cyan-400 logo-font">3</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statAgeGroups">Age Tracks (8-12, 13-17, 18+)</span>
         </div>
         <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400 logo-font">100%</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statPractical">Practical Labs</span>
+          <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400 logo-font">8</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statSessions">Sessions / Phase (2.0 hrs)</span>
         </div>
         <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-pink-500 dark:text-pink-400 logo-font">EGP</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statCurrency">Local Currency</span>
+          <span class="block text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">4,000</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statCost">EGP / Phase (Core Module)</span>
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-full md:w-72 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto">
+        <div class="w-full md:w-64 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
           <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-          <input type="text" id="trackSearchInput" oninput="executeFilters()" placeholder="Search track or skill..." class="w-full bg-transparent focus:outline-none text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400">
+          <input type="text" id="trackSearchInput" oninput="executeFilters()" placeholder="Search track, age or skill..." class="w-full bg-transparent focus:outline-none text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400">
         </div>
 
         <div class="flex flex-wrap justify-center gap-2">
-          <button onclick="setActiveFilter('all', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md" data-i18n="filterAll">All Tracks</button>
-          <button onclick="setActiveFilter('code', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterCode">Coding</button>
-          <button onclick="setActiveFilter('security', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterSecurity">Infra & Security</button>
-          <button onclick="setActiveFilter('design', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterDesign">Creative</button>
+          <button onclick="setActiveFilter('all', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md" data-i18n="filterAll">All Tracks</button>
+          <button onclick="setActiveFilter('vibe', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterVibe">Vibe Coding</button>
+          <button onclick="setActiveFilter('code', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterCode">Coding</button>
+          <button onclick="setActiveFilter('security', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterSecurity">Infra & Security</button>
+          <button onclick="setActiveFilter('design', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterDesign">Creative</button>
         </div>
 
-        <div class="bg-slate-100 dark:bg-slate-950 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center">
-          <button onclick="setBillingCycle('phase')" id="billingPhaseBtn" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm" data-i18n="billingPhase">Per Phase</button>
-          <button onclick="setBillingCycle('full')" id="billingFullBtn" class="px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-500 dark:text-slate-400" data-i18n="billingFull">Full Package</button>
+        <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-950 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800">
+          <i class="fa-solid fa-clock text-blue-500"></i>
+          <span data-i18n="scheduleBadge">2 Sessions/Week • 2.0 Hrs Each</span>
         </div>
       </div>
     </div>
@@ -182,39 +202,91 @@
   <!-- All Tracks Grid -->
   <main class="py-12 container mx-auto px-4 max-w-6xl flex-grow">
     <div id="coursesContainerDeck" class="space-y-8">
+
+      <!-- Track 0: Vibe Coding Flagship -->
+      <div class="course-card-row block-track-vibe glow-card-cyan bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-cyan-500 dark:border-l-cyan-400" data-tags="vibe coding ai cursor claude copilot v0 lovable prompt spec diff debugging vercel supabase fullstack all ages 14+ ذكاء اصطناعي فايب كودينج">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
+          <div class="flex-grow space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="bg-cyan-100 dark:bg-cyan-950/60 p-3 rounded-xl text-cyan-600 dark:text-cyan-400 text-2xl"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="vibeTitle">Vibe Coding & AI-Native Development</h3>
+                  <span class="bg-cyan-500/20 text-cyan-500 dark:text-cyan-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-cyan-500/30 uppercase">Flagship</span>
+                </div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/80 px-2.5 py-0.5 rounded-md border border-cyan-200 dark:border-cyan-900">Ages 14+ & Adults</span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span>Cohort Open • Limited Seats</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="vibeDescLong">Stop getting stuck on boilerplate syntax. Learn to orchestrate AI agent models to write, audit, and ship production web apps and SaaS products at 10x speed using Cursor, Claude Code, GitHub Copilot, v0, and Lovable with rigorous code literacy.</p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Prompt Orchestration & Specs</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Cursor & Claude Code Tooling</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Diff Auditing & Security Testing</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Zero-Downtime Vercel Deploy</span>
+            </div>
+            <button onclick="toggleInlineSyllabus('vibe', this)" type="button" class="text-cyan-600 dark:text-cyan-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
+              <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+            </button>
+          </div>
+          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
+            <div class="space-y-1 w-full">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
+              <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
+                <span class="text-3xl font-black text-cyan-600 dark:text-cyan-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
+              </div>
+              <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
+            </div>
+            <button onclick="openModal('vibe')" type="button" class="btn-premium w-full mt-5 bg-cyan-600 hover:bg-cyan-500 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
+              <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
+            </button>
+          </div>
+        </div>
+        <div id="syllabus-vibe" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent">
+          <div class="py-6 pl-4 pr-4 border-l-2 border-cyan-500/30 ml-4 space-y-6 roadmap-target-node"></div>
+        </div>
+      </div>
       
-      <!-- Track 1: Programming Masterclass (4,000 EGP) -->
-      <div class="course-card-row block-track-code glow-card-blue bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-blue-600 dark:border-l-blue-500" data-tags="python javascript react html css sql php c++ c# arduino iot logic web games robotics development برمجة بايثون ويب ألعاب">
+      <!-- Track 1: Programming Masterclass -->
+      <div class="course-card-row block-track-code glow-card-blue bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-blue-600 dark:border-l-blue-500" data-tags="python javascript react html css sql php c++ c# arduino iot logic web games robotics development برمجة بايثون ويب ألعاب ages 8-12 13-17 18+">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
           <div class="flex-grow space-y-4">
             <div class="flex flex-wrap items-center gap-3">
               <div class="bg-blue-100 dark:bg-blue-950/60 p-3 rounded-xl text-blue-600 dark:text-blue-400 text-2xl"><i class="fa-solid fa-code"></i></div>
               <div>
                 <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="progTitle">Programming Masterclass</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span data-i18n="seatsLeft3">Cohort Starting Soon • Only 3 Seats Remaining</span>
-                </span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 py-0.5 rounded-md border border-blue-200 dark:border-blue-900">Ages 8-12 • 13-17 • 18+</span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span data-i18n="seatsLeft3">Cohort Starting Soon • Only 3 Seats Remaining</span>
+                  </span>
+                </div>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="progDescLong">A comprehensive 4-phase program structured for complete beginners. Students move systematically through programmatic logical parameters, algorithmic modeling, relational structured databases, and hardware robotics integration components using industry-standard platforms.</p>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="progDescLong">A comprehensive 4-phase program structured for all levels. Young students begin with visual logic while older students move systematically through algorithmic modeling, relational databases, full-stack web, and hardware robotics integration.</p>
             <div class="flex flex-wrap gap-2 pt-1">
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Python Master Logic</span>
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Full-Stack Web Dev</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-full font-medium">C++ & Game Engines</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-full font-medium">Arduino Robotics IoT</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">C++ & Game Engines</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Arduino Robotics IoT</span>
             </div>
             <button onclick="toggleInlineSyllabus('programming', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
-              <span data-i18n="viewSyllabus">Explore Syllabus Details</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+              <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
           <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Tuition Cost</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-blue-600 dark:text-blue-400 block dynamic-pricing-display" data-phase-en="1,000 EGP" data-full-en="4,000 EGP" data-phase-ar="1,000 ج.م" data-full-ar="4,000 ج.م">1,000 EGP</span>
+                <span class="text-3xl font-black text-blue-600 dark:text-blue-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
-              <span class="text-[10px] font-medium text-slate-400 block label-billing-period" data-i18n="perPhaseLabel">Charged per academic phase core module</span>
+              <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
             <button onclick="openModal('programming')" type="button" class="btn-premium w-full mt-5 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
@@ -226,37 +298,41 @@
         </div>
       </div>
 
-      <!-- Track 2: Cybersecurity (4,800 EGP) -->
-      <div class="course-card-row block-track-security glow-card-slate bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-slate-800 dark:border-l-slate-400" data-tags="linux admin windows security testing penetration vulnerability hacking networks soc ceh ccna أمن سيبراني حماية اختراق شبكات">
+      <!-- Track 2: Cybersecurity -->
+      <div class="course-card-row block-track-security glow-card-slate bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-slate-800 dark:border-l-slate-400" data-tags="linux admin windows security testing penetration vulnerability hacking networks soc ceh ccna أمن سيبراني حماية اختراق شبكات ages 13-17 18+">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
           <div class="flex-grow space-y-4">
             <div class="flex flex-wrap items-center gap-3">
               <div class="bg-slate-100 dark:bg-slate-800/80 p-3 rounded-xl text-slate-800 dark:text-slate-200 text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
               <div>
                 <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="cybTitle">Cybersecurity</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span data-i18n="seatsLeft5">Cohort Starting Soon • Only 5 Seats Remaining</span>
-                </span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">Ages 13-17 • 18+</span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span data-i18n="seatsLeft5">Cohort Starting Soon • Only 5 Seats Remaining</span>
+                  </span>
+                </div>
               </div>
             </div>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="cybDescLong">An operational defense track centered on digital infrastructure shielding. Includes deep analytical training on system logging frameworks, command-line administration tools, risk surface reduction methodologies, and practical white-hat penetration workflows.</p>
             <div class="flex flex-wrap gap-2 pt-1">
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Linux Bash Core</span>
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Penetration Testing Matrix</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-full font-medium">Global Certification Blueprints</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">SOC Incident Defense</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Global Certification Blueprints</span>
             </div>
             <button onclick="toggleInlineSyllabus('cyber', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
-              <span data-i18n="viewSyllabus">Explore Syllabus Details</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+              <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
           <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Tuition Cost</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-slate-900 dark:text-slate-200 block dynamic-pricing-display" data-phase-en="1,200 EGP" data-full-en="4,800 EGP" data-phase-ar="1,200 ج.م" data-full-ar="4,800 ج.م">1,200 EGP</span>
+                <span class="text-3xl font-black text-slate-900 dark:text-slate-200 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
-              <span class="text-[10px] font-medium text-slate-400 block label-billing-period" data-i18n="perPhaseLabel">Charged per academic phase core module</span>
+              <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
             <button onclick="openModal('cyber')" type="button" class="btn-premium w-full mt-5 bg-slate-900 dark:bg-slate-800 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
@@ -268,37 +344,41 @@
         </div>
       </div>
 
-      <!-- Track 3: Networking (5,000 EGP) -->
-      <div class="course-card-row block-track-security glow-card-indigo bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-indigo-600 dark:border-l-indigo-500" data-tags="cisco routers switches routing topologies cabling architectures cloud troubleshooting ccna شبكات اتصالات سيسكو راوتر">
+      <!-- Track 3: Networking -->
+      <div class="course-card-row block-track-security glow-card-indigo bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-indigo-600 dark:border-l-indigo-500" data-tags="cisco routers switches routing topologies cabling architectures cloud troubleshooting ccna شبكات اتصالات سيسكو راوتر ages 13-17 18+">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
           <div class="flex-grow space-y-4">
             <div class="flex flex-wrap items-center gap-3">
               <div class="bg-indigo-100 dark:bg-indigo-950/60 p-3 rounded-xl text-indigo-600 dark:text-indigo-400 text-2xl"><i class="fa-solid fa-network-wired"></i></div>
               <div>
                 <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="netTitle">Networking</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span data-i18n="seatsLeft2">Cohort Starting Soon • Only 2 Seats Remaining</span>
-                </span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2.5 py-0.5 rounded-md border border-indigo-200 dark:border-indigo-900">Ages 13-17 • 18+</span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span data-i18n="seatsLeft2">Cohort Starting Soon • Only 2 Seats Remaining</span>
+                  </span>
+                </div>
               </div>
             </div>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="netDescLong">Master the core structural layers of the internet. Students build concrete network topologies, evaluate routing logic models, program enterprise switching interfaces, and deploy scalable remote systems architecture configurations.</p>
             <div class="flex flex-wrap gap-2 pt-1">
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Enterprise Cisco Controls</span>
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Dynamic Topology Routing</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-full font-medium">Fault Diagnostics Matrix</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">IPv4 & Binary Conversion</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Fault Diagnostics Matrix</span>
             </div>
             <button onclick="toggleInlineSyllabus('networking', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
-              <span data-i18n="viewSyllabus">Explore Syllabus Details</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+              <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
           <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Tuition Cost</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-indigo-600 dark:text-indigo-400 block dynamic-pricing-display" data-phase-en="1,250 EGP" data-full-en="5,000 EGP" data-phase-ar="1,250 ج.م" data-full-ar="5,000 ج.م">1,250 EGP</span>
+                <span class="text-3xl font-black text-indigo-600 dark:text-indigo-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
-              <span class="text-[10px] font-medium text-slate-400 block label-billing-period" data-i18n="perPhaseLabel">Charged per academic phase core module</span>
+              <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
             <button onclick="openModal('networking')" type="button" class="btn-premium w-full mt-5 bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
@@ -310,37 +390,41 @@
         </div>
       </div>
 
-      <!-- Track 4: Graphic Design (3,000 EGP) -->
-      <div class="course-card-row block-track-design glow-card-pink bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-pink-500 dark:border-l-pink-500" data-tags="photoshop illustrator typography color ui ux layout assets branding vectors جرافيك ديزاين فوتوشوب تصميم">
+      <!-- Track 4: Graphic Design -->
+      <div class="course-card-row block-track-design glow-card-pink bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-pink-500 dark:border-l-pink-500" data-tags="photoshop illustrator typography color ui ux layout assets branding vectors جرافيك ديزاين فوتوشوب تصميم ages 8-12 13-17 18+">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
           <div class="flex-grow space-y-4">
             <div class="flex flex-wrap items-center gap-3">
               <div class="bg-pink-100 dark:bg-pink-955/60 p-3 rounded-xl text-pink-500 dark:text-pink-400 text-2xl"><i class="fa-solid fa-bezier-curve"></i></div>
               <div>
                 <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="desTitle">Graphic Design</h3>
-                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span data-i18n="seatsLeft4">Cohort Starting Soon • Only 4 Seats Remaining</span>
-                </span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-2.5 py-0.5 rounded-md border border-pink-200 dark:border-pink-900">Ages 8-12 • 13-17 • 18+</span>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span data-i18n="seatsLeft4">Cohort Starting Soon • Only 4 Seats Remaining</span>
+                  </span>
+                </div>
               </div>
             </div>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="desDescLong">Translate imaginative ideas into commercial digital assets. This track explores advanced color matching, balanced structural layouts, modern vector creation practices, photo adjustments, and targeted digital product design paradigms.</p>
             <div class="flex flex-wrap gap-2 pt-1">
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Adobe Illustrator Vectors</span>
               <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Digital Photo Compositions</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-full font-medium">Brand Identity Implementation</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Brand Identity Implementation</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Commercial Portfolio</span>
             </div>
             <button onclick="toggleInlineSyllabus('design', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
-              <span data-i18n="viewSyllabus">Explore Syllabus Details</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+              <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
           <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Tuition Cost</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-pink-500 dark:text-pink-400 block dynamic-pricing-display" data-phase-en="750 EGP" data-full-en="3,000 EGP" data-phase-ar="750 ج.م" data-full-ar="3,000 ج.م">750 EGP</span>
+                <span class="text-3xl font-black text-pink-500 dark:text-pink-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
-              <span class="text-[10px] font-medium text-slate-400 block label-billing-period" data-i18n="perPhaseLabel">Charged per academic phase core module</span>
+              <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
             <button onclick="openModal('design')" type="button" class="btn-premium w-full mt-5 bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
@@ -358,7 +442,7 @@
   <!-- Reusable Roadmap & Enrollment Modal -->
   <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeModal()"></div>
-    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 border border-transparent dark:border-slate-800" id="modalContent">
+    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800" id="modalContent">
       <button onclick="closeModal()" type="button" class="btn-premium absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
@@ -367,7 +451,7 @@
       <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
-          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-sm px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800"></div>
+          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-sm px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">4,000 EGP / Phase</div>
         </div>
         <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
         <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-8 text-sm leading-relaxed"></p>
@@ -434,82 +518,168 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     let currentLang = 'en';
     let currentOpenTrack = null;
     let currentActiveFilterGroup = 'all';
-    let currentBillingSelection = 'phase';
 
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwJvM_HnSTdW15J9788gLhi5YzPnsaSI7sAPn8X4eBnGDmSH2YiyyfEzvD0JXoOU3yE/exec";
     const ACADEMY_WHATSAPP_NUMBER = "201099995519";
 
     const i18n = {
       en: {
-        navHome: "Home", navTeam: "Team", catalogTitle: "Curriculum Ecosystem & Pricing",
-        filterAll: "All Tracks", filterCode: "Coding", filterSecurity: "Infra & Security", filterDesign: "Creative",
-        billingPhase: "Per Phase", billingFull: "Full Package",
-        perPhaseLabel: "Charged per academic phase core module", fullPackageLabel: "One-time full course tuition payment",
-        progTitle: "Programming Masterclass", progDescLong: "A comprehensive 4-phase program structured for complete beginners. Students move systematically through programmatic logical parameters, algorithmic modeling, relational structured databases, and hardware robotics integration components using industry-standard platforms.",
-        cybTitle: "Cybersecurity", cybDescLong: "An operational defense track centered on digital infrastructure shielding. Includes deep analytical training on system logging frameworks, command-line administration tools, risk surface reduction methodologies, and practical white-hat penetration workflows.",
-        netTitle: "Networking", netDescLong: "Master the core structural layers of the internet. Students build concrete network topologies, evaluate routing logic models, program enterprise switching interfaces, and deploy scalable remote systems architecture configurations.",
-        desTitle: "Graphic Design", desDescLong: "Translate imaginative ideas into commercial digital assets. This track explores advanced color matching, balanced structural layouts, modern vector creation practices, photo adjustments, and targeted digital product design paradigms.",
-        lblPricing: "Tuition Cost", viewSyllabus: "Explore Syllabus Details", seatsLeft3: "Cohort Starting Soon • Only 3 Seats Remaining", seatsLeft5: "Cohort Starting Soon • Only 5 Seats Remaining", seatsLeft2: "Cohort Starting Soon • Only 2 Seats Remaining", seatsLeft4: "Cohort Starting Soon • Only 4 Seats Remaining",
-        statTracks: "Specialized Tracks", statPhases: "Total Phases", statPractical: "Practical Labs", statCurrency: "Local Currency",
-        btnEnrollNow: "Enroll & Reserve Spot", modalTrackTag: "Track Roadmap", modalEnrollTitle: "Enrollment Application", lblName: "Student Full Name", lblAge: "Student Age", lblExp: "Prior Experience", exp1: "Complete Beginner", exp2: "Some Knowledge", exp3: "Advanced", lblWa1: "Student/Primary WhatsApp", lblWa2: "Parent's WhatsApp (Optional)", btnSubmitForm: "Submit Application", formDisclaimer: "By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.", rightsText: "© 2026 Fekra Tech Academy. All rights reserved."
+        navHome: "Home", navPortfolio: "Portfolio", navServices: "Services (-30%)", navTeam: "Team",
+        catalogTitle: "Curriculum Ecosystem & Tuition",
+        tuitionHighlight: "Tuition: 4,000 EGP per Phase (1 Month) • 8 Sessions (2 sessions/week, 2.0 hrs each = 16 training hours/phase)",
+        filterAll: "All Tracks", filterVibe: "Vibe Coding", filterCode: "Coding", filterSecurity: "Infra & Security", filterDesign: "Creative",
+        scheduleBadge: "2 Sessions/Week • 2.0 Hrs Each",
+        vibeTitle: "Vibe Coding & AI-Native Development",
+        vibeDescLong: "Stop getting stuck on boilerplate syntax. Learn to orchestrate AI agent models to write, audit, and ship production web apps and SaaS products at 10x speed using Cursor, Claude Code, GitHub Copilot, v0, and Lovable with rigorous code literacy.",
+        progTitle: "Programming Masterclass",
+        progDescLong: "A comprehensive 4-phase program structured for all levels. Young students begin with visual logic while older students move systematically through algorithmic modeling, relational databases, full-stack web, and hardware robotics integration.",
+        cybTitle: "Cybersecurity",
+        cybDescLong: "An operational defense track centered on digital infrastructure shielding. Includes deep analytical training on system logging frameworks, command-line administration tools, risk surface reduction methodologies, and practical white-hat penetration workflows.",
+        netTitle: "Networking",
+        netDescLong: "Master the core structural layers of the internet. Students build concrete network topologies, evaluate routing logic models, program enterprise switching interfaces, and deploy scalable remote systems architecture configurations.",
+        desTitle: "Graphic Design",
+        desDescLong: "Translate imaginative ideas into commercial digital assets. This track explores advanced color matching, balanced structural layouts, modern vector creation practices, photo adjustments, and targeted digital product design paradigms.",
+        lblPricing: "Per-Phase Tuition",
+        sessionsMonth: "Charged per 8-session academic phase",
+        curr: "EGP",
+        viewSyllabus: "Explore Syllabus Details & Lesson Slides",
+        seatsLeft3: "Cohort Starting Soon • Only 3 Seats Remaining",
+        seatsLeft5: "Cohort Starting Soon • Only 5 Seats Remaining",
+        seatsLeft2: "Cohort Starting Soon • Only 2 Seats Remaining",
+        seatsLeft4: "Cohort Starting Soon • Only 4 Seats Remaining",
+        statTracks: "Specialized Tracks",
+        statAgeGroups: "Age Tracks (8-12, 13-17, 18+)",
+        statSessions: "Sessions / Phase (2.0 hrs)",
+        statCost: "EGP / Phase (Core Module)",
+        btnEnrollNow: "Enroll & Reserve Spot",
+        modalTrackTag: "Track Roadmap",
+        modalEnrollTitle: "Enrollment Application",
+        lblName: "Student Full Name",
+        lblAge: "Student Age",
+        lblExp: "Prior Experience",
+        exp1: "Complete Beginner",
+        exp2: "Some Knowledge",
+        exp3: "Advanced",
+        lblWa1: "Student/Primary WhatsApp",
+        lblWa2: "Parent's WhatsApp (Optional)",
+        btnSubmitForm: "Submit Application",
+        formDisclaimer: "By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.",
+        rightsText: "© 2026 Fekra Tech Academy. All rights reserved."
       },
       ar: {
-        navHome: "الرئيسية", navTeam: "فريقنا", catalogTitle: "المناهج الدراسية وأسعار الكورسات",
-        filterAll: "كل المسارات", filterCode: "البرمجة", filterSecurity: "الأنظمة والأمن", filterDesign: "التصميم الإبداعي",
-        billingPhase: "بالدفع للمرحلة", billingFull: "الباقة الكاملة",
-        perPhaseLabel: "يتم تحصيل الرسوم بشكل منفصل عند بداية كل مرحلة دراسية", fullPackageLabel: "سداد مسبق لجميع المراحل للمسار بالكامل",
-        progTitle: "كورس البرمجة الشامل", progDescLong: "برنامج تعليمي متكامل مكون من 4 مراحل مصمم بالكامل للمبتدئين. ينتقل الطلاب بشكل منهجي من تعلم منطق البرمجة وبناء الخوارزميات إلى إدارة قواعد البيانات وربط الأكواد بالأنظمة الصلبة والروبوتات عبر منصات الأردوينو المتطورة.",
-        cybTitle: "الأمن السيبراني", cybDescLong: "مسار دفاعي تطبيقي يركز على حماية وإدارة البنى التحتية الرقمية. يتضمن الكورس تدريبًا عمليًا مكثفًا على أنظمة التشغيل، سطر الأوامر، استراتيجيات تقليل ثغرات الأنظمة، وتطبيقات الاختراق الأخلاقي واختبار الاختراق.",
-        netTitle: "الشبكات", netDescLong: "احترف بناء وإدارة الطبقات الأساسية التي تشغل شبكة الإنترنت العالمية. يتعلم الطلاب كيفية تصميم مخططات الشبكات، ضبط أجهزة التوجيه والتبديل من سيسكو، وإدارة البنى السحابية وأنظمة ربط الخوادم.",
-        desTitle: "التصميم الجرافيكي", desDescLong: "حول الأفكار والخيالات إلى أصول بصرية وتسويقية مبهرة. يغطي هذا المسار دراسة نظريات الألوان، قواعد التكوين البصري، تصميم الشعارات المتجهة، معالجة الصور الرقمية، وبناء واجهات المستخدم وتصميم الهويات التجارية.",
-        lblPricing: "تكلفة الدراسة", viewSyllabus: "استكشاف تفاصيل المنهج", seatsLeft3: "الدفعة تبدأ قريباً • متبقي 3 مقاعد فقط", seatsLeft5: "الدفعة تبدأ قريباً • متبقي 5 مقاعد فقط", seatsLeft2: "الدفعة تبدأ قريباً • متبقي مقعدين فقط", seatsLeft4: "الدفعة تبدأ قريباً • متبقي 4 مقاعد فقط",
-        statTracks: "مسارات متخصصة", statPhases: "إجمالي المراحل", statPractical: "مختبرات تطبيقية 100%", statCurrency: "التعامل بالعملة المحلية",
-        btnEnrollNow: "سجل واحجز مكانك الآن", modalTrackTag: "خطة المسار", modalEnrollTitle: "طلب التسجيل", lblName: "الاسم الرباعي للطالب", lblAge: "عمر الطالب", lblExp: "الخبرة السابقة", exp1: "مبتدئ تماماً", exp2: "عندي خلفية", exp3: "متقدم", lblWa1: "رقم الواتساب الأساسي/للطالب", lblWa2: "رقم واتساب ولي الأمر (اختياري)", btnSubmitForm: "إرسال الطلب", formDisclaimer: "بتسجيلك، إنت بتحجز مكانك في الدفعة الجاية. إدارة فكرة تك هتتواصل معاك على الواتساب عشان نرتب المواعيد، وطرق الدفع، وامتحانات تحديد المستوى لو لزم الأمر.", rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة."
+        navHome: "الرئيسية", navPortfolio: "معرض المشاريع", navServices: "الخدمات (-30%)", navTeam: "فريقنا",
+        catalogTitle: "المناهج الدراسية وتكلفة المراحل",
+        tuitionHighlight: "تكلفة المرحلة الواحدة: 4,000 ج.م للمرحلة (شهر) • 8 حصص للمرحلة (حصتين أسبوعياً، زمن الحصة ساعتان = 16 ساعة تدريبية)",
+        filterAll: "كل المسارات", filterVibe: "فايب كودينج", filterCode: "البرمجة", filterSecurity: "الأنظمة والأمن", filterDesign: "التصميم الإبداعي",
+        scheduleBadge: "حصتين أسبوعياً • مدة الحصة ساعتان",
+        vibeTitle: "فايب كودينج وهندسة البرمجيات بالذكاء الاصطناعي",
+        vibeDescLong: "بطل تضيع وقتك في كتابة الأكواد التقليدية من الصفر. اتعلم إزاي توجه أدوات الذكاء الاصطناعي زي Cursor و Claude Code و Copilot و v0 و Lovable عشان تبني وتراجع وتطلق مواقع وتطبيقات كاملة بسرعة مضاعفة 10 مرات مع الحفاظ على الفهم البرمجي العميق.",
+        progTitle: "كورس البرمجة الشامل",
+        progDescLong: "برنامج تعليمي متكامل مكون من 4 مراحل مصمم لكل الفئات السنية. يبدأ الصغار بالمنطق البرمجي والألعاب التفاعلية، بينما ينتقل الطلاب الأكبر لبناء الخوارزميات، وتطوير الويب الشامل، وقواعد البيانات، وبرمجة الهاردوير والروبوتات.",
+        cybTitle: "الأمن السيبراني",
+        cybDescLong: "مسار دفاعي تطبيقي يركز على حماية وإدارة البنى التحتية الرقمية. يتضمن الكورس تدريبًا عمليًا مكثفًا على أنظمة التشغيل، سطر الأوامر، استراتيجيات تقليل ثغرات الأنظمة، وتطبيقات الاختراق الأخلاقي واختبار الاختراق.",
+        netTitle: "الشبكات",
+        netDescLong: "احترف بناء وإدارة الطبقات الأساسية التي تشغل شبكة الإنترنت العالمية. يتعلم الطلاب كيفية تصميم مخططات الشبكات، ضبط أجهزة التوجيه والتبديل من سيسكو، وإدارة البنى السحابية وأنظمة ربط الخوادم.",
+        desTitle: "التصميم الجرافيكي",
+        desDescLong: "حول الأفكار والخيالات إلى أصول بصرية وتسويقية مبهرة. يغطي هذا المسار دراسة نظريات الألوان، قواعد التكوين البصري، تصميم الشعارات المتجهة، معالجة الصور الرقمية، وبناء واجهات المستخدم وتصميم الهويات التجارية.",
+        lblPricing: "رسوم المرحلة الدراسية",
+        sessionsMonth: "يتم التحصيل لكل مرحلة (8 حصص مكثفة)",
+        curr: "ج.م",
+        viewSyllabus: "استكشاف تفاصيل المنهج وشرائح الشرح",
+        seatsLeft3: "الدفعة تبدأ قريباً • متبقي 3 مقاعد فقط",
+        seatsLeft5: "الدفعة تبدأ قريباً • متبقي 5 مقاعد فقط",
+        seatsLeft2: "الدفعة تبدأ قريباً • متبقي مقعدين فقط",
+        seatsLeft4: "الدفعة تبدأ قريباً • متبقي 4 مقاعد فقط",
+        statTracks: "مسارات متخصصة",
+        statAgeGroups: "مسارات الأعمار (8-12، 13-17، 18+)",
+        statSessions: "حصص للمرحلة (ساعتان للحصة)",
+        statCost: "ج.م لكل مرحلة دراسية",
+        btnEnrollNow: "سجل واحجز مكانك الآن",
+        modalTrackTag: "خطة المسار",
+        modalEnrollTitle: "طلب التسجيل",
+        lblName: "الاسم الرباعي للطالب",
+        lblAge: "عمر الطالب",
+        lblExp: "الخبرة السابقة",
+        exp1: "مبتدئ تماماً",
+        exp2: "عندي خلفية",
+        exp3: "متقدم",
+        lblWa1: "رقم الواتساب الأساسي/للطالب",
+        lblWa2: "رقم واتساب ولي الأمر (اختياري)",
+        btnSubmitForm: "إرسال الطلب",
+        formDisclaimer: "بتسجيلك، إنت بتحجز مكانك في الدفعة الجاية. إدارة فكرة تك هتتواصل معاك على الواتساب عشان نرتب المواعيد، وطرق الدفع، وامتحانات تحديد المستوى لو لزم الأمر.",
+        rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة."
       }
     };
 
     const courseData = {
-      programming: {
-        price: { en: "4,000 EGP", ar: "4,000 ج.م" },
-        numericPrice: "4000 EGP",
+      vibe: {
+        price: { en: "4,000 EGP / Phase", ar: "4,000 ج.م / مرحلة" },
+        numericPrice: "4,000 EGP / Phase (8 Sessions)",
         en: {
-          title: "Programming Masterclass", desc: "Our flagship track designed to take you from a complete beginner to a versatile full-stack developer.",
+          title: "Vibe Coding & AI-Native Development",
+          desc: "Architect, build, debug, and deploy production software at 10x velocity using agentic AI toolchains and strict verification rules.",
           roadmap: [
-            { step: "Phase 1", title: "Python Fundamentals & Logic", details: "Master variables, loops, object-oriented paradigms, and data structures." },
-            { step: "Phase 2", title: "Full-Stack Web Architectures", details: "Deploy responsive applications using HTML5, CSS3, JavaScript, React, and SQL." },
-            { step: "Phase 3", title: "C++ & Complex Software Engines", details: "Learn memory management, compilation logic, structures, and game engines mechanics." },
-            { step: "Phase 4", title: "Arduino Firmware Robotics IoT", details: "Program motherboards, handle circuitry paths, and integrate electronic components." }
+            { step: "Phase 1: Spec Engineering", title: "Prompt Orchestration & Context Windows", details: "Writing system prompts, pseudo-code architectures, managing context limits, and creating spec documents." },
+            { step: "Phase 2: Modern Toolchains", title: "Cursor, Claude Code, Copilot & Lovable", details: "Agentic coding in Cursor IDE, terminal orchestration with Claude Code, and UI generations via v0 & Lovable." },
+            { step: "Phase 3: Verification & Security", title: "Git Diff Literacy & Edge Case Auditing", details: "Catching AI hallucinations, reading and verifying git diffs, writing automated unit tests, and securing API endpoints." },
+            { step: "Phase 4: Full-Stack Shipping", title: "Supabase, Local Gateways & Vercel Deploy", details: "Integrating auth, PostgreSQL database schema migrations, Fawry/Instapay checkouts, and production domain deployment." }
           ]
         },
         ar: {
-          title: "كورس البرمجة الشامل", desc: "المسار الأساسي للانتقال من الصفر إلى الاحتراف كمطور برمجيات شامل.",
+          title: "فايب كودينج وهندسة البرمجيات بالذكاء الاصطناعي",
+          desc: "اتعلم إزاي تبني وتراجع وتطلق برمجيات وتطبيقات كاملة بسرعة مضاعفة 10 مرات باستخدام أدوات الذكاء الاصطناعي الحديثة مع الحفاظ على الجودة والأمان.",
           roadmap: [
-            { step: "المرحلة الأولى", title: "أساسيات لغة بايثون والمنطق البرمجي", details: "دراسة المتغيرات، الدوال، البرمجة كائنية التوجه (OOP)، وهياكل البيانات." },
-            { step: "المرحلة الثانية", title: "هندسة الويب الشاملة والتطوير", details: "بناء واجهات تفاعلية وسيرفرات باستخدام HTML, CSS, JavaScript, React, SQL." },
-            { step: "المرحلة الثالثة", title: "لغة C++ ومحركات الألعاب المعقدة", details: "إدارة الذاكرة، الخوارزميات المتقدمة، وهياكل برمجية لبناء محركات الألعاب." },
-            { step: "المرحلة الرابعة", title: "أنظمة إنترنت الأشياء والروبوتات (Arduino)", details: "برمجة اللوحات الإلكترونية، التعامل مع الحساسات، وربط الأكواد بالواقع الفيزيائي." }
+            { step: "المرحلة الأولى: هندسة المتطلبات", title: "إدارة الـ Prompts وهندسة الأوامر المتقدمة", details: "كتابة مواصفات النظام (Specs)، إدارة سياق الذكاء الاصطناعي (Context Windows)، وتحويل الأفكار لهياكل برمجية محددة." },
+            { step: "المرحلة الثانية: بيئات العمل الحديثة", title: "احتراف Cursor و Claude Code و v0 و Lovable", details: "العمل مع محرر Cursor، تشغيل أوامر Claude في الـ Terminal، وتوليد واجهات المستخدم وتعديلها فورياً." },
+            { step: "المرحلة الثالثة: التحقق والأمان", title: "مراجعة الـ Diffs واكتشاف الثغرات المنطقية", details: "قراءة تعديلات الأكواد (Git Diffs)، معالجة أخطاء الـ Hallucinations، وكتابة اختبارات الأمان وحماية الـ APIs." },
+            { step: "المرحلة الرابعة: إطلاق مشاريع الإنتاج", title: "ربط قواعد البيانات السحابية والدفع الإلكتروني والنشر", details: "ربط قواعد بيانات Supabase/PostgreSQL، وبوابات الدفع الإلكتروني، والنشر المستمر التلقائي على Vercel." }
+          ]
+        }
+      },
+      programming: {
+        price: { en: "4,000 EGP / Phase", ar: "4,000 ج.م / مرحلة" },
+        numericPrice: "4,000 EGP / Phase (8 Sessions)",
+        en: {
+          title: "Programming Masterclass",
+          desc: "Our flagship track taking students across age groups from core algorithmic thinking to production full-stack systems and hardware.",
+          roadmap: [
+            { step: "Track A (Ages 8-12)", title: "Visual Logic & Algorithmic Games (Scratch to Python)", details: "Block scripts, condition loops, game physics, and introductory Python variables without syntax friction." },
+            { step: "Track B (Ages 13-17)", title: "Core Python OOP & Web Foundations", details: "Data structures, object-oriented paradigms, HTML5/CSS3/JavaScript, API clients, and Git version control." },
+            { step: "Track C (Ages 18+)", title: "Full-Stack Web Architectures (.NET / React / SQL)", details: "ASP.NET Core Web API, React state architecture, database normalization, relational schema design, and cloud deployments." },
+            { step: "Hardware Extension", title: "Arduino Firmware Robotics & IoT", details: "Microcontroller logic, sensor telemetry feeds, and real-time electronic component control." }
+          ]
+        },
+        ar: {
+          title: "كورس البرمجة الشامل",
+          desc: "المسار الأساسي للانتقال من الصفر إلى الاحتراف كمطور برمجيات شامل عبر كافة الفئات العمرية.",
+          roadmap: [
+            { step: "مسار الصغار (8-12 سنة)", title: "المنطق البرمجي وبرمجة الألعاب (Scratch إلى بايثون)", details: "البرمجة المرئية، الحلقات التكرارية والشروط، فيزياء الألعاب، والانتقال المبسط لمتغيرات بايثون." },
+            { step: "مسار الناشئين (13-17 سنة)", title: "أساسيات لغة بايثون وتطوير الويب الأساسي", details: "البرمجة كائنية التوجه (OOP)، هياكل البيانات، واجهات الويب (HTML/CSS/JS)، والتعامل مع Git." },
+            { step: "مسار المتقدمين (18+ سنة)", title: "هندسة الويب الشاملة (.NET / React / SQL)", details: "بناء واجهات وسيرفرات متقدمة باستخدام ASP.NET Web API و React وإدارة قواعد البيانات السحابية." },
+            { step: "تطبيقات الهاردوير", title: "أنظمة إنترنت الأشياء والروبوتات (Arduino)", details: "برمجة اللوحات الإلكترونية، التعامل مع الحساسات، وربط الأكواد بالواقع الفيزيائي." }
           ]
         }
       },
       cyber: {
-        price: { en: "4,800 EGP", ar: "4,800 ج.م" },
-        numericPrice: "4800 EGP",
+        price: { en: "4,000 EGP / Phase", ar: "4,000 ج.م / مرحلة" },
+        numericPrice: "4,000 EGP / Phase (8 Sessions)",
         en: {
-          title: "Cybersecurity", desc: "Enter the world of digital defense. Learn to identify vulnerabilities, secure networks, and protect infrastructure.",
+          title: "Cybersecurity",
+          desc: "Enter the world of digital defense. Learn to identify vulnerabilities, secure networks, and protect infrastructure.",
           roadmap: [
             { step: "Phase 1", title: "Network Fundamentals & Traffic Layers", details: "Understand packets routing paths, ports configurations, and OSI layers logic." },
             { step: "Phase 2", title: "Linux Shell Enterprise Administration", details: "Master administrative terminal tools, configurations arrays, and permissions parameters." },
             { step: "Phase 3", title: "Ethical Hacking & Penetration Testing", details: "Audit system vulnerabilities, locate exposures, and deploy simulated offensive tools safely." },
-            { step: "Phase 4", title: "Defensive Blueprint Systems", details: "Implement firewalls parameters, detect security events (SOC), and build architectures shielding." }
+            { step: "Phase 4", title: "Defensive Blueprint Systems & SOC Incident Response", details: "Implement firewalls parameters, detect security events (SOC), and build architectures shielding." }
           ]
         },
         ar: {
-          title: "الأمن السيبراني", desc: "ادخل عالم الدفاع الرقمي. تعلم كيفية اكتشاف الثغرات وتأمين الأنظمة والشبكات.",
+          title: "الأمن السيبراني",
+          desc: "ادخل عالم الدفاع الرقمي. تعلم كيفية اكتشاف الثغرات وتأمين الأنظمة والشبكات.",
           roadmap: [
             { step: "المرحلة الأولى", title: "أساسيات وتراسل شبكات البيانات", details: "فهم مسارات الحزم البرمجية، المنافذ، وبروتوكولات الـ IP والـ OSI Model." },
             { step: "المرحلة الثانية", title: "إدارة أنظمة تشغيل لينكس للمؤسسات", details: "احتراف التعامل مع سطر أوامر لينكس (Terminal) وإدارة الصلاحيات والخدمات." },
@@ -519,32 +689,35 @@
         }
       },
       networking: {
-        price: { en: "5,000 EGP", ar: "5,000 ج.م" },
-        numericPrice: "5000 EGP",
+        price: { en: "4,000 EGP / Phase", ar: "4,000 ج.م / مرحلة" },
+        numericPrice: "4,000 EGP / Phase (8 Sessions)",
         en: {
-          title: "Networking", desc: "Become the backbone of IT. Master the hardware and protocols that keep systems running.",
+          title: "Networking",
+          desc: "Become the backbone of IT. Master the hardware and protocols that keep systems running.",
           roadmap: [
             { step: "Phase 1", title: "Infrastructure Engineering Basics", details: "Study corporate cabling topologies, signal bands, and basic hardware models." },
             { step: "Phase 2", title: "Routing Switching Configuration", details: "Program core Cisco routers commands and manage enterprise switching tables." },
-            { step: "Phase 3", title: "Wireless Arrays & Cloud Networks", details: "Deploy wireless controllers and configure scalable virtual cloud clusters." },
+            { step: "Phase 3", title: "IP Addressing & Packet Analysis", details: "Master IPv4 classes, binary conversion drills, Wireshark frame analysis, and LAN segmentation." },
             { step: "Phase 4", title: "Advanced Architecture Diagnostics", details: "Isolate communication bottlenecks, audit lines noise, and optimize frames travel speed." }
           ]
         },
         ar: {
-          title: "الشبكات", desc: "كن الأساس الذي تقوم عليه تكنولوجيا المعلومات. احترف تشغيل وصيانة بروتوكولات الربط.",
+          title: "الشبكات",
+          desc: "كن الأساس الذي تقوم عليه تكنولوجيا المعلومات. احترف تشغيل وصيانة بروتوكولات الربط.",
           roadmap: [
             { step: "المرحلة الأولى", title: "أساسيات البنية التحتية الهندسية", details: "دراسة كابلات الشبكات، طوبولوجيا التوصيل للمؤسسات، والمكونات المادية للربط." },
             { step: "المرحلة الثانية", title: "برمجة أجهزة التوجيه والتبديل (Routing & Switching)", details: "إعداد وإدارة موجهات سيسكو والتحكم في جداول البيانات وعزل الشبكات الافتراضية (VLANs)." },
-            { step: "المرحلة الثالثة", title: "الشبكات اللاسلكية والأنظمة السحابية", details: "إعداد وحدات التحكم اللاسلكية وربط الشبكات المحلية بالخوادم السحابية الافتراضية." },
+            { step: "المرحلة الثالثة", title: "عناوين الـ IP وتحليل حزم البيانات", details: "إتقان تصنيفات IPv4، التحويل الثنائي، تحليل الحزم عبر Wireshark، وتقسيم الشبكات." },
             { step: "المرحلة الرابعة", title: "تشخيص الأعطال المتقدم وهندسة الشبكات", details: "تتبع مشاكل الاتصال المعقدة، تحليل حركية البيانات، وحل مشكلات التوجيه الكبرى." }
           ]
         }
       },
       design: {
-        price: { en: "3,000 EGP", ar: "3,000 ج.م" },
-        numericPrice: "3000 EGP",
+        price: { en: "4,000 EGP / Phase", ar: "4,000 ج.م / مرحلة" },
+        numericPrice: "4,000 EGP / Phase (8 Sessions)",
         en: {
-          title: "Graphic Design", desc: "Transform ideas into stunning visual assets. Master industry-standard design tools, branding, and user experience.",
+          title: "Graphic Design",
+          desc: "Transform ideas into stunning visual assets. Master industry-standard design tools, branding, and user experience.",
           roadmap: [
             { step: "Phase 1", title: "Visual Arts Core Theories", details: "Explore structural typography grid laws, psychological color properties, and UI hierarchies." },
             { step: "Phase 2", title: "Adobe Illustrator Advanced Vectors", details: "Construct corporate logo identities, typography nodes modifications, and infinitely scalable artwork." },
@@ -553,7 +726,8 @@
           ]
         },
         ar: {
-          title: "التصميم الجرافيكي", desc: "حول أفكارك إلى تصميمات بصرية مبهرة. احترف الأدوات العالمية وصناعة الهوية.",
+          title: "التصميم الجرافيكي",
+          desc: "حول أفكارك إلى تصميمات بصرية مبهرة. احترف الأدوات العالمية وصناعة الهوية.",
           roadmap: [
             { step: "المرحلة الأولى", title: "القواعد والنظريات الفنية للتكوين البصري", details: "دراسة الخطوط، الموازنة البصرية، فلسفة وسيكولوجية الألوان، وتوزيع العناصر." },
             { step: "المرحلة الثانية", title: "الرسومات المتجهة الاحترافية (Adobe Illustrator)", details: "تصميم الشعارات الرسمية، الأيقونات، ورسم الأصول الفنية القابلة للتكبير اللانهائي." },
@@ -567,18 +741,13 @@
     const modal = document.getElementById('courseModal');
     const modalContent = document.getElementById('modalContent');
 
-    document.addEventListener("DOMContentLoaded", () => {
-      AOS.init({ once: true, offset: 30 });
-      updateDarkModeButton();
-    });
-
     function toggleInlineSyllabus(trackId, triggerBtn) {
       const panel = document.getElementById(`syllabus-${trackId}`);
       if (!panel) return;
       const container = panel.querySelector('.roadmap-target-node');
       const arrowIcon = triggerBtn ? triggerBtn.querySelector('i') : null;
-      const borderTheme = trackId === 'programming' ? 'border-blue-500' : trackId === 'cyber' ? 'border-slate-500' : trackId === 'networking' ? 'border-indigo-500' : 'border-pink-500';
-      const bgTheme = trackId === 'programming' ? 'bg-blue-600' : trackId === 'cyber' ? 'bg-slate-700' : trackId === 'networking' ? 'bg-indigo-600' : 'bg-pink-500';
+      const borderTheme = trackId === 'vibe' ? 'border-cyan-500' : trackId === 'programming' ? 'border-blue-500' : trackId === 'cyber' ? 'border-slate-500' : trackId === 'networking' ? 'border-indigo-500' : 'border-pink-500';
+      const bgTheme = trackId === 'vibe' ? 'bg-cyan-500' : trackId === 'programming' ? 'bg-blue-600' : trackId === 'cyber' ? 'bg-slate-700' : trackId === 'networking' ? 'bg-indigo-600' : 'bg-pink-500';
 
       if (!panel.classList.contains('active-expanded')) {
         container.innerHTML = '';
@@ -596,8 +765,25 @@
           container.appendChild(block);
         });
 
+        const slidesBlock = document.createElement('div');
+        slidesBlock.className = "mt-6 p-4 rounded-xl bg-slate-900/80 border border-slate-700/60 text-xs text-slate-300";
+        slidesBlock.innerHTML = `
+          <div class="flex items-center gap-2 text-cyan-400 font-bold mb-2">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <span>${currentLang === 'ar' ? 'هيكل شرائح المحاضرات الرسمية (5 أجزاء لكل جلسة)' : 'Interactive 5-Part Lesson Slides Architecture (Per Session)'}</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-[11px] text-slate-400">
+            <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 1-3</strong> ${currentLang === 'ar' ? 'السياق الواقعي والهدف' : 'Industry Context & Goal'}</div>
+            <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 4-8</strong> ${currentLang === 'ar' ? 'المخططات الهندسية' : 'Architecture Schematics'}</div>
+            <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 9-14</strong> ${currentLang === 'ar' ? 'تطبيق عملي مع المدرب' : 'Guided Live Coding'}</div>
+            <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 15-18</strong> ${currentLang === 'ar' ? 'تحدي المعمل الفردي' : 'Hands-on Lab Challenge'}</div>
+            <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 19-20</strong> ${currentLang === 'ar' ? 'مراجعة الأخطاء والواجب' : 'Debrief & Code Review'}</div>
+          </div>
+        `;
+        container.appendChild(slidesBlock);
+
         panel.className = `max-h-0 overflow-hidden transition-all duration-300 rounded-xl mt-4 px-6 border border-slate-200/60 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-950/40 active-expanded border-l-2 ${borderTheme} rtl:border-l-0 rtl:border-r-2`;
-        panel.style.maxHeight = `${container.scrollHeight + 48}px`;
+        panel.style.maxHeight = `${container.scrollHeight + 80}px`;
         if (arrowIcon) arrowIcon.style.transform = 'rotate(180deg)';
       } else {
         panel.style.maxHeight = '0px';
@@ -619,6 +805,8 @@
 
         if (currentActiveFilterGroup === 'all') {
           matchesPill = true;
+        } else if (currentActiveFilterGroup === 'vibe' && card.classList.contains('block-track-vibe')) {
+          matchesPill = true;
         } else if (currentActiveFilterGroup === 'code' && card.classList.contains('block-track-code')) {
           matchesPill = true;
         } else if (currentActiveFilterGroup === 'security' && card.classList.contains('block-track-security')) {
@@ -639,48 +827,20 @@
 
     function setActiveFilter(filterId, element) {
       document.querySelectorAll('.filter-pill').forEach(btn => {
-        btn.className = "filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700";
+        btn.className = "filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700";
       });
-      element.className = "filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-sm";
+      element.className = "filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-sm";
       currentActiveFilterGroup = filterId;
       executeFilters();
-    }
-
-    function setBillingCycle(cycleId) {
-      const phaseBtn = document.getElementById('billingPhaseBtn');
-      const fullBtn = document.getElementById('billingFullBtn');
-      currentBillingSelection = cycleId;
-
-      if (cycleId === 'phase') {
-        phaseBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm";
-        fullBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-500 dark:text-slate-400";
-      } else {
-        fullBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm";
-        phaseBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-500 dark:text-slate-400";
-      }
-
-      document.querySelectorAll('.dynamic-pricing-display').forEach(priceTag => {
-        priceTag.style.transform = 'scale(0.8)';
-        priceTag.style.opacity = '0';
-        
-        setTimeout(() => {
-          const attributeSelector = `data-${currentBillingSelection}-${currentLang}`;
-          priceTag.textContent = priceTag.getAttribute(attributeSelector);
-          priceTag.style.transform = 'scale(1)';
-          priceTag.style.opacity = '1';
-        }, 150);
-      });
-
-      document.querySelectorAll('.label-billing-period').forEach(label => {
-        label.textContent = i18n[currentLang][currentBillingSelection === 'phase' ? 'perPhaseLabel' : 'fullPackageLabel'];
-      });
     }
 
     function toggleDarkMode() {
       const htmlTag = document.documentElement;
       const goingDark = !htmlTag.classList.contains('dark');
       htmlTag.classList.toggle('dark', goingDark);
-      localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      try {
+        localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      } catch (e) {}
       updateDarkModeButton();
     }
 
@@ -698,12 +858,12 @@
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+        if (i18n[currentLang] && i18n[currentLang][key]) {
+          el.textContent = i18n[currentLang][key];
+        }
       });
 
-      document.getElementById('trackSearchInput').placeholder = currentLang === 'ar' ? "ابحث عن المسارات أو التقنيات..." : "Search track or skill...";
-
-      setBillingCycle(currentBillingSelection);
+      document.getElementById('trackSearchInput').placeholder = currentLang === 'ar' ? "ابحث عن المسارات أو الأعمار أو المهارات..." : "Search track, age or skill...";
 
       if (currentOpenTrack) renderModalData(currentOpenTrack);
       
@@ -711,18 +871,8 @@
         const panel = card.querySelector('[id^="syllabus-"]');
         if (panel && panel.classList.contains('active-expanded')) {
           const trackId = panel.id.split('-')[1];
-          const container = panel.querySelector('.roadmap-target-node');
-          container.innerHTML = '';
-          courseData[trackId][currentLang].roadmap.forEach(item => {
-            const block = document.createElement('div');
-            block.className = "relative pl-6 rtl:pl-0 rtl:pr-6";
-            block.innerHTML = `
-              <div class="absolute w-3 h-3 bg-blue-600 rounded-full -left-[23px] rtl:-right-[23px] top-1.5 border-2 border-white dark:border-slate-900 shadow-sm"></div>
-              <span class="text-[10px] font-bold tracking-wider uppercase opacity-70 block">${item.step}</span>
-              <h5 class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">${item.title}</h5>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>`;
-            container.appendChild(block);
-          });
+          toggleInlineSyllabus(trackId, null);
+          toggleInlineSyllabus(trackId, null);
         }
       });
     }
