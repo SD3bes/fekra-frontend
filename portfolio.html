@@ -16,9 +16,18 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    [data-aos] {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
     html {
       scroll-behavior: smooth;
       font-family: 'Inter', sans-serif;
@@ -97,10 +106,14 @@
     }
   </style>
   <script>
-    if (localStorage.getItem('theme') === 'dark') {
+    try {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (e) {
       document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
     }
   </script>
 </head>
@@ -108,17 +121,18 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
 
   <!-- Navbar -->
-  <nav class="bg-white/90 dark:bg-slate-900/80 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md sticky top-0 z-40 border-b border-transparent dark:border-slate-800/50">
+  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
       <a href="./index.html" class="flex items-center gap-3 cursor-pointer">
-        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden">
-        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block">
+        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
         <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
       </a>
       <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
         <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navHome">Home</a></li>
         <li><a href="./courses.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTracks">Tracks & Tuition</a></li>
         <li><a href="./portfolio.html" class="text-blue-600 dark:text-blue-400 font-bold" data-i18n="navPortfolio">Portfolio</a></li>
+        <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navServices">Services (-30%)</a></li>
         <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
         <li class="flex items-center gap-2">
           <button onclick="toggleDarkMode()" id="darkModeBtn" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
@@ -135,7 +149,7 @@
   <!-- Header / Hero Section -->
   <header class="py-14 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
     <div class="container mx-auto px-4 max-w-6xl text-center space-y-8">
-      <div data-aos="fade-up">
+      <div>
         <span class="inline-block bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-blue-200 dark:border-blue-900/60" data-i18n="portfolioBadge">Applied Technical Excellence</span>
         <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-3 logo-font uppercase tracking-tight" data-i18n="portfolioTitle">Student & Academy Showcase</h2>
         <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
@@ -143,7 +157,7 @@
       </div>
 
       <!-- Live Academy Metrics -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-delay="50">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
         <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
           <span class="block text-2xl font-black text-blue-600 dark:text-blue-400 logo-font">100%</span>
           <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statHandsOn">Hands-On Code</span>
@@ -163,7 +177,7 @@
       </div>
 
       <!-- Search & Category Filters -->
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto">
         <div class="w-full md:w-80 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
           <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
           <input type="text" id="projectSearchInput" oninput="filterProjects()" placeholder="Search projects, skills, tech..." class="w-full bg-transparent focus:outline-none text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400">
@@ -197,14 +211,17 @@
     </div>
   </main>
 
-  <!-- CTA Banner -->
+  <!-- CTA Banner Linking to Courses & Services -->
   <section class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-14">
-    <div class="container mx-auto px-4 max-w-5xl text-center space-y-6" data-aos="fade-up">
+    <div class="container mx-auto px-4 max-w-5xl text-center space-y-6">
       <h3 class="text-3xl md:text-4xl font-black logo-font uppercase" data-i18n="ctaTitle">Ready for your child to build real technology?</h3>
       <p class="text-blue-100 max-w-2xl mx-auto text-sm md:text-base" data-i18n="ctaDesc">Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.</p>
       <div class="flex flex-wrap justify-center gap-4 pt-2">
         <a href="./courses.html" class="btn-premium bg-white text-blue-900 hover:bg-blue-50 font-bold px-8 py-3.5 rounded-full shadow-lg text-sm inline-flex items-center gap-2">
           <i class="fa-solid fa-table-cells-large"></i> <span data-i18n="ctaViewCourses">View Tracks & Syllabi</span>
+        </a>
+        <a href="./services.html" class="btn-premium bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold px-8 py-3.5 rounded-full shadow-lg text-sm inline-flex items-center gap-2">
+          <i class="fa-solid fa-briefcase"></i> <span data-i18n="ctaViewServices">Order As Client Service (-30%)</span>
         </a>
         <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-3.5 rounded-full shadow-lg text-sm inline-flex items-center gap-2">
           <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="ctaChatWA">WhatsApp Academy Direct</span>
@@ -213,10 +230,10 @@
     </div>
   </section>
 
-  <!-- Interactive Project Case Study Modal -->
+  <!-- Interactive Project Case Study Modal (With Video & 4-Step Breakdown) -->
   <div id="projectModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeProjectModal()"></div>
-    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden transform scale-95 border border-transparent dark:border-slate-800 flex flex-col max-h-[90vh]" id="modalCard">
+    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden transform scale-95 border border-transparent dark:border-slate-800 flex flex-col max-h-[92vh]" id="modalCard">
       <button onclick="closeProjectModal()" type="button" aria-label="Close Modal" class="btn-premium absolute top-4 right-4 rtl:right-auto rtl:left-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
@@ -232,7 +249,7 @@
           <p id="modalStudentCredit" class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
-        <!-- Dynamic Modal Video Player Container with Custom Web Voiceover Controller -->
+        <!-- Video Player Container with Custom Web Voiceover Controller -->
         <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800 relative group">
           <video id="modalVideoPlayer" muted playsinline controls class="w-full max-h-72 object-contain bg-black">
             <source id="modalVideoSource" src="" type="video/mp4">
@@ -251,15 +268,20 @@
           </div>
         </div>
 
-        <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+        <!-- 4-STEP ENGINEERING BREAKDOWN -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider flex items-center gap-2" data-i18n="modalStepsHeader">
+            <i class="fa-solid fa-layer-group text-blue-500"></i> <span>4-Step Engineering Case Study</span>
+          </h4>
+          <div id="modalStepsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Dynamically populated 4 steps -->
+          </div>
+        </div>
+
+        <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed pt-2">
           <div>
             <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-1" data-i18n="modalOverviewHeader">Project Overview & Objectives</h4>
             <p id="modalDescription"></p>
-          </div>
-
-          <div>
-            <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-1" data-i18n="modalArchitectureHeader">Engineering Architecture & Stack</h4>
-            <p id="modalArchitecture"></p>
           </div>
 
           <div>
@@ -270,9 +292,11 @@
 
         <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div class="flex items-center gap-3">
-            <span class="text-xs text-slate-400 italic" data-i18n="modalVerifiedText">Verified curriculum capstone project by Fekra Tech Academy</span>
             <a id="modalExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="modalLiveLink">Live Demo</span>
+            </a>
+            <a href="./services.html" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
+              <i class="fa-solid fa-tag"></i> <span data-i18n="modalOrderService">Order as Service (-30%)</span>
             </a>
           </div>
           <a id="modalActionLink" href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2.5 rounded-full shadow inline-flex items-center gap-2">
@@ -296,7 +320,6 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     let currentLang = 'en';
     let currentFilter = 'all';
@@ -304,7 +327,7 @@
 
     const i18n = {
       en: {
-        navHome: "Home", navTracks: "Tracks & Tuition", navPortfolio: "Portfolio", navTeam: "Team",
+        navHome: "Home", navTracks: "Tracks & Tuition", navPortfolio: "Portfolio", navServices: "Services (-30%)", navTeam: "Team",
         portfolioBadge: "Applied Technical Excellence", portfolioTitle: "Student & Academy Showcase",
         portfolioDesc: "We measure our success not by certificates on a wall, but by real-world systems built. Explore full-stack web platforms, IoT smart robotics, defensive cyber laboratories, and professional creative identities built by Fekra Tech students aged 8 to 18.",
         statHandsOn: "Hands-On Code", statProjects: "Shipped Projects", statAges: "Target Age Range", statGamified: "Toy / Filler Content",
@@ -313,10 +336,12 @@
         btnCaseStudy: "View Case Study & Video",
         ctaTitle: "Ready for your child to build real technology?",
         ctaDesc: "Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.",
-        ctaViewCourses: "View Tracks & Syllabi", ctaChatWA: "WhatsApp Academy Direct",
-        modalOverviewHeader: "Project Overview & Objectives", modalArchitectureHeader: "Engineering Architecture & Stack",
-        modalTechStackHeader: "Technologies & Libraries Applied", modalVerifiedText: "Verified curriculum capstone project by Fekra Tech Academy",
+        ctaViewCourses: "View Tracks & Syllabi", ctaViewServices: "Order As Client Service (-30%)", ctaChatWA: "WhatsApp Academy Direct",
+        modalStepsHeader: "4-Step Engineering Case Study",
+        modalOverviewHeader: "Project Overview & Objectives",
+        modalTechStackHeader: "Technologies & Libraries Applied",
         modalLiveLink: "Visit Live Platform",
+        modalOrderService: "Order As Service (-30%)",
         rawMutedText: "Original background audio muted",
         voiceoverPlay: "Play Voiceover Walkthrough",
         voiceoverStop: "Stop Voiceover",
@@ -324,7 +349,7 @@
         rightsText: "© 2026 Fekra Tech Academy. All rights reserved."
       },
       ar: {
-        navHome: "الرئيسية", navTracks: "المسارات والأسعار", navPortfolio: "معرض المشاريع", navTeam: "فريقنا",
+        navHome: "الرئيسية", navTracks: "المسارات والأسعار", navPortfolio: "معرض المشاريع", navServices: "الخدمات (-30%)", navTeam: "فريقنا",
         portfolioBadge: "مشاريع عملية حقيقية", portfolioTitle: "معرض مشاريع الطلاب والأكاديمية",
         portfolioDesc: "نجاحنا الحقيقي مش مجرد شهادات، بل أنظمة حقيقية مبنية بأيدي طلابنا. تصفح منصات الويب الشاملة، مشاريع إنترنت الأشياء والروبوتات، مختبرات الدفاع السيبراني، والتصميمات الاحترافية لطلاب فكرة تك من سن 8 حتى 18 سنة.",
         statHandsOn: "أكواد ومشاريع عملية 100%", statProjects: "مشروع منجز", statAges: "أعمار الطلاب المستهدفة", statGamified: "بدون ألعاب مجتزأة",
@@ -333,10 +358,12 @@
         btnCaseStudy: "تفاصيل المشروع والفيديو",
         ctaTitle: "جاهز تخلي ابنك يبني مشاريع حقيقية بنفسه؟",
         ctaDesc: "ابعد عن الألعاب والبرمجة الصورية السطحية. انضم لبرنامج تدريبي تطبيقي يركز على المشاريع الملموسة ويتخرج منه الطالب ببورتفوليو قوي.",
-        ctaViewCourses: "عرض المسارات والمناهج", ctaChatWA: "تواصل واتساب مع الإدارة",
-        modalOverviewHeader: "نظرة عامة وأهداف المشروع", modalArchitectureHeader: "الهيكلية البرمجية والتنفيذ",
-        modalTechStackHeader: "التقنيات والمكتبات المستخدمة", modalVerifiedText: "مشروع تخرج تطبيقي معتمد من أكاديمية فكرة تك",
+        ctaViewCourses: "عرض المسارات والمناهج", ctaViewServices: "اطلب المشروع كخدمة لشركتك (-30%)", ctaChatWA: "تواصل واتساب مع الإدارة",
+        modalStepsHeader: "خطوات التنفيذ الهندسي للمشروع (4 خطوات)",
+        modalOverviewHeader: "نظرة عامة وأهداف المشروع",
+        modalTechStackHeader: "التقنيات والمكتبات المستخدمة",
         modalLiveLink: "معاينة المنصة الحية",
+        modalOrderService: "اطلب الخدمة بخصم 30%",
         rawMutedText: "تم كتم الصوت الأصلي للمعاينة",
         voiceoverPlay: "تشغيل التعليق الصوتي للمشروع",
         voiceoverStop: "إيقاف التعليق الصوتي",
@@ -363,7 +390,12 @@
           summary: "A production-grade commercial web platform redesign built with responsive component architecture, interactive trade-in device valuation workflows, and high-performance Vercel deployment.",
           student: "Advanced Full-Stack Engineering Capstone • Web Architecture Track",
           overview: "Designed as an industry-standard commercial redesign. The platform transforms the user experience into an intuitive, conversion-focused interface featuring modular trade-in calculators, real-time product assessments, and fluid responsive design across all viewports.",
-          architecture: "Engineered with modern frontend components using Tailwind CSS for streamlined utility styling and optimized assets. Deployed continuously on Vercel with automated CI/CD builds, SEO metadata structuring, and sub-second page performance.",
+          steps: [
+            { step: "Step 1: Challenge", title: "Conversion UX Bottlenecks", desc: "Redesigning a clunky trade-in funnel into an intuitive, 3-click customer valuation flow." },
+            { step: "Step 2: Architecture", title: "Component-Driven Front", desc: "Modular state management with zero external bloat using Tailwind CSS and modern JavaScript." },
+            { step: "Step 3: Implementation", title: "Valuation Calculation Engine", desc: "Dynamic algorithmic deduction of trade-in pricing with real-time UI re-rendering." },
+            { step: "Step 4: Deployment", title: "Vercel Edge & SEO", desc: "Continuous CI/CD pipeline, sub-1.2s Core Web Vitals, and responsive layout across mobile and desktop." }
+          ],
           techStack: ["Modern JavaScript", "Tailwind CSS", "Responsive UI/UX", "Component State", "Vercel Cloud", "RESTful Integration"]
         },
         ar: {
@@ -371,7 +403,12 @@
           summary: "إعادة تصميم متكاملة لمنصة تجارية احترافية بواجهات تفاعلية متقدمة، نظام تقييم واستبدال فوري للأجهزة، واستضافة سحابية فائقة السرعة على Vercel.",
           student: "مشروع تخرج متقدم • مسار هندسة الويب وتطبيقات الـ Full-Stack",
           overview: "مشروع يحاكي بيئات العمل التجارية الكبرى. تم بناء المنصة لتحسين تجربة المستخدم وتحويلها لنظام سلس وسريع لحساب تقييمات الأجهزة المستعملة وتصفح الخدمات مع توافق كامل مع كافة مقاسات الشاشات.",
-          architecture: "بناء واجهات أمامية باستخدام Tailwind CSS ومكونات تفاعلية خفيفة الحجم، مع ربط المشروع بنظام نشر سحابي فوري عبر Vercel لتأمين أداء فائق وسرعة استجابة فورية.",
+          steps: [
+            { step: "الخطوة الأولى: التحدي", title: "تحسين تجربة استبدال الأجهزة", desc: "تحويل خطوات تقييم الأجهزة المعقدة إلى مسار تفاعلي من 3 خطوات سهلة وسريعة للمستخدم." },
+            { step: "الخطوة الثانية: الهيكلية", title: "معمارية المكونات البرمجية", desc: "بناء مكونات مرنة وخفيفة باستخدام جافاسكريبت حديثة و Tailwind CSS." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "محرك التسعير الفوري", desc: "حساب الخصومات وقيمة الاستبدال لحظياً بناءً على مواصفات الجهاز وحالته الفنية." },
+            { step: "الخطوة الرابعة: النشر", title: "النشر السحابي و SEO", desc: "نشر مستمر على Vercel مع سرعة تحميل أقل من 1.2 ثانية وتوافق مع جميع مقاسات الشاشات." }
+          ],
           techStack: ["جافاسكريبت حديثة", "Tailwind CSS", "تصميم تجربة المستخدم UI/UX", "معمارية المكونات", "استضافة Vercel", "ربط API"]
         }
       },
@@ -391,7 +428,12 @@
           summary: "A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.",
           student: "Academy Milestone Capstone • Embedded IoT & Robotics Track",
           overview: "Engineered as an end-to-end hardware-software demonstration showing how microcontrollers interface directly with the Apple ecosystem. The scale model features multi-room lighting, presence detection via PIR sensors, safety monitoring with gas/smoke sensors, acoustic alerting, and local telemetry on an I2C LCD.",
-          architecture: "Firmware engineered in C++ using the HomeSpan framework implementing Apple HAP over local 2.4GHz Wi-Fi. Features multi-room accessories mapped into Apple Home, real-time Siri voice recognition triggers, and hardware interrupts for safety overrides.",
+          steps: [
+            { step: "Step 1: Challenge", title: "Hardware-to-Cloud Latency", desc: "Interfacing physical relays and multi-room sensors without expensive third-party bridge hubs." },
+            { step: "Step 2: Architecture", title: "Apple HAP Protocol", desc: "Embedding Apple HomeKit Accessory Protocol directly onto the ESP32 chip over 2.4GHz Wi-Fi." },
+            { step: "Step 3: Implementation", title: "Sensors & Siri Integration", desc: "Wiring PIR motion, MQ gas detectors, LCD telemetry, and voice commands via Siri." },
+            { step: "Step 4: Deployment", title: "Firmware Safety Overrides", desc: "Flashing C++ firmware with hardware interrupt safety triggers and offline auto-reconnect loops." }
+          ],
           techStack: ["ESP32 Microcontroller", "Apple HomeKit (HAP)", "Siri Voice API", "HomeSpan Framework", "PIR Motion Detection", "MQ Gas Sensor", "I2C 1602 LCD", "C++ Embedded"]
         },
         ar: {
@@ -399,7 +441,12 @@
           summary: "مجسم هندسي لفيلا ذكية من طابقين يعمل بشريحة ESP32 ومتصل مباشرة بنظام Apple HomeKit الرسمي مع تحكم صوتي كامل عبر Siri بدون الحاجة لأي وسيط خارجي.",
           student: "مشروع تخرج تطبيقي رائد • مسار إنترنت الأشياء والروبوتات",
           overview: "تم بناء هذا النموذج المصغر لربط الهاردوير الفعلي بالأنظمة العالمية. يحتوي المجسم على توزيع إضاءة للغرف، حساسات حركة (PIR) للتشغيل التلقائي، حساسات غاز ودخان (MQ) للحماية من الحرائق مع إنذار صوتي، وشاشة LCD لعرض حالة الاتصال والشبكة.",
-          architecture: "برمجة شريحة ESP32 بلغة C++ عبر إطار عمل HomeSpan المتوافق مع بروتوكول HAP من أبل، مما يسمح بإضافة المجسم كملحق رسمي في تطبيق Apple Home مع تشغيل الأوامر الصوتية والسيناريوهات التلقائية لحظياً.",
+          steps: [
+            { step: "الخطوة الأولى: التحدي", title: "الاتصال المباشر بدون وسيط", desc: "ربط الدوائر الكهربائية والحساسات مع هواتف أبل بدون الحاجة لأجهزة وسيطة باهظة الثمن." },
+            { step: "الخطوة الثانية: الهيكلية", title: "بروتوكول Apple HAP", desc: "تطبيق بروتوكول HomeKit الرسمي داخل شريحة ESP32 عبر شبكة الواي فاي المحلية." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "توصيل الحساسات وسيري", desc: "برمجة حساسات الحركة والغاز والشاشة والتحكم الصوتي في كل غرفة عبر Siri." },
+            { step: "الخطوة الرابعة: النشر", title: "الفيرموير وحماية الأمان", desc: "برمجة الفيرموير بلغة C++ مع آليات إعادة الاتصال التلقائي وأنظمة الطوارئ." }
+          ],
           techStack: ["شريحة ESP32", "بروتوكول Apple HomeKit", "أوامر Siri الصوتية", "إطار عمل HomeSpan", "حساسات حركة PIR", "حساسات غاز MQ", "شاشة I2C LCD", "C++ Embedded"]
         }
       },
@@ -414,7 +461,12 @@
           summary: "An offensive security utility written in Python that scans target subnets, discovers live hosts, probes exposed TCP ports, and flags insecure service banners.",
           student: "Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)",
           overview: "Built to demonstrate practical network reconnaissance techniques taught in the ethical hacking phase. The tool allows sysadmins to quickly detect unpatched vulnerabilities on their local networks.",
-          architecture: "Multithreaded socket programming using Python's concurrent pools. Raw packet crafting and banner analysis executed through the Scapy framework.",
+          steps: [
+            { step: "Step 1: Challenge", title: "Network Blindspots", desc: "Locating unpatched rogue devices and exposed ports across local CIDR blocks." },
+            { step: "Step 2: Architecture", title: "Concurrent Socket Pools", desc: "Structuring multithreaded workers to prevent port scanning timeouts." },
+            { step: "Step 3: Implementation", title: "Banner Grabbing & Scapy", desc: "Crafting SYN packets and parsing server response banners for CVE version lookup." },
+            { step: "Step 4: Deployment", title: "CLI Tool Packaging", desc: "Packaging script into a clean Linux CLI binary with colored terminal reporting." }
+          ],
           techStack: ["Python 3", "Socket Programming", "Scapy Packet Crafting", "Linux Bash", "Thread Management"]
         },
         ar: {
@@ -422,7 +474,12 @@
           summary: "سكربت أمني بلغة بايثون يقوم بفحص الشبكة الداخلية، اكتشاف الأجهزة المتصلة، وفحص المنافذ المفتوحة للتأكد من أمان الخدمات.",
           student: "تنفيذ الطالب: زياد ع. (17 سنة • مرحلة الأمن السيبراني)",
           overview: "مشروع لاختبار الاختراق الأخلاقي لفحص الشبكات الداخلية، صممه الطالب لمساعدة مديري الأنظمة على كشف الثغرات والخدمات غير الآمنة قبل استغلالها.",
-          architecture: "برمجة متزامنة (Multithreading) لمنافذ السوكت بلغة بايثون، مع تحليل حزم البيانات وفحص البانر للخدمات عبر مكتبة Scapy.",
+          steps: [
+            { step: "الخطوة الأولى: التحدي", title: "اكتشاف الأجهزة غير الآمنة", desc: "فحص أجهزة الشبكة واكتشاف المنافذ المفتوحة والخدمات القديمة المعرضة للخطر." },
+            { step: "الخطوة الثانية: الهيكلية", title: "البرمجة المتزامنة", desc: "بناء نظام خيوط متزامنة (Multithreading) لإنهاء الفحص خلال ثوانٍ معدودة." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "فحص حزم Scapy والبانر", desc: "إرسال حزم SYN واستخراج بيانات الخدمات العاملة على المنافذ للبحث عن ثغراتها." },
+            { step: "الخطوة الرابعة: النشر", title: "تشغيل الأداة في لينكس", desc: "تجهيز الأداة كبرنامج سطر أوامر تفاعلي على نظام لينكس يطبع تقارير ملونة بالأخطار." }
+          ],
           techStack: ["Python 3", "Socket Library", "Scapy Network Tool", "أوامر لينكس Bash", "البرمجة المتزامنة"]
         }
       },
@@ -437,7 +494,12 @@
           summary: "A robust corporate infrastructure simulation featuring segmented VLANs, redundant trunking channels, OSPF dynamic routing, and ACL traffic security filters.",
           student: "Built by Karim H. (Age 17 • Phase 2 Networking)",
           overview: "Modeled on real enterprise branch topologies. The student isolated HR, Guest, and Engineering departments into separate broadcast domains, configuring secure intra-VLAN routing.",
-          architecture: "Configured across Cisco 2960 Switches and 2911 Routers using Packet Tracer. Implemented Spanning Tree Protocol (STP), DHCP Snooping, and Standard/Extended ACLs.",
+          steps: [
+            { step: "Step 1: Challenge", title: "Broadcast Storms & Leakage", desc: "Segmenting unmanaged flat networks into hardened, isolated departmental domains." },
+            { step: "Step 2: Architecture", title: "Redundant Cisco Hierarchy", desc: "Core, Distribution, and Access layers configured with Spanning Tree Protocol (STP)." },
+            { step: "Step 3: Implementation", title: "OSPF Routing & ACLs", desc: "Configuring dynamic area 0 routing tables and firewall-style traffic filters." },
+            { step: "Step 4: Deployment", title: "Stress Testing in Tracer", desc: "Simulating link cuts and verifying failover recovery under 2 seconds." }
+          ],
           techStack: ["Cisco IOS CLI", "Packet Tracer", "VLAN Segmenting", "OSPF Routing", "ACL Security"]
         },
         ar: {
@@ -445,7 +507,12 @@
           summary: "محاكاة كاملة لبنية تحتية للشركات تعتمد على تقسيم الشبكات الافتراضية (VLANs)، وتوجيه OSPF الديناميكي، وتأمين تدفق البيانات بجدران ACL.",
           student: "تنفيذ الطالب: كريم ح. (17 سنة • مرحلة الشبكات وسيسكو)",
           overview: "محاكاة واقعية لبيئة عمل بنكية أو مؤسسية، قام فيها الطالب بعزل أقسام الموظفين، الضيوف، والأنظمة الحساسة في شبكات منفصلة ومحمية.",
-          architecture: "برمجة أجهزة التوجيه والتبديل من سيسكو (2960 Switches & 2911 Routers)، وتفعيل بروتوكول STP لمنع التكرار وجداول ACL لتحديد الصلاحيات.",
+          steps: [
+            { step: "الخطوة الأولى: التحدي", title: "عزل أقسام الشركة وحمايتها", desc: "تقسيم الشبكة لمنع تسريب البيانات وعزل أجهزة الضيوف عن سيرفرات العمل الحساسة." },
+            { step: "الخطوة الثانية: الهيكلية", title: "بنية سيسكو ثلاثية الطبقات", desc: "ربط طبقات Core و Distribution و Access وتفعيل بروتوكول STP لمنع التكرار." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "التوجيه وقوائم ACL", desc: "إعداد جداول التوجيه الديناميكي OSPF وفلاتر المرور للتحكم في حركة البيانات." },
+            { step: "الخطوة الرابعة: النشر", title: "اختبار انقطاع الكابلات", desc: "محاكاة تعطل أحد الخطوط والتأكد من تحويل المسار تلقائياً في أقل من ثانيتين." }
+          ],
           techStack: ["سطر أوامر سيسكو CLI", "Packet Tracer", "تقسيم VLANs", "توجيه OSPF", "قوائم ACL"]
         }
       },
@@ -460,7 +527,12 @@
           summary: "A desktop application built with Python and SQLite that generates randomized quizzes, grades submissions in real-time, and exports statistical performance analytics.",
           student: "Built by Nour S. (Age 15 • Phase 1 Python Masterclass)",
           overview: "Demonstrates comprehensive understanding of object-oriented programming (OOP), file streams, and relational table schemas without relying on third-party frameworks.",
-          architecture: "Modular Python OOP codebase. Graphic interface rendered via Tkinter with persistent user session records indexed in an SQLite relational database.",
+          steps: [
+            { step: "Step 1: Challenge", title: "Manual Grading Inefficiencies", desc: "Building an offline, cheat-resistant exam application for school laboratories." },
+            { step: "Step 2: Architecture", title: "Relational OOP Design", desc: "Modular class models mapping questions, test instances, and grade tables in SQLite." },
+            { step: "Step 3: Implementation", title: "Tkinter GUI & Timer", desc: "Building auto-submitting timers, randomized question pools, and instant scoring." },
+            { step: "Step 4: Deployment", title: "Standalone Executable", desc: "Compiled via PyInstaller into an autonomous executable for zero-dependency rollout." }
+          ],
           techStack: ["Python 3", "OOP Paradigms", "Tkinter Desktop GUI", "SQLite3 DB", "File I/O Streams"]
         },
         ar: {
@@ -468,7 +540,12 @@
           summary: "تطبيق حاسوبي مكتبي بلغة بايثون متصل بقاعدة بيانات ينشئ اختبارات عشوائية، ويقوم بالتصحيح التلقائي وتصدير تقارير الأداء.",
           student: "تنفيذ الطالبة: نور س. (15 سنة • مرحلة بايثون الشاملة)",
           overview: "مشروع يطبق مفاهيم البرمجة كائنية التوجه (OOP) والتعامل مع قواعد البيانات العلائقية لتنظيم امتحانات الفصول التعليمية ومتابعة النتائج.",
-          architecture: "برمجة كلاسات وكائنات بلغة بايثون، مع واجهة مستخدم رسومية (Tkinter)، وحفظ بيانات الطلاب والنتائج في قاعدة بيانات SQLite مدمجة.",
+          steps: [
+            { step: "الخطوة الأولى: التحدي", title: "أتمتة الاختبارات والتصحيح", desc: "تصميم برنامج يعمل دون إنترنت لإنشاء اختبارات مؤمنة وتصحيحها فورياً." },
+            { step: "الخطوة الثانية: الهيكلية", title: "البرمجة الكائنية وقواعد البيانات", desc: "تصميم كلاسات منظمة وربط جداول الأسئلة والدرجات بقاعدة بيانات SQLite." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "واجهة المستخدم والمؤقت", desc: "بناء واجهة Tkinter بمؤقت زمني وتوليد أسئلة عشوائية لكل طالب لمنع الغش." },
+            { step: "الخطوة الرابعة: النشر", title: "تصدير البرنامج كملف تشغيلي", desc: "تحويل كود بايثون إلى برنامج تنفيذي (.exe) يعمل مباشرة على أي حاسوب." }
+          ],
           techStack: ["Python 3", "مفاهيم OOP", "واجهات Tkinter", "قواعد بيانات SQLite3", "تصدير الملفات والتقارير"]
         }
       },
@@ -483,7 +560,12 @@
           summary: "A full commercial branding showcase encompassing vector logo construction, bespoke typography systems, social media assets, and luxury apparel mockups.",
           student: "Built by Malak E. (Age 15 • Phase 4 Graphic Design)",
           overview: "The capstone project for the graphic design track. The student formulated a comprehensive visual manual defining color harmony codes, negative-space logos, and campaign prints.",
-          architecture: "Vector logomarks drafted in Adobe Illustrator with mathematical node precision. Photographic mockups and color grading developed in Adobe Photoshop.",
+          steps: [
+            { step: "Step 1: Challenge", title: "Aesthetic Market Research", desc: "Dissecting luxury 'old money' design trends and minimalist European visual palettes." },
+            { step: "Step 2: Architecture", title: "Vector Node Construction", desc: "Drafting geometric grid-aligned logos and bespoke typography in Illustrator." },
+            { step: "Step 3: Implementation", title: "Photorealistic Mockups", desc: "Advanced light/shadow compositing and fabric texture blending in Photoshop." },
+            { step: "Step 4: Deployment", title: "Brand Identity Manual", desc: "Exporting print-ready CMYK PDFs, vector SVG assets, and digital brand styleguides." }
+          ],
           techStack: ["Adobe Illustrator", "Adobe Photoshop", "Typography Grid Systems", "Color Psychology", "Branding Assets"]
         },
         ar: {
@@ -491,14 +573,18 @@
           summary: "بناء دليل الهوية البصرية لبراند ملابس، يشمل تصميم الشعار المتجه، اختيار الخطوط والألوان، وتصميمات المطبوعات والحملات الإعلانية.",
           student: "تنفيذ الطالبة: ملك ع. (15 سنة • مرحلة التصميم الجرافيكي)",
           overview: "مشروع تخرج متكامل لمسار الجرافيك ديزاين، قامت الطالبة بدراسة سيكولوجية الألوان وتصميم شعار متقن ومعالجة صور المنتجات لإطلاق العلامة التجارية.",
-          architecture: "رسم الشعار والأيقونات بدقة متناهية عبر Adobe Illustrator، ومعالجة درجات الإضاءة والظلال للصور الدعائية عبر Adobe Photoshop.",
+          steps: [
+            { step: "الخطوة الأولى: التحدي", title: "دراسة السوق والاتجاه البصري", desc: "تحليل هوية علامات الأزياء الراقية وبناء لوحة إلهام تعتمد على البساطة والفخامة." },
+            { step: "الخطوة الثانية: الهيكلية", title: "رسم الشعار المتجه (Vector)", desc: "رسم الشعار بناءً على خطوط شبكية هندسية دقيقة عبر برنامج Illustrator." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "الدمج وتصميم المنتجات", desc: "تطبيق الشعار على خامات الملابس والعلب وتعديل الإضاءات والظلال في Photoshop." },
+            { step: "الخطوة الرابعة: النشر", title: "دليل الهوية الكامل (Brand Guidelines)", desc: "تجهيز ملفات الطباعة بدقة CMYK وأصول الويب بصيغة SVG وتصدير دليل الهوية." }
+          ],
           techStack: ["أدوبي إليستريتور", "أدوبي فوتوشوب", "نظريات التكوين والخطوط", "سيكولوجية الألوان", "صناعة أدلة الهوية"]
         }
       }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
-      AOS.init({ once: true, offset: 30 });
       updateDarkModeButton();
       renderProjects();
     });
@@ -536,10 +622,8 @@
                         item.badgeColor === 'pink' ? 'bg-pink-100 dark:bg-pink-955/60 text-pink-700 dark:text-pink-400' : 'bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400';
 
           const card = document.createElement('div');
-          card.className = `bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
-          card.setAttribute('data-aos', 'fade-up');
+          card.className = `bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
 
-          // Clean muted video preview container inside the project card
           const mediaHtml = item.videoUrl ? `
             <div class="relative w-full rounded-xl overflow-hidden mb-4 bg-black border border-slate-200 dark:border-slate-800 group aspect-video">
               <video class="w-full h-full object-cover" muted loop playsinline controls preload="metadata">
@@ -620,13 +704,26 @@
       document.getElementById('modalTitle').textContent = data.title;
       document.getElementById('modalStudentCredit').textContent = data.student;
       document.getElementById('modalDescription').textContent = data.overview;
-      document.getElementById('modalArchitecture').textContent = data.architecture;
 
-      // Handle video embedding inside the modal
+      const stepsGrid = document.getElementById('modalStepsGrid');
+      stepsGrid.innerHTML = '';
+      if (data.steps && data.steps.length) {
+        data.steps.forEach(stepItem => {
+          const stepCol = document.createElement('div');
+          stepCol.className = "p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs";
+          stepCol.innerHTML = `
+            <div class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">${stepItem.step}</div>
+            <div class="font-bold text-slate-800 dark:text-slate-100 mt-0.5 text-xs">${stepItem.title}</div>
+            <div class="text-slate-500 dark:text-slate-400 mt-1 text-[11px] leading-relaxed">${stepItem.desc}</div>
+          `;
+          stepsGrid.appendChild(stepCol);
+        });
+      }
+
       if (project.videoUrl) {
         videoContainer.classList.remove('hidden');
         videoPlayer.src = project.videoUrl;
-        videoPlayer.muted = true; // strictly muted
+        videoPlayer.muted = true;
         videoPlayer.currentTime = 0;
         videoPlayer.play().catch(() => {});
         voiceoverBtnLabel.textContent = i18n[currentLang].voiceoverPlay;
@@ -636,7 +733,6 @@
         videoPlayer.removeAttribute('src');
       }
 
-      // Handle external live URL button if available
       if (project.liveUrl) {
         externalLink.classList.remove('hidden');
         externalLink.href = project.liveUrl;
@@ -661,7 +757,6 @@
         techContainer.appendChild(pill);
       });
 
-      // Context-aware CTA button logic
       const actionLink = document.getElementById('modalActionLink');
       const actionText = document.getElementById('modalActionText');
       if (projectId === 'apple-homekit-smart-home') {
@@ -749,7 +844,9 @@
       const htmlTag = document.documentElement;
       const goingDark = !htmlTag.classList.contains('dark');
       htmlTag.classList.toggle('dark', goingDark);
-      localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      try {
+        localStorage.setItem('theme', goingDark ? 'dark' : 'light');
+      } catch (e) {}
       updateDarkModeButton();
     }
 
@@ -768,7 +865,9 @@
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+        if (i18n[currentLang] && i18n[currentLang][key]) {
+          el.textContent = i18n[currentLang][key];
+        }
       });
 
       document.getElementById('projectSearchInput').placeholder = currentLang === 'ar' ? "ابحث عن المشاريع، المهارات، التقنيات..." : "Search projects, skills, tech...";
