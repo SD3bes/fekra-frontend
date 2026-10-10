@@ -454,33 +454,39 @@
         id: "network-recon-tool",
         category: "security",
         badgeColor: "indigo",
-        tags: "python networking cyber security port scanner socket scapy linux bash فحص شبكات أمن سيبراني بايثون لينكس",
+        tags: "python networking cyber security port scanner socket scapy linux bash osint cve windows iis threat intelligence فحص شبكات أمن سيبراني بايثون لينكس",
         icon: "fa-shield-halved",
+        videoUrl: "./recon-tool-demo.mp4",
+        liveUrl: "https://github.com/SD3bes/python-grading-engine",
+        voiceoverText: {
+          en: "Welcome to the Multi-Threaded Network Recon and Port Auditor, built by Ziad A. at Fekra Tech Academy. This engine combines high-speed concurrent socket pools, passive OS and Windows Server fingerprinting, OSINT contact harvesting, and automated risk scoring with zero third-party latency.",
+          ar: "أهلاً بكم في مشروع أداة فحص واكتشاف ثغرات الشبكات والمنافذ المتطورة، تنفيذ الطالب زياد ع. من أكاديمية فكرة تك. تجمع الأداة بين الفحص البرمجي المتزامن، استخراج البانر والبريد الإلكتروني، وتحديد أنظمة التشغيل وتقييم المخاطر السيبرانية تلقائياً."
+        },
         en: {
-          title: "Multi-Threaded Network Recon & Port Auditor",
-          summary: "An offensive security utility written in Python that scans target subnets, discovers live hosts, probes exposed TCP ports, and flags insecure service banners.",
+          title: "Multi-Threaded Network Recon & Port Auditor (v5.0)",
+          summary: "An advanced defensive security utility written in Python that scans target subnets, fingerprints Windows & Linux OS stacks, harvests OSINT web metadata, probes exposed TCP ports, and flags vulnerabilities with CVSS-equivalent scoring.",
           student: "Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)",
-          overview: "Built to demonstrate practical network reconnaissance techniques taught in the ethical hacking phase. The tool allows sysadmins to quickly detect unpatched vulnerabilities on their local networks.",
+          overview: "Engineered as an end-to-end network reconnaissance and audit suite. The tool bypasses slow single-threaded timeouts using concurrent socket worker pools, maps HTTP/IIS banners to specific Windows Server versions, extracts contact OSINT from web targets, and correlates open services against common CVE vectors to calculate an actionable Threat Exposure Index.",
           steps: [
-            { step: "Step 1: Challenge", title: "Network Blindspots", desc: "Locating unpatched rogue devices and exposed ports across local CIDR blocks." },
-            { step: "Step 2: Architecture", title: "Concurrent Socket Pools", desc: "Structuring multithreaded workers to prevent port scanning timeouts." },
-            { step: "Step 3: Implementation", title: "Banner Grabbing & Scapy", desc: "Crafting SYN packets and parsing server response banners for CVE version lookup." },
-            { step: "Step 4: Deployment", title: "CLI Tool Packaging", desc: "Packaging script into a clean Linux CLI binary with colored terminal reporting." }
+            { step: "Step 1: Challenge", title: "Network Blindspots & Timeouts", desc: "Locating unpatched rogue devices and open perimeter services across CIDR subnets without connection drops." },
+            { step: "Step 2: Architecture", title: "Concurrent Socket Pools", desc: "Structuring 150+ worker threads using Python's ThreadPoolExecutor for sub-second socket handshake audits." },
+            { step: "Step 3: Implementation", title: "OSINT & OS Fingerprinting", desc: "Parsing TTL packets for OS estimation, banner-grabbing Windows IIS releases, and extracting email/phone data." },
+            { step: "Step 4: Deployment", title: "Risk Scoring & CLI Packaging", desc: "Calculating a 0–100 Threat Exposure Index and compiling the codebase into a standalone zero-dependency executable." }
           ],
-          techStack: ["Python 3", "Socket Programming", "Scapy Packet Crafting", "Linux Bash", "Thread Management"]
+          techStack: ["Python 3", "Socket Programming", "Thread Management", "OSINT Data Extractor", "Windows IIS Fingerprinting", "CVSS Risk Scoring", "PyInstaller Binary"]
         },
         ar: {
-          title: "أداة فحص واكتشاف ثغرات الشبكات (Port Auditor)",
-          summary: "سكربت أمني بلغة بايثون يقوم بفحص الشبكة الداخلية، اكتشاف الأجهزة المتصلة، وفحص المنافذ المفتوحة للتأكد من أمان الخدمات.",
+          title: "أداة فحص واكتشاف ثغرات الشبكات والأنظمة (Port Auditor v5.0)",
+          summary: "أداة أمن سيبراني متقدمة بلغة بايثون تفحص الشبكات والأنظمة، تكتشف نظام التشغيل وسيرفرات ويندوز، تستخرج بيانات التواصل من المواقع، وتحدد الثغرات الأمنية مع تقييم شامل لمستوى الخطورة.",
           student: "تنفيذ الطالب: زياد ع. (17 سنة • مرحلة الأمن السيبراني)",
-          overview: "مشروع لاختبار الاختراق الأخلاقي لفحص الشبكات الداخلية، صممه الطالب لمساعدة مديري الأنظمة على كشف الثغرات والخدمات غير الآمنة قبل استغلالها.",
+          overview: "مشروع تطبيقي متكامل يحاكي أدوات الفحص المؤسسية. تعتمد الأداة على البرمجة المتزامنة لفحص مئات المنافذ في ثوانٍ معدودة، وتحديد نوع نظام التشغيل عبر حزم TTL، واكتشاف إصدارات خوادم Windows Server عبر وسوم IIS، مع استخراج بيانات OSINT وتوليد مؤشر رقمي يوضح حجم الخطر ونقاط الضعف.",
           steps: [
-            { step: "الخطوة الأولى: التحدي", title: "اكتشاف الأجهزة غير الآمنة", desc: "فحص أجهزة الشبكة واكتشاف المنافذ المفتوحة والخدمات القديمة المعرضة للخطر." },
-            { step: "الخطوة الثانية: الهيكلية", title: "البرمجة المتزامنة", desc: "بناء نظام خيوط متزامنة (Multithreading) لإنهاء الفحص خلال ثوانٍ معدودة." },
-            { step: "الخطوة الثالثة: التنفيذ", title: "فحص حزم Scapy والبانر", desc: "إرسال حزم SYN واستخراج بيانات الخدمات العاملة على المنافذ للبحث عن ثغراتها." },
-            { step: "الخطوة الرابعة: النشر", title: "تشغيل الأداة في لينكس", desc: "تجهيز الأداة كبرنامج سطر أوامر تفاعلي على نظام لينكس يطبع تقارير ملونة بالأخطار." }
+            { step: "الخطوة الأولى: التحدي", title: "كشف الثغرات دون بطء الفحص", desc: "اكتشاف الأجهزة والخدمات المفتوحة والقديمة في الشبكة دون الوقوع في مشكلة بطء الاتصال وتوقف البرامج." },
+            { step: "الخطوة الثانية: الهيكلية", title: "البرمجة المتزامنة (Multithreading)", desc: "تشغيل أكثر من 150 خيط معالجة متزامن لإنهاء فحص منافذ السيرفر والخدمات خلال ثوانٍ معدودة." },
+            { step: "الخطوة الثالثة: التنفيذ", title: "بصمة النظام واستخراج OSINT", desc: "تحديد إصدار ويندوز عبر بانر IIS، استخراج البريد والهواتف من صفحات الويب، ومطابقة الثغرات." },
+            { step: "الخطوة الرابعة: النشر", title: "تقييم الخطورة وتصدير البرنامج", desc: "حساب مؤشر الخطورة من 100، وتجميع الكود في برنامج تنفيذي مستقل (.exe) يعمل دون الحاجة لتثبيت بايثون." }
           ],
-          techStack: ["Python 3", "Socket Library", "Scapy Network Tool", "أوامر لينكس Bash", "البرمجة المتزامنة"]
+          techStack: ["Python 3", "مكتبة Socket للشبكات", "البرمجة المتزامنة Multithreading", "استخراج بيانات OSINT", "بصمة خوادم Windows IIS", "تقييم مخاطر CVSS", "حزم PyInstaller Executable"]
         }
       },
       {
@@ -765,6 +771,9 @@
       } else if (projectId === 'coens-tradein-platform') {
         actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20saw%20the%20Full-Stack%20Web%20Platform%20demo%20and%20want%20to%20learn%20more!';
         actionText.textContent = currentLang === 'ar' ? 'سجل في مسار تطوير الويب الكامل' : 'Enroll in Full-Stack Track';
+      } else if (projectId === 'network-recon-tool') {
+        actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20saw%20Ziad%27s%20Network%20Recon%20Auditor%20project%20and%20want%20to%20enroll%20in%20the%20Cybersecurity%20Track!';
+        actionText.textContent = currentLang === 'ar' ? 'سجل في مسار الأمن السيبراني والشبكات' : 'Enroll in Cybersecurity Track';
       } else {
         actionLink.href = 'https://wa.me/201099995519';
         actionText.textContent = i18n[currentLang].modalBuildSimilar;
