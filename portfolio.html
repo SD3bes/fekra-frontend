@@ -71,6 +71,24 @@
       scrollbar-width: none;
     }
 
+    /* Video player solid sizing guarantee */
+    .video-card-player {
+      width: 100% !important;
+      height: 210px !important;
+      object-fit: cover !important;
+      background-color: #000 !important;
+      display: block !important;
+    }
+
+    .modal-video-element {
+      width: 100% !important;
+      max-height: 340px !important;
+      min-height: 200px !important;
+      background-color: #000 !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+
     body, nav, section, main, div, h1, h2, h3, h4, h5, p, span, a, button, input, select, textarea, img, i {
       transition: background-color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
                   border-color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
@@ -210,7 +228,7 @@
         </div>
       </div>
 
-      <!-- Search & Category Filters (Responsive flex wrap & scrolling tags on mobile) -->
+      <!-- Search & Category Filters -->
       <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto w-full">
         <div class="w-full md:w-80 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
           <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs sm:text-sm"></i>
@@ -232,7 +250,7 @@
   <!-- Projects Grid -->
   <main class="py-10 sm:py-12 container mx-auto px-3 sm:px-4 max-w-6xl flex-grow">
     <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      <!-- Dynamic Project Cards -->
+      <!-- Dynamic Project Cards rendered by JavaScript -->
     </div>
 
     <!-- Empty State Warning -->
@@ -264,7 +282,7 @@
     </div>
   </section>
 
-  <!-- Responsive Project Case Study Modal -->
+  <!-- Interactive Project Case Study Modal -->
   <div id="projectModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-2 sm:p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeProjectModal()"></div>
     <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden transform scale-95 border border-transparent dark:border-slate-800 flex flex-col max-h-[92vh]" id="modalCard">
@@ -283,9 +301,9 @@
           <p id="modalStudentCredit" class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
-        <!-- Video Player Container with Custom Audio Bar -->
+        <!-- Video Player Container with Explicit Size -->
         <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800 relative group">
-          <video id="modalVideoPlayer" muted playsinline controls class="w-full max-h-56 sm:max-h-72 object-contain bg-black">
+          <video id="modalVideoPlayer" muted playsinline webkit-playsinline controls preload="metadata" class="modal-video-element">
             <source id="modalVideoSource" src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -675,12 +693,13 @@
           const card = document.createElement('div');
           card.className = `bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
 
+          // Explicit video container styling with preload & playsinline
           const mediaHtml = item.videoUrl ? `
-            <div class="relative w-full rounded-xl overflow-hidden mb-4 bg-black border border-slate-200 dark:border-slate-800 group aspect-video">
-              <video class="w-full h-full object-cover" muted loop playsinline controls preload="metadata">
+            <div class="relative w-full rounded-xl overflow-hidden mb-4 bg-black border border-slate-200 dark:border-slate-800">
+              <video class="video-card-player" muted loop playsinline webkit-playsinline controls preload="metadata">
                 <source src="${item.videoUrl}" type="video/mp4">
               </video>
-              <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/75 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
+              <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
                 <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
                 <span>PROJECT DEMO</span>
               </div>
@@ -749,6 +768,7 @@
       const modalCard = document.getElementById('modalCard');
       const videoContainer = document.getElementById('modalVideoContainer');
       const videoPlayer = document.getElementById('modalVideoPlayer');
+      const videoSource = document.getElementById('modalVideoSource');
       const externalLink = document.getElementById('modalExternalLink');
       const voiceoverBtnLabel = document.getElementById('voiceoverBtnLabel');
 
@@ -771,17 +791,19 @@
         });
       }
 
+      // Explicitly load and render the modal video correctly across devices
       if (project.videoUrl) {
         videoContainer.classList.remove('hidden');
-        videoPlayer.src = project.videoUrl;
+        videoSource.src = project.videoUrl;
         videoPlayer.muted = true;
+        videoPlayer.load(); // Forces device to prepare video buffer
         videoPlayer.currentTime = 0;
         videoPlayer.play().catch(() => {});
         voiceoverBtnLabel.textContent = i18n[currentLang].voiceoverPlay;
       } else {
         videoContainer.classList.add('hidden');
         videoPlayer.pause();
-        videoPlayer.removeAttribute('src');
+        videoSource.removeAttribute('src');
       }
 
       if (project.liveUrl) {
