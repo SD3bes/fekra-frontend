@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Fekra Tech Academy | Specialized Tracks & Tuition</title>
 
   <link rel="icon" type="image/png" href="./logo-main.png">
@@ -61,6 +61,14 @@
     
     .dark .timeline-scroll::-webkit-scrollbar-thumb {
       background: #334155;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
 
     body, nav, section, main, div, h1, h2, h3, h4, h5, p, span, a, button, input, select, textarea, img, i {
@@ -124,74 +132,101 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
 
-  <!-- Navigation -->
-  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800/60">
+  <!-- Mobile-Optimized Navbar -->
+  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-3 sm:p-4 shadow-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="./index.html" class="flex items-center gap-3 cursor-pointer">
-        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
-        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
-        <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
+      <!-- Brand Logo -->
+      <a href="./index.html" class="flex items-center gap-2 sm:gap-3 cursor-pointer">
+        <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
+        <h1 class="text-lg sm:text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 logo-font uppercase">Fekra Tech</h1>
       </a>
-      <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
+
+      <!-- Desktop Menu -->
+      <ul class="hidden lg:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
         <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navHome">Home</a></li>
         <li><a href="./portfolio.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navPortfolio">Portfolio</a></li>
         <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navServices">Services (-30%)</a></li>
         <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
         <li class="flex items-center gap-2">
-          <button onclick="toggleDarkMode()" id="darkModeBtn" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
-            <i id="darkBtnIcon" class="fa-solid fa-moon"></i>
+          <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <i class="darkBtnIcon fa-solid fa-moon"></i>
           </button>
-          <button onclick="toggleLanguage()" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
-            <i class="fa-solid fa-globe"></i> <span id="langBtnText">عربي</span>
+          <button onclick="toggleLanguage()" aria-label="Toggle Language" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <i class="fa-solid fa-globe"></i> <span class="langBtnText">عربي</span>
           </button>
         </li>
       </ul>
+
+      <!-- Mobile Right Controls -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="flex items-center justify-center text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/70 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700">
+          <i class="darkBtnIcon fa-solid fa-moon text-xs"></i>
+        </button>
+        <button onclick="toggleLanguage()" aria-label="Toggle Language" class="flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-xs bg-slate-100 dark:bg-slate-800/70 px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+          <span class="langBtnText">عربي</span>
+        </button>
+        <button onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="flex items-center justify-center text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 ml-1">
+          <i id="hamburgerIcon" class="fa-solid fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-3 space-y-3 px-2">
+      <a href="./index.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navHome">Home</a>
+      <a href="./portfolio.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navPortfolio">Portfolio</a>
+      <a href="./services.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navServices">Services (-30%)</a>
+      <a href="./index.html#team" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navTeam">Team</a>
+      <a href="./index.html#contact" onclick="closeMobileMenu()" class="block text-center bg-blue-600 text-white font-bold py-2.5 rounded-xl shadow-md text-sm">Contact Us</a>
     </div>
   </nav>
 
   <!-- Header -->
-  <header class="py-12 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
-    <div class="container mx-auto px-4 max-w-6xl text-center space-y-8">
+  <header class="py-10 sm:py-16 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
+    <div class="container mx-auto px-4 max-w-6xl text-center space-y-6 sm:space-y-8">
       <div>
-        <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-3 logo-font uppercase tracking-tight" data-i18n="catalogTitle">Curriculum Ecosystem & Tuition</h2>
-        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base mt-3" data-i18n="tuitionHighlight">Tuition: 4,000 EGP per Phase (1 Month) • 8 Sessions (2 sessions/week, 2.0 hrs each = 16 training hours/phase)</p>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-2 sm:mb-3 logo-font uppercase tracking-tight" data-i18n="catalogTitle">Curriculum Ecosystem & Tuition</h2>
+        <div class="w-20 sm:w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+        <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-base mt-2 sm:mt-3 max-w-2xl mx-auto" data-i18n="tuitionHighlight">Tuition: 4,000 EGP per Phase (1 Month) • 8 Sessions (2 sessions/week, 2.0 hrs each = 16 training hours/phase)</p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
-        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">5</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statTracks">Specialized Tracks</span>
+      <!-- Quick Stats Metrics -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-center">
+        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">5</span>
+          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statTracks">Specialized Tracks</span>
         </div>
-        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-cyan-500 dark:text-cyan-400 logo-font">3</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statAgeGroups">Age Tracks (8-12, 13-17, 18+)</span>
+        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-lg sm:text-xl font-bold text-cyan-500 dark:text-cyan-400 logo-font">3</span>
+          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statAgeGroups">Age Tracks (8-12, 13-17, 18+)</span>
         </div>
-        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-emerald-600 dark:text-emerald-400 logo-font">8</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statSessions">Sessions / Phase (2.0 hrs)</span>
+        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-lg sm:text-xl font-bold text-emerald-600 dark:text-emerald-400 logo-font">8</span>
+          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statSessions">Sessions / Phase (2.0 hrs)</span>
         </div>
-        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">4,000</span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statCost">EGP / Phase (Core Module)</span>
+        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 logo-font">4,000</span>
+          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statCost">EGP / Phase (Core Module)</span>
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto">
-        <div class="w-full md:w-64 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
-          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-          <input type="text" id="trackSearchInput" oninput="executeFilters()" placeholder="Search track, age or skill..." class="w-full bg-transparent focus:outline-none text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400">
+      <!-- Search & Filters Container (Responsive flex wrap & scrolling tags on mobile) -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6 bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto w-full">
+        <div class="w-full md:w-64 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
+          <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs sm:text-sm"></i>
+          <input type="text" id="trackSearchInput" oninput="executeFilters()" placeholder="Search track, age or skill..." class="w-full bg-transparent focus:outline-none text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400">
         </div>
 
-        <div class="flex flex-wrap justify-center gap-2">
-          <button onclick="setActiveFilter('all', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md" data-i18n="filterAll">All Tracks</button>
-          <button onclick="setActiveFilter('vibe', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterVibe">Vibe Coding</button>
-          <button onclick="setActiveFilter('code', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterCode">Coding</button>
-          <button onclick="setActiveFilter('security', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterSecurity">Infra & Security</button>
-          <button onclick="setActiveFilter('design', this)" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterDesign">Creative</button>
+        <div class="flex overflow-x-auto no-scrollbar w-full md:w-auto justify-start md:justify-center gap-2 py-1">
+          <button onclick="setActiveFilter('all', this)" class="filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md" data-i18n="filterAll">All Tracks</button>
+          <button onclick="setActiveFilter('vibe', this)" class="filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterVibe">Vibe Coding</button>
+          <button onclick="setActiveFilter('code', this)" class="filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterCode">Coding</button>
+          <button onclick="setActiveFilter('security', this)" class="filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterSecurity">Infra & Security</button>
+          <button onclick="setActiveFilter('design', this)" class="filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterDesign">Creative</button>
         </div>
 
-        <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-950 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800">
+        <div class="hidden md:flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-950 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800">
           <i class="fa-solid fa-clock text-blue-500"></i>
           <span data-i18n="scheduleBadge">2 Sessions/Week • 2.0 Hrs Each</span>
         </div>
@@ -200,284 +235,284 @@
   </header>
 
   <!-- All Tracks Grid -->
-  <main class="py-12 container mx-auto px-4 max-w-6xl flex-grow">
-    <div id="coursesContainerDeck" class="space-y-8">
+  <main class="py-10 sm:py-12 container mx-auto px-3 sm:px-4 max-w-6xl flex-grow">
+    <div id="coursesContainerDeck" class="space-y-6 sm:space-y-8">
 
       <!-- Track 0: Vibe Coding Flagship -->
-      <div class="course-card-row block-track-vibe glow-card-cyan bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-cyan-500 dark:border-l-cyan-400" data-tags="vibe coding ai cursor claude copilot v0 lovable prompt spec diff debugging vercel supabase fullstack all ages 14+ ذكاء اصطناعي فايب كودينج">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
-          <div class="flex-grow space-y-4">
+      <div class="course-card-row block-track-vibe glow-card-cyan bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-5 sm:p-8 border-l-4 border-l-cyan-500 dark:border-l-cyan-400" data-tags="vibe coding ai cursor claude copilot v0 lovable prompt spec diff debugging vercel supabase fullstack all ages 14+ ذكاء اصطناعي فايب كودينج">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-5 sm:gap-6">
+          <div class="flex-grow space-y-3 sm:space-y-4 w-full">
             <div class="flex flex-wrap items-center gap-3">
-              <div class="bg-cyan-100 dark:bg-cyan-950/60 p-3 rounded-xl text-cyan-600 dark:text-cyan-400 text-2xl"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div class="bg-cyan-100 dark:bg-cyan-950/60 p-2.5 sm:p-3 rounded-xl text-cyan-600 dark:text-cyan-400 text-xl sm:text-2xl"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
               <div>
-                <div class="flex items-center gap-2">
-                  <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="vibeTitle">Vibe Coding & AI-Native Development</h3>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white" data-i18n="vibeTitle">Vibe Coding & AI-Native Development</h3>
                   <span class="bg-cyan-500/20 text-cyan-500 dark:text-cyan-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-cyan-500/30 uppercase">Flagship</span>
                 </div>
                 <div class="flex items-center gap-2 mt-1">
-                  <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/80 px-2.5 py-0.5 rounded-md border border-cyan-200 dark:border-cyan-900">Ages 14+ & Adults</span>
+                  <span class="text-xs font-bold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950/80 px-2 py-0.5 rounded-md border border-cyan-200 dark:border-cyan-900">Ages 14+ & Adults</span>
                   <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                     <span>Cohort Open • Limited Seats</span>
                   </span>
                 </div>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="vibeDescLong">Stop getting stuck on boilerplate syntax. Learn to orchestrate AI agent models to write, audit, and ship production web apps and SaaS products at 10x speed using Cursor, Claude Code, GitHub Copilot, v0, and Lovable with rigorous code literacy.</p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Prompt Orchestration & Specs</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Cursor & Claude Code Tooling</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Diff Auditing & Security Testing</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Zero-Downtime Vercel Deploy</span>
+            <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="vibeDescLong">Stop getting stuck on boilerplate syntax. Learn to orchestrate AI agent models to write, audit, and ship production web apps and SaaS products at 10x speed using Cursor, Claude Code, GitHub Copilot, v0, and Lovable with rigorous code literacy.</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Prompt Orchestration & Specs</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Cursor & Claude Code Tooling</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Diff Auditing & Security Testing</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Zero-Downtime Vercel Deploy</span>
             </div>
             <button onclick="toggleInlineSyllabus('vibe', this)" type="button" class="text-cyan-600 dark:text-cyan-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
               <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
-          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
+          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
+              <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-cyan-600 dark:text-cyan-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
+                <span class="text-2xl sm:text-3xl font-black text-cyan-600 dark:text-cyan-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
               <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
-            <button onclick="openModal('vibe')" type="button" class="btn-premium w-full mt-5 bg-cyan-600 hover:bg-cyan-500 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
+            <button onclick="openModal('vibe')" type="button" class="btn-premium w-full mt-4 bg-cyan-600 hover:bg-cyan-500 text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
             </button>
           </div>
         </div>
-        <div id="syllabus-vibe" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent">
-          <div class="py-6 pl-4 pr-4 border-l-2 border-cyan-500/30 ml-4 space-y-6 roadmap-target-node"></div>
+        <div id="syllabus-vibe" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-3 sm:px-4 border border-transparent">
+          <div class="py-5 pl-3 pr-3 sm:pl-4 sm:pr-4 border-l-2 border-cyan-500/30 ml-2 sm:ml-4 space-y-5 roadmap-target-node"></div>
         </div>
       </div>
       
       <!-- Track 1: Programming Masterclass -->
-      <div class="course-card-row block-track-code glow-card-blue bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-blue-600 dark:border-l-blue-500" data-tags="python javascript react html css sql php c++ c# arduino iot logic web games robotics development برمجة بايثون ويب ألعاب ages 8-12 13-17 18+">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
-          <div class="flex-grow space-y-4">
+      <div class="course-card-row block-track-code glow-card-blue bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-5 sm:p-8 border-l-4 border-l-blue-600 dark:border-l-blue-500" data-tags="python javascript react html css sql php c++ c# arduino iot logic web games robotics development برمجة بايثون ويب ألعاب ages 8-12 13-17 18+">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-5 sm:gap-6">
+          <div class="flex-grow space-y-3 sm:space-y-4 w-full">
             <div class="flex flex-wrap items-center gap-3">
-              <div class="bg-blue-100 dark:bg-blue-950/60 p-3 rounded-xl text-blue-600 dark:text-blue-400 text-2xl"><i class="fa-solid fa-code"></i></div>
+              <div class="bg-blue-100 dark:bg-blue-950/60 p-2.5 sm:p-3 rounded-xl text-blue-600 dark:text-blue-400 text-xl sm:text-2xl"><i class="fa-solid fa-code"></i></div>
               <div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="progTitle">Programming Masterclass</h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white" data-i18n="progTitle">Programming Masterclass</h3>
                 <div class="flex items-center gap-2 mt-1">
-                  <span class="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 py-0.5 rounded-md border border-blue-200 dark:border-blue-900">Ages 8-12 • 13-17 • 18+</span>
+                  <span class="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-2 py-0.5 rounded-md border border-blue-200 dark:border-blue-900">Ages 8-12 • 13-17 • 18+</span>
                   <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                     <span data-i18n="seatsLeft3">Cohort Starting Soon • Only 3 Seats Remaining</span>
                   </span>
                 </div>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="progDescLong">A comprehensive 4-phase program structured for all levels. Young students begin with visual logic while older students move systematically through algorithmic modeling, relational databases, full-stack web, and hardware robotics integration.</p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Python Master Logic</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Full-Stack Web Dev</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">C++ & Game Engines</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Arduino Robotics IoT</span>
+            <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="progDescLong">A comprehensive 4-phase program structured for all levels. Young students begin with visual logic while older students move systematically through algorithmic modeling, relational databases, full-stack web, and hardware robotics integration.</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Python Master Logic</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Full-Stack Web Dev</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">C++ & Game Engines</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Arduino Robotics IoT</span>
             </div>
             <button onclick="toggleInlineSyllabus('programming', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
               <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
-          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
+          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
+              <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-blue-600 dark:text-blue-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
+                <span class="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
               <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
-            <button onclick="openModal('programming')" type="button" class="btn-premium w-full mt-5 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
+            <button onclick="openModal('programming')" type="button" class="btn-premium w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
             </button>
           </div>
         </div>
-        <div id="syllabus-programming" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent">
-          <div class="py-6 pl-4 pr-4 border-l-2 border-blue-500/30 ml-4 space-y-6 roadmap-target-node"></div>
+        <div id="syllabus-programming" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-3 sm:px-4 border border-transparent">
+          <div class="py-5 pl-3 pr-3 sm:pl-4 sm:pr-4 border-l-2 border-blue-500/30 ml-2 sm:ml-4 space-y-5 roadmap-target-node"></div>
         </div>
       </div>
 
       <!-- Track 2: Cybersecurity -->
-      <div class="course-card-row block-track-security glow-card-slate bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-slate-800 dark:border-l-slate-400" data-tags="linux admin windows security testing penetration vulnerability hacking networks soc ceh ccna أمن سيبراني حماية اختراق شبكات ages 13-17 18+">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
-          <div class="flex-grow space-y-4">
+      <div class="course-card-row block-track-security glow-card-slate bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-5 sm:p-8 border-l-4 border-l-slate-800 dark:border-l-slate-400" data-tags="linux admin windows security testing penetration vulnerability hacking networks soc ceh ccna أمن سيبراني حماية اختراق شبكات ages 13-17 18+">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-5 sm:gap-6">
+          <div class="flex-grow space-y-3 sm:space-y-4 w-full">
             <div class="flex flex-wrap items-center gap-3">
-              <div class="bg-slate-100 dark:bg-slate-800/80 p-3 rounded-xl text-slate-800 dark:text-slate-200 text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="bg-slate-100 dark:bg-slate-800/80 p-2.5 sm:p-3 rounded-xl text-slate-800 dark:text-slate-200 text-xl sm:text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
               <div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="cybTitle">Cybersecurity</h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white" data-i18n="cybTitle">Cybersecurity</h3>
                 <div class="flex items-center gap-2 mt-1">
-                  <span class="text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">Ages 13-17 • 18+</span>
+                  <span class="text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">Ages 13-17 • 18+</span>
                   <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                     <span data-i18n="seatsLeft5">Cohort Starting Soon • Only 5 Seats Remaining</span>
                   </span>
                 </div>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="cybDescLong">An operational defense track centered on digital infrastructure shielding. Includes deep analytical training on system logging frameworks, command-line administration tools, risk surface reduction methodologies, and practical white-hat penetration workflows.</p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Linux Bash Core</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Penetration Testing Matrix</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">SOC Incident Defense</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Global Certification Blueprints</span>
+            <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="cybDescLong">An operational defense track centered on digital infrastructure shielding. Includes deep analytical training on system logging frameworks, command-line administration tools, risk surface reduction methodologies, and practical white-hat penetration workflows.</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Linux Bash Core</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Penetration Testing Matrix</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">SOC Incident Defense</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Global Certification Blueprints</span>
             </div>
             <button onclick="toggleInlineSyllabus('cyber', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
               <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
-          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
+          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
+              <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-slate-900 dark:text-slate-200 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
+                <span class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-200 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
               <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
-            <button onclick="openModal('cyber')" type="button" class="btn-premium w-full mt-5 bg-slate-900 dark:bg-slate-800 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
+            <button onclick="openModal('cyber')" type="button" class="btn-premium w-full mt-4 bg-slate-900 dark:bg-slate-800 text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
             </button>
           </div>
         </div>
-        <div id="syllabus-cyber" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent">
-          <div class="py-6 pl-4 pr-4 border-l-2 border-slate-500/30 ml-4 space-y-6 roadmap-target-node"></div>
+        <div id="syllabus-cyber" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-3 sm:px-4 border border-transparent">
+          <div class="py-5 pl-3 pr-3 sm:pl-4 sm:pr-4 border-l-2 border-slate-500/30 ml-2 sm:ml-4 space-y-5 roadmap-target-node"></div>
         </div>
       </div>
 
       <!-- Track 3: Networking -->
-      <div class="course-card-row block-track-security glow-card-indigo bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-indigo-600 dark:border-l-indigo-500" data-tags="cisco routers switches routing topologies cabling architectures cloud troubleshooting ccna شبكات اتصالات سيسكو راوتر ages 13-17 18+">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
-          <div class="flex-grow space-y-4">
+      <div class="course-card-row block-track-security glow-card-indigo bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-5 sm:p-8 border-l-4 border-l-indigo-600 dark:border-l-indigo-500" data-tags="cisco routers switches routing topologies cabling architectures cloud troubleshooting ccna شبكات اتصالات سيسكو راوتر ages 13-17 18+">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-5 sm:gap-6">
+          <div class="flex-grow space-y-3 sm:space-y-4 w-full">
             <div class="flex flex-wrap items-center gap-3">
-              <div class="bg-indigo-100 dark:bg-indigo-950/60 p-3 rounded-xl text-indigo-600 dark:text-indigo-400 text-2xl"><i class="fa-solid fa-network-wired"></i></div>
+              <div class="bg-indigo-100 dark:bg-indigo-950/60 p-2.5 sm:p-3 rounded-xl text-indigo-600 dark:text-indigo-400 text-xl sm:text-2xl"><i class="fa-solid fa-network-wired"></i></div>
               <div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="netTitle">Networking</h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white" data-i18n="netTitle">Networking</h3>
                 <div class="flex items-center gap-2 mt-1">
-                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2.5 py-0.5 rounded-md border border-indigo-200 dark:border-indigo-900">Ages 13-17 • 18+</span>
+                  <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2 py-0.5 rounded-md border border-indigo-200 dark:border-indigo-900">Ages 13-17 • 18+</span>
                   <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                     <span data-i18n="seatsLeft2">Cohort Starting Soon • Only 2 Seats Remaining</span>
                   </span>
                 </div>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="netDescLong">Master the core structural layers of the internet. Students build concrete network topologies, evaluate routing logic models, program enterprise switching interfaces, and deploy scalable remote systems architecture configurations.</p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Enterprise Cisco Controls</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Dynamic Topology Routing</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">IPv4 & Binary Conversion</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Fault Diagnostics Matrix</span>
+            <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="netDescLong">Master the core structural layers of the internet. Students build concrete network topologies, evaluate routing logic models, program enterprise switching interfaces, and deploy scalable remote systems architecture configurations.</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Enterprise Cisco Controls</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Dynamic Topology Routing</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">IPv4 & Binary Conversion</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Fault Diagnostics Matrix</span>
             </div>
             <button onclick="toggleInlineSyllabus('networking', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
               <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
-          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
+          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
+              <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-indigo-600 dark:text-indigo-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
+                <span class="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
               <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
-            <button onclick="openModal('networking')" type="button" class="btn-premium w-full mt-5 bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
+            <button onclick="openModal('networking')" type="button" class="btn-premium w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
             </button>
           </div>
         </div>
-        <div id="syllabus-networking" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent">
-          <div class="py-6 pl-4 pr-4 border-l-2 border-indigo-500/30 ml-4 space-y-6 roadmap-target-node"></div>
+        <div id="syllabus-networking" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-3 sm:px-4 border border-transparent">
+          <div class="py-5 pl-3 pr-3 sm:pl-4 sm:pr-4 border-l-2 border-indigo-500/30 ml-2 sm:ml-4 space-y-5 roadmap-target-node"></div>
         </div>
       </div>
 
       <!-- Track 4: Graphic Design -->
-      <div class="course-card-row block-track-design glow-card-pink bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-6 md:p-8 border-l-4 border-l-pink-500 dark:border-l-pink-500" data-tags="photoshop illustrator typography color ui ux layout assets branding vectors جرافيك ديزاين فوتوشوب تصميم ages 8-12 13-17 18+">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-6">
-          <div class="flex-grow space-y-4">
+      <div class="course-card-row block-track-design glow-card-pink bg-white dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/60 p-5 sm:p-8 border-l-4 border-l-pink-500 dark:border-l-pink-500" data-tags="photoshop illustrator typography color ui ux layout assets branding vectors جرافيك ديزاين فوتوشوب تصميم ages 8-12 13-17 18+">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-stretch gap-5 sm:gap-6">
+          <div class="flex-grow space-y-3 sm:space-y-4 w-full">
             <div class="flex flex-wrap items-center gap-3">
-              <div class="bg-pink-100 dark:bg-pink-955/60 p-3 rounded-xl text-pink-500 dark:text-pink-400 text-2xl"><i class="fa-solid fa-bezier-curve"></i></div>
+              <div class="bg-pink-100 dark:bg-pink-955/60 p-2.5 sm:p-3 rounded-xl text-pink-500 dark:text-pink-400 text-xl sm:text-2xl"><i class="fa-solid fa-bezier-curve"></i></div>
               <div>
-                <h3 class="text-2xl font-bold text-slate-900 dark:text-white" data-i18n="desTitle">Graphic Design</h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white" data-i18n="desTitle">Graphic Design</h3>
                 <div class="flex items-center gap-2 mt-1">
-                  <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-2.5 py-0.5 rounded-md border border-pink-200 dark:border-pink-900">Ages 8-12 • 13-17 • 18+</span>
+                  <span class="text-xs font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-2 py-0.5 rounded-md border border-pink-200 dark:border-pink-900">Ages 8-12 • 13-17 • 18+</span>
                   <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                     <span data-i18n="seatsLeft4">Cohort Starting Soon • Only 4 Seats Remaining</span>
                   </span>
                 </div>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-4xl" data-i18n="desDescLong">Translate imaginative ideas into commercial digital assets. This track explores advanced color matching, balanced structural layouts, modern vector creation practices, photo adjustments, and targeted digital product design paradigms.</p>
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Adobe Illustrator Vectors</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Digital Photo Compositions</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Brand Identity Implementation</span>
-              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-3 py-1 rounded-lg font-medium">Commercial Portfolio</span>
+            <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="desDescLong">Translate imaginative ideas into commercial digital assets. This track explores advanced color matching, balanced structural layouts, modern vector creation practices, photo adjustments, and targeted digital product design paradigms.</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Adobe Illustrator Vectors</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Digital Photo Compositions</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Brand Identity Implementation</span>
+              <span class="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs px-2.5 py-1 rounded-lg font-medium">Commercial Portfolio</span>
             </div>
             <button onclick="toggleInlineSyllabus('design', this)" type="button" class="text-blue-600 dark:text-blue-400 text-xs font-bold inline-flex items-center gap-1 hover:underline pt-2">
               <span data-i18n="viewSyllabus">Explore Syllabus Details & Lesson Slides</span> <i class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
             </button>
           </div>
-          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
+          <div class="w-full md:w-64 shrink-0 flex flex-col justify-between items-center md:items-end p-4 sm:p-5 bg-slate-50 dark:bg-slate-950/40 rounded-xl border border-slate-200/40 dark:border-slate-800/40 text-center md:text-right">
             <div class="space-y-1 w-full">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
+              <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block" data-i18n="lblPricing">Per-Phase Tuition</span>
               <div class="flex items-center justify-center md:justify-end gap-2 flex-wrap">
-                <span class="text-3xl font-black text-pink-500 dark:text-pink-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
+                <span class="text-2xl sm:text-3xl font-black text-pink-500 dark:text-pink-400 block">4,000 <span class="text-sm font-semibold" data-i18n="curr">EGP</span></span>
               </div>
               <span class="text-[10px] font-medium text-slate-400 block" data-i18n="sessionsMonth">Charged per 8-session academic phase</span>
             </div>
-            <button onclick="openModal('design')" type="button" class="btn-premium w-full mt-5 bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl font-bold text-xs shadow-md">
+            <button onclick="openModal('design')" type="button" class="btn-premium w-full mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md">
               <span data-i18n="btnEnrollNow">Enroll & Reserve Spot</span>
             </button>
           </div>
         </div>
-        <div id="syllabus-design" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent">
-          <div class="py-6 pl-4 pr-4 border-l-2 border-pink-500/30 ml-4 space-y-6 roadmap-target-node"></div>
+        <div id="syllabus-design" class="max-h-0 overflow-hidden bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-3 sm:px-4 border border-transparent">
+          <div class="py-5 pl-3 pr-3 sm:pl-4 sm:pr-4 border-l-2 border-pink-500/30 ml-2 sm:ml-4 space-y-5 roadmap-target-node"></div>
         </div>
       </div>
 
     </div>
   </main>
 
-  <!-- Reusable Roadmap & Enrollment Modal -->
-  <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
+  <!-- Responsive Reusable Enrollment Modal -->
+  <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-2 sm:p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeModal()"></div>
-    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800" id="modalContent">
-      <button onclick="closeModal()" type="button" class="btn-premium absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
-        <i class="fa-solid fa-xmark text-xl"></i>
+    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[92vh] overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800" id="modalContent">
+      <button onclick="closeModal()" type="button" class="btn-premium absolute top-3 right-3 sm:top-4 sm:right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 hover:text-red-600 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-20 shadow">
+        <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
       <!-- Roadmap Column -->
-      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
+      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-5 sm:p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
-          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-sm px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">4,000 EGP / Phase</div>
+          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-xs sm:text-sm px-2.5 sm:px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">4,000 EGP / Phase</div>
         </div>
-        <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
-        <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-8 text-sm leading-relaxed"></p>
-        <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
+        <h3 id="modalCourseTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
+        <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed"></p>
+        <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-6 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
       </div>
 
       <!-- Registration Form Column -->
-      <div class="md:w-1/2 p-8 overflow-y-auto bg-white dark:bg-slate-900">
+      <div class="md:w-1/2 p-5 sm:p-8 overflow-y-auto bg-white dark:bg-slate-900">
         <form id="enrollmentForm" onsubmit="submitForm(event)">
-          <h4 class="text-2xl font-bold text-slate-800 dark:text-white mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
+          <h4 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-white mb-4 sm:mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
           <input type="hidden" id="selectedCourseInput" name="selectedCourse">
           <input type="hidden" id="selectedCoursePrice" name="selectedCoursePrice">
           
-          <div class="mb-4">
-            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
-            <input type="text" id="studentFullName" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
+          <div class="mb-3">
+            <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
+            <input type="text" id="studentFullName" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
           </div>
           
-          <div class="grid grid-cols-2 gap-4 mb-4">
+          <div class="grid grid-cols-2 gap-3 mb-3">
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblAge">Student Age</label>
-              <input type="number" id="studentAge" min="7" max="80" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblAge">Student Age</label>
+              <input type="number" id="studentAge" min="7" max="80" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblExp">Prior Experience</label>
-              <select id="studentExp" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblExp">Prior Experience</label>
+              <select id="studentExp" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-2 sm:px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
                 <option value="Complete Beginner" data-i18n="exp1">Complete Beginner</option>
                 <option value="Some Knowledge" data-i18n="exp2">Some Knowledge</option>
                 <option value="Advanced" data-i18n="exp3">Advanced</option>
@@ -485,31 +520,31 @@
             </div>
           </div>
           
-          <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa1">Student/Primary WhatsApp</label>
-              <input type="tel" id="studentWa" required placeholder="010XXXXXXXX" pattern="[0-9+]{10,14}" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa1">Student/Primary WhatsApp</label>
+              <input type="tel" id="studentWa" required placeholder="010XXXXXXXX" pattern="[0-9+]{10,14}" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa2">Parent's WhatsApp (Optional)</label>
-              <input type="tel" id="parentWa" placeholder="010XXXXXXXX" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa2">Parent's WhatsApp (Optional)</label>
+              <input type="tel" id="parentWa" placeholder="010XXXXXXXX" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
           </div>
           
-          <button type="submit" id="submitAppBtn" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 shadow-lg text-lg flex items-center justify-center gap-2">
-            <i class="fa-brands fa-whatsapp text-xl"></i> <span id="submitBtnText" data-i18n="btnSubmitForm">Submit Application</span>
+          <button type="submit" id="submitAppBtn" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-3 sm:py-3.5 rounded-lg hover:bg-blue-700 shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-lg"></i> <span id="submitBtnText" data-i18n="btnSubmitForm">Submit Application</span>
           </button>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-4 text-center leading-relaxed font-medium" data-i18n="formDisclaimer">By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.</p>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-3 text-center leading-relaxed" data-i18n="formDisclaimer">By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.</p>
         </form>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-8 text-slate-500 text-sm">
-    <div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4">
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-8 text-slate-500 text-xs sm:text-sm">
+    <div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
       <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
-      <div class="flex gap-5 items-center">
+      <div class="flex gap-5 items-center justify-center">
         <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-xl"><i class="fa-brands fa-instagram"></i></a>
@@ -525,6 +560,28 @@
 
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwJvM_HnSTdW15J9788gLhi5YzPnsaSI7sAPn8X4eBnGDmSH2YiyyfEzvD0JXoOU3yE/exec";
     const ACADEMY_WHATSAPP_NUMBER = "201099995519";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDarkModeButton();
+    });
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      menu.classList.toggle('hidden');
+      if (menu.classList.contains('hidden')) {
+        icon.className = "fa-solid fa-bars text-base";
+      } else {
+        icon.className = "fa-solid fa-xmark text-base";
+      }
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      menu.classList.add('hidden');
+      icon.className = "fa-solid fa-bars text-base";
+    }
 
     const i18n = {
       en: {
@@ -755,24 +812,24 @@
         
         roadmapData.forEach(item => {
           const block = document.createElement('div');
-          block.className = "relative pl-6 rtl:pl-0 rtl:pr-6";
+          block.className = "relative pl-5 sm:pl-6 rtl:pl-0 rtl:pr-5 sm:rtl:pr-6";
           block.innerHTML = `
-            <div class="absolute w-3 h-3 ${bgTheme} rounded-full -left-[23px] rtl:-right-[23px] top-1.5 border-2 border-white dark:border-slate-900 shadow-sm"></div>
+            <div class="absolute w-3 h-3 ${bgTheme} rounded-full -left-[19px] sm:-left-[23px] rtl:-right-[19px] sm:rtl:-right-[23px] top-1.5 border-2 border-white dark:border-slate-900 shadow-sm"></div>
             <span class="text-[10px] font-bold tracking-wider uppercase opacity-70 block">${item.step}</span>
-            <h5 class="text-sm font-bold text-slate-900 dark:text-white mt-0.5">${item.title}</h5>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>
+            <h5 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-0.5">${item.title}</h5>
+            <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>
           `;
           container.appendChild(block);
         });
 
         const slidesBlock = document.createElement('div');
-        slidesBlock.className = "mt-6 p-4 rounded-xl bg-slate-900/80 border border-slate-700/60 text-xs text-slate-300";
+        slidesBlock.className = "mt-4 p-3 sm:p-4 rounded-xl bg-slate-900/80 border border-slate-700/60 text-xs text-slate-300";
         slidesBlock.innerHTML = `
           <div class="flex items-center gap-2 text-cyan-400 font-bold mb-2">
             <i class="fa-solid fa-chalkboard-user"></i>
             <span>${currentLang === 'ar' ? 'هيكل شرائح المحاضرات الرسمية (5 أجزاء لكل جلسة)' : 'Interactive 5-Part Lesson Slides Architecture (Per Session)'}</span>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-[11px] text-slate-400">
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-[10px] sm:text-[11px] text-slate-400">
             <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 1-3</strong> ${currentLang === 'ar' ? 'السياق الواقعي والهدف' : 'Industry Context & Goal'}</div>
             <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 4-8</strong> ${currentLang === 'ar' ? 'المخططات الهندسية' : 'Architecture Schematics'}</div>
             <div class="p-2 rounded bg-slate-950/60 border border-slate-800"><strong class="text-white block">Slides 9-14</strong> ${currentLang === 'ar' ? 'تطبيق عملي مع المدرب' : 'Guided Live Coding'}</div>
@@ -782,7 +839,7 @@
         `;
         container.appendChild(slidesBlock);
 
-        panel.className = `max-h-0 overflow-hidden transition-all duration-300 rounded-xl mt-4 px-6 border border-slate-200/60 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-950/40 active-expanded border-l-2 ${borderTheme} rtl:border-l-0 rtl:border-r-2`;
+        panel.className = `max-h-0 overflow-hidden transition-all duration-300 rounded-xl mt-4 px-3 sm:px-6 border border-slate-200/60 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-950/40 active-expanded border-l-2 ${borderTheme} rtl:border-l-0 rtl:border-r-2`;
         panel.style.maxHeight = `${container.scrollHeight + 80}px`;
         if (arrowIcon) arrowIcon.style.transform = 'rotate(180deg)';
       } else {
@@ -790,7 +847,7 @@
         panel.classList.remove('active-expanded');
         if (arrowIcon) arrowIcon.style.transform = 'rotate(0deg)';
         setTimeout(() => {
-          panel.className = "max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-4 border border-transparent";
+          panel.className = "max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50 dark:bg-slate-950/20 rounded-xl mt-4 px-3 sm:px-4 border border-transparent";
         }, 300);
       }
     }
@@ -827,9 +884,9 @@
 
     function setActiveFilter(filterId, element) {
       document.querySelectorAll('.filter-pill').forEach(btn => {
-        btn.className = "filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700";
+        btn.className = "filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700";
       });
-      element.className = "filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-sm";
+      element.className = "filter-pill shrink-0 px-3 sm:px-3.5 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-sm";
       currentActiveFilterGroup = filterId;
       executeFilters();
     }
@@ -845,16 +902,18 @@
     }
 
     function updateDarkModeButton() {
-      const darkIcon = document.getElementById('darkBtnIcon');
-      if (darkIcon) {
-        darkIcon.className = document.documentElement.classList.contains('dark') ? "fa-solid fa-sun text-amber-400" : "fa-solid fa-moon text-slate-500";
-      }
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('.darkBtnIcon').forEach(icon => {
+        icon.className = isDark ? "darkBtnIcon fa-solid fa-sun text-amber-400" : "darkBtnIcon fa-solid fa-moon text-slate-600";
+      });
     }
 
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ar' : 'en';
       document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+      document.querySelectorAll('.langBtnText').forEach(el => {
+        el.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+      });
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -892,12 +951,12 @@
       container.innerHTML = '';
       data.roadmap.forEach(item => {
         const node = document.createElement('div');
-        node.className = "relative pl-6 rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 dark:rtl:border-blue-900/60 rtl:-ml-[2px]";
+        node.className = "relative pl-5 sm:pl-6 rtl:pr-5 sm:rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 dark:rtl:border-blue-900/60 rtl:-ml-[2px]";
         node.innerHTML = `
-          <div class="absolute w-4 h-4 bg-blue-600 dark:bg-blue-500 rounded-full -left-[9px] rtl:-right-[9px] top-1 border-4 border-slate-50 dark:border-slate-900 shadow-sm"></div>
-          <span class="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">${item.step}</span>
-          <h5 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-1">${item.title}</h5>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>`;
+          <div class="absolute w-3.5 h-3.5 sm:w-4 sm:h-4 bg-blue-600 dark:bg-blue-500 rounded-full -left-[8px] rtl:-right-[8px] top-1 border-4 border-slate-50 dark:border-slate-900 shadow-sm"></div>
+          <span class="text-[10px] sm:text-xs font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">${item.step}</span>
+          <h5 class="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200 mt-0.5">${item.title}</h5>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>`;
         container.appendChild(node);
       });
     }
