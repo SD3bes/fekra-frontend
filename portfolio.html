@@ -22,12 +22,6 @@
       box-sizing: border-box;
     }
 
-    [data-aos] {
-      opacity: 1 !important;
-      transform: none !important;
-      visibility: visible !important;
-    }
-
     html {
       scroll-behavior: smooth;
       font-family: 'Inter', sans-serif;
@@ -71,30 +65,22 @@
       scrollbar-width: none;
     }
 
-    /* Fixed responsive dimensions for video wrappers */
-    .video-wrapper-box {
-      width: 100% !important;
-      height: 220px !important;
-      background-color: #020617 !important;
-      position: relative !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
+    /* Guaranteed video card dimensions */
+    .media-card-box {
+      width: 100%;
+      height: 220px;
+      background: #020617;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
     }
 
-    .video-wrapper-box video {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
-      display: block !important;
-    }
-
-    .modal-video-box {
-      width: 100% !important;
-      min-height: 220px !important;
-      max-height: 360px !important;
-      background-color: #000 !important;
-      display: block !important;
-      object-fit: contain !important;
+    .media-card-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #000;
     }
 
     .btn-premium {
@@ -139,6 +125,7 @@
   <!-- Mobile-Optimized Navbar -->
   <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-3 sm:p-4 shadow-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
+      <!-- Brand Logo -->
       <a href="./index.html" class="flex items-center gap-2 sm:gap-3 cursor-pointer">
         <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
         <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
@@ -162,7 +149,7 @@
         </li>
       </ul>
 
-      <!-- Mobile Controls -->
+      <!-- Mobile Right Controls -->
       <div class="flex items-center gap-2 lg:hidden">
         <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="flex items-center justify-center text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/70 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700">
           <i class="darkBtnIcon fa-solid fa-moon text-xs"></i>
@@ -187,7 +174,7 @@
     </div>
   </nav>
 
-  <!-- Header -->
+  <!-- Header / Hero Section -->
   <header class="py-10 sm:py-14 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
     <div class="container mx-auto px-4 max-w-6xl text-center space-y-6 sm:space-y-8">
       <div>
@@ -290,10 +277,10 @@
           <p id="modalStudentCredit" class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
-        <!-- Video Player Container with Explicit Fallback View Link -->
+        <!-- Video Player Container with Explicit Fallback Trigger -->
         <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800 relative group">
-          <div class="w-full bg-black relative flex items-center justify-center min-h-[220px]">
-            <video id="modalVideoPlayer" playsinline webkit-playsinline controls preload="auto" class="modal-video-box">
+          <div id="modalVideoWrapper" class="w-full bg-black relative flex items-center justify-center min-h-[220px]">
+            <video id="modalVideoPlayer" playsinline webkit-playsinline controls preload="auto" class="w-full max-h-[340px] bg-black object-contain">
               <source id="modalVideoSource" src="" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
@@ -301,7 +288,7 @@
           <div class="bg-slate-900/95 px-3 sm:px-4 py-2.5 flex items-center justify-between text-xs text-white border-t border-slate-800 flex-wrap gap-2">
             <span class="flex items-center gap-1.5 sm:gap-2 text-slate-300 text-[11px] sm:text-xs">
               <i class="fa-solid fa-circle-play text-blue-400"></i>
-              <a id="modalDirectVideoLink" href="#" target="_blank" class="hover:underline text-cyan-400 font-semibold" data-i18n="openFullscreenVideo">Open Raw Video in Fullscreen</a>
+              <a id="modalDirectVideoLink" href="#" target="_blank" class="hover:underline text-cyan-400 font-semibold" data-i18n="openFullscreenVideo">Open Direct Video Link</a>
             </span>
             <button id="voiceoverToggleBtn" onclick="toggleVoiceover()" class="btn-premium bg-blue-600 hover:bg-blue-500 text-white font-bold px-2.5 sm:px-3 py-1 rounded-full flex items-center gap-1.5 shadow text-[10px] sm:text-xs">
               <i id="voiceoverIcon" class="fa-solid fa-microphone-lines"></i>
@@ -382,7 +369,7 @@
         modalTechStackHeader: "Technologies & Libraries Applied",
         modalLiveLink: "Visit Live Platform",
         modalOrderService: "Order As Service (-30%)",
-        openFullscreenVideo: "Open Direct Video Stream",
+        openFullscreenVideo: "Open Direct Video Link",
         voiceoverPlay: "Play Voiceover Walkthrough",
         voiceoverStop: "Stop Voiceover",
         modalBuildSimilar: "Learn How to Build This",
@@ -404,7 +391,7 @@
         modalTechStackHeader: "التقنيات والمكتبات المستخدمة",
         modalLiveLink: "معاينة المنصة الحية",
         modalOrderService: "اطلب الخدمة بخصم 30%",
-        openFullscreenVideo: "فتح بث الفيديو الأصلي بحجم الشاشة",
+        openFullscreenVideo: "فتح رابط الفيديو المباشر",
         voiceoverPlay: "تشغيل التعليق الصوتي للمشروع",
         voiceoverStop: "إيقاف التعليق الصوتي",
         modalBuildSimilar: "اتعلم إزاي تبني مشروع زيه",
@@ -421,6 +408,8 @@
         icon: "fa-laptop-code",
         videoUrl: "./20261005-1703-48.3580028.mp4",
         liveUrl: "https://coen-s-redesign-page.vercel.app/",
+        posterGradient: "from-blue-900 to-slate-900",
+        posterIcon: "fa-laptop-code",
         voiceoverText: {
           en: "Welcome to the Coen's Commercial Platform redesign, engineered at Fekra Tech Academy. We rebuilt the user journey focusing on clean UI hierarchy, an interactive trade-in valuation engine, and high-performance cloud deployment on Vercel.",
           ar: "أهلاً بكم في مشروع إعادة تصميم وتطوير منصة Coen's التجارية من أكاديمية فكرة تك. قمنا ببناء واجهات تفاعلية متجاوبة بالكامل مع نظام تسعير فوري للأجهزة المستعملة واستضافة سريعة على Vercel."
@@ -459,6 +448,8 @@
         tags: "esp32 apple homekit siri iot smart home automation hap c++ embedded sensors homespan video إنترنت الأشياء منزل ذكي أبل هوم كيت سيري سنسورات أردوينو فيديو",
         icon: "fa-house-signal",
         videoUrl: "./smart-home-demo.mp4",
+        posterGradient: "from-emerald-900 to-slate-900",
+        posterIcon: "fa-house-signal",
         voiceoverText: {
           en: "This is our physical IoT Smart Villa project. Powered by an ESP32 microcontroller, it interfaces natively with Apple HomeKit and Siri for real-time lighting, presence alerts, and fire safety.",
           ar: "هذا مشروع الفيلا الذكية المصغرة بتقنيات إنترنت الأشياء، تعمل بمعالج ESP32 ومتصلة مباشرة بنظام Apple HomeKit للتحكم الكامل بالإضاءة والأمان عبر سيري."
@@ -647,17 +638,18 @@
       icon.className = "fa-solid fa-bars text-base";
     }
 
-    function handleVideoError(videoElement, fallbackUrl) {
-      const parent = videoElement.closest('.video-wrapper-box');
-      if (!parent) return;
-      parent.innerHTML = `
-        <div class="w-full h-full bg-slate-900 border border-slate-700/80 rounded-xl flex flex-col items-center justify-center p-4 text-center">
-          <div class="w-12 h-12 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center text-xl mb-2">
+    // Direct fallback renderer for video cards if browser cannot decode the MP4 stream
+    function triggerFallbackPlayer(containerId, projectIndex) {
+      const p = projectsData[projectIndex];
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = `
+        <div class="w-full h-full bg-gradient-to-br ${p.posterGradient || 'from-slate-800 to-slate-950'} flex flex-col items-center justify-center p-4 text-center">
+          <div class="w-12 h-12 rounded-full bg-blue-600/30 text-blue-400 flex items-center justify-center text-xl mb-2 border border-blue-500/40">
             <i class="fa-solid fa-play ml-0.5"></i>
           </div>
-          <span class="text-xs font-bold text-white mb-1">Interactive Project Demo</span>
-          <span class="text-[11px] text-slate-400 mb-2">Click below to watch the live recording</span>
-          <a href="${fallbackUrl}" target="_blank" class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-bold">Open Video</a>
+          <span class="text-xs font-bold text-white mb-1">Live Project Recording</span>
+          <a href="${p.videoUrl}" target="_blank" class="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-bold shadow">Watch Video Direct</a>
         </div>
       `;
     }
@@ -670,7 +662,7 @@
       container.innerHTML = '';
       let matchCount = 0;
 
-      projectsData.forEach(item => {
+      projectsData.forEach((item, index) => {
         const langData = item[currentLang];
         const matchesCategory = currentFilter === 'all' || item.category === currentFilter;
         const matchesSearch = searchVal === "" || 
@@ -697,10 +689,11 @@
           const card = document.createElement('div');
           card.className = `bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
 
-          // Video wrapper with auto-fallback handler
+          // Visual video container with automatic error fallback
+          const boxId = `videoBox-${index}`;
           const mediaHtml = item.videoUrl ? `
-            <div class="video-wrapper-box mb-4 border border-slate-200 dark:border-slate-800">
-              <video playsinline webkit-playsinline controls preload="metadata" onerror="handleVideoError(this, '${item.videoUrl}')">
+            <div id="${boxId}" class="media-card-box mb-4 border border-slate-200 dark:border-slate-800">
+              <video playsinline webkit-playsinline controls preload="metadata" onerror="triggerFallbackPlayer('${boxId}', ${index})">
                 <source src="${item.videoUrl}" type="video/mp4">
               </video>
               <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -773,8 +766,8 @@
       const videoContainer = document.getElementById('modalVideoContainer');
       const videoPlayer = document.getElementById('modalVideoPlayer');
       const videoSource = document.getElementById('modalVideoSource');
-      const externalLink = document.getElementById('modalExternalLink');
       const directVideoLink = document.getElementById('modalDirectVideoLink');
+      const externalLink = document.getElementById('modalExternalLink');
       const voiceoverBtnLabel = document.getElementById('voiceoverBtnLabel');
 
       document.getElementById('modalTitle').textContent = data.title;
