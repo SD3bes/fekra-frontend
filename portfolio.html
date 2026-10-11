@@ -69,7 +69,6 @@
       scrollbar-width: none;
     }
 
-    /* Fixed responsive dimensions for video wrappers */
     .video-card-container {
       width: 100% !important;
       min-height: 220px !important;
@@ -138,13 +137,12 @@
         <h1 class="text-lg sm:text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 logo-font uppercase">Fekra Tech</h1>
       </a>
 
-      <!-- Desktop Links -->
       <ul class="hidden lg:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
-        <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
-        <li><a href="./courses.html" class="hover:text-blue-600 dark:hover:text-blue-400">Tracks & Tuition</a></li>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./courses.html">Tracks & Tuition</a></li>
         <li><a href="./portfolio.html" class="text-blue-600 dark:text-blue-400 font-bold">Portfolio</a></li>
-        <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400">Services (-30%)</a></li>
-        <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400">Team</a></li>
+        <li><a href="./services.html">Services (-30%)</a></li>
+        <li><a href="./index.html#team">Team</a></li>
         <li class="flex items-center gap-2">
           <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
             <i class="darkBtnIcon fa-solid fa-moon"></i>
@@ -155,7 +153,6 @@
         </li>
       </ul>
 
-      <!-- Mobile Right Controls -->
       <div class="flex items-center gap-2 lg:hidden">
         <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="flex items-center justify-center text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/70 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700">
           <i class="darkBtnIcon fa-solid fa-moon text-xs"></i>
@@ -169,7 +166,6 @@
       </div>
     </div>
 
-    <!-- Mobile Drawer Menu -->
     <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-3 space-y-3 px-2">
       <a href="./index.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm">Home</a>
       <a href="./courses.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm">Tracks & Tuition</a>
@@ -190,7 +186,6 @@
         <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed px-2">Real-world systems built by Fekra Tech Academy students. Explore full-stack web platforms, IoT smart robotics, automated CLI cyber tools, and corporate network architectures.</p>
       </div>
 
-      <!-- Quick Metrics -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-center">
         <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
           <span class="block text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400 logo-font">100%</span>
@@ -216,7 +211,7 @@
   <main class="py-10 sm:py-12 container mx-auto px-3 sm:px-4 max-w-6xl flex-grow">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-      <!-- PROJECT 1: Coen's Platform (Video 1) -->
+      <!-- PROJECT 1: Coen's Platform -->
       <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-blue-600 glow-card-blue">
         <div>
           <div class="flex justify-between items-center mb-3 sm:mb-4">
@@ -228,11 +223,9 @@
             </span>
           </div>
 
-          <!-- Video Wrapper 1 -->
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
             <video playsinline webkit-playsinline controls preload="metadata">
               <source src="./20261005-1703-48.3580028.mp4" type="video/mp4">
-              <source src="20261005-1703-48.3580028.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
             <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -271,7 +264,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 2: Apple HomeKit Smart Home (Video 2 + Live Tool Link) -->
+      <!-- PROJECT 2: Apple HomeKit Smart Home -->
       <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-emerald-500 glow-card-emerald">
         <div>
           <div class="flex justify-between items-center mb-3 sm:mb-4">
@@ -283,11 +276,9 @@
             </span>
           </div>
 
-          <!-- Video Wrapper 2 -->
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
             <video playsinline webkit-playsinline controls preload="metadata">
               <source src="./smart-home-demo-full.mp4" type="video/mp4">
-              <source src="smart-home-demo-full.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
             <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -326,7 +317,7 @@
         </div>
       </div>
 
-      <!-- PROJECT 3: Network Recon Tool (Video 3 + Live Link) -->
+      <!-- PROJECT 3: Network Recon Tool -->
       <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-indigo-600 glow-card-indigo">
         <div>
           <div class="flex justify-between items-center mb-3 sm:mb-4">
@@ -338,11 +329,9 @@
             </span>
           </div>
 
-          <!-- Video Wrapper 3 -->
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
             <video playsinline webkit-playsinline controls preload="metadata">
               <source src="./recon-tool-demo.mp4" type="video/mp4">
-              <source src="recon-tool-demo.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
             <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -532,7 +521,7 @@
     </div>
   </section>
 
-  <!-- Interactive Project Case Study Modal (With Unified Egyptian / US AI Voiceover Bar) -->
+  <!-- Interactive Project Case Study Modal -->
   <div id="projectModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-2 sm:p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeProjectModal()"></div>
     <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800 flex flex-col max-h-[92vh]" id="modalCard">
@@ -551,7 +540,6 @@
           <p id="modalStudentCredit" class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
-        <!-- Video Player Inside Modal -->
         <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800 relative group">
           <div class="w-full bg-black relative flex items-center justify-center min-h-[220px]">
             <video id="modalVideoPlayer" playsinline webkit-playsinline controls preload="auto" class="w-full max-h-[340px] bg-black object-contain">
@@ -567,7 +555,6 @@
           </div>
         </div>
 
-        <!-- Unified Egyptian & Native American AI Voiceover Control Bar -->
         <div class="rounded-xl bg-slate-900/90 border border-slate-800 px-4 py-3 flex items-center justify-between shadow-md flex-wrap gap-3">
           <div class="flex items-center gap-2">
             <div class="w-8 h-8 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center text-sm">
@@ -584,7 +571,6 @@
           </button>
         </div>
 
-        <!-- 4-STEP CASE STUDY STEPS -->
         <div class="space-y-3">
           <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider flex items-center gap-2">
             <i class="fa-solid fa-layer-group text-blue-500"></i> <span>4-Step Engineering Case Study</span>
@@ -781,7 +767,6 @@
         voiceoverBtnLabel.textContent = currentLang === 'ar' ? 'تشغيل التعليق الصوتي (مصري)' : 'Play AI Voiceover (US)';
       }
 
-      // Populate Steps
       const stepsGrid = document.getElementById('modalStepsGrid');
       stepsGrid.innerHTML = '';
       data.steps.forEach(s => {
@@ -795,7 +780,6 @@
         stepsGrid.appendChild(stepCol);
       });
 
-      // Populate Tech Pills
       const techContainer = document.getElementById('modalTechPills');
       techContainer.innerHTML = '';
       data.techStack.forEach(t => {
@@ -805,7 +789,6 @@
         techContainer.appendChild(pill);
       });
 
-      // Handle Video in modal with explicit file mapping
       if (data.videoUrl) {
         videoContainer.classList.remove('hidden');
         videoSource.src = data.videoUrl;
@@ -820,7 +803,6 @@
         videoSource.removeAttribute('src');
       }
 
-      // Handle External Live Link
       if (data.liveUrl) {
         externalLink.classList.remove('hidden');
         externalLink.href = data.liveUrl;
