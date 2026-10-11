@@ -162,7 +162,7 @@
     </div>
   </header>
 
-  <!-- Tracks Section -->
+  <!-- Tracks Section (Carousel) -->
   <section id="tracks" class="py-20 container mx-auto px-4 max-w-7xl overflow-hidden">
     <div class="text-center mb-16">
       <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 logo-font" data-i18n="tracksTitle">OUR TRACKS</h3>
@@ -171,7 +171,7 @@
     </div>
 
     <div class="relative w-full flex items-center px-4 md:px-12">
-      <button onclick="slideTracks('left')" type="button" aria-label="Slide Left" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute left-2 md:left-4 select-none">
+      <button onclick="slideCarousel('tracksCarousel', 'left', originalTracksCardsCount)" type="button" aria-label="Slide Tracks Left" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute left-2 md:left-4 select-none">
         <i class="fa-solid fa-chevron-left text-lg rtl:rotate-180"></i>
       </button>
 
@@ -251,7 +251,7 @@
 
       </div>
 
-      <button onclick="slideTracks('right')" type="button" aria-label="Slide Right" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute right-2 md:right-4 select-none">
+      <button onclick="slideCarousel('tracksCarousel', 'right', originalTracksCardsCount)" type="button" aria-label="Slide Tracks Right" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute right-2 md:right-4 select-none">
         <i class="fa-solid fa-chevron-right text-lg rtl:rotate-180"></i>
       </button>
     </div>
@@ -263,110 +263,137 @@
     </div>
   </section>
 
-  <!-- Team Section (4 Instructors with Connect & Info Buttons) -->
-  <section id="team" class="py-20 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800/40">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <!-- Team Section (Carousel with Left/Right Buttons & Show All Button) -->
+  <section id="team" class="py-20 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800/40 overflow-hidden">
+    <div class="container mx-auto px-4 max-w-7xl">
       <div class="text-center mb-16">
         <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 logo-font" data-i18n="teamTitle">THE EXPERTS</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3"></div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base font-medium" data-i18n="teamSubtitle">Industry-certified engineers and technical instructors guiding our academy cohorts.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 items-start">
-        
-        <!-- Sief Daabes -->
-        <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col justify-between">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 z-0 rounded-t-2xl"></div>
-          <div class="relative z-10 text-center mb-2">
-            <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg transition-transform duration-500 group-hover:scale-105" onerror="this.src='./pagelogo.png'">
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Sief Daabes</h4>
-            <p class="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider" data-i18n="siefRole">Instructor & Security Specialist</p>
-          </div>
-          <div id="siefBioPanel" class="hidden my-4 px-2 overflow-hidden">
-            <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="siefBio">
-              Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.
-            </p>
-          </div>
-          <div class="flex justify-center items-center gap-3 mt-6 pt-2">
-            <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
-              <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
-            </a>
-            <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
-              <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
-            </button>
-          </div>
-        </div>
+      <!-- Team Carousel Wrapper -->
+      <div id="teamCarouselWrapper" class="relative w-full flex items-center px-4 md:px-12">
+        <button onclick="slideCarousel('teamCarousel', 'left', originalTeamCardsCount)" type="button" aria-label="Slide Team Left" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute left-2 md:left-4 select-none">
+          <i class="fa-solid fa-chevron-left text-lg rtl:rotate-180"></i>
+        </button>
 
-        <!-- Ahmed Galal -->
-        <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col justify-between">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950 z-0 rounded-t-2xl"></div>
-          <div class="relative z-10 text-center mb-2">
-            <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg transition-transform duration-500 group-hover:scale-105" onerror="this.src='./pagelogo.png'">
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Ahmed Galal</h4>
-            <p class="text-slate-800 dark:text-slate-300 text-sm font-semibold uppercase tracking-wider" data-i18n="ahmedRole">IT Specialist & Instructor</p>
-          </div>
-          <div id="ahmedBioPanel" class="hidden my-4 px-2 overflow-hidden">
-            <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="ahmedBio">
-              Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.
-            </p>
-          </div>
-          <div class="flex justify-center items-center gap-3 mt-6 pt-2">
-            <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
-              <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
-            </a>
-            <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
-              <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Mohamed Gary (Mohamed Ahmed Ibrahim) -->
-        <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col justify-between">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-cyan-700 to-blue-900 z-0 rounded-t-2xl"></div>
-          <div class="relative z-10 text-center mb-2">
-            <img src="./mohamed-pic.jpeg" alt="Mohamed Gary" class="w-40 h-40 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg transition-transform duration-500 group-hover:scale-105" onerror="this.src='./pagelogo.png'">
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Mohamed Gary</h4>
-            <p class="text-cyan-600 dark:text-cyan-400 text-sm font-semibold uppercase tracking-wider" data-i18n="garyRole">AI Engineer & Data Scientist</p>
-          </div>
-          <div id="garyBioPanel" class="hidden my-4 px-2 overflow-hidden">
-            <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="garyBio">
-              Mohamed holds a Bachelor's Degree in Artificial Intelligence from the Faculty of Computers and Artificial Intelligence, Helwan University. He works as an AI Engineer with proven expertise across Deep Learning, NLP, Computer Vision (YOLOv11), and RAG AI Agent systems using LangChain and vector databases. Certified as an IBM Data Science Professional and Generative AI specialist, he mentors students in building real-world AI pipelines, model deployment, and Python machine learning architectures.
-            </p>
-          </div>
-          <div class="flex justify-center items-center gap-3 mt-6 pt-2">
-            <a href="https://www.linkedin.com/in/mohamed-ahmed-484188246" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-blue-800 shadow-md">
-              <i class="fa-brands fa-linkedin text-lg"></i> <span data-i18n="btnConnect">Connect</span>
-            </a>
-            <button onclick="toggleBio('gary')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
-              <i class="fa-solid fa-circle-info text-cyan-600 dark:text-cyan-400"></i> <span data-i18n="btnInfo">Info</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Jawad Wayloox -->
-        <div class="bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-transparent dark:border-slate-800/80 relative group flex flex-col justify-between">
-          <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-r from-blue-700 to-indigo-900 z-0 rounded-t-2xl"></div>
-          <div class="relative z-10 text-center mb-2">
-            <div class="w-40 h-40 mx-auto rounded-full bg-cyan-500/20 text-cyan-400 border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center font-bold text-3xl mb-4 transition-transform duration-500 group-hover:scale-105">
-              JW
+        <div id="teamCarousel" class="flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start">
+          
+          <!-- Sief Daabes -->
+          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+            <div class="w-full">
+              <div class="w-full h-20 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="text-center mb-2">
+                <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-36 h-36 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-16" onerror="this.src='./pagelogo.png'">
+                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Sief Daabes</h4>
+                <p class="text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="siefRole">Instructor & Security Specialist</p>
+              </div>
+              <div id="siefBioPanel" class="hidden my-4 px-2 overflow-hidden">
+                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="siefBio">
+                  Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.
+                </p>
+              </div>
             </div>
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Jawad Wayloox</h4>
-            <p class="text-cyan-600 dark:text-cyan-400 text-sm font-semibold uppercase tracking-wider" data-i18n="jawadRole">Frontend & Web Instructor</p>
+            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow-md">
+                <i class="fa-brands fa-linkedin text-base"></i> <span data-i18n="btnConnect">Connect</span>
+              </a>
+              <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+                <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
+              </button>
+            </div>
           </div>
-          <div id="jawadBioPanel" class="hidden my-4 px-2 overflow-hidden">
-            <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="jawadBio">
-              Modern frontend practitioner focusing on React, Next.js, responsive layouts, client-side state architectures, and UI/UX design systems. Mentors students in translating visual mockups into production-grade interactive web applications.
-            </p>
+
+          <!-- Ahmed Galal -->
+          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+            <div class="w-full">
+              <div class="w-full h-20 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="text-center mb-2">
+                <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-36 h-36 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-16" onerror="this.src='./pagelogo.png'">
+                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Ahmed Galal</h4>
+                <p class="text-slate-700 dark:text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="ahmedRole">IT Specialist & Instructor</p>
+              </div>
+              <div id="ahmedBioPanel" class="hidden my-4 px-2 overflow-hidden">
+                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="ahmedBio">
+                  Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow-md">
+                <i class="fa-brands fa-linkedin text-base"></i> <span data-i18n="btnConnect">Connect</span>
+              </a>
+              <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+                <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
+              </button>
+            </div>
           </div>
-          <div class="flex justify-center items-center gap-3 mt-6 pt-2">
-            <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-[#20bd5a] shadow-md">
-              <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="btnConnect">Contact</span>
-            </a>
-            <button onclick="toggleBio('jawad')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-sm font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
-              <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
-            </button>
+
+          <!-- Mohamed Gary -->
+          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+            <div class="w-full">
+              <div class="w-full h-20 bg-gradient-to-r from-cyan-700 to-blue-900 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="text-center mb-2">
+                <img src="./mohamed-pic.jpeg" alt="Mohamed Gary" class="w-36 h-36 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-16" onerror="this.src='./pagelogo.png'">
+                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Mohammed Ibrahim </h4>
+                <p class="text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="garyRole">AI Engineer & Data Scientist</p>
+              </div>
+              <div id="garyBioPanel" class="hidden my-4 px-2 overflow-hidden">
+                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="garyBio">
+                  Mohamed holds a Bachelor's Degree in Artificial Intelligence from the Faculty of Computers and Artificial Intelligence, Helwan University. He works as an AI Engineer with proven expertise across Deep Learning, NLP, Computer Vision (YOLOv11), and RAG AI Agent systems using LangChain and vector databases. Certified as an IBM Data Science Professional and Generative AI specialist, he mentors students in building real-world AI pipelines, model deployment, and Python machine learning architectures.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://www.linkedin.com/in/mohamed-ahmed-484188246" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow-md">
+                <i class="fa-brands fa-linkedin text-base"></i> <span data-i18n="btnConnect">Connect</span>
+              </a>
+              <button onclick="toggleBio('gary')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+                <i class="fa-solid fa-circle-info text-cyan-600 dark:text-cyan-400"></i> <span data-i18n="btnInfo">Info</span>
+              </button>
+            </div>
           </div>
+
+          <!-- Jawad Wayloox -->
+          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+            <div class="w-full">
+              <div class="w-full h-20 bg-gradient-to-r from-blue-700 to-indigo-900 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="text-center mb-2">
+                <div class="w-36 h-36 mx-auto rounded-full bg-cyan-500/20 text-cyan-400 border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center font-bold text-3xl mb-4 -mt-16">
+                  JW
+                </div>
+                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Jawad Wayloox</h4>
+                <p class="text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="jawadRole">Frontend & Web Instructor</p>
+              </div>
+              <div id="jawadBioPanel" class="hidden my-4 px-2 overflow-hidden">
+                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="jawadBio">
+                  Modern frontend practitioner focusing on React, Next.js, responsive layouts, client-side state architectures, and UI/UX design systems. Mentors students in translating visual mockups into production-grade interactive web applications.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-[#20bd5a] shadow-md">
+                <i class="fa-brands fa-whatsapp text-base"></i> <span data-i18n="btnConnectWA">Contact</span>
+              </a>
+              <button onclick="toggleBio('jawad')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+                <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
+              </button>
+            </div>
+          </div>
+
         </div>
 
+        <button onclick="slideCarousel('teamCarousel', 'right', originalTeamCardsCount)" type="button" aria-label="Slide Team Right" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute right-2 md:right-4 select-none">
+          <i class="fa-solid fa-chevron-right text-lg rtl:rotate-180"></i>
+        </button>
+      </div>
+
+      <!-- Toggle Show All Team Button -->
+      <div class="text-center mt-12">
+        <button id="toggleTeamBtn" onclick="toggleShowAllTeam()" type="button" class="btn-premium glow-blue bg-blue-600 text-white font-bold px-7 py-3.5 rounded-full shadow-md text-sm inline-flex items-center gap-2">
+          <i id="toggleTeamIcon" class="fa-solid fa-users"></i> <span id="toggleTeamText" data-i18n="btnShowAllTeam">Show All Team</span>
+        </button>
       </div>
     </div>
   </section>
@@ -471,39 +498,49 @@
   <script>
     let currentLang = 'en';
     let currentOpenTrack = null;
-    let originalCardsCount = 0;
+    let isTeamExpanded = false;
+
+    let originalTracksCardsCount = 0;
+    let originalTeamCardsCount = 0;
 
     const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwJvM_HnSTdW15J9788gLhi5YzPnsaSI7sAPn8X4eBnGDmSH2YiyyfEzvD0JXoOU3yE/exec"; 
     const ACADEMY_WHATSAPP_NUMBER = "201099995519";
 
     document.addEventListener("DOMContentLoaded", () => {
       updateDarkModeButton();
-      
-      const carousel = document.getElementById('tracksCarousel');
+      initCarousel('tracksCarousel', count => { originalTracksCardsCount = count; });
+      initCarousel('teamCarousel', count => { originalTeamCardsCount = count; });
+    });
+
+    function initCarousel(carouselId, setCountCallback) {
+      const carousel = document.getElementById(carouselId);
       if (!carousel) return;
 
       const originals = Array.from(carousel.children);
-      originalCardsCount = originals.length;
-      
+      const originalCount = originals.length;
+      if (setCountCallback) setCountCallback(originalCount);
+
       originals.forEach(card => carousel.appendChild(card.cloneNode(true)));
       originals.slice().reverse().forEach(card => carousel.insertBefore(card.cloneNode(true), carousel.firstChild));
 
       setTimeout(() => {
         const card = carousel.querySelector('.snap-center');
         if (card) {
-          carousel.scrollLeft = originalCardsCount * (card.offsetWidth + 24);
+          carousel.scrollLeft = originalCount * (card.offsetWidth + 24);
         }
       }, 100);
-    });
+    }
 
-    function slideTracks(direction) {
-      const carousel = document.getElementById('tracksCarousel');
+    function slideCarousel(carouselId, direction, originalCount) {
+      if (carouselId === 'teamCarousel' && isTeamExpanded) return;
+
+      const carousel = document.getElementById(carouselId);
       if (!carousel) return;
       const card = carousel.querySelector('.snap-center');
       if (!card) return;
-      
+
       const scrollAmount = card.offsetWidth + 24; 
-      const setWidth = originalCardsCount * scrollAmount;
+      const setWidth = originalCount * scrollAmount;
       const vectorFactor = document.documentElement.getAttribute('dir') === 'rtl' ? -1 : 1;
 
       if (carousel.scrollLeft >= (setWidth * 2) - scrollAmount) {
@@ -524,6 +561,51 @@
           carousel.scrollLeft += scrollAmount * vectorFactor;
         }
       }, 10);
+    }
+
+    function toggleShowAllTeam() {
+      const wrapper = document.getElementById('teamCarouselWrapper');
+      const carousel = document.getElementById('teamCarousel');
+      const toggleBtn = document.getElementById('toggleTeamBtn');
+      const toggleText = document.getElementById('toggleTeamText');
+      const toggleIcon = document.getElementById('toggleTeamIcon');
+      const arrowBtns = wrapper.querySelectorAll('button[aria-label^="Slide Team"]');
+
+      isTeamExpanded = !isTeamExpanded;
+
+      if (isTeamExpanded) {
+        arrowBtns.forEach(btn => btn.classList.add('hidden'));
+        carousel.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mx-auto";
+        
+        // Remove cloned nodes to show exactly the 4 distinct instructors in the grid
+        const cards = Array.from(carousel.children);
+        if (originalTeamCardsCount > 0 && cards.length > originalTeamCardsCount) {
+          cards.slice(0, originalTeamCardsCount).forEach(c => c.remove());
+          while (carousel.children.length > originalTeamCardsCount) {
+            carousel.lastElementChild.remove();
+          }
+        }
+
+        Array.from(carousel.children).forEach(card => {
+          card.classList.remove('shrink-0', 'snap-center', 'w-full', 'sm:w-[calc((100%-1.5rem)/2)]', 'lg:w-[calc((100%-3rem)/3)]');
+          card.classList.add('w-full');
+        });
+
+        toggleText.textContent = i18n[currentLang].btnShowCarouselTeam;
+        toggleIcon.className = "fa-solid fa-arrows-left-right";
+      } else {
+        arrowBtns.forEach(btn => btn.classList.remove('hidden'));
+        carousel.className = "flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start";
+        
+        Array.from(carousel.children).forEach(card => {
+          card.classList.add('w-full', 'sm:w-[calc((100%-1.5rem)/2)]', 'lg:w-[calc((100%-3rem)/3)]', 'shrink-0', 'snap-center');
+        });
+
+        initCarousel('teamCarousel', count => { originalTeamCardsCount = count; });
+
+        toggleText.textContent = i18n[currentLang].btnShowAllTeam;
+        toggleIcon.className = "fa-solid fa-users";
+      }
     }
 
     function toggleDarkMode() {
@@ -561,6 +643,12 @@
           el.textContent = i18n[currentLang][key];
         }
       });
+
+      const toggleText = document.getElementById('toggleTeamText');
+      if (toggleText) {
+        toggleText.textContent = isTeamExpanded ? i18n[currentLang].btnShowCarouselTeam : i18n[currentLang].btnShowAllTeam;
+      }
+
       if (currentOpenTrack) renderModalData(currentOpenTrack);
     }
 
@@ -587,8 +675,12 @@
         desDesc: "Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.",
         btnEnroll: "View Roadmap & Enroll",
         teamTitle: "THE EXPERTS",
+        teamSubtitle: "Industry-certified engineers and technical instructors guiding our academy cohorts.",
         btnConnect: "Connect",
+        btnConnectWA: "Contact",
         btnInfo: "Info",
+        btnShowAllTeam: "Show All Team",
+        btnShowCarouselTeam: "Back to Slider",
         siefRole: "Instructor & Security Specialist",
         siefBio: "Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.",
         ahmedRole: "IT Specialist & Instructor",
@@ -637,8 +729,12 @@
         desDesc: "حول أفكارك لتصميمات مبهرة. اتعلم أهم أدوات التصميم الجرافيكي وابتكر.",
         btnEnroll: "شوف الخطة وسجل",
         teamTitle: "خبرائنا",
+        teamSubtitle: "مهندسون ومدربون معتمدون يقودون الدفعات التدريبية في الأكاديمية.",
         btnConnect: "تواصل",
+        btnConnectWA: "تواصل",
         btnInfo: "معلومات",
+        btnShowAllTeam: "عرض كل الفريق",
+        btnShowCarouselTeam: "الرجوع للشريط التفاعلي",
         siefRole: "مدرب وأخصائي أمن سيبراني",
         siefBio: "سيف خريج متخصص في الأمن السيبراني معاه بكالوريوس في أنظمة الكمبيوتر والشبكات والاتصالات من الجامعة العربية المفتوحة. بصفته رئيس فريق المدربين في مبادرة المبرمج الصغير، درب ووجه أكتر من 500 طالب في البرمجة والشبكات. متخصص في عمليات السوك (SOC) واكتشاف التهديدات والاستجابة ليها. معاه شهادات معتمدة عالمياً زي CCNA و CEH و Fortinet Certified Associate.",
         ahmedRole: "أخصائي تكنولوجيا معلومات ومدرب",
