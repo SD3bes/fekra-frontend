@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fekra Tech Academy | Student Project Showcase & Portfolio</title>
 
   <link rel="icon" type="image/png" href="./logo-main.png">
@@ -16,12 +16,9 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
     html {
       scroll-behavior: smooth;
       font-family: 'Inter', sans-serif;
@@ -57,33 +54,13 @@
       background: #334155;
     }
 
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    /* Fixed responsive dimensions for video wrappers */
-    .video-card-container {
-      width: 100% !important;
-      min-height: 220px !important;
-      max-height: 240px !important;
-      background-color: #020617 !important;
-      position: relative !important;
-      border-radius: 12px !important;
-      overflow: hidden !important;
-      display: block !important;
-    }
-
-    .video-card-container video {
-      width: 100% !important;
-      height: 100% !important;
-      min-height: 220px !important;
-      object-fit: cover !important;
-      display: block !important;
-      background-color: #000 !important;
+    body, nav, section, main, div, h1, h2, h3, h4, h5, p, span, a, button, input, select, textarea, img, i {
+      transition: background-color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  border-color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  color 250ms cubic-bezier(0.215, 0.610, 0.355, 1), 
+                  box-shadow 250ms cubic-bezier(0.215, 0.610, 0.355, 1),
+                  transform 250ms cubic-bezier(0.25, 0.8, 0.25, 1),
+                  opacity 250ms ease;
     }
 
     .btn-premium {
@@ -109,476 +86,203 @@
 
     .glow-card-pink:hover { box-shadow: 0 15px 30px -5px rgba(236, 72, 153, 0.2); border-color: rgba(236, 72, 153, 0.5); }
     .dark .glow-card-pink:hover { box-shadow: 0 15px 30px -5px rgba(236, 72, 153, 0.35); border-color: rgba(236, 72, 153, 0.6); }
+
+    .search-focus:focus-within {
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4);
+      border-color: rgba(37, 99, 235, 0.5);
+    }
+
+    #projectModal, #modalCard {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
   </style>
   <script>
-    try {
-      if (localStorage.getItem('theme') === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    } catch (e) {
+    if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   </script>
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white min-h-screen flex flex-col justify-between">
 
-  <!-- Mobile-Optimized Navbar -->
-  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-3 sm:p-4 shadow-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800/60">
+  <!-- Navbar -->
+  <nav class="bg-white/90 dark:bg-slate-900/80 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md sticky top-0 z-40 border-b border-transparent dark:border-slate-800/50">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="./index.html" class="flex items-center gap-2 sm:gap-3 cursor-pointer">
-        <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
-        <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
-        <h1 class="text-lg sm:text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 logo-font uppercase">Fekra Tech</h1>
+      <a href="./index.html" class="flex items-center gap-3 cursor-pointer">
+        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden">
+        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block">
+        <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
       </a>
-
-      <!-- Desktop Links -->
-      <ul class="hidden lg:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
-        <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
-        <li><a href="./courses.html" class="hover:text-blue-600 dark:hover:text-blue-400">Tracks & Tuition</a></li>
-        <li><a href="./portfolio.html" class="text-blue-600 dark:text-blue-400 font-bold">Portfolio</a></li>
-        <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400">Services (-30%)</a></li>
-        <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400">Team</a></li>
+      <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
+        <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navHome">Home</a></li>
+        <li><a href="./courses.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTracks">Tracks & Tuition</a></li>
+        <li><a href="./portfolio.html" class="text-blue-600 dark:text-blue-400 font-bold" data-i18n="navPortfolio">Portfolio</a></li>
+        <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
         <li class="flex items-center gap-2">
-          <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
-            <i class="darkBtnIcon fa-solid fa-moon"></i>
+          <button onclick="toggleDarkMode()" id="darkModeBtn" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
+            <i id="darkBtnIcon" class="fa-solid fa-moon"></i>
           </button>
-          <button onclick="toggleLanguage()" aria-label="Toggle Language" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
-            <i class="fa-solid fa-globe"></i> <span class="langBtnText">عربي</span>
+          <button onclick="toggleLanguage()" aria-label="Toggle Language" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
+            <i class="fa-solid fa-globe"></i> <span id="langBtnText">عربي</span>
           </button>
         </li>
       </ul>
-
-      <!-- Mobile Right Controls -->
-      <div class="flex items-center gap-2 lg:hidden">
-        <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="flex items-center justify-center text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/70 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700">
-          <i class="darkBtnIcon fa-solid fa-moon text-xs"></i>
-        </button>
-        <button onclick="toggleLanguage()" aria-label="Toggle Language" class="flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-xs bg-slate-100 dark:bg-slate-800/70 px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700">
-          <span class="langBtnText">عربي</span>
-        </button>
-        <button onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="flex items-center justify-center text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 ml-1">
-          <i id="hamburgerIcon" class="fa-solid fa-bars text-base"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer Menu -->
-    <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-3 space-y-3 px-2">
-      <a href="./index.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm">Home</a>
-      <a href="./courses.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm">Tracks & Tuition</a>
-      <a href="./portfolio.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm text-blue-600 dark:text-blue-400">Portfolio</a>
-      <a href="./services.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm">Services (-30%)</a>
-      <a href="./index.html#team" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm">Team</a>
-      <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="block text-center bg-blue-600 text-white font-bold py-2.5 rounded-xl shadow-md text-sm">Contact Us</a>
     </div>
   </nav>
 
-  <!-- Header -->
-  <header class="py-10 sm:py-14 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
-    <div class="container mx-auto px-4 max-w-6xl text-center space-y-6 sm:space-y-8">
-      <div>
-        <span class="inline-block bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-[11px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 sm:mb-4 border border-blue-200 dark:border-blue-900/60">Applied Technical Excellence</span>
-        <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-2 sm:mb-3 logo-font uppercase tracking-tight">Student & Academy Showcase</h2>
-        <div class="w-20 sm:w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3 sm:mb-4"></div>
-        <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed px-2">Real-world systems built by Fekra Tech Academy students. Explore full-stack web platforms, IoT smart robotics, automated CLI cyber tools, and corporate network architectures.</p>
+  <!-- Header / Hero Section -->
+  <header class="py-14 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
+    <div class="container mx-auto px-4 max-w-6xl text-center space-y-8">
+      <div data-aos="fade-up">
+        <span class="inline-block bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 border border-blue-200 dark:border-blue-900/60" data-i18n="portfolioBadge">Applied Technical Excellence</span>
+        <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-3 logo-font uppercase tracking-tight" data-i18n="portfolioTitle">Student & Academy Showcase</h2>
+        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+        <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto text-sm md:text-base leading-relaxed" data-i18n="portfolioDesc">We measure our success not by certificates on a wall, but by real-world systems built. Explore full-stack web platforms, IoT smart robotics, defensive cyber laboratories, and professional creative identities built by Fekra Tech students aged 8 to 18.</p>
       </div>
 
-      <!-- Quick Metrics -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-center">
-        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400 logo-font">100%</span>
-          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Hands-On Code</span>
+      <!-- Live Academy Metrics -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-delay="50">
+        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-2xl font-black text-blue-600 dark:text-blue-400 logo-font">100%</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statHandsOn">Hands-On Code</span>
         </div>
-        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400 logo-font">50+</span>
-          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Shipped Projects</span>
+        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-2xl font-black text-emerald-600 dark:text-emerald-400 logo-font">50+</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statProjects">Shipped Projects</span>
         </div>
-        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400 logo-font">8–18</span>
-          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Target Age Range</span>
+        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-2xl font-black text-indigo-600 dark:text-indigo-400 logo-font">8–18</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statAges">Target Age Range</span>
         </div>
-        <div class="bg-white dark:bg-slate-900/40 p-3 sm:p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
-          <span class="block text-xl sm:text-2xl font-black text-pink-500 dark:text-pink-400 logo-font">0%</span>
-          <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Toy / Filler Content</span>
+        <div class="bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200/40 dark:border-slate-800/40 shadow-sm">
+          <span class="block text-2xl font-black text-pink-500 dark:text-pink-400 logo-font">0%</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-medium" data-i18n="statGamified">Toy / Filler Content</span>
+        </div>
+      </div>
+
+      <!-- Search & Category Filters -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-full md:w-80 flex items-center gap-2 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 search-focus transition-all">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <input type="text" id="projectSearchInput" oninput="filterProjects()" placeholder="Search projects, skills, tech..." class="w-full bg-transparent focus:outline-none text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400">
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2" id="filterPillsContainer">
+          <button onclick="setActiveFilter('all', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md" data-i18n="filterAll">All Work</button>
+          <button onclick="setActiveFilter('web', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterWeb">Web & Apps</button>
+          <button onclick="setActiveFilter('python', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterPython">Python & AI</button>
+          <button onclick="setActiveFilter('iot', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterIoT">Robotics & IoT</button>
+          <button onclick="setActiveFilter('security', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterSecurity">Networks & Cyber</button>
+          <button onclick="setActiveFilter('design', this)" class="filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700" data-i18n="filterDesign">Design & Media</button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Showcase Cards Grid -->
-  <main class="py-10 sm:py-12 container mx-auto px-3 sm:px-4 max-w-6xl flex-grow">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+  <!-- Projects Grid -->
+  <main class="py-12 container mx-auto px-4 max-w-6xl flex-grow">
+    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Dynamic Project Cards rendered by JavaScript -->
+    </div>
 
-      <!-- PROJECT 1: Coen's Platform (Video 1) -->
-      <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-blue-600 glow-card-blue">
-        <div>
-          <div class="flex justify-between items-center mb-3 sm:mb-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400">
-              <i class="fa-solid fa-laptop-code"></i>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400">
-              WEB & APPS
-            </span>
-          </div>
-
-          <!-- Video Wrapper 1 -->
-          <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="metadata">
-              <source src="./20261005-1703-48.3580028.mp4" type="video/mp4">
-              <source src="20261005-1703-48.3580028.mp4" type="video/mp4">
-              Your browser does not support HTML5 video streaming.
-            </video>
-            <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span>LIVE DEMO</span>
-            </div>
-          </div>
-
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
-            Coen's Commercial Tech Redesign & Trade-In Platform
-          </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
-            Advanced Full-Stack Engineering Capstone • Web Architecture Track
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
-            A production-grade commercial web platform redesign built with responsive component architecture, interactive trade-in device valuation workflows, and high-performance Vercel deployment.
-          </p>
-        </div>
-
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Modern JavaScript</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Tailwind CSS</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Vercel Cloud</span>
-            <span class="text-[10px] text-slate-400 font-semibold self-center">+3</span>
-          </div>
-
-          <button onclick="openCustomModal('coens-tradein-platform')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
-            <span>View Case Study & Video</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
-          </button>
-        </div>
+    <!-- Empty State Warning -->
+    <div id="noResultsState" class="hidden text-center py-20">
+      <div class="w-16 h-16 bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+        <i class="fa-solid fa-laptop-code"></i>
       </div>
-
-      <!-- PROJECT 2: Apple HomeKit Smart Home (Video 2) -->
-      <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-emerald-500 glow-card-emerald">
-        <div>
-          <div class="flex justify-between items-center mb-3 sm:mb-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">
-              <i class="fa-solid fa-house-signal"></i>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">
-              ROBOTICS & IOT
-            </span>
-          </div>
-
-          <!-- Video Wrapper 2 -->
-          <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="metadata">
-              <source src="./smart-home-demo.mp4" type="video/mp4">
-              <source src="smart-home-demo.mp4" type="video/mp4">
-              Your browser does not support HTML5 video streaming.
-            </video>
-            <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span>LIVE DEMO</span>
-            </div>
-          </div>
-
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
-            Native Apple HomeKit & Siri Smart Villa (IoT)
-          </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
-            Academy Milestone Capstone • Embedded IoT & Robotics Track
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
-            A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.
-          </p>
-        </div>
-
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">ESP32</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Apple HomeKit (HAP)</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Siri Voice API</span>
-            <span class="text-[10px] text-slate-400 font-semibold self-center">+5</span>
-          </div>
-
-          <button onclick="openCustomModal('apple-homekit-smart-home')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
-            <span>View Case Study & Video</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- PROJECT 3: Network Recon Tool (VIDEO 3: recon-tool-demo.mp4) -->
-      <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-indigo-600 glow-card-indigo">
-        <div>
-          <div class="flex justify-between items-center mb-3 sm:mb-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400">
-              <i class="fa-solid fa-terminal"></i>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400">
-              NETWORKS & CYBER
-            </span>
-          </div>
-
-          <!-- Video Wrapper 3 (Loaded directly with recon-tool-demo.mp4) -->
-          <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="metadata">
-              <source src="./recon-tool-demo.mp4" type="video/mp4">
-              <source src="recon-tool-demo.mp4" type="video/mp4">
-              Your browser does not support HTML5 video streaming.
-            </video>
-            <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
-              <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span>CLI DEMO</span>
-            </div>
-          </div>
-
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
-            Multi-Threaded Network Recon & Port Auditor
-          </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
-            Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
-            An offensive security utility written in Python that scans target subnets, discovers live hosts, probes exposed TCP ports, and flags insecure service banners.
-          </p>
-        </div>
-
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Python 3</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Sockets</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Scapy</span>
-            <span class="text-[10px] text-slate-400 font-semibold self-center">+2</span>
-          </div>
-
-          <button onclick="openCustomModal('network-recon-tool')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
-            <span>View Case Study & Video</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- PROJECT 4: Cisco Campus Topology -->
-      <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-indigo-600 glow-card-indigo">
-        <div>
-          <div class="flex justify-between items-center mb-3 sm:mb-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400">
-              <i class="fa-solid fa-network-wired"></i>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400">
-              NETWORKS & CYBER
-            </span>
-          </div>
-
-          <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-indigo-900 to-slate-950 flex flex-col items-center justify-center p-4 text-center">
-            <i class="fa-solid fa-network-wired text-4xl text-indigo-400 mb-2"></i>
-            <span class="text-xs font-bold text-white">Cisco Campus Topology</span>
-            <span class="text-[10px] text-slate-400">OSPF & VLAN Segmenting</span>
-          </div>
-
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
-            High-Availability Enterprise Campus Network
-          </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
-            Built by Karim H. (Age 17 • Phase 2 Networking)
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
-            A robust corporate infrastructure simulation featuring segmented VLANs, redundant trunking channels, OSPF dynamic routing, and ACL traffic security filters.
-          </p>
-        </div>
-
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Cisco IOS CLI</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Packet Tracer</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">VLANs</span>
-            <span class="text-[10px] text-slate-400 font-semibold self-center">+2</span>
-          </div>
-
-          <button onclick="openCustomModal('cisco-campus-topo')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
-            <span>View Case Study</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- PROJECT 5: Python Exam System -->
-      <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-blue-600 glow-card-blue">
-        <div>
-          <div class="flex justify-between items-center mb-3 sm:mb-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400">
-              PYTHON & AI
-            </span>
-          </div>
-
-          <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-blue-950 to-slate-950 flex flex-col items-center justify-center p-4 text-center">
-            <i class="fa-solid fa-file-signature text-4xl text-blue-400 mb-2"></i>
-            <span class="text-xs font-bold text-white">Automated Grading Engine</span>
-            <span class="text-[10px] text-slate-400">Python OOP & SQLite3</span>
-          </div>
-
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
-            Automated Student Assessment & Grading Engine
-          </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
-            Built by Nour S. (Age 15 • Phase 1 Python Masterclass)
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
-            A desktop application built with Python and SQLite that generates randomized quizzes, grades submissions in real-time, and exports statistical performance analytics.
-          </p>
-        </div>
-
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Python 3</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Tkinter GUI</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">SQLite3 DB</span>
-            <span class="text-[10px] text-slate-400 font-semibold self-center">+2</span>
-          </div>
-
-          <button onclick="openCustomModal('python-exam-system')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
-            <span>View Case Study</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- PROJECT 6: Brand Identity Guidelines -->
-      <div class="bg-white dark:bg-slate-900/60 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800/80 p-5 sm:p-6 flex flex-col justify-between border-t-4 border-t-pink-500 glow-card-pink">
-        <div>
-          <div class="flex justify-between items-center mb-3 sm:mb-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center text-lg sm:text-xl bg-pink-100 dark:bg-pink-955/60 text-pink-700 dark:text-pink-400">
-              <i class="fa-solid fa-bezier-curve"></i>
-            </div>
-            <span class="text-[10px] sm:text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-pink-100 dark:bg-pink-955/60 text-pink-700 dark:text-pink-400">
-              DESIGN & MEDIA
-            </span>
-          </div>
-
-          <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-pink-950 to-slate-950 flex flex-col items-center justify-center p-4 text-center">
-            <i class="fa-solid fa-palette text-4xl text-pink-400 mb-2"></i>
-            <span class="text-xs font-bold text-white">Old Money Apparel Guidelines</span>
-            <span class="text-[10px] text-slate-400">Vector Logo & Brand Design</span>
-          </div>
-
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
-            Old Money Apparel Brand Identity & Visual Guidelines
-          </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
-            Built by Malak E. (Age 15 • Phase 4 Graphic Design)
-          </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
-            A full commercial branding showcase encompassing vector logo construction, bespoke typography systems, social media assets, and luxury apparel mockups.
-          </p>
-        </div>
-
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-4 sm:mb-5">
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Adobe Illustrator</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Photoshop</span>
-            <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">Branding</span>
-            <span class="text-[10px] text-slate-400 font-semibold self-center">+2</span>
-          </div>
-
-          <button onclick="openCustomModal('brand-identity-craft')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
-            <span>View Case Study</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
-          </button>
-        </div>
-      </div>
-
+      <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2" data-i18n="noResultsTitle">No matching projects found</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="noResultsDesc">Try adjusting your search query or reset the category filters above.</p>
     </div>
   </main>
 
   <!-- CTA Banner -->
-  <section class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-12 sm:py-14">
-    <div class="container mx-auto px-4 max-w-5xl text-center space-y-4 sm:space-y-6">
-      <h3 class="text-2xl sm:text-3xl md:text-4xl font-black logo-font uppercase">Ready for your child to build real technology?</h3>
-      <p class="text-blue-100 max-w-2xl mx-auto text-xs sm:text-sm md:text-base px-2">Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.</p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 pt-2">
-        <a href="./courses.html" class="btn-premium bg-white text-blue-900 hover:bg-blue-50 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-lg text-xs sm:text-sm inline-flex items-center justify-center gap-2 w-full sm:w-auto">
-          <i class="fa-solid fa-table-cells-large"></i> <span>View Tracks & Syllabi</span>
+  <section class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-14">
+    <div class="container mx-auto px-4 max-w-5xl text-center space-y-6" data-aos="fade-up">
+      <h3 class="text-3xl md:text-4xl font-black logo-font uppercase" data-i18n="ctaTitle">Ready for your child to build real technology?</h3>
+      <p class="text-blue-100 max-w-2xl mx-auto text-sm md:text-base" data-i18n="ctaDesc">Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.</p>
+      <div class="flex flex-wrap justify-center gap-4 pt-2">
+        <a href="./courses.html" class="btn-premium bg-white text-blue-900 hover:bg-blue-50 font-bold px-8 py-3.5 rounded-full shadow-lg text-sm inline-flex items-center gap-2">
+          <i class="fa-solid fa-table-cells-large"></i> <span data-i18n="ctaViewCourses">View Tracks & Syllabi</span>
         </a>
-        <a href="./services.html" class="btn-premium bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-lg text-xs sm:text-sm inline-flex items-center justify-center gap-2 w-full sm:w-auto">
-          <i class="fa-solid fa-briefcase"></i> <span>Order As Client Service (-30%)</span>
-        </a>
-        <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-lg text-xs sm:text-sm inline-flex items-center justify-center gap-2 w-full sm:w-auto">
-          <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i> <span>WhatsApp Academy Direct</span>
+        <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-3.5 rounded-full shadow-lg text-sm inline-flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="ctaChatWA">WhatsApp Academy Direct</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- Interactive Project Case Study Modal -->
-  <div id="projectModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-2 sm:p-4">
+  <div id="projectModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeProjectModal()"></div>
-    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800 flex flex-col max-h-[92vh]" id="modalCard">
-      <button onclick="closeProjectModal()" type="button" aria-label="Close Modal" class="btn-premium absolute top-3 right-3 sm:top-4 sm:right-4 rtl:right-auto rtl:left-3 sm:rtl:left-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 hover:text-red-600 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-20 shadow">
-        <i class="fa-solid fa-xmark text-lg"></i>
+    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden transform scale-95 border border-transparent dark:border-slate-800 flex flex-col max-h-[90vh]" id="modalCard">
+      <button onclick="closeProjectModal()" type="button" aria-label="Close Modal" class="btn-premium absolute top-4 right-4 rtl:right-auto rtl:left-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
+        <i class="fa-solid fa-xmark text-xl"></i>
       </button>
 
-      <div class="p-5 sm:p-8 overflow-y-auto timeline-scroll space-y-5 sm:space-y-6">
+      <div class="p-6 md:p-8 overflow-y-auto timeline-scroll space-y-6">
         <div class="flex items-center gap-2 flex-wrap">
           <span id="modalCategoryBadge" class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"></span>
-          <span id="modalCohortBadge" class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold px-3 py-1 rounded-full">Curriculum Capstone</span>
+          <span id="modalCohortBadge" class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold px-3 py-1 rounded-full"></span>
         </div>
 
         <div>
-          <h3 id="modalTitle" class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white logo-font"></h3>
-          <p id="modalStudentCredit" class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
+          <h3 id="modalTitle" class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white logo-font"></h3>
+          <p id="modalStudentCredit" class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1"></p>
         </div>
 
-        <!-- Video Player Inside Modal -->
+        <!-- Optional Video Player (for Video-enabled Projects) -->
         <div id="modalVideoContainer" class="hidden rounded-xl overflow-hidden bg-black shadow-lg border border-slate-200 dark:border-slate-800 relative group">
-          <div class="w-full bg-black relative flex items-center justify-center min-h-[220px]">
-            <video id="modalVideoPlayer" playsinline webkit-playsinline controls preload="auto" class="w-full max-h-[340px] bg-black object-contain">
-              <source id="modalVideoSource" src="" type="video/mp4">
-              Your browser does not support HTML5 video streaming.
-            </video>
-          </div>
-          <div class="bg-slate-900/95 px-3 sm:px-4 py-2.5 flex items-center justify-between text-xs text-white border-t border-slate-800 flex-wrap gap-2">
-            <span class="flex items-center gap-1.5 sm:gap-2 text-slate-300 text-[11px] sm:text-xs">
-              <i class="fa-solid fa-circle-play text-blue-400"></i>
-              <a id="modalDirectVideoLink" href="#" target="_blank" class="hover:underline text-cyan-400 font-semibold">Open Direct Video Stream</a>
-            </span>
-          </div>
+          <video id="modalVideoPlayer" muted playsinline controls class="w-full max-h-72 object-contain bg-black">
+            <source id="modalVideoSource" src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
 
-        <!-- 4-STEP CASE STUDY STEPS -->
-        <div class="space-y-3">
-          <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-blue-500"></i> <span>4-Step Engineering Case Study</span>
-          </h4>
-          <div id="modalStepsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3"></div>
+        <!-- Universal AI Voiceover Control Bar (Present in ALL Projects) -->
+        <div class="bg-gradient-to-r from-slate-900 to-slate-950 border border-slate-800 rounded-xl p-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md">
+          <div class="flex items-center gap-2.5 text-xs text-slate-300">
+            <div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm border border-blue-500/30">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+              <span class="font-bold text-white block" data-i18n="aiVoiceoverTitle">AI Voiceover Walkthrough</span>
+              <span id="voiceoverAccentBadge" class="text-[11px] text-slate-400">Native Accents: Egyptian Arabic & US English</span>
+            </div>
+          </div>
+          <button id="voiceoverToggleBtn" onclick="toggleVoiceover()" class="btn-premium w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm">
+            <i id="voiceoverIcon" class="fa-solid fa-microphone-lines"></i>
+            <span id="voiceoverBtnLabel">Play Voiceover</span>
+          </button>
         </div>
 
-        <div class="space-y-4 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed pt-2">
+        <div class="space-y-4 text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
           <div>
-            <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-1">Project Overview & Objectives</h4>
+            <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-1" data-i18n="modalOverviewHeader">Project Overview & Objectives</h4>
             <p id="modalDescription"></p>
           </div>
 
           <div>
-            <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-2">Technologies & Libraries Applied</h4>
-            <div id="modalTechPills" class="flex flex-wrap gap-1.5 sm:gap-2"></div>
+            <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-1" data-i18n="modalArchitectureHeader">Engineering Architecture & Stack</h4>
+            <p id="modalArchitecture"></p>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-wider mb-2" data-i18n="modalTechStackHeader">Technologies & Libraries Applied</h4>
+            <div id="modalTechPills" class="flex flex-wrap gap-2"></div>
           </div>
         </div>
 
-        <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-          <div class="flex items-center gap-3 flex-wrap justify-center sm:justify-start">
+        <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-slate-400 italic" data-i18n="modalVerifiedText">Verified curriculum capstone project by Fekra Tech Academy</span>
             <a id="modalExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Live Demo</span>
-            </a>
-            <a href="./services.html" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1">
-              <i class="fa-solid fa-tag"></i> <span>Order as Service (-30%)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="modalLiveLink">Live Demo</span>
             </a>
           </div>
-          <a id="modalActionLink" href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-5 sm:px-6 py-2.5 rounded-full shadow inline-flex items-center gap-2 w-full sm:w-auto justify-center">
-            <i class="fa-solid fa-graduation-cap"></i> <span id="modalActionText">Learn How to Build This</span>
+          <a id="modalActionLink" href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-6 py-2.5 rounded-full shadow inline-flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap"></i> <span id="modalActionText" data-i18n="modalBuildSimilar">Learn How to Build This</span>
           </a>
         </div>
       </div>
@@ -586,10 +290,10 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-8 text-slate-500 text-xs sm:text-sm">
-    <div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-      <p>&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
-      <div class="flex gap-5 items-center justify-center">
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-8 text-slate-500 text-sm">
+    <div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4">
+      <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
+      <div class="flex gap-5 items-center">
         <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
         <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-xl"><i class="fa-brands fa-instagram"></i></a>
@@ -598,164 +302,415 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     let currentLang = 'en';
+    let currentFilter = 'all';
+    let isVoiceoverPlaying = false;
+    let availableVoices = [];
 
-    const projectDetails = {
-      "coens-tradein-platform": {
-        title: "Coen's Commercial Tech Redesign & Trade-In Platform",
-        student: "Advanced Full-Stack Engineering Capstone • Web Architecture Track",
-        category: "WEB & APPS",
-        badgeColor: "bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400",
-        videoUrl: "./20261005-1703-48.3580028.mp4",
-        liveUrl: "https://coen-s-redesign-page.vercel.app/",
-        overview: "Designed as an industry-standard commercial redesign. The platform transforms the user experience into an intuitive, conversion-focused interface featuring modular trade-in calculators, real-time product assessments, and fluid responsive design across all viewports.",
-        steps: [
-          { step: "Step 1: Challenge", title: "Conversion UX Bottlenecks", desc: "Redesigning a clunky trade-in funnel into an intuitive, 3-click customer valuation flow." },
-          { step: "Step 2: Architecture", title: "Component-Driven Front", desc: "Modular state management with zero external bloat using Tailwind CSS and modern JavaScript." },
-          { step: "Step 3: Implementation", title: "Valuation Calculation Engine", desc: "Dynamic algorithmic deduction of trade-in pricing with real-time UI re-rendering." },
-          { step: "Step 4: Deployment", title: "Vercel Edge & SEO", desc: "Continuous CI/CD pipeline, sub-1.2s Core Web Vitals, and responsive layout across mobile and desktop." }
-        ],
-        techStack: ["Modern JavaScript", "Tailwind CSS", "Responsive UI/UX", "Component State", "Vercel Cloud", "RESTful Integration"]
+    // Pre-cache voices when supported
+    function loadVoices() {
+      if ('speechSynthesis' in window) {
+        availableVoices = window.speechSynthesis.getVoices();
+      }
+    }
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
+    }
+
+    const i18n = {
+      en: {
+        navHome: "Home", navTracks: "Tracks & Tuition", navPortfolio: "Portfolio", navTeam: "Team",
+        portfolioBadge: "Applied Technical Excellence", portfolioTitle: "Student & Academy Showcase",
+        portfolioDesc: "We measure our success not by certificates on a wall, but by real-world systems built. Explore full-stack web platforms, IoT smart robotics, defensive cyber laboratories, and professional creative identities built by Fekra Tech students aged 8 to 18.",
+        statHandsOn: "Hands-On Code", statProjects: "Shipped Projects", statAges: "Target Age Range", statGamified: "Toy / Filler Content",
+        filterAll: "All Work", filterWeb: "Web & Apps", filterPython: "Python & AI", filterIoT: "Robotics & IoT", filterSecurity: "Networks & Cyber", filterDesign: "Design & Media",
+        noResultsTitle: "No matching projects found", noResultsDesc: "Try adjusting your search query or reset the category filters above.",
+        btnCaseStudy: "View Case Study & Details",
+        ctaTitle: "Ready for your child to build real technology?",
+        ctaDesc: "Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.",
+        ctaViewCourses: "View Tracks & Syllabi", ctaChatWA: "WhatsApp Academy Direct",
+        modalOverviewHeader: "Project Overview & Objectives", modalArchitectureHeader: "Engineering Architecture & Stack",
+        modalTechStackHeader: "Technologies & Libraries Applied", modalVerifiedText: "Verified curriculum capstone project by Fekra Tech Academy",
+        modalLiveLink: "Visit Live Platform",
+        aiVoiceoverTitle: "AI Voiceover Narration",
+        voiceoverAccentTag: "Native American Voice (en-US)",
+        voiceoverPlay: "Play AI Voiceover",
+        voiceoverStop: "Stop Voiceover",
+        modalBuildSimilar: "Learn How to Build This",
+        rightsText: "© 2026 Fekra Tech Academy. All rights reserved."
       },
-      "apple-homekit-smart-home": {
-        title: "Native Apple HomeKit & Siri Smart Villa (IoT)",
-        student: "Academy Milestone Capstone • Embedded IoT & Robotics Track",
-        category: "ROBOTICS & IOT",
-        badgeColor: "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400",
-        videoUrl: "./smart-home-demo.mp4",
-        overview: "Engineered as an end-to-end hardware-software demonstration showing how microcontrollers interface directly with the Apple ecosystem. The scale model features multi-room lighting, presence detection via PIR sensors, safety monitoring with gas/smoke sensors, acoustic alerting, and local telemetry on an I2C LCD.",
-        steps: [
-          { step: "Step 1: Challenge", title: "Hardware-to-Cloud Latency", desc: "Interfacing physical relays and multi-room sensors without expensive third-party bridge hubs." },
-          { step: "Step 2: Architecture", title: "Apple HAP Protocol", desc: "Embedding Apple HomeKit Accessory Protocol directly onto the ESP32 chip over 2.4GHz Wi-Fi." },
-          { step: "Step 3: Implementation", title: "Sensors & Siri Integration", desc: "Wiring PIR motion, MQ gas detectors, LCD telemetry, and voice commands via Siri." },
-          { step: "Step 4: Deployment", title: "Firmware Safety Overrides", desc: "Flashing C++ firmware with hardware interrupt safety triggers and offline auto-reconnect loops." }
-        ],
-        techStack: ["ESP32 Microcontroller", "Apple HomeKit (HAP)", "Siri Voice API", "HomeSpan Framework", "PIR Motion Detection", "MQ Gas Sensor", "I2C 1602 LCD", "C++ Embedded"]
-      },
-      "network-recon-tool": {
-        title: "Multi-Threaded Network Recon & Port Auditor",
-        student: "Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)",
-        category: "NETWORKS & CYBER",
-        badgeColor: "bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400",
-        videoUrl: "./recon-tool-demo.mp4",
-        liveUrl: "https://network-reconnaissance-tool.vercel.app/",
-        overview: "An automated Python network security scanner built to audit subnets, sweep active IP addresses, probe ports, and grab service banners to detect known vulnerabilities. Deployed as a web demonstration portal.",
-        steps: [
-          { step: "Step 1: Challenge", title: "Network Blindspots", desc: "Locating rogue devices and exposed ports across local CIDR blocks." },
-          { step: "Step 2: Architecture", title: "Concurrent Socket Pools", desc: "Structuring multithreaded workers to prevent port scanning timeouts." },
-          { step: "Step 3: Implementation", title: "Banner Grabbing & Scapy", desc: "Crafting SYN packets and parsing server response banners for CVE version lookup." },
-          { step: "Step 4: Deployment", title: "Vercel Web Portal", desc: "Hosted interactive documentation and scan simulation engine live on Vercel." }
-        ],
-        techStack: ["Python 3", "Socket Programming", "Scapy Packet Crafting", "Linux Bash", "Thread Management", "Vercel Deploy"]
-      },
-      "cisco-campus-topo": {
-        title: "High-Availability Enterprise Campus Network",
-        student: "Built by Karim H. (Age 17 • Phase 2 Networking)",
-        category: "NETWORKS & CYBER",
-        badgeColor: "bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400",
-        overview: "Modeled on real enterprise branch topologies. The student isolated HR, Guest, and Engineering departments into separate broadcast domains, configuring secure intra-VLAN routing.",
-        steps: [
-          { step: "Step 1: Challenge", title: "Broadcast Storms & Leakage", desc: "Segmenting unmanaged flat networks into hardened, isolated departmental domains." },
-          { step: "Step 2: Architecture", title: "Redundant Cisco Hierarchy", desc: "Core, Distribution, and Access layers configured with Spanning Tree Protocol (STP)." },
-          { step: "Step 3: Implementation", title: "OSPF Routing & ACLs", desc: "Configuring dynamic area 0 routing tables and firewall-style traffic filters." },
-          { step: "Step 4: Deployment", title: "Stress Testing in Tracer", desc: "Simulating link cuts and verifying failover recovery under 2 seconds." }
-        ],
-        techStack: ["Cisco IOS CLI", "Packet Tracer", "VLAN Segmenting", "OSPF Routing", "ACL Security"]
-      },
-      "python-exam-system": {
-        title: "Automated Student Assessment & Grading Engine",
-        student: "Built by Nour S. (Age 15 • Phase 1 Python Masterclass)",
-        category: "PYTHON & AI",
-        badgeColor: "bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400",
-        overview: "Demonstrates comprehensive understanding of object-oriented programming (OOP), file streams, and relational table schemas without relying on third-party frameworks.",
-        steps: [
-          { step: "Step 1: Challenge", title: "Manual Grading Inefficiencies", desc: "Building an offline, cheat-resistant exam application for school laboratories." },
-          { step: "Step 2: Architecture", title: "Relational OOP Design", desc: "Modular class models mapping questions, test instances, and grade tables in SQLite." },
-          { step: "Step 3: Implementation", title: "Tkinter GUI & Timer", desc: "Building auto-submitting timers, randomized question pools, and instant scoring." },
-          { step: "Step 4: Deployment", title: "Standalone Executable", desc: "Compiled via PyInstaller into an autonomous executable for zero-dependency rollout." }
-        ],
-        techStack: ["Python 3", "OOP Paradigms", "Tkinter Desktop GUI", "SQLite3 DB", "File I/O Streams"]
-      },
-      "brand-identity-craft": {
-        title: "Old Money Apparel Brand Identity & Visual Guidelines",
-        student: "Built by Malak E. (Age 15 • Phase 4 Graphic Design)",
-        category: "DESIGN & MEDIA",
-        badgeColor: "bg-pink-100 dark:bg-pink-955/60 text-pink-700 dark:text-pink-400",
-        overview: "The capstone project for the graphic design track. The student formulated a comprehensive visual manual defining color harmony codes, negative-space logos, and campaign prints.",
-        steps: [
-          { step: "Step 1: Challenge", title: "Aesthetic Market Research", desc: "Dissecting luxury 'old money' design trends and minimalist European visual palettes." },
-          { step: "Step 2: Architecture", title: "Vector Node Construction", desc: "Drafting geometric grid-aligned logos and bespoke typography in Illustrator." },
-          { step: "Step 3: Implementation", title: "Photorealistic Mockups", desc: "Advanced light/shadow compositing and fabric texture blending in Photoshop." },
-          { step: "Step 4: Deployment", title: "Brand Identity Manual", desc: "Exporting print-ready CMYK PDFs, vector SVG assets, and digital brand styleguides." }
-        ],
-        techStack: ["Adobe Illustrator", "Adobe Photoshop", "Typography Grid Systems", "Color Psychology", "Branding Assets"]
+      ar: {
+        navHome: "الرئيسية", navTracks: "المسارات والأسعار", navPortfolio: "معرض المشاريع", navTeam: "فريقنا",
+        portfolioBadge: "مشاريع عملية حقيقية", portfolioTitle: "معرض مشاريع الطلاب والأكاديمية",
+        portfolioDesc: "نجاحنا الحقيقي مش مجرد شهادات، بل أنظمة حقيقية مبنية بأيدي طلابنا. تصفح منصات الويب الشاملة، مشاريع إنترنت الأشياء والروبوتات، مختبرات الدفاع السيبراني، والتصميمات الاحترافية لطلاب فكرة تك من سن 8 حتى 18 سنة.",
+        statHandsOn: "أكواد ومشاريع عملية 100%", statProjects: "مشروع منجز", statAges: "أعمار الطلاب المستهدفة", statGamified: "بدون ألعاب مجتزأة",
+        filterAll: "كل المشاريع", filterWeb: "الويب والتطبيقات", filterPython: "بايثون والذكاء الاصطناعي", filterIoT: "الروبوتات وإنترنت الأشياء", filterSecurity: "الشبكات والأمن السيبراني", filterDesign: "التصميم والهوية",
+        noResultsTitle: "لم يتم العثور على نتائج مطابقة", noResultsDesc: "جرّب تغيير كلمات البحث أو إعادة ضبط الفلاتر بالأعلى.",
+        btnCaseStudy: "تفاصيل المشروع والتعليق الصوتي",
+        ctaTitle: "جاهز تخلي ابنك يبني مشاريع حقيقية بنفسه؟",
+        ctaDesc: "ابعد عن الألعاب والبرمجة الصورية السطحية. انضم لبرنامج تدريبي تطبيقي يركز على المشاريع الملموسة ويتخرج منه الطالب ببورتفوليو قوي.",
+        ctaViewCourses: "عرض المسارات والمناهج", ctaChatWA: "تواصل واتساب مع الإدارة",
+        modalOverviewHeader: "نظرة عامة وأهداف المشروع", modalArchitectureHeader: "الهيكلية البرمجية والتنفيذ",
+        modalTechStackHeader: "التقنيات والمكتبات المستخدمة", modalVerifiedText: "مشروع تخرج تطبيقي معتمد من أكاديمية فكرة تك",
+        modalLiveLink: "معاينة المنصة الحية",
+        aiVoiceoverTitle: "الشرح الصوتي الذكي للمشروع",
+        voiceoverAccentTag: "بصوت مصري طبيعي (اللهجة المصرية)",
+        voiceoverPlay: "تشغيل التعليق الصوتي",
+        voiceoverStop: "إيقاف التعليق الصوتي",
+        modalBuildSimilar: "اتعلم إزاي تبني مشروع زيه",
+        rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة."
       }
     };
 
-    function openCustomModal(projectId) {
-      const data = projectDetails[projectId];
-      if (!data) return;
+    const projectsData = [
+      {
+        id: "coens-tradein-platform",
+        category: "web",
+        badgeColor: "blue",
+        tags: "fullstack web react tailwind vercel ecommerce trade-in frontend design javascript nodejs منصة ويب متجر تجارة إلكترونية فرونت إند",
+        icon: "fa-laptop-code",
+        videoUrl: "./20261005-1703-48.3580028.mp4",
+        liveUrl: "https://coen-s-redesign-page.vercel.app/",
+        voiceoverText: {
+          en: "Welcome to the Coen's Commercial Platform redesign, engineered by our students at Fekra Tech Academy. We reimagined the user journey with responsive components, an automated trade-in valuation calculator, and sub-second page delivery deployed on Vercel.",
+          ar: "أهلاً بيك في مشروع إعادة تصميم وتطوير منصة كوينز التجارية بأيدي طلاب أكاديمية فكرة تك. قمنا ببناء واجهات متجاوبة وخفيفة، مع نظام تسعير فوري ومباشر للأجهزة المستعملة، واستضافة سحابية فائقة السرعة على فيرسل."
+        },
+        en: {
+          title: "Coen's Commercial Tech Redesign & Trade-In Platform",
+          summary: "A production-grade commercial web platform redesign built with responsive component architecture, interactive trade-in device valuation workflows, and high-performance Vercel deployment.",
+          student: "Advanced Full-Stack Engineering Capstone • Web Architecture Track",
+          overview: "Designed as an industry-standard commercial redesign. The platform transforms the user experience into an intuitive, conversion-focused interface featuring modular trade-in calculators, real-time product assessments, and fluid responsive design across all viewports.",
+          architecture: "Engineered with modern frontend components using Tailwind CSS for streamlined utility styling and optimized assets. Deployed continuously on Vercel with automated CI/CD builds, SEO metadata structuring, and sub-second page performance.",
+          techStack: ["Modern JavaScript", "Tailwind CSS", "Responsive UI/UX", "Component State", "Vercel Cloud", "RESTful Integration"]
+        },
+        ar: {
+          title: "منصة Coen's الرقمية لإعادة التصميم واستبدال الأجهزة (Full-Stack)",
+          summary: "إعادة تصميم متكاملة لمنصة تجارية احترافية بواجهات تفاعلية متقدمة، نظام تقييم واستبدال فوري للأجهزة، واستضافة سحابية فائقة السرعة على Vercel.",
+          student: "مشروع تخرج متقدم • مسار هندسة الويب وتطبيقات الـ Full-Stack",
+          overview: "مشروع يحاكي بيئات العمل التجارية الكبرى. تم بناء المنصة لتحسين تجربة المستخدم وتحويلها لنظام سلس وسريع لحساب تقييمات الأجهزة المستعملة وتصفح الخدمات مع توافق كامل مع كافة مقاسات الشاشات.",
+          architecture: "بناء واجهات أمامية باستخدام Tailwind CSS ومكونات تفاعلية خفيفة الحجم، مع ربط المشروع بنظام نشر سحابي فوري عبر Vercel لتأمين أداء فائق وسرعة استجابة فورية.",
+          techStack: ["جافاسكريبت حديثة", "Tailwind CSS", "تصميم تجربة المستخدم UI/UX", "معمارية المكونات", "استضافة Vercel", "ربط API"]
+        }
+      },
+      {
+        id: "apple-homekit-smart-home",
+        category: "iot",
+        badgeColor: "emerald",
+        tags: "esp32 apple homekit siri iot smart home automation hap c++ embedded sensors homespan video إنترنت الأشياء منزل ذكي أبل هوم كيت سيري سنسورات أردوينو فيديو",
+        icon: "fa-house-signal",
+        videoUrl: "./smart-home-demo.mp4",
+        voiceoverText: {
+          en: "This is our physical IoT Smart Villa project. Powered by an ESP32 microcontroller, it directly interfaces with the Apple HomeKit Accessory Protocol and Siri, delivering real-time voice lighting, presence detection, and fire safety overrides without third-party hubs.",
+          ar: "ده مشروع الفيلا الذكية المصغرة من مسار إنترنت الأشياء. شغال بشريحة ESP32 ومتصل مباشرة بنظام أبل هوم كيت وسيري، وبيوفر تحكم صوتي فوري في الإضاءة، حساسات حركة، وإنذار حريق ذكي بيوصل مباشرة للموبايل بدون أي وسيط خارجي."
+        },
+        en: {
+          title: "Native Apple HomeKit & Siri Smart Villa (IoT)",
+          summary: "A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.",
+          student: "Academy Milestone Capstone • Embedded IoT & Robotics Track",
+          overview: "Engineered as an end-to-end hardware-software demonstration showing how microcontrollers interface directly with the Apple ecosystem. The scale model features multi-room lighting, presence detection via PIR sensors, safety monitoring with gas/smoke sensors, acoustic alerting, and local telemetry on an I2C LCD.",
+          architecture: "Firmware engineered in C++ using the HomeSpan framework implementing Apple HAP over local 2.4GHz Wi-Fi. Features multi-room accessories mapped into Apple Home, real-time Siri voice recognition triggers, and hardware interrupts for safety overrides.",
+          techStack: ["ESP32 Microcontroller", "Apple HomeKit (HAP)", "Siri Voice API", "HomeSpan Framework", "PIR Motion Detection", "MQ Gas Sensor", "I2C 1602 LCD", "C++ Embedded"]
+        },
+        ar: {
+          title: "فيلا ذكية متكاملة بنظام Apple HomeKit والتحكم الصوتي Siri",
+          summary: "مجسم هندسي لفيلا ذكية من طابقين يعمل بشريحة ESP32 ومتصل مباشرة بنظام Apple HomeKit الرسمي مع تحكم صوتي كامل عبر Siri بدون الحاجة لأي وسيط خارجي.",
+          student: "مشروع تخرج تطبيقي رائد • مسار إنترنت الأشياء والروبوتات",
+          overview: "تم بناء هذا النموذج المصغر لربط الهاردوير الفعلي بالأنظمة العالمية. يحتوي المجسم على توزيع إضاءة للغرف، حساسات حركة (PIR) للتشغيل التلقائي، حساسات غاز ودخان (MQ) للحماية من الحرائق مع إنذار صوتي، وشاشة LCD لعرض حالة الاتصال والشبكة.",
+          architecture: "برمجة شريحة ESP32 بلغة C++ عبر إطار عمل HomeSpan المتوافق مع بروتوكول HAP من أبل، مما يسمح بإضافة المجسم كملحق رسمي في تطبيق Apple Home مع تشغيل الأوامر الصوتية والسيناريوهات التلقائية لحظياً.",
+          techStack: ["شريحة ESP32", "بروتوكول Apple HomeKit", "أوامر Siri الصوتية", "إطار عمل HomeSpan", "حساسات حركة PIR", "حساسات غاز MQ", "شاشة I2C LCD", "C++ Embedded"]
+        }
+      },
+      {
+        id: "network-recon-tool",
+        category: "security",
+        badgeColor: "indigo",
+        tags: "python networking cyber security port scanner socket scapy linux bash فحص شبكات أمن سيبراني بايثون لينكس",
+        icon: "fa-shield-halved",
+        voiceoverText: {
+          en: "Here is our Multi-Threaded Network Recon and Port Auditor tool built in Python. Designed as a defensive cybersecurity utility, it audits live subnets, extracts open TCP ports, and flags vulnerable services in seconds.",
+          ar: "دي أداة فحص واكتشاف ثغرات الشبكات المبنية بلغة بايثون من مسار السايبر سيكيورتي. الأداة بتفحص الشبكات الداخلية والـ Subnets، وبتكتشف البورتات المفتوحة والخدمات غير المؤمنة بسرعة عالية باستخدام الـ Multithreading."
+        },
+        en: {
+          title: "Multi-Threaded Network Recon & Port Auditor",
+          summary: "An offensive security utility written in Python that scans target subnets, discovers live hosts, probes exposed TCP ports, and flags insecure service banners.",
+          student: "Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)",
+          overview: "Built to demonstrate practical network reconnaissance techniques taught in the ethical hacking phase. The tool allows sysadmins to quickly detect unpatched vulnerabilities on their local networks.",
+          architecture: "Multithreaded socket programming using Python's concurrent pools. Raw packet crafting and banner analysis executed through the Scapy framework.",
+          techStack: ["Python 3", "Socket Programming", "Scapy Packet Crafting", "Linux Bash", "Thread Management"]
+        },
+        ar: {
+          title: "أداة فحص واكتشاف ثغرات الشبكات (Port Auditor)",
+          summary: "سكربت أمني بلغة بايثون يقوم بفحص الشبكة الداخلية، اكتشاف الأجهزة المتصلة، وفحص المنافذ المفتوحة للتأكد من أمان الخدمات.",
+          student: "تنفيذ الطالب: زياد ع. (17 سنة • مرحلة الأمن السيبراني)",
+          overview: "مشروع لاختبار الاختراق الأخلاقي لفحص الشبكات الداخلية، صممه الطالب لمساعدة مديري الأنظمة على كشف الثغرات والخدمات غير الآمنة قبل استغلالها.",
+          architecture: "برمجة متزامنة (Multithreading) لمنافذ السوكت بلغة بايثون، مع تحليل حزم البيانات وفحص البانر للخدمات عبر مكتبة Scapy.",
+          techStack: ["Python 3", "Socket Library", "Scapy Network Tool", "أوامر لينكس Bash", "البرمجة المتزامنة"]
+        }
+      },
+      {
+        id: "cisco-campus-topo",
+        category: "security",
+        badgeColor: "indigo",
+        tags: "cisco packet tracer vlans ospf routing switching infrastructure networking شبكات سيسكو راوتر سويتش",
+        icon: "fa-network-wired",
+        voiceoverText: {
+          en: "This enterprise network architecture was simulated on Cisco hardware. It implements segmented VLANs, redundant trunking, dynamic OSPF routing, and strict Access Control Lists to secure departmental traffic.",
+          ar: "ده تصميم بنية تحتية كاملة لشبكة شركة متعددة الفروع على أجهزة سيسكو. المشروع بيطبق تقسيم الـ VLANs، مع توجيه OSPF التلقائي، وجداول حماية ACL لمنع أي تسريب بين أقسام الشركة."
+        },
+        en: {
+          title: "High-Availability Enterprise Campus Network",
+          summary: "A robust corporate infrastructure simulation featuring segmented VLANs, redundant trunking channels, OSPF dynamic routing, and ACL traffic security filters.",
+          student: "Built by Karim H. (Age 17 • Phase 2 Networking)",
+          overview: "Modeled on real enterprise branch topologies. The student isolated HR, Guest, and Engineering departments into separate broadcast domains, configuring secure intra-VLAN routing.",
+          architecture: "Configured across Cisco 2960 Switches and 2911 Routers using Packet Tracer. Implemented Spanning Tree Protocol (STP), DHCP Snooping, and Standard/Extended ACLs.",
+          techStack: ["Cisco IOS CLI", "Packet Tracer", "VLAN Segmenting", "OSPF Routing", "ACL Security"]
+        },
+        ar: {
+          title: "تصميم بنية تحتية لشبكة شركة متعددة الفروع",
+          summary: "محاكاة كاملة لبنية تحتية للشركات تعتمد على تقسيم الشبكات الافتراضية (VLANs)، وتوجيه OSPF الديناميكي، وتأمين تدفق البيانات بجدران ACL.",
+          student: "تنفيذ الطالب: كريم ح. (17 سنة • مرحلة الشبكات وسيسكو)",
+          overview: "محاكاة واقعية لبيئة عمل بنكية أو مؤسسية، قام فيها الطالب بعزل أقسام الموظفين، الضيوف، والأنظمة الحساسة في شبكات منفصلة ومحمية.",
+          architecture: "برمجة أجهزة التوجيه والتبديل من سيسكو (2960 Switches & 2911 Routers)، وتفعيل بروتوكول STP لمنع التكرار وجداول ACL لتحديد الصلاحيات.",
+          techStack: ["سطر أوامر سيسكو CLI", "Packet Tracer", "تقسيم VLANs", "توجيه OSPF", "قوائم ACL"]
+        }
+      },
+      {
+        id: "python-exam-system",
+        category: "python",
+        badgeColor: "blue",
+        tags: "python gui tkinter sqlite database algorithm school logic fastapi assessment grading بايثون داتابيز قواعد بيانات",
+        icon: "fa-laptop-code",
+        voiceoverText: {
+          en: "This is our Automated Student Assessment and Grading Engine built in Python. It pulls dynamic question banks, calculates student performance bands automatically, and exports detailed analytics for instructors.",
+          ar: "ده نظام التقييم وتصحيح الامتحانات التلقائي المبرمج بلغة بايثون. النظام بيسحب أسئلة عشوائية، بيصحح إجابات الطلاب لحظياً، وبيحلل مستوى الطالب في كل موضوع دراسي بشكل إحصائي متكامل."
+        },
+        en: {
+          title: "Automated Student Assessment & Grading Engine",
+          summary: "A software application built with Python and relational database schemas that streams randomized assessments, grades submissions in real-time, and exports statistical performance analytics.",
+          student: "Built by Nour S. (Age 15 • Phase 1 Python Masterclass)",
+          overview: "Demonstrates comprehensive understanding of object-oriented programming (OOP), file streams, algorithmic grading, and relational schemas without relying on third-party frameworks.",
+          architecture: "Modular Python OOP codebase with an extensible evaluation engine. Integrates persistent session tracking, rubric evaluation logic, and real-time category scoring.",
+          techStack: ["Python 3", "OOP Paradigms", "FastAPI / GUI", "SQLite3 DB", "File I/O Streams"]
+        },
+        ar: {
+          title: "برنامج تقييم وامتحانات الطلاب الإلكتروني",
+          summary: "تطبيق متكامل بلغة بايثون متصل بقاعدة بيانات ينشئ اختبارات عشوائية، ويقوم بالتصحيح التلقائي وتصدير تقارير الأداء.",
+          student: "تنفيذ الطالبة: نور س. (15 سنة • مرحلة بايثون الشاملة)",
+          overview: "مشروع يطبق مفاهيم البرمجة كائنية التوجه (OOP) والتعامل مع قواعد البيانات العلائقية لتنظيم امتحانات الفصول التعليمية ومتابعة النتائج.",
+          architecture: "برمجة كلاسات وكائنات بلغة بايثون، مع خوارزميات تقييم فورية، وحفظ بيانات الطلاب والنتائج في قاعدة بيانات مدمجة.",
+          techStack: ["Python 3", "مفاهيم OOP", "واجهات FastAPI / GUI", "قواعد بيانات SQLite3", "تصدير الملفات والتقارير"]
+        }
+      },
+      {
+        id: "brand-identity-craft",
+        category: "design",
+        badgeColor: "pink",
+        tags: "graphic design illustrator photoshop typography branding vector visual ديزاين فوتوشوب اليستريتور هوية",
+        icon: "fa-bezier-curve",
+        voiceoverText: {
+          en: "Presenting the Old Money luxury brand identity capstone. Designed in Adobe Illustrator and Photoshop, it establishes an elegant visual brand manual, custom typography hierarchy, and photographic fashion mockups.",
+          ar: "دي الهوية البصرية المتكاملة لعلامة أزياء راقية من مسار الجرافيك ديزاين. اتصممت باستخدام أدوبي إليستريتور وفوتوشوب، بتشمل بناء الشعار بدقة هندسية، ودليل ألوان ونصوص متكامل للمطبوعات والمنتجات."
+        },
+        en: {
+          title: "Old Money Apparel Brand Identity & Visual Guidelines",
+          summary: "A full commercial branding showcase encompassing vector logo construction, bespoke typography systems, social media assets, and luxury apparel mockups.",
+          student: "Built by Malak E. (Age 15 • Phase 4 Graphic Design)",
+          overview: "The capstone project for the graphic design track. The student formulated a comprehensive visual manual defining color harmony codes, negative-space logos, and campaign prints.",
+          architecture: "Vector logomarks drafted in Adobe Illustrator with mathematical node precision. Photographic mockups and color grading developed in Adobe Photoshop.",
+          techStack: ["Adobe Illustrator", "Adobe Photoshop", "Typography Grid Systems", "Color Psychology", "Branding Assets"]
+        },
+        ar: {
+          title: "تصميم هوية بصرية كاملة لعلامة ملابس راقية",
+          summary: "بناء دليل الهوية البصرية لبراند ملابس، يشمل تصميم الشعار المتجه، اختيار الخطوط والألوان، وتصميمات المطبوعات والحملات الإعلانية.",
+          student: "تنفيذ الطالبة: ملك ع. (15 سنة • مرحلة التصميم الجرافيكي)",
+          overview: "مشروع تخرج متكامل لمسار الجرافيك ديزاين، قامت الطالبة بدراسة سيكولوجية الألوان وتصميم شعار متقن ومعالجة صور المنتجات لإطلاق العلامة التجارية.",
+          architecture: "رسم الشعار والأيقونات بدقة متناهية عبر Adobe Illustrator، ومعالجة درجات الإضاءة والظلال للصور الدعائية عبر Adobe Photoshop.",
+          techStack: ["أدوبي إليستريتور", "أدوبي فوتوشوب", "نظريات التكوين والخطوط", "سيكولوجية الألوان", "صناعة أدلة الهوية"]
+        }
+      }
+    ];
 
+    document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({ once: true, offset: 30 });
+      updateDarkModeButton();
+      renderProjects();
+    });
+
+    function renderProjects() {
+      const container = document.getElementById('projectsGrid');
+      const searchVal = document.getElementById('projectSearchInput').value.toLowerCase().trim();
+      const noResults = document.getElementById('noResultsState');
+      
+      container.innerHTML = '';
+      let matchCount = 0;
+
+      projectsData.forEach(item => {
+        const langData = item[currentLang];
+        const matchesCategory = currentFilter === 'all' || item.category === currentFilter;
+        const matchesSearch = searchVal === "" || 
+                              item.tags.toLowerCase().includes(searchVal) || 
+                              langData.title.toLowerCase().includes(searchVal) || 
+                              langData.summary.toLowerCase().includes(searchVal) ||
+                              langData.student.toLowerCase().includes(searchVal);
+
+        if (matchesCategory && matchesSearch) {
+          matchCount++;
+          
+          let glowClass = item.badgeColor === 'emerald' ? 'glow-card-emerald' : 
+                          item.badgeColor === 'indigo' ? 'glow-card-indigo' : 
+                          item.badgeColor === 'pink' ? 'glow-card-pink' : 'glow-card-blue';
+
+          let borderTopClass = item.badgeColor === 'emerald' ? 'border-t-emerald-500' : 
+                               item.badgeColor === 'indigo' ? 'border-t-indigo-500' : 
+                               item.badgeColor === 'pink' ? 'border-t-pink-500' : 'border-t-blue-600';
+
+          let badgeBg = item.badgeColor === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400' : 
+                        item.badgeColor === 'indigo' ? 'bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400' : 
+                        item.badgeColor === 'pink' ? 'bg-pink-100 dark:bg-pink-955/60 text-pink-700 dark:text-pink-400' : 'bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400';
+
+          const card = document.createElement('div');
+          card.className = `bg-white dark:bg-slate-900/50 backdrop-blur-sm rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-800/80 p-6 flex flex-col justify-between border-t-4 ${borderTopClass} ${glowClass}`;
+          card.setAttribute('data-aos', 'fade-up');
+
+          const mediaHtml = item.videoUrl ? `
+            <div class="relative w-full rounded-xl overflow-hidden mb-4 bg-black border border-slate-200 dark:border-slate-800 group aspect-video">
+              <video class="w-full h-full object-cover" muted loop playsinline controls preload="metadata">
+                <source src="${item.videoUrl}" type="video/mp4">
+              </video>
+              <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/75 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span>PROJECT DEMO</span>
+              </div>
+            </div>
+          ` : '';
+
+          card.innerHTML = `
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl ${badgeBg}">
+                  <i class="fa-solid ${item.icon}"></i>
+                </div>
+                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider ${badgeBg}">
+                  ${item.category.toUpperCase()}
+                </span>
+              </div>
+              ${mediaHtml}
+              <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-snug">${langData.title}</h4>
+              <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-3">${langData.student}</p>
+              <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-6">${langData.summary}</p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-5">
+                ${langData.techStack.slice(0, 3).map(tech => `<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-semibold px-2 py-0.5 rounded-md">${tech}</span>`).join('')}
+                ${langData.techStack.length > 3 ? `<span class="text-[10px] text-slate-400 font-semibold self-center">+${langData.techStack.length - 3}</span>` : ''}
+              </div>
+              <button onclick="openProjectModal('${item.id}')" class="btn-premium w-full bg-slate-100 dark:bg-slate-800/80 hover:bg-blue-600 dark:hover:bg-blue-600 text-slate-800 dark:text-slate-200 hover:text-white py-2.5 rounded-xl font-bold text-xs shadow-sm flex items-center justify-center gap-2">
+                <span>${i18n[currentLang].btnCaseStudy}</span> <i class="fa-solid fa-arrow-right text-[11px] rtl:rotate-180"></i>
+              </button>
+            </div>
+          `;
+          container.appendChild(card);
+        }
+      });
+
+      if (matchCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    function filterProjects() {
+      renderProjects();
+    }
+
+    function setActiveFilter(category, btnElement) {
+      currentFilter = category;
+      document.querySelectorAll('#filterPillsContainer .filter-pill').forEach(btn => {
+        btn.className = "filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700";
+      });
+      btnElement.className = "filter-pill px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md";
+      renderProjects();
+    }
+
+    let activeModalProject = null;
+
+    function openProjectModal(projectId) {
+      stopVoiceover();
+      const project = projectsData.find(p => p.id === projectId);
+      if (!project) return;
+      activeModalProject = project;
+
+      const data = project[currentLang];
       const modal = document.getElementById('projectModal');
       const modalCard = document.getElementById('modalCard');
       const videoContainer = document.getElementById('modalVideoContainer');
       const videoPlayer = document.getElementById('modalVideoPlayer');
-      const videoSource = document.getElementById('modalVideoSource');
-      const directVideoLink = document.getElementById('modalDirectVideoLink');
       const externalLink = document.getElementById('modalExternalLink');
+      const voiceoverBtnLabel = document.getElementById('voiceoverBtnLabel');
+      const voiceoverAccentBadge = document.getElementById('voiceoverAccentBadge');
 
       document.getElementById('modalTitle').textContent = data.title;
       document.getElementById('modalStudentCredit').textContent = data.student;
       document.getElementById('modalDescription').textContent = data.overview;
-      document.getElementById('modalCategoryBadge').textContent = data.category;
-      document.getElementById('modalCategoryBadge').className = `text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${data.badgeColor}`;
+      document.getElementById('modalArchitecture').textContent = data.architecture;
 
-      // Populate Steps
-      const stepsGrid = document.getElementById('modalStepsGrid');
-      stepsGrid.innerHTML = '';
-      data.steps.forEach(s => {
-        const stepCol = document.createElement('div');
-        stepCol.className = "p-2.5 sm:p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs";
-        stepCol.innerHTML = `
-          <div class="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">${s.step}</div>
-          <div class="font-bold text-slate-800 dark:text-slate-100 mt-0.5 text-xs">${s.title}</div>
-          <div class="text-slate-500 dark:text-slate-400 mt-1 text-[11px] leading-relaxed">${s.desc}</div>
-        `;
-        stepsGrid.appendChild(stepCol);
-      });
+      voiceoverAccentBadge.textContent = i18n[currentLang].voiceoverAccentTag;
+      voiceoverBtnLabel.textContent = i18n[currentLang].voiceoverPlay;
 
-      // Populate Tech Pills
-      const techContainer = document.getElementById('modalTechPills');
-      techContainer.innerHTML = '';
-      data.techStack.forEach(t => {
-        const pill = document.createElement('span');
-        pill.className = "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs px-2.5 sm:px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700/60";
-        pill.textContent = t;
-        techContainer.appendChild(pill);
-      });
-
-      // Handle Video in modal
-      if (data.videoUrl) {
+      // Handle video embedding if present
+      if (project.videoUrl) {
         videoContainer.classList.remove('hidden');
-        videoSource.src = data.videoUrl;
-        videoPlayer.src = data.videoUrl;
-        directVideoLink.href = data.videoUrl;
+        videoPlayer.src = project.videoUrl;
         videoPlayer.muted = true;
-        videoPlayer.load();
+        videoPlayer.currentTime = 0;
         videoPlayer.play().catch(() => {});
       } else {
         videoContainer.classList.add('hidden');
         videoPlayer.pause();
-        videoSource.removeAttribute('src');
+        videoPlayer.removeAttribute('src');
       }
 
-      // Handle External Live Link
-      if (data.liveUrl) {
+      // Handle external live URL button if present
+      if (project.liveUrl) {
         externalLink.classList.remove('hidden');
-        externalLink.href = data.liveUrl;
+        externalLink.href = project.liveUrl;
       } else {
         externalLink.classList.add('hidden');
+      }
+
+      const catBadge = document.getElementById('modalCategoryBadge');
+      catBadge.textContent = project.category.toUpperCase();
+      catBadge.className = project.badgeColor === 'emerald' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-400 text-xs font-bold px-3 py-1 rounded-full' :
+                            project.badgeColor === 'indigo' ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-400 text-xs font-bold px-3 py-1 rounded-full' :
+                            project.badgeColor === 'pink' ? 'bg-pink-100 text-pink-800 dark:bg-pink-955 dark:text-pink-400 text-xs font-bold px-3 py-1 rounded-full' : 'bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full';
+
+      document.getElementById('modalCohortBadge').textContent = currentLang === 'ar' ? 'مشروع تخرج عملي' : 'Curriculum Capstone';
+
+      const techContainer = document.getElementById('modalTechPills');
+      techContainer.innerHTML = '';
+      data.techStack.forEach(tech => {
+        const pill = document.createElement('span');
+        pill.className = "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700/60";
+        pill.textContent = tech;
+        techContainer.appendChild(pill);
+      });
+
+      // Context-aware WhatsApp button
+      const actionLink = document.getElementById('modalActionLink');
+      const actionText = document.getElementById('modalActionText');
+      if (projectId === 'apple-homekit-smart-home') {
+        actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20am%20interested%20in%20the%20Apple%20HomeKit%20Smart%20Home%20Track!';
+        actionText.textContent = currentLang === 'ar' ? 'اطلب مسار إنترنت الأشياء وسيري' : 'Enroll in HomeKit IoT Track';
+      } else if (projectId === 'coens-tradein-platform') {
+        actionLink.href = 'https://wa.me/201099995519?text=Hello%20Fekra%20Tech,%20I%20am%20interested%20in%20the%20Full-Stack%20Web%20Track!';
+        actionText.textContent = currentLang === 'ar' ? 'سجل في مسار تطوير الويب الكامل' : 'Enroll in Full-Stack Track';
+      } else {
+        actionLink.href = 'https://wa.me/201099995519';
+        actionText.textContent = i18n[currentLang].modalBuildSimilar;
       }
 
       modal.classList.remove('hidden');
@@ -766,7 +721,89 @@
       }, 10);
     }
 
+    function toggleVoiceover() {
+      if (isVoiceoverPlaying) {
+        stopVoiceover();
+      } else {
+        playVoiceover();
+      }
+    }
+
+    // Egyptian Arabic & Native US English Voice Selector Engine
+    function selectOptimalVoice(lang) {
+      if (!availableVoices || availableVoices.length === 0) {
+        loadVoices();
+      }
+
+      if (lang === 'ar') {
+        // Priority to Egyptian voices: ar-EG, Maged, Laila, Salma, Zeina, Arabic Egypt
+        const egVoice = availableVoices.find(v => 
+          (v.lang === 'ar-EG' || v.lang === 'ar_EG') || 
+          (v.lang.startsWith('ar') && (v.name.toLowerCase().includes('egypt') || v.name.toLowerCase().includes('maged') || v.name.toLowerCase().includes('laila') || v.name.toLowerCase().includes('salma')))
+        );
+        if (egVoice) return egVoice;
+
+        // Fallback to any natural Arabic voice
+        const arFallback = availableVoices.find(v => v.lang.startsWith('ar'));
+        if (arFallback) return arFallback;
+      } else {
+        // Priority to US English Native voices: en-US, Google US English, Samantha, Alex, David
+        const usVoice = availableVoices.find(v => 
+          (v.lang === 'en-US' || v.lang === 'en_US') && 
+          (v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('united states') || v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('samantha') || v.name.toLowerCase().includes('alex'))
+        );
+        if (usVoice) return usVoice;
+
+        const usStandard = availableVoices.find(v => v.lang === 'en-US' || v.lang === 'en_US');
+        if (usStandard) return usStandard;
+      }
+
+      return null;
+    }
+
+    function playVoiceover() {
+      if (!('speechSynthesis' in window) || !activeModalProject || !activeModalProject.voiceoverText) return;
+
+      window.speechSynthesis.cancel();
+      const textToSpeak = activeModalProject.voiceoverText[currentLang] || activeModalProject.voiceoverText['en'];
+      
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      const voice = selectOptimalVoice(currentLang);
+      
+      if (voice) {
+        utterance.voice = voice;
+      }
+      utterance.lang = currentLang === 'ar' ? 'ar-EG' : 'en-US';
+      utterance.rate = currentLang === 'ar' ? 0.98 : 1.0; // Natural pacing
+      utterance.pitch = 1.0;
+
+      utterance.onend = () => {
+        stopVoiceover();
+      };
+
+      utterance.onerror = () => {
+        stopVoiceover();
+      };
+
+      window.speechSynthesis.speak(utterance);
+      isVoiceoverPlaying = true;
+      document.getElementById('voiceoverIcon').className = "fa-solid fa-stop text-red-400";
+      document.getElementById('voiceoverBtnLabel').textContent = i18n[currentLang].voiceoverStop;
+    }
+
+    function stopVoiceover() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      isVoiceoverPlaying = false;
+      const btnIcon = document.getElementById('voiceoverIcon');
+      const btnLabel = document.getElementById('voiceoverBtnLabel');
+      if (btnIcon) btnIcon.className = "fa-solid fa-microphone-lines";
+      if (btnLabel && activeModalProject) btnLabel.textContent = i18n[currentLang].voiceoverPlay;
+    }
+
     function closeProjectModal() {
+      stopVoiceover();
       const modal = document.getElementById('projectModal');
       const modalCard = document.getElementById('modalCard');
       const videoPlayer = document.getElementById('modalVideoPlayer');
@@ -783,52 +820,36 @@
       }, 250);
     }
 
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const icon = document.getElementById('hamburgerIcon');
-      menu.classList.toggle('hidden');
-      if (menu.classList.contains('hidden')) {
-        icon.className = "fa-solid fa-bars text-base";
-      } else {
-        icon.className = "fa-solid fa-xmark text-base";
-      }
-    }
-
-    function closeMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      const icon = document.getElementById('hamburgerIcon');
-      menu.classList.add('hidden');
-      icon.className = "fa-solid fa-bars text-base";
-    }
-
     function toggleDarkMode() {
       const htmlTag = document.documentElement;
       const goingDark = !htmlTag.classList.contains('dark');
       htmlTag.classList.toggle('dark', goingDark);
-      try {
-        localStorage.setItem('theme', goingDark ? 'dark' : 'light');
-      } catch (e) {}
+      localStorage.setItem('theme', goingDark ? 'dark' : 'light');
       updateDarkModeButton();
     }
 
     function updateDarkModeButton() {
-      const isDark = document.documentElement.classList.contains('dark');
-      document.querySelectorAll('.darkBtnIcon').forEach(icon => {
-        icon.className = isDark ? "darkBtnIcon fa-solid fa-sun text-amber-400" : "darkBtnIcon fa-solid fa-moon text-slate-600";
-      });
+      const darkIcon = document.getElementById('darkBtnIcon');
+      if (darkIcon) {
+        darkIcon.className = document.documentElement.classList.contains('dark') ? "fa-solid fa-sun text-amber-400" : "fa-solid fa-moon text-slate-500";
+      }
     }
 
     function toggleLanguage() {
+      stopVoiceover();
       currentLang = currentLang === 'en' ? 'ar' : 'en';
       document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-      document.querySelectorAll('.langBtnText').forEach(el => {
-        el.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
-      });
-    }
+      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
 
-    document.addEventListener("DOMContentLoaded", () => {
-      updateDarkModeButton();
-    });
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+      });
+
+      document.getElementById('projectSearchInput').placeholder = currentLang === 'ar' ? "ابحث عن المشاريع، المهارات، التقنيات..." : "Search projects, skills, tech...";
+
+      renderProjects();
+    }
   </script>
 </body>
 
