@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Fekra Tech Academy | Master the Future</title>
 
   <link rel="icon" type="image/png" href="./logo-main.png">
@@ -121,262 +121,288 @@
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white min-h-screen">
 
-  <!-- Navbar -->
-  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-4 shadow-md dark:shadow-slate-950/20 sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800/60">
+  <!-- Mobile-Optimized Navbar -->
+  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-3 sm:p-4 shadow-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-        <img src="./logo-main.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
-        <img src="./logo-dark.png" alt="Fekra Tech Academy Logo" class="h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
-        <h1 class="text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 hidden sm:block logo-font uppercase">Fekra Tech</h1>
+      <!-- Logo -->
+      <div class="flex items-center gap-2 sm:gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+        <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
+        <h1 class="text-lg sm:text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 logo-font uppercase">Fekra Tech</h1>
       </div>
-      <ul class="flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
+
+      <!-- Desktop Nav Menu -->
+      <ul class="hidden lg:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
         <li><a href="#tracks" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTracks">Tracks</a></li>
         <li><a href="./portfolio.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navPortfolio">Portfolio</a></li>
         <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navServices">Services (-30%)</a></li>
         <li><a href="#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
         <li class="flex items-center gap-2">
-          <button onclick="toggleDarkMode()" id="darkModeBtn" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
-            <i id="darkBtnIcon" class="fa-solid fa-moon"></i>
+          <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <i class="darkBtnIcon fa-solid fa-moon"></i>
           </button>
-          <button onclick="toggleLanguage()" aria-label="Toggle Language" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-md">
-            <i class="fa-solid fa-globe"></i> <span id="langBtnText">عربي</span>
+          <button onclick="toggleLanguage()" aria-label="Toggle Language" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <i class="fa-solid fa-globe"></i> <span class="langBtnText">عربي</span>
           </button>
         </li>
         <li>
           <a href="#contact" class="btn-premium glow-blue bg-blue-600 text-white hover:bg-blue-700 px-5 py-2 rounded-full shadow-md inline-block" data-i18n="navContact">Contact Us</a>
         </li>
       </ul>
+
+      <!-- Mobile Right Controls (Quick Toggles & Hamburger) -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="flex items-center justify-center text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/70 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700">
+          <i class="darkBtnIcon fa-solid fa-moon text-xs"></i>
+        </button>
+        <button onclick="toggleLanguage()" aria-label="Toggle Language" class="flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-xs bg-slate-100 dark:bg-slate-800/70 px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+          <span class="langBtnText">عربي</span>
+        </button>
+        <button onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="flex items-center justify-center text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 ml-1">
+          <i id="hamburgerIcon" class="fa-solid fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-3 space-y-3 px-2">
+      <a href="#tracks" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navTracks">Tracks</a>
+      <a href="./portfolio.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navPortfolio">Portfolio</a>
+      <a href="./services.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navServices">Services (-30%)</a>
+      <a href="#team" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navTeam">Team</a>
+      <a href="#contact" onclick="closeMobileMenu()" class="block text-center bg-blue-600 text-white font-bold py-2.5 rounded-xl shadow-md text-sm" data-i18n="navContact">Contact Us</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero-bg py-24 sm:py-32 text-center border-b-4 border-blue-600 overflow-hidden">
+  <header class="hero-bg py-20 sm:py-32 text-center border-b-4 border-blue-600 overflow-hidden">
     <div class="container mx-auto px-4">
-      <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-24 sm:h-28 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] dark:hidden" onerror="this.src='./pagelogo.png'">
-      <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-24 sm:h-28 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] hidden dark:block" onerror="this.src='./pagelogo.png'">
-      <h2 class="text-4xl sm:text-6xl md:text-7xl font-black text-white mb-6 tracking-tight logo-font uppercase" data-i18n="heroTitle">Master the Future</h2>
-      <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="heroDesc">Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.</p>
+      <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-20 sm:h-28 mx-auto mb-4 sm:mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] dark:hidden" onerror="this.src='./pagelogo.png'">
+      <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-20 sm:h-28 mx-auto mb-4 sm:mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] hidden dark:block" onerror="this.src='./pagelogo.png'">
+      <h2 class="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight logo-font uppercase" data-i18n="heroTitle">Master the Future</h2>
+      <p class="text-base sm:text-xl text-slate-300 mb-8 sm:mb-10 max-w-2xl mx-auto font-light leading-relaxed px-2" data-i18n="heroDesc">Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.</p>
       <div class="flex justify-center gap-4">
-        <a href="#tracks" class="btn-premium glow-blue bg-blue-600 text-white px-8 py-3.5 rounded-full text-base sm:text-lg font-bold hover:bg-blue-500 shadow-lg" data-i18n="btnExplore">Explore Tracks</a>
+        <a href="#tracks" class="btn-premium glow-blue bg-blue-600 text-white px-7 sm:px-8 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg font-bold hover:bg-blue-500 shadow-lg" data-i18n="btnExplore">Explore Tracks</a>
       </div>
     </div>
   </header>
 
   <!-- Tracks Section (Carousel) -->
-  <section id="tracks" class="py-20 container mx-auto px-4 max-w-7xl overflow-hidden">
-    <div class="text-center mb-16">
-      <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 logo-font" data-i18n="tracksTitle">OUR TRACKS</h3>
-      <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3"></div>
-      <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base font-medium" data-i18n="tuitionPlanSubtitle">Tuition: 4,000 EGP per Phase (1 Month) • 8 Sessions (2 sessions/week, 2.0 hrs each = 16 training hours/phase)</p>
+  <section id="tracks" class="py-16 sm:py-20 container mx-auto px-2 sm:px-4 max-w-7xl overflow-hidden">
+    <div class="text-center mb-10 sm:mb-16 px-4">
+      <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3 sm:mb-4 logo-font" data-i18n="tracksTitle">OUR TRACKS</h3>
+      <div class="w-20 sm:w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3"></div>
+      <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-base font-medium max-w-2xl mx-auto" data-i18n="tuitionPlanSubtitle">Tuition: 4,000 EGP per Phase (1 Month) • 8 Sessions (2 sessions/week, 2.0 hrs each = 16 training hours/phase)</p>
     </div>
 
-    <div class="relative w-full flex items-center px-4 md:px-12">
-      <button onclick="slideCarousel('tracksCarousel', 'left', originalTracksCardsCount)" type="button" aria-label="Slide Tracks Left" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute left-2 md:left-4 select-none">
-        <i class="fa-solid fa-chevron-left text-lg rtl:rotate-180"></i>
+    <!-- Mobile-First Slider Container with Outside Arrow Buttons -->
+    <div class="relative w-full flex items-center px-1 sm:px-6 md:px-12">
+      <button onclick="slideCarousel('tracksCarousel', 'left', originalTracksCardsCount)" type="button" aria-label="Slide Tracks Left" class="btn-premium flex shrink-0 items-center justify-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 w-9 h-9 sm:w-11 sm:h-11 rounded-full shadow-lg z-20 absolute left-1 sm:left-2 md:left-4 select-none">
+        <i class="fa-solid fa-chevron-left text-sm sm:text-lg rtl:rotate-180"></i>
       </button>
 
-      <div id="tracksCarousel" class="flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start">
+      <div id="tracksCarousel" class="flex overflow-x-auto gap-4 sm:gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start px-2">
         
         <!-- Track 1: Programming -->
-        <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-blue-600 flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-blue-600 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="bg-blue-100 dark:bg-blue-950/60 p-4 rounded-xl text-blue-600 dark:text-blue-400 text-3xl"><i class="fa-solid fa-code"></i></div>
+              <div class="bg-blue-100 dark:bg-blue-950/60 p-3 sm:p-4 rounded-xl text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl"><i class="fa-solid fa-code"></i></div>
               <div class="text-right">
-                <span class="text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-3 py-1 rounded-full border border-blue-200 dark:border-blue-900">4,000 EGP / Phase</span>
+                <span class="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 sm:px-3 py-1 rounded-full border border-blue-200 dark:border-blue-900">4,000 EGP / Phase</span>
                 <span class="block text-[10px] text-slate-500 dark:text-slate-400 mt-1">8 Sessions (2.0 Hrs Each)</span>
               </div>
             </div>
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="progTitle">Programming Masterclass</h4>
-            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="progDesc">From complete beginner to full-stack developer. Master Python, Web Dev, Game Engines, and IoT integration.</p>
+            <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="progTitle">Programming Masterclass</h4>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed" data-i18n="progDesc">From complete beginner to full-stack developer. Master Python, Web Dev, Game Engines, and IoT integration.</p>
           </div>
-          <button onclick="openModal('programming')" class="btn-premium glow-blue w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 dark:hover:bg-blue-600 flex items-center justify-center gap-2 group">
+          <button onclick="openModal('programming')" class="btn-premium glow-blue w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 dark:hover:bg-blue-600 flex items-center justify-center gap-2 group text-xs sm:text-sm">
             <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
           </button>
         </div>
 
         <!-- Track 2: Cybersecurity -->
-        <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="bg-slate-100 dark:bg-slate-800/80 p-4 rounded-xl text-slate-800 dark:text-slate-200 text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="bg-slate-100 dark:bg-slate-800/80 p-3 sm:p-4 rounded-xl text-slate-800 dark:text-slate-200 text-2xl sm:text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
               <div class="text-right">
-                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">4,000 EGP / Phase</span>
+                <span class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 sm:px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">4,000 EGP / Phase</span>
                 <span class="block text-[10px] text-slate-500 dark:text-slate-400 mt-1">8 Sessions (2.0 Hrs Each)</span>
               </div>
             </div>
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="cybTitle">Cybersecurity</h4>
-            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="cybDesc">Defend networks, understand ethical hacking, and secure the digital landscape against modern threats.</p>
+            <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="cybTitle">Cybersecurity</h4>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed" data-i18n="cybDesc">Defend networks, understand ethical hacking, and secure the digital landscape against modern threats.</p>
           </div>
-          <button onclick="openModal('cyber')" class="btn-premium glow-slate w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 dark:hover:bg-slate-700 flex items-center justify-center gap-2 group">
+          <button onclick="openModal('cyber')" class="btn-premium glow-slate w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 dark:hover:bg-slate-700 flex items-center justify-center gap-2 group text-xs sm:text-sm">
             <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
           </button>
         </div>
 
         <!-- Track 3: Networking -->
-        <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="bg-indigo-100 dark:bg-indigo-950/60 p-4 rounded-xl text-indigo-600 dark:text-indigo-400 text-3xl"><i class="fa-solid fa-network-wired"></i></div>
+              <div class="bg-indigo-100 dark:bg-indigo-950/60 p-3 sm:p-4 rounded-xl text-indigo-600 dark:text-indigo-400 text-2xl sm:text-3xl"><i class="fa-solid fa-network-wired"></i></div>
               <div class="text-right">
-                <span class="text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-900">4,000 EGP / Phase</span>
+                <span class="text-xs sm:text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/80 px-2.5 sm:px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-900">4,000 EGP / Phase</span>
                 <span class="block text-[10px] text-slate-500 dark:text-slate-400 mt-1">8 Sessions (2.0 Hrs Each)</span>
               </div>
             </div>
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="netTitle">Networking</h4>
-            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="netDesc">Build, configure, and troubleshoot robust infrastructure. Learn the backbone of how global systems communicate.</p>
+            <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="netTitle">Networking</h4>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed" data-i18n="netDesc">Build, configure, and troubleshoot robust infrastructure. Learn the backbone of how global systems communicate.</p>
           </div>
-          <button onclick="openModal('networking')" class="btn-premium glow-indigo w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 dark:hover:bg-indigo-600 flex items-center justify-center gap-2 group">
+          <button onclick="openModal('networking')" class="btn-premium glow-indigo w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 dark:hover:bg-indigo-600 flex items-center justify-center gap-2 group text-xs sm:text-sm">
             <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
           </button>
         </div>
 
         <!-- Track 4: Graphic Design -->
-        <div class="bg-white dark:bg-slate-900/60 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-pink-500 flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-pink-500 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="bg-pink-100 dark:bg-pink-955/60 p-4 rounded-xl text-pink-500 dark:text-pink-400 text-3xl"><i class="fa-solid fa-bezier-curve"></i></div>
+              <div class="bg-pink-100 dark:bg-pink-955/60 p-3 sm:p-4 rounded-xl text-pink-500 dark:text-pink-400 text-2xl sm:text-3xl"><i class="fa-solid fa-bezier-curve"></i></div>
               <div class="text-right">
-                <span class="text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-3 py-1 rounded-full border border-pink-200 dark:border-pink-900">4,000 EGP / Phase</span>
+                <span class="text-xs sm:text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-2.5 sm:px-3 py-1 rounded-full border border-pink-200 dark:border-pink-900">4,000 EGP / Phase</span>
                 <span class="block text-[10px] text-slate-500 dark:text-slate-400 mt-1">8 Sessions (2.0 Hrs Each)</span>
               </div>
             </div>
-            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="desTitle">Graphic Design</h4>
-            <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed" data-i18n="desDesc">Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.</p>
+            <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="desTitle">Graphic Design</h4>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed" data-i18n="desDesc">Transform ideas into stunning visuals. Master industry-standard design tools and creative problem-solving.</p>
           </div>
-          <button onclick="openModal('design')" class="btn-premium glow-pink w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-pink-500 dark:hover:bg-pink-500 flex items-center justify-center gap-2 group">
+          <button onclick="openModal('design')" class="btn-premium glow-pink w-full bg-slate-900 dark:bg-slate-800 text-white py-3 rounded-lg font-semibold hover:bg-pink-500 dark:hover:bg-pink-500 flex items-center justify-center gap-2 group text-xs sm:text-sm">
             <span data-i18n="btnEnroll">View Roadmap & Enroll</span> <i class="fa-solid fa-arrow-right group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition"></i>
           </button>
         </div>
 
       </div>
 
-      <button onclick="slideCarousel('tracksCarousel', 'right', originalTracksCardsCount)" type="button" aria-label="Slide Tracks Right" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute right-2 md:right-4 select-none">
+      <button onclick="slideCarousel('tracksCarousel', 'right', originalTracksCardsCount)" type="button" aria-label="Slide Tracks Right" class="btn-premium flex shrink-0 items-center justify-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 w-9 h-9 sm:w-11 sm:h-11 rounded-full shadow-lg z-20 absolute right-1 sm:right-2 md:right-4 select-none">
         <i class="fa-solid fa-chevron-right text-lg rtl:rotate-180"></i>
       </button>
     </div>
 
-    <div class="text-center mt-12">
-      <a href="./courses.html" id="toggleTracksBtn" class="btn-premium glow-blue bg-blue-600 text-white font-bold px-7 py-3.5 rounded-full shadow-md text-sm inline-flex items-center gap-2">
+    <div class="text-center mt-8 sm:mt-12 px-4">
+      <a href="./courses.html" id="toggleTracksBtn" class="btn-premium glow-blue bg-blue-600 text-white font-bold px-6 sm:px-7 py-3 sm:py-3.5 rounded-full shadow-md text-xs sm:text-sm inline-flex items-center gap-2">
         <i class="fa-solid fa-table-cells-large"></i> <span data-i18n="btnShowAll">Show All Tracks & Vibe Coding</span>
       </a>
     </div>
   </section>
 
   <!-- Team Section (Carousel with Left/Right Buttons & Show All Button) -->
-  <section id="team" class="py-20 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800/40 overflow-hidden">
-    <div class="container mx-auto px-4 max-w-7xl">
-      <div class="text-center mb-16">
-        <h3 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-4 logo-font" data-i18n="teamTitle">THE EXPERTS</h3>
-        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3"></div>
-        <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base font-medium" data-i18n="teamSubtitle">Industry-certified engineers and technical instructors guiding our academy cohorts.</p>
+  <section id="team" class="py-16 sm:py-20 bg-slate-100 dark:bg-slate-900/60 border-y border-slate-200 dark:border-slate-800/40 overflow-hidden">
+    <div class="container mx-auto px-2 sm:px-4 max-w-7xl">
+      <div class="text-center mb-10 sm:mb-16 px-4">
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-3 sm:mb-4 logo-font" data-i18n="teamTitle">THE EXPERTS</h3>
+        <div class="w-20 sm:w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3"></div>
+        <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-base font-medium max-w-2xl mx-auto" data-i18n="teamSubtitle">Industry-certified engineers and technical instructors guiding our academy cohorts.</p>
       </div>
 
       <!-- Team Carousel Wrapper -->
-      <div id="teamCarouselWrapper" class="relative w-full flex items-center px-4 md:px-12">
-        <button onclick="slideCarousel('teamCarousel', 'left', originalTeamCardsCount)" type="button" aria-label="Slide Team Left" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute left-2 md:left-4 select-none">
-          <i class="fa-solid fa-chevron-left text-lg rtl:rotate-180"></i>
+      <div id="teamCarouselWrapper" class="relative w-full flex items-center px-1 sm:px-6 md:px-12">
+        <button onclick="slideCarousel('teamCarousel', 'left', originalTeamCardsCount)" type="button" aria-label="Slide Team Left" class="btn-premium flex shrink-0 items-center justify-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 w-9 h-9 sm:w-11 sm:h-11 rounded-full shadow-lg z-20 absolute left-1 sm:left-2 md:left-4 select-none">
+          <i class="fa-solid fa-chevron-left text-sm sm:text-lg rtl:rotate-180"></i>
         </button>
 
-        <div id="teamCarousel" class="flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start">
+        <div id="teamCarousel" class="flex overflow-x-auto gap-4 sm:gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start px-2">
           
           <!-- Sief Daabes -->
-          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
-              <div class="w-full h-20 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
-                <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-36 h-36 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-16" onerror="this.src='./pagelogo.png'">
-                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Sief Daabes</h4>
+                <img src="./sief-pic.jpeg" alt="Sief Daabes" class="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full object-cover mb-3 sm:mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-14 sm:-mt-16" onerror="this.src='./pagelogo.png'">
+                <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1">Sief Daabes</h4>
                 <p class="text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="siefRole">Instructor & Security Specialist</p>
               </div>
               <div id="siefBioPanel" class="hidden my-4 px-2 overflow-hidden">
-                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="siefBio">
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm text-justify leading-relaxed font-light border-l-2 border-slate-200 dark:border-slate-800 pl-3 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-3" data-i18n="siefBio">
                   Sief is a cybersecurity-focused graduate with a Bachelor's Degree in Computer Systems emphasizing Networking and Telecommunications from the Arab Open University. As the Head of the Technician Instructors Team at the Little Programmers Initiative, he has trained and mentored over 500 students in programming and networking. He specializes in Security Operations Center (SOC) workflows, threat detection, and incident response. Sief holds multiple industry-recognized certifications, including the CCNA, Certified Ethical Hacker (CEH), and Fortinet Certified Associate.
                 </p>
               </div>
             </div>
-            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
-              <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow-md">
-                <i class="fa-brands fa-linkedin text-base"></i> <span data-i18n="btnConnect">Connect</span>
+            <div class="flex justify-center items-center gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-1.5 bg-[#0A66C2] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow">
+                <i class="fa-brands fa-linkedin text-sm"></i> <span data-i18n="btnConnect">Connect</span>
               </a>
-              <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+              <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
           </div>
 
           <!-- Ahmed Galal -->
-          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
-              <div class="w-full h-20 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-800 dark:to-slate-950 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-slate-700 to-slate-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
-                <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-36 h-36 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-16" onerror="this.src='./pagelogo.png'">
-                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Ahmed Galal</h4>
+                <img src="./ahmed-pic.jpeg" alt="Ahmed Galal" class="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full object-cover mb-3 sm:mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-14 sm:-mt-16" onerror="this.src='./pagelogo.png'">
+                <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1">Ahmed Galal</h4>
                 <p class="text-slate-700 dark:text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="ahmedRole">IT Specialist & Instructor</p>
               </div>
               <div id="ahmedBioPanel" class="hidden my-4 px-2 overflow-hidden">
-                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="ahmedBio">
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm text-justify leading-relaxed font-light border-l-2 border-slate-200 dark:border-slate-800 pl-3 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-3" data-i18n="ahmedBio">
                   Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.
                 </p>
               </div>
             </div>
-            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
-              <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow-md">
-                <i class="fa-brands fa-linkedin text-base"></i> <span data-i18n="btnConnect">Connect</span>
+            <div class="flex justify-center items-center gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-1.5 bg-[#0A66C2] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow">
+                <i class="fa-brands fa-linkedin text-sm"></i> <span data-i18n="btnConnect">Connect</span>
               </a>
-              <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+              <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
           </div>
 
           <!-- Mohamed Gary -->
-          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
-              <div class="w-full h-20 bg-gradient-to-r from-cyan-700 to-blue-900 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-cyan-700 to-blue-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
-                <img src="./mohamed-pic.jpeg" alt="Mohamed Gary" class="w-36 h-36 mx-auto rounded-full object-cover mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-16" onerror="this.src='./pagelogo.png'">
-                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Mohammed Ibrahim </h4>
+                <img src="./mohamed-pic.jpeg" alt="Mohamed Gary" class="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full object-cover mb-3 sm:mb-4 border-4 border-white dark:border-slate-900 shadow-lg -mt-14 sm:-mt-16" onerror="this.src='./pagelogo.png'">
+                <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1">Mohammed Ibrahim</h4>
                 <p class="text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="garyRole">AI Engineer & Data Scientist</p>
               </div>
               <div id="garyBioPanel" class="hidden my-4 px-2 overflow-hidden">
-                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="garyBio">
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm text-justify leading-relaxed font-light border-l-2 border-slate-200 dark:border-slate-800 pl-3 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-3" data-i18n="garyBio">
                   Mohamed holds a Bachelor's Degree in Artificial Intelligence from the Faculty of Computers and Artificial Intelligence, Helwan University. He works as an AI Engineer with proven expertise across Deep Learning, NLP, Computer Vision (YOLOv11), and RAG AI Agent systems using LangChain and vector databases. Certified as an IBM Data Science Professional and Generative AI specialist, he mentors students in building real-world AI pipelines, model deployment, and Python machine learning architectures.
                 </p>
               </div>
             </div>
-            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
-              <a href="https://www.linkedin.com/in/mohamed-ahmed-484188246" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-2 bg-[#0A66C2] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow-md">
-                <i class="fa-brands fa-linkedin text-base"></i> <span data-i18n="btnConnect">Connect</span>
+            <div class="flex justify-center items-center gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://www.linkedin.com/in/mohamed-ahmed-484188246" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-1.5 bg-[#0A66C2] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow">
+                <i class="fa-brands fa-linkedin text-sm"></i> <span data-i18n="btnConnect">Connect</span>
               </a>
-              <button onclick="toggleBio('gary')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+              <button onclick="toggleBio('gary')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-cyan-600 dark:text-cyan-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
           </div>
 
           <!-- Jawad Wayloox -->
-          <div class="team-card bg-white dark:bg-slate-950 p-8 rounded-2xl shadow-xl dark:shadow-2xl/40 border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
-              <div class="w-full h-20 bg-gradient-to-r from-blue-700 to-indigo-900 rounded-t-xl mb-4 -mt-8 -mx-8 px-8 flex items-center justify-end"></div>
+              <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-blue-700 to-indigo-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
-                <div class="w-36 h-36 mx-auto rounded-full bg-cyan-500/20 text-cyan-400 border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center font-bold text-3xl mb-4 -mt-16">
+                <div class="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full bg-cyan-500/20 text-cyan-400 border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center font-bold text-2xl sm:text-3xl mb-3 sm:mb-4 -mt-14 sm:-mt-16">
                   JW
                 </div>
-                <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-1">Jawad Wayloox</h4>
+                <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1">Jawad Wayloox</h4>
                 <p class="text-cyan-600 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="jawadRole">Frontend & Web Instructor</p>
               </div>
               <div id="jawadBioPanel" class="hidden my-4 px-2 overflow-hidden">
-                <p class="text-slate-500 dark:text-slate-400 text-[13px] md:text-sm text-justify leading-loose tracking-wide font-light border-l-2 border-slate-200 dark:border-slate-800 pl-4 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-4" data-i18n="jawadBio">
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm text-justify leading-relaxed font-light border-l-2 border-slate-200 dark:border-slate-800 pl-3 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-3" data-i18n="jawadBio">
                   Modern frontend practitioner focusing on React, Next.js, responsive layouts, client-side state architectures, and UI/UX design systems. Mentors students in translating visual mockups into production-grade interactive web applications.
                 </p>
               </div>
             </div>
-            <div class="flex justify-center items-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
-              <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-[#20bd5a] shadow-md">
-                <i class="fa-brands fa-whatsapp text-base"></i> <span data-i18n="btnConnectWA">Contact</span>
+            <div class="flex justify-center items-center gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green inline-flex items-center gap-1.5 bg-[#25D366] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-[#20bd5a] shadow">
+                <i class="fa-brands fa-whatsapp text-sm"></i> <span data-i18n="btnConnectWA">Contact</span>
               </a>
-              <button onclick="toggleBio('jawad')" type="button" class="btn-premium flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700/80 px-5 py-2 rounded-full text-xs font-semibold shadow-md border border-slate-200 dark:border-slate-700/80">
+              <button onclick="toggleBio('jawad')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
@@ -384,14 +410,14 @@
 
         </div>
 
-        <button onclick="slideCarousel('teamCarousel', 'right', originalTeamCardsCount)" type="button" aria-label="Slide Team Right" class="btn-premium flex shrink-0 items-center justify-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 w-11 h-11 rounded-full shadow-md z-20 absolute right-2 md:right-4 select-none">
+        <button onclick="slideCarousel('teamCarousel', 'right', originalTeamCardsCount)" type="button" aria-label="Slide Team Right" class="btn-premium flex shrink-0 items-center justify-center bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 w-9 h-9 sm:w-11 sm:h-11 rounded-full shadow-lg z-20 absolute right-1 sm:right-2 md:right-4 select-none">
           <i class="fa-solid fa-chevron-right text-lg rtl:rotate-180"></i>
         </button>
       </div>
 
       <!-- Toggle Show All Team Button -->
-      <div class="text-center mt-12">
-        <button id="toggleTeamBtn" onclick="toggleShowAllTeam()" type="button" class="btn-premium glow-blue bg-blue-600 text-white font-bold px-7 py-3.5 rounded-full shadow-md text-sm inline-flex items-center gap-2">
+      <div class="text-center mt-8 sm:mt-12 px-4">
+        <button id="toggleTeamBtn" onclick="toggleShowAllTeam()" type="button" class="btn-premium glow-blue bg-blue-600 text-white font-bold px-6 sm:px-7 py-3 sm:py-3.5 rounded-full shadow-md text-xs sm:text-sm inline-flex items-center gap-2">
           <i id="toggleTeamIcon" class="fa-solid fa-users"></i> <span id="toggleTeamText" data-i18n="btnShowAllTeam">Show All Team</span>
         </button>
       </div>
@@ -399,74 +425,74 @@
   </section>
 
   <!-- Footer / Contact -->
-  <footer id="contact" class="bg-slate-900 dark:bg-slate-950 text-white py-16 border-t border-slate-800">
+  <footer id="contact" class="bg-slate-900 dark:bg-slate-950 text-white py-12 sm:py-16 border-t border-slate-800">
     <div class="container mx-auto px-4 max-w-5xl text-center">
-      <h3 class="text-3xl font-bold mb-8 logo-font uppercase" data-i18n="contactTitle">Initialize Connection</h3>
-      <p class="text-slate-400 mb-10 max-w-xl mx-auto" data-i18n="contactDesc">Get in touch with us to find the right track, ask questions about our curriculum, or finalize your registration.</p>
+      <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 logo-font uppercase" data-i18n="contactTitle">Initialize Connection</h3>
+      <p class="text-slate-400 mb-8 sm:mb-10 max-w-xl mx-auto text-xs sm:text-sm" data-i18n="contactDesc">Get in touch with us to find the right track, ask questions about our curriculum, or finalize your registration.</p>
 
-      <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-        <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
-          <i class="fa-brands fa-whatsapp text-2xl"></i> <span data-i18n="waText">Chat with us</span>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mb-10 sm:mb-12">
+        <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green flex items-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-lg w-full sm:w-auto justify-center">
+          <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i> <span data-i18n="waText">Chat with us</span>
         </a>
-        <a href="mailto:fekratechacademy@gmail.com" class="btn-premium glow-blue flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg w-full md:w-auto justify-center">
-          <i class="fa-solid fa-envelope text-xl"></i> <span data-i18n="emailText">Email Us</span>
+        <a href="mailto:fekratechacademy@gmail.com" class="btn-premium glow-blue flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-lg w-full sm:w-auto justify-center">
+          <i class="fa-solid fa-envelope text-lg sm:text-xl"></i> <span data-i18n="emailText">Email Us</span>
         </a>
       </div>
 
-      <hr class="border-slate-800 mb-8">
+      <hr class="border-slate-800 mb-6 sm:mb-8">
 
-      <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+      <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs sm:text-sm gap-4">
         <p data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</p>
-        <div class="flex gap-5 mt-4 md:mt-0 items-center">
-          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-2xl"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-2xl"><i class="fa-brands fa-facebook"></i></a>
-          <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-2xl"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@fekratechacad" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-black dark:hover:text-white transition text-2xl"><i class="fa-brands fa-tiktok"></i></a>
+        <div class="flex gap-5 items-center">
+          <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-xl"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@fekratechacad" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-black dark:hover:text-white transition text-xl"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- Enrollment Modal -->
-  <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-4">
+  <div id="courseModal" class="fixed inset-0 z-50 hidden opacity-0 flex items-center justify-center p-2 sm:p-4">
     <div class="absolute inset-0 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-sm" onclick="closeModal()"></div>
-    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[95vh] overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800" id="modalContent">
-      <button onclick="closeModal()" class="btn-premium absolute top-4 right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 dark:hover:bg-red-950/50 hover:text-red-600 dark:hover:text-red-400 w-10 h-10 rounded-full flex items-center justify-center z-20 shadow">
-        <i class="fa-solid fa-xmark text-xl"></i>
+    <div class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl flex flex-col md:flex-row max-h-[92vh] overflow-hidden transform scale-95 border border-slate-200 dark:border-slate-800" id="modalContent">
+      <button onclick="closeModal()" class="btn-premium absolute top-3 right-3 sm:top-4 sm:right-4 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-red-100 hover:text-red-600 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center z-20 shadow">
+        <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
-      <!-- Left Column: Roadmap & Pricing Display -->
-      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
+      <!-- Left Column: Roadmap -->
+      <div class="md:w-1/2 bg-slate-50 dark:bg-slate-950/60 p-5 sm:p-8 overflow-y-auto timeline-scroll border-r border-slate-200 dark:border-slate-800/80 rtl:border-r-0 rtl:border-l">
         <div class="flex items-center justify-between gap-2 mb-3">
           <span class="bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block" data-i18n="modalTrackTag">Track Roadmap</span>
-          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-sm px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">4,000 EGP / Phase</div>
+          <div id="modalPriceBadge" class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 font-bold text-xs sm:text-sm px-2.5 sm:px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800">4,000 EGP / Phase</div>
         </div>
         
-        <h3 id="modalCourseTitle" class="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
-        <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-8 text-sm leading-relaxed"></p>
-        <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-8 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
+        <h3 id="modalCourseTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2 logo-font"></h3>
+        <p id="modalCourseDesc" class="text-slate-600 dark:text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed"></p>
+        <div class="relative border-l-2 border-blue-200 dark:border-blue-900/60 ml-3 space-y-6 pb-4 rtl:border-l-0 rtl:border-r-2 rtl:ml-0 rtl:mr-3" id="roadmapContainer"></div>
       </div>
 
       <!-- Right Column: Registration Form -->
-      <div class="md:w-1/2 p-8 overflow-y-auto bg-white dark:bg-slate-900">
+      <div class="md:w-1/2 p-5 sm:p-8 overflow-y-auto bg-white dark:bg-slate-900">
         <form id="enrollmentForm" onsubmit="submitForm(event)">
-          <h4 class="text-2xl font-bold text-slate-800 dark:text-white mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
+          <h4 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-white mb-4 sm:mb-6" data-i18n="modalEnrollTitle">Enrollment Application</h4>
           <input type="hidden" id="selectedCourseInput" name="selectedCourse">
           <input type="hidden" id="selectedCoursePrice" name="selectedCoursePrice">
           
-          <div class="mb-4">
-            <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
-            <input type="text" id="studentFullName" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
+          <div class="mb-3">
+            <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblName">Student Full Name</label>
+            <input type="text" id="studentFullName" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
           </div>
           
-          <div class="grid grid-cols-2 gap-4 mb-4">
+          <div class="grid grid-cols-2 gap-3 mb-3">
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblAge">Student Age</label>
-              <input type="number" id="studentAge" min="7" max="80" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblAge">Student Age</label>
+              <input type="number" id="studentAge" min="7" max="80" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblExp">Prior Experience</label>
-              <select id="studentExp" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblExp">Prior Experience</label>
+              <select id="studentExp" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-2 sm:px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100">
                 <option value="Complete Beginner" data-i18n="exp1">Complete Beginner</option>
                 <option value="Some Knowledge" data-i18n="exp2">Some Knowledge</option>
                 <option value="Advanced" data-i18n="exp3">Advanced</option>
@@ -474,22 +500,22 @@
             </div>
           </div>
           
-          <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa1">Student/Primary WhatsApp</label>
-              <input type="tel" id="studentWa" required placeholder="010XXXXXXXX" pattern="[0-9+]{10,14}" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa1">Student/Primary WhatsApp</label>
+              <input type="tel" id="studentWa" required placeholder="010XXXXXXXX" pattern="[0-9+]{10,14}" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
             <div>
-              <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa2">Parent's WhatsApp (Optional)</label>
-              <input type="tel" id="parentWa" placeholder="010XXXXXXXX" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
+              <label class="block text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1" data-i18n="lblWa2">Parent's WhatsApp (Optional)</label>
+              <input type="tel" id="parentWa" placeholder="010XXXXXXXX" class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/80 rounded-lg px-3 py-2.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-800 dark:text-slate-100" dir="ltr">
             </div>
           </div>
           
-          <button type="submit" id="submitAppBtn" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 shadow-lg text-lg flex items-center justify-center gap-2">
-            <i class="fa-brands fa-whatsapp text-xl"></i> <span id="submitBtnText" data-i18n="btnSubmitForm">Submit Application</span>
+          <button type="submit" id="submitAppBtn" class="btn-premium glow-blue w-full bg-blue-600 text-white font-bold py-3 sm:py-3.5 rounded-lg hover:bg-blue-700 shadow-lg text-sm sm:text-base flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-lg"></i> <span id="submitBtnText" data-i18n="btnSubmitForm">Submit Application</span>
           </button>
           
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-4 text-center leading-relaxed font-medium" data-i18n="formDisclaimer">By submitting, you reserve a spot in the upcoming cohort. Our Fekra Tech administration will contact you via WhatsApp to discuss scheduling, payments, and placement tests if necessary.</p>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-3 text-center leading-relaxed" data-i18n="formDisclaimer">By submitting, you reserve a spot in the upcoming cohort. Our administration will contact you via WhatsApp to discuss scheduling and payments.</p>
         </form>
       </div>
     </div>
@@ -511,6 +537,24 @@
       initCarousel('tracksCarousel', count => { originalTracksCardsCount = count; });
       initCarousel('teamCarousel', count => { originalTeamCardsCount = count; });
     });
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      menu.classList.toggle('hidden');
+      if (menu.classList.contains('hidden')) {
+        icon.className = "fa-solid fa-bars text-base";
+      } else {
+        icon.className = "fa-solid fa-xmark text-base";
+      }
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('hamburgerIcon');
+      menu.classList.add('hidden');
+      icon.className = "fa-solid fa-bars text-base";
+    }
 
     function initCarousel(carouselId, setCountCallback) {
       const carousel = document.getElementById(carouselId);
@@ -566,7 +610,6 @@
     function toggleShowAllTeam() {
       const wrapper = document.getElementById('teamCarouselWrapper');
       const carousel = document.getElementById('teamCarousel');
-      const toggleBtn = document.getElementById('toggleTeamBtn');
       const toggleText = document.getElementById('toggleTeamText');
       const toggleIcon = document.getElementById('toggleTeamIcon');
       const arrowBtns = wrapper.querySelectorAll('button[aria-label^="Slide Team"]');
@@ -575,9 +618,8 @@
 
       if (isTeamExpanded) {
         arrowBtns.forEach(btn => btn.classList.add('hidden'));
-        carousel.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mx-auto";
+        carousel.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full mx-auto";
         
-        // Remove cloned nodes to show exactly the 4 distinct instructors in the grid
         const cards = Array.from(carousel.children);
         if (originalTeamCardsCount > 0 && cards.length > originalTeamCardsCount) {
           cards.slice(0, originalTeamCardsCount).forEach(c => c.remove());
@@ -587,7 +629,7 @@
         }
 
         Array.from(carousel.children).forEach(card => {
-          card.classList.remove('shrink-0', 'snap-center', 'w-full', 'sm:w-[calc((100%-1.5rem)/2)]', 'lg:w-[calc((100%-3rem)/3)]');
+          card.classList.remove('shrink-0', 'snap-center', 'w-[86vw]', 'sm:w-[calc((100%-1.5rem)/2)]', 'lg:w-[calc((100%-3rem)/3)]');
           card.classList.add('w-full');
         });
 
@@ -595,10 +637,10 @@
         toggleIcon.className = "fa-solid fa-arrows-left-right";
       } else {
         arrowBtns.forEach(btn => btn.classList.remove('hidden'));
-        carousel.className = "flex overflow-x-auto gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start";
+        carousel.className = "flex overflow-x-auto gap-4 sm:gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start px-2";
         
         Array.from(carousel.children).forEach(card => {
-          card.classList.add('w-full', 'sm:w-[calc((100%-1.5rem)/2)]', 'lg:w-[calc((100%-3rem)/3)]', 'shrink-0', 'snap-center');
+          card.classList.add('w-[86vw]', 'sm:w-[calc((100%-1.5rem)/2)]', 'lg:w-[calc((100%-3rem)/3)]', 'shrink-0', 'snap-center');
         });
 
         initCarousel('teamCarousel', count => { originalTeamCardsCount = count; });
@@ -619,10 +661,10 @@
     }
 
     function updateDarkModeButton() {
-      const darkIcon = document.getElementById('darkBtnIcon');
-      if (darkIcon) {
-        darkIcon.className = document.documentElement.classList.contains('dark') ? "fa-solid fa-sun text-amber-400" : "fa-solid fa-moon text-slate-500";
-      }
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('.darkBtnIcon').forEach(icon => {
+        icon.className = isDark ? "darkBtnIcon fa-solid fa-sun text-amber-400" : "darkBtnIcon fa-solid fa-moon text-slate-600";
+      });
     }
 
     function toggleBio(id) {
@@ -635,7 +677,9 @@
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'ar' : 'en';
       document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+      document.querySelectorAll('.langBtnText').forEach(el => {
+        el.textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+      });
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -872,12 +916,12 @@
       container.innerHTML = '';
       data.roadmap.forEach(item => {
         const node = document.createElement('div');
-        node.className = "relative pl-6 rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 dark:rtl:border-blue-900/60 rtl:-ml-[2px]";
+        node.className = "relative pl-5 sm:pl-6 rtl:pr-5 sm:rtl:pr-6 rtl:pl-0 rtl:border-r-2 rtl:border-blue-200 dark:rtl:border-blue-900/60 rtl:-ml-[2px]";
         node.innerHTML = `
-          <div class="absolute w-4 h-4 bg-blue-600 dark:bg-blue-500 rounded-full -left-[9px] rtl:-right-[9px] top-1 border-4 border-slate-50 dark:border-slate-900 shadow-sm"></div>
-          <span class="text-xs font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">${item.step}</span>
-          <h5 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-1">${item.title}</h5>
-          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>`;
+          <div class="absolute w-3.5 h-3.5 sm:w-4 sm:h-4 bg-blue-600 dark:bg-blue-500 rounded-full -left-[8px] rtl:-right-[8px] top-1 border-4 border-slate-50 dark:border-slate-900 shadow-sm"></div>
+          <span class="text-[10px] sm:text-xs font-bold text-blue-600 dark:text-blue-400 tracking-widest uppercase">${item.step}</span>
+          <h5 class="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200 mt-0.5">${item.title}</h5>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${item.details}</p>`;
         container.appendChild(node);
       });
     }
