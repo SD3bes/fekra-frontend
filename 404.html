@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found | Fekra Tech Academy</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 24px; position: relative; overflow: hidden;
+    }
+    html[dir="rtl"] body { font-family: 'Cairo', sans-serif; }
+    .glow { position: absolute; width: 28rem; height: 28rem; border-radius: 9999px; filter: blur(90px); pointer-events: none; }
+    .g1 { background: rgba(37, 99, 235, .35); top: -8rem; left: -8rem; }
+    .g2 { background: rgba(99, 102, 241, .25); bottom: -10rem; right: -8rem; }
+    .card { position: relative; max-width: 560px; width: 100%; }
+    .logo { height: 72px; margin: 0 auto 20px; display: block; filter: drop-shadow(0 0 15px rgba(37,99,235,.8)); }
+    .code { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(64px, 16vw, 120px); line-height: 1; color: #fff; letter-spacing: -0.02em; }
+    .code span { color: #3b82f6; }
+    h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(18px, 4vw, 26px); margin: 12px 0 10px; color: #fff; text-transform: uppercase; letter-spacing: .04em; }
+    html[dir="rtl"] h1 { font-family: 'Cairo', sans-serif; letter-spacing: 0; }
+    p { color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 26px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 9999px; font-weight: 700; font-size: 14px; text-decoration: none; transition: transform .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .primary { background: #2563eb; color: #fff; box-shadow: 0 10px 22px rgba(37,99,235,.35); }
+    .ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.18); }
+    .lang { position: absolute; top: 18px; right: 18px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: #fff; border-radius: 9999px; padding: 6px 14px; font-weight: 700; font-size: 13px; cursor: pointer; }
+    html[dir="rtl"] .lang { right: auto; left: 18px; }
+  </style>
+</head>
+<body>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <button class="lang" onclick="toggleLanguage()" aria-label="Toggle Language"><span id="langBtnText">عربي</span></button>
+
+  <main class="card">
+    <img src="./logo-dark.png" alt="Fekra Tech Academy" class="logo" onerror="this.onerror=null;this.src='./icon-192.png'">
+    <div class="code" aria-hidden="true">4<span>0</span>4</div>
+    <h1 data-i18n="title">Page not found</h1>
+    <p data-i18n="desc">The page you are looking for has moved or never existed. Head back to the academy home page or explore our tracks.</p>
+    <div class="actions">
+      <a href="./index.html" class="btn primary" data-i18n="home">Back to Home</a>
+      <a href="./courses.html" class="btn ghost" data-i18n="tracks">View Tracks</a>
+    </div>
+  </main>
+
+  <script>
+    const i18n = {
+      en: { title: "Page not found", desc: "The page you are looking for has moved or never existed. Head back to the academy home page or explore our tracks.", home: "Back to Home", tracks: "View Tracks" },
+      ar: { title: "الصفحة غير موجودة", desc: "الصفحة اللي بتدور عليها اتنقلت أو مش موجودة أصلاً. ارجع للصفحة الرئيسية أو استكشف مساراتنا.", home: "الرجوع للرئيسية", tracks: "شوف المسارات" }
+    };
+    let currentLang = 'en';
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', currentLang);
+      document.getElementById('langBtnText').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+      document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = i18n[currentLang][el.getAttribute('data-i18n')]; });
+    }
+  </script>
+</body>
+</html>
