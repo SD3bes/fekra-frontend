@@ -5,6 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Fekra Tech Academy | Master the Future</title>
+  <meta name="description" content="Fekra Tech Academy: hands-on training in Programming, Cybersecurity, Networking, AI and Design, led by certified engineers. Bilingual English/Arabic cohorts with real projects and WhatsApp support.">
+  <meta name="theme-color" content="#0f172a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fekra Tech Academy | Master the Future">
+  <meta property="og:description" content="Hands-on tech training in Programming, Cybersecurity, Networking, AI and Design, led by certified engineers.">
+  <meta property="og:image" content="https://fekra-tech-acad.vercel.app/logo-main.png">
+  <meta property="og:url" content="https://fekra-tech-acad.vercel.app/">
+  <meta name="twitter:card" content="summary">
 
   <link rel="icon" type="image/png" href="./logo-main.png">
 
@@ -102,6 +110,50 @@
     .glow-pink:hover { box-shadow: 0 10px 22px rgba(236, 72, 153, 0.35); }
     .glow-linkedin:hover { box-shadow: 0 10px 22px rgba(10, 102, 194, 0.35); }
 
+    .card-hover {
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px -14px rgba(37, 99, 235, 0.35);
+      border-color: rgba(37, 99, 235, 0.45);
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.45; }
+    }
+    .live-dot::before {
+      content: "";
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 9999px;
+      background: #34d399;
+      margin-inline-end: 8px;
+      animation: pulse-dot 1.6s ease-in-out infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .live-dot::before { animation: none; }
+    }
+
     #courseModal, #modalContent {
       transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     }
@@ -175,17 +227,60 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero-bg py-20 sm:py-32 text-center border-b-4 border-blue-600 overflow-hidden">
-    <div class="container mx-auto px-4">
+  <header class="hero-bg relative py-20 sm:py-32 text-center border-b-4 border-blue-600 overflow-hidden">
+    <div class="hero-glow w-72 h-72 sm:w-[28rem] sm:h-[28rem] bg-blue-600/40 -top-24 -left-24"></div>
+    <div class="hero-glow w-72 h-72 sm:w-[28rem] sm:h-[28rem] bg-indigo-500/30 -bottom-32 -right-24"></div>
+    <div class="container mx-auto px-4 relative">
+      <span class="live-dot inline-flex items-center bg-white/10 border border-white/15 backdrop-blur-sm text-slate-100 text-[11px] sm:text-xs font-semibold tracking-wide px-4 py-1.5 rounded-full mb-6 sm:mb-8" data-i18n="heroBadge">Now enrolling · Bilingual EN / AR cohorts</span>
       <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-20 sm:h-28 mx-auto mb-4 sm:mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] dark:hidden" onerror="this.src='./pagelogo.png'">
       <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-20 sm:h-28 mx-auto mb-4 sm:mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.8)] hidden dark:block" onerror="this.src='./pagelogo.png'">
       <h2 class="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight logo-font uppercase" data-i18n="heroTitle">Master the Future</h2>
       <p class="text-base sm:text-xl text-slate-300 mb-8 sm:mb-10 max-w-2xl mx-auto font-light leading-relaxed px-2" data-i18n="heroDesc">Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.</p>
-      <div class="flex justify-center gap-4">
-        <a href="#tracks" class="btn-premium glow-blue bg-blue-600 text-white px-7 sm:px-8 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg font-bold hover:bg-blue-500 shadow-lg" data-i18n="btnExplore">Explore Tracks</a>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 px-4">
+        <a href="#tracks" class="btn-premium glow-blue bg-blue-600 text-white px-7 sm:px-8 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg font-bold hover:bg-blue-500 shadow-lg w-full sm:w-auto" data-i18n="btnExplore">Explore Tracks</a>
+        <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-[#25D366] border border-white/20 hover:border-[#25D366] text-white px-7 sm:px-8 py-3 sm:py-3.5 rounded-full text-sm sm:text-lg font-bold shadow-lg backdrop-blur-sm w-full sm:w-auto">
+          <i class="fa-brands fa-whatsapp text-lg sm:text-xl"></i> <span data-i18n="btnHeroWA">Talk to an Advisor</span>
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 sm:mt-10 text-slate-300 text-[11px] sm:text-sm font-medium">
+        <span class="inline-flex items-center gap-2"><i class="fa-solid fa-certificate text-blue-400"></i> <span data-i18n="heroTrust1">Certified instructors</span></span>
+        <span class="inline-flex items-center gap-2"><i class="fa-solid fa-laptop-code text-blue-400"></i> <span data-i18n="heroTrust2">Real projects every phase</span></span>
+        <span class="inline-flex items-center gap-2"><i class="fa-solid fa-clock text-blue-400"></i> <span data-i18n="heroTrust3">8 sessions x 2 hours per phase</span></span>
       </div>
     </div>
   </header>
+
+  <!-- Why Fekra Tech -->
+  <section id="why" class="py-12 sm:py-16 bg-white dark:bg-slate-900/40 border-b border-slate-200 dark:border-slate-800/60">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="text-center mb-8 sm:mb-12">
+        <p class="text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-[0.25em] mb-2" data-i18n="whyEyebrow">Why Fekra Tech</p>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white logo-font" data-i18n="whyTitle">BUILT FOR REAL SKILLS</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="card-hover reveal bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6">
+          <div class="w-11 h-11 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-1.5" data-i18n="why1Title">Clear 4-phase roadmaps</h4>
+          <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="why1Desc">Every track is split into focused phases, so you always know what you are learning next and why.</p>
+        </div>
+        <div class="card-hover reveal bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6">
+          <div class="w-11 h-11 rounded-xl bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-user-graduate"></i></div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-1.5" data-i18n="why2Title">Industry-certified mentors</h4>
+          <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="why2Desc">Learn from working engineers holding CCNA, CEH, MCSA, IBM and Cisco credentials, not just theory.</p>
+        </div>
+        <div class="card-hover reveal bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6">
+          <div class="w-11 h-11 rounded-xl bg-cyan-100 dark:bg-cyan-950/60 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-diagram-project"></i></div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-1.5" data-i18n="why3Title">Portfolio-ready projects</h4>
+          <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="why3Desc">Ship real work: web apps, security tools, IoT builds and designs you can show to employers.</p>
+        </div>
+        <div class="card-hover reveal bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 sm:p-6">
+          <div class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl mb-4"><i class="fa-brands fa-whatsapp"></i></div>
+          <h4 class="font-bold text-slate-900 dark:text-white mb-1.5" data-i18n="why4Title">Support on WhatsApp</h4>
+          <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="why4Desc">Students and parents get direct answers on scheduling, payments and progress, in Arabic or English.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Tracks Section (Carousel) -->
   <section id="tracks" class="py-16 sm:py-20 container mx-auto px-2 sm:px-4 max-w-7xl overflow-hidden">
@@ -203,7 +298,7 @@
       <div id="tracksCarousel" class="flex overflow-x-auto gap-4 sm:gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start px-2">
         
         <!-- Track 1: Programming -->
-        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-blue-600 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="card-hover bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-blue-600 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="bg-blue-100 dark:bg-blue-950/60 p-3 sm:p-4 rounded-xl text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl"><i class="fa-solid fa-code"></i></div>
@@ -221,7 +316,7 @@
         </div>
 
         <!-- Track 2: Cybersecurity -->
-        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="card-hover bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-slate-800 dark:border-t-slate-400 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="bg-slate-100 dark:bg-slate-800/80 p-3 sm:p-4 rounded-xl text-slate-800 dark:text-slate-200 text-2xl sm:text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
@@ -239,7 +334,7 @@
         </div>
 
         <!-- Track 3: Networking -->
-        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="card-hover bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-indigo-600 dark:border-t-indigo-500 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="bg-indigo-100 dark:bg-indigo-950/60 p-3 sm:p-4 rounded-xl text-indigo-600 dark:text-indigo-400 text-2xl sm:text-3xl"><i class="fa-solid fa-network-wired"></i></div>
@@ -257,12 +352,12 @@
         </div>
 
         <!-- Track 4: Graphic Design -->
-        <div class="bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-pink-500 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+        <div class="card-hover bg-white dark:bg-slate-900/60 p-5 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800/80 border-t-4 border-t-pink-500 flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <div class="bg-pink-100 dark:bg-pink-955/60 p-3 sm:p-4 rounded-xl text-pink-500 dark:text-pink-400 text-2xl sm:text-3xl"><i class="fa-solid fa-bezier-curve"></i></div>
+              <div class="bg-pink-100 dark:bg-pink-950/60 p-3 sm:p-4 rounded-xl text-pink-500 dark:text-pink-400 text-2xl sm:text-3xl"><i class="fa-solid fa-bezier-curve"></i></div>
               <div class="text-right">
-                <span class="text-xs sm:text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-955/80 px-2.5 sm:px-3 py-1 rounded-full border border-pink-200 dark:border-pink-900">4,000 EGP / Phase</span>
+                <span class="text-xs sm:text-sm font-bold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-950/80 px-2.5 sm:px-3 py-1 rounded-full border border-pink-200 dark:border-pink-900">4,000 EGP / Phase</span>
                 <span class="block text-[10px] text-slate-500 dark:text-slate-400 mt-1">8 Sessions (2.0 Hrs Each)</span>
               </div>
             </div>
@@ -306,7 +401,7 @@
         <div id="teamCarousel" class="flex overflow-x-auto gap-4 sm:gap-6 w-full mx-auto pb-4 scroll-smooth snap-x snap-mandatory no-scrollbar select-none items-stretch justify-start px-2">
           
           <!-- Sief Daabes -->
-          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card card-hover bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
               <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
@@ -324,14 +419,14 @@
               <a href="https://www.linkedin.com/in/sief-allah-daabes" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-1.5 bg-[#0A66C2] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow">
                 <i class="fa-brands fa-linkedin text-sm"></i> <span data-i18n="btnConnect">Connect</span>
               </a>
-              <button onclick="toggleBio('sief')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
+              <button onclick="toggleBio('sief', this)" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
           </div>
 
           <!-- Ahmed Galal -->
-          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card card-hover bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
               <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-slate-700 to-slate-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
@@ -349,14 +444,14 @@
               <a href="https://www.linkedin.com/in/eng-ahmed-galal" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-1.5 bg-[#0A66C2] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow">
                 <i class="fa-brands fa-linkedin text-sm"></i> <span data-i18n="btnConnect">Connect</span>
               </a>
-              <button onclick="toggleBio('ahmed')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
+              <button onclick="toggleBio('ahmed', this)" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
           </div>
 
           <!-- Mohamed Gary -->
-          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card card-hover bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
               <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-cyan-700 to-blue-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
@@ -374,14 +469,41 @@
               <a href="https://www.linkedin.com/in/mohamed-ahmed-484188246" target="_blank" rel="noopener noreferrer" class="btn-premium glow-linkedin inline-flex items-center gap-1.5 bg-[#0A66C2] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-blue-800 shadow">
                 <i class="fa-brands fa-linkedin text-sm"></i> <span data-i18n="btnConnect">Connect</span>
               </a>
-              <button onclick="toggleBio('gary')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
+              <button onclick="toggleBio('gary', this)" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-cyan-600 dark:text-cyan-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
           </div>
 
+          <!-- Hashem Nour El Anany -->
+          <div class="team-card card-hover bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+            <div class="w-full">
+              <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-emerald-600 to-teal-800 dark:from-emerald-700 dark:to-teal-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
+              <div class="text-center mb-2">
+                <div class="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full bg-emerald-500/20 text-emerald-500 dark:text-emerald-400 border-4 border-white dark:border-slate-900 shadow-lg flex items-center justify-center font-bold text-2xl sm:text-3xl mb-3 sm:mb-4 -mt-14 sm:-mt-16">
+                  HN
+                </div>
+                <h4 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1">Hashem Nour El Anany</h4>
+                <p class="text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2" data-i18n="hashemRole">Technical Instructor - IT & Front-End</p>
+              </div>
+              <div id="hashemBioPanel" class="hidden my-4 px-2 overflow-hidden">
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm text-justify leading-relaxed font-light border-l-2 border-slate-200 dark:border-slate-800 pl-3 rtl:border-l-0 rtl:border-r-2 rtl:pl-0 rtl:pr-3" data-i18n="hashemBio">
+                  Hashem is a Computer Science graduate of the Higher Technological Institute (HTI) and a Technical Instructor bridging IT infrastructure and modern web development. As an IT Specialist at Franks Food Industries he managed networks, servers, Sophos firewalls and a 64-camera IP CCTV deployment. He builds with React.js, Next.js and Tailwind CSS, trained in agile software practices through the iCareer Tech Track, and is expanding into security operations, log analysis and incident response.
+                </p>
+              </div>
+            </div>
+            <div class="flex justify-center items-center gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800/80 w-full">
+              <a href="https://personal-portfolio-gray-ten-41.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-premium glow-blue inline-flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-emerald-700 shadow">
+                <i class="fa-solid fa-globe text-sm"></i> <span data-i18n="btnPortfolio">Portfolio</span>
+              </a>
+              <button onclick="toggleBio('hashem', this)" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-circle-info text-emerald-600 dark:text-emerald-400"></i> <span data-i18n="btnInfo">Info</span>
+              </button>
+            </div>
+          </div>
+
           <!-- Jawad Wayloox -->
-          <div class="team-card bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
+          <div class="team-card card-hover bg-white dark:bg-slate-950 p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between w-[86vw] sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-center">
             <div class="w-full">
               <div class="w-full h-16 sm:h-20 bg-gradient-to-r from-blue-700 to-indigo-900 rounded-t-xl mb-4 -mt-6 sm:-mt-8 -mx-6 sm:-mx-8 px-6 sm:px-8"></div>
               <div class="text-center mb-2">
@@ -401,7 +523,7 @@
               <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-green inline-flex items-center gap-1.5 bg-[#25D366] text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-[#20bd5a] shadow">
                 <i class="fa-brands fa-whatsapp text-sm"></i> <span data-i18n="btnConnectWA">Contact</span>
               </a>
-              <button onclick="toggleBio('jawad')" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
+              <button onclick="toggleBio('jawad', this)" type="button" class="btn-premium flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 px-4 py-2 rounded-full text-xs font-semibold shadow border border-slate-200 dark:border-slate-700">
                 <i class="fa-solid fa-circle-info text-blue-600 dark:text-blue-400"></i> <span data-i18n="btnInfo">Info</span>
               </button>
             </div>
@@ -436,6 +558,28 @@
         <a href="mailto:fekratechacademy@gmail.com" class="btn-premium glow-blue flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-lg w-full sm:w-auto justify-center">
           <i class="fa-solid fa-envelope text-lg sm:text-xl"></i> <span data-i18n="emailText">Email Us</span>
         </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-left rtl:text-right mb-10 sm:mb-12 max-w-4xl mx-auto">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="text-[11px] font-bold uppercase tracking-widest text-blue-400 mb-2" data-i18n="ftReachTitle">Reach us</p>
+          <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="block text-slate-200 hover:text-white text-sm font-semibold" dir="ltr">+20 109 999 5519</a>
+          <a href="mailto:fekratechacademy@gmail.com" class="block text-slate-400 hover:text-white text-xs sm:text-sm mt-1 break-all">fekratechacademy@gmail.com</a>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="text-[11px] font-bold uppercase tracking-widest text-blue-400 mb-2" data-i18n="ftExploreTitle">Explore</p>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#tracks" class="text-slate-300 hover:text-white" data-i18n="navTracks">Tracks</a></li>
+            <li><a href="./courses.html" class="text-slate-300 hover:text-white" data-i18n="ftAllTracks">All tracks & Vibe Coding</a></li>
+            <li><a href="./portfolio.html" class="text-slate-300 hover:text-white" data-i18n="navPortfolio">Portfolio</a></li>
+            <li><a href="./services.html" class="text-slate-300 hover:text-white" data-i18n="navServices">Services (-30%)</a></li>
+          </ul>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="text-[11px] font-bold uppercase tracking-widest text-blue-400 mb-2" data-i18n="ftTeamTitle">Our team</p>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" data-i18n="ftTeamDesc">Five certified instructors covering programming, security, networking, AI and front-end.</p>
+          <a href="#team" class="inline-block mt-2 text-blue-400 hover:text-blue-300 text-sm font-semibold" data-i18n="ftMeetTeam">Meet the experts</a>
+        </div>
       </div>
 
       <hr class="border-slate-800 mb-6 sm:mb-8">
@@ -533,6 +677,14 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       updateDarkModeButton();
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+      }
       initCarousel('tracksCarousel', count => { originalTracksCardsCount = count; });
       initCarousel('teamCarousel', count => { originalTeamCardsCount = count; });
     });
@@ -617,7 +769,7 @@
 
       if (isTeamExpanded) {
         arrowBtns.forEach(btn => btn.classList.add('hidden'));
-        carousel.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full mx-auto";
+        carousel.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full mx-auto";
         
         const cards = Array.from(carousel.children);
         if (originalTeamCardsCount > 0 && cards.length > originalTeamCardsCount) {
@@ -666,8 +818,10 @@
       });
     }
 
-    function toggleBio(id) {
-      const panel = document.getElementById(`${id}BioPanel`);
+    function toggleBio(id, btn) {
+      // Carousel clones duplicate IDs, so resolve the panel inside the clicked card first.
+      const card = btn && btn.closest ? btn.closest('.team-card') : null;
+      const panel = (card && card.querySelector(`[id="${id}BioPanel"]`)) || document.getElementById(`${id}BioPanel`);
       if (panel) {
         panel.classList.toggle('hidden');
       }
@@ -705,6 +859,28 @@
         heroTitle: "Master the Future",
         heroDesc: "Comprehensive training in Programming, Cybersecurity, Networking, and Design. Build your legacy in code.",
         btnExplore: "Explore Tracks",
+        btnHeroWA: "Talk to an Advisor",
+        heroBadge: "Now enrolling · Bilingual EN / AR cohorts",
+        heroTrust1: "Certified instructors",
+        heroTrust2: "Real projects every phase",
+        heroTrust3: "8 sessions x 2 hours per phase",
+        whyEyebrow: "Why Fekra Tech",
+        whyTitle: "BUILT FOR REAL SKILLS",
+        why1Title: "Clear 4-phase roadmaps",
+        why1Desc: "Every track is split into focused phases, so you always know what you are learning next and why.",
+        why2Title: "Industry-certified mentors",
+        why2Desc: "Learn from working engineers holding CCNA, CEH, MCSA, IBM and Cisco credentials, not just theory.",
+        why3Title: "Portfolio-ready projects",
+        why3Desc: "Ship real work: web apps, security tools, IoT builds and designs you can show to employers.",
+        why4Title: "Support on WhatsApp",
+        why4Desc: "Students and parents get direct answers on scheduling, payments and progress, in Arabic or English.",
+        ftReachTitle: "Reach us",
+        ftExploreTitle: "Explore",
+        ftAllTracks: "All tracks & Vibe Coding",
+        ftTeamTitle: "Our team",
+        ftTeamDesc: "Five certified instructors covering programming, security, networking, AI and front-end.",
+        ftMeetTeam: "Meet the experts",
+        btnPortfolio: "Portfolio",
         tracksTitle: "OUR TRACKS",
         btnShowAll: "Show All Tracks & Vibe Coding",
         progTitle: "Programming Masterclass",
@@ -729,6 +905,8 @@
         ahmedBio: "Ahmed is an Information Technology Specialist and cybersecurity graduate holding dual B.Sc. degrees in Computer Science from the Arab Open University and The Open University UK. As a Technical Instructor, he has taught over 2,000 students in Python, web development, networking, and ethical hacking. He previously served as an Ambassador for the Huawei ICT Academy in Egypt and founded the Huawei Telecommunications Student Club. His extensive certifications include the Microsoft Certified Solutions Associate (MCSA), CCNA, and Cisco Certified CyberOps Associate.",
         garyRole: "AI Engineer & Data Scientist",
         garyBio: "Mohamed holds a Bachelor's Degree in Artificial Intelligence from the Faculty of Computers and Artificial Intelligence, Helwan University. He works as an AI Engineer with proven expertise across Deep Learning, NLP, Computer Vision (YOLOv11), and RAG AI Agent systems using LangChain and vector databases. Certified as an IBM Data Science Professional and Generative AI specialist, he mentors students in building real-world AI pipelines, model deployment, and Python machine learning architectures.",
+        hashemRole: "Technical Instructor - IT & Front-End",
+        hashemBio: "Hashem is a Computer Science graduate of the Higher Technological Institute (HTI) and a Technical Instructor bridging IT infrastructure and modern web development. As an IT Specialist at Franks Food Industries he managed networks, servers, Sophos firewalls and a 64-camera IP CCTV deployment. He builds with React.js, Next.js and Tailwind CSS, trained in agile software practices through the iCareer Tech Track, and is expanding into security operations, log analysis and incident response.",
         jawadRole: "Frontend & Web Instructor",
         jawadBio: "Modern frontend practitioner focusing on React, Next.js, responsive layouts, client-side state architectures, and UI/UX design systems. Mentors students in translating visual mockups into production-grade interactive web applications.",
         contactTitle: "Initialize Connection",
@@ -758,6 +936,28 @@
         heroTitle: "اصنع مستقبلك",
         heroDesc: "تدريب شامل في البرمجة، الأمن السيبراني، الشبكات، والتصميم. ابني مستقبلك في التكنولوجيا.",
         btnExplore: "اكتشف المسارات",
+        btnHeroWA: "كلم مستشار التسجيل",
+        heroBadge: "التسجيل مفتوح الآن · دفعات بالعربي والإنجليزي",
+        heroTrust1: "مدربون معتمدون",
+        heroTrust2: "مشروع حقيقي في كل مرحلة",
+        heroTrust3: "8 محاضرات × ساعتين لكل مرحلة",
+        whyEyebrow: "ليه فكرة تك؟",
+        whyTitle: "مهارات حقيقية للسوق",
+        why1Title: "خطة واضحة من 4 مراحل",
+        why1Desc: "كل مسار مقسم لمراحل مركزة، فدايماً عارف هتتعلم إيه الخطوة الجاية وليه.",
+        why2Title: "مدربون معتمدون من السوق",
+        why2Desc: "اتعلم من مهندسين شغالين فعلاً ومعاهم شهادات CCNA و CEH و MCSA و IBM و Cisco، مش نظري وبس.",
+        why3Title: "مشاريع تحطها في البورتفوليو",
+        why3Desc: "اعمل شغل حقيقي: تطبيقات ويب، أدوات أمنية، مشاريع IoT، وتصميمات تقدر تعرضها على أصحاب العمل.",
+        why4Title: "دعم على الواتساب",
+        why4Desc: "الطلاب وأولياء الأمور بيلاقوا إجابات مباشرة عن المواعيد والدفع والتقدم، بالعربي أو الإنجليزي.",
+        ftReachTitle: "تواصل معانا",
+        ftExploreTitle: "استكشف",
+        ftAllTracks: "كل المسارات وفايب كودينج",
+        ftTeamTitle: "فريقنا",
+        ftTeamDesc: "خمسة مدربين معتمدين في البرمجة، الأمن السيبراني، الشبكات، الذكاء الاصطناعي، والواجهات الأمامية.",
+        ftMeetTeam: "تعرف على الخبراء",
+        btnPortfolio: "البورتفوليو",
         tracksTitle: "مساراتنا",
         btnShowAll: "عرض جميع المسارات وفايب كودينج",
         progTitle: "كورس البرمجة الشامل",
@@ -782,6 +982,8 @@
         ahmedBio: "أحمد أخصائي IT وخريج أمن سيبراني معاه بكالوريوس مزدوج في علوم الكمبيوتر من الجامعة العربية المفتوحة والجامعة المفتوحة في بريطانيا. كمدرب تقني، علم أكتر من 2000 طالب في بايثون، وتطوير الويب، والشبكات، والاختراق الأخلاقي. كان سفير لأكاديمية هواوي في مصر وأسس نادي طلاب هواوي. معاه شهادات قوية زي MCSA و CCNA و Cisco CyberOps Associate.",
         garyRole: "مهندس ذكاء اصطناعي وعالم بيانات",
         garyBio: "محمد حاصل على بكالوريوس في الذكاء الاصطناعي من كلية الحاسبات والذكاء الاصطناعي بجامعة حلوان. يعمل كمهندس ذكاء اصطناعي ولديه خبرة متقدمة في التعلم العميق (Deep Learning)، معالجة اللغات الطبيعية (NLP)، الرؤية الحاسوبية (YOLOv11)، وبناء وكلاء الذكاء الاصطناعي ونظم الـ RAG عبر LangChain وقواعد البيانات المتجهة. حاصل على شهادة احترافية في علم البيانات من IBM وتدريب معتمد في الذكاء الاصطناعي التوليدي، ويدرب الطلاب على بناء ونشر نماذج الذكاء الاصطناعي البرمجية عملياً.",
+        hashemRole: "مدرب تقني - تكنولوجيا المعلومات والواجهات الأمامية",
+        hashemBio: "هاشم خريج علوم حاسب من المعهد التكنولوجي العالي (HTI) ومدرب تقني بيربط بين البنية التحتية لتكنولوجيا المعلومات وتطوير الويب الحديث. اشتغل أخصائي IT في شركة فرانكس للصناعات الغذائية، وأدار الشبكات والسيرفرات وجدران حماية Sophos ونظام كاميرات مراقبة IP بـ 64 كاميرا. بيبني تطبيقات بـ React.js و Next.js و Tailwind CSS، واتدرب على ممارسات تطوير البرمجيات الأجايل من خلال iCareer Tech Track، وبيتوسع حالياً في عمليات الأمن السيبراني وتحليل السجلات والاستجابة للحوادث.",
         jawadRole: "مدرب تطوير الويب والواجهات الأمامية",
         jawadBio: "متخصص في بناء واجهات الويب الحديثة، ومكتبات React و Next.js، وإدارة هياكل البيانات التفاعلية وتصميم تجربة المستخدم. يساعد الطلاب على تحويل التصاميم إلى تطبيقات ويب متكاملة وعالية السرعة.",
         contactTitle: "يلا نبدأ",
