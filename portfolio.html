@@ -8,7 +8,11 @@
   <meta name="description" content="Student and instructor projects from Fekra Tech Academy: web apps, security tools, IoT builds and designs.">
   <meta name="theme-color" content="#0f172a">
 
-  <link rel="icon" type="image/png" href="./logo-main.png">
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -134,8 +138,8 @@
   <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-3 sm:p-4 shadow-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800/60">
     <div class="container mx-auto flex justify-between items-center">
       <a href="./index.html" class="flex items-center gap-2 sm:gap-3 cursor-pointer">
-        <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.src='./pagelogo.png'">
-        <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.src='./pagelogo.png'">
+        <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.onerror=null;this.src='./icon-192.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.onerror=null;this.src='./icon-192.png'">
         <h1 class="text-lg sm:text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 logo-font uppercase">Fekra Tech</h1>
       </a>
 
@@ -226,8 +230,8 @@
           </div>
 
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="metadata">
-              <source src="./20261005-1703-48.3580028.mp4" type="video/mp4">
+            <video playsinline webkit-playsinline controls preload="none">
+              <source src="./demo-coens.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
             <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -236,13 +240,13 @@
             </div>
           </div>
 
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug" data-i18n="p1Title">
             Coen's Commercial Tech Redesign & Trade-In Platform
           </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
+          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3" data-i18n="p1Sub">
             Advanced Full-Stack Engineering Capstone • Web Architecture Track
           </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
+          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6" data-i18n="p1Desc">
             A production-grade commercial web platform redesign built with responsive component architecture, interactive trade-in device valuation workflows, and high-performance Vercel deployment.
           </p>
         </div>
@@ -279,8 +283,8 @@
           </div>
 
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="metadata">
-              <source src="./smart-home-demo-full.mp4" type="video/mp4">
+            <video playsinline webkit-playsinline controls preload="none">
+              <source src="./demo-smart-home.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
             <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -289,13 +293,13 @@
             </div>
           </div>
 
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug" data-i18n="p2Title">
             Native Apple HomeKit & Siri Smart Villa (IoT)
           </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
+          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3" data-i18n="p2Sub">
             Academy Milestone Capstone • Embedded IoT & Robotics Track
           </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
+          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6" data-i18n="p2Desc">
             A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.
           </p>
         </div>
@@ -332,8 +336,8 @@
           </div>
 
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="metadata">
-              <source src="./recon-tool-demo.mp4" type="video/mp4">
+            <video playsinline webkit-playsinline controls preload="none">
+              <source src="./demo-recon.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
             <div class="absolute top-2 left-2 rtl:left-auto rtl:right-2 bg-black/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1.5 pointer-events-none">
@@ -342,13 +346,13 @@
             </div>
           </div>
 
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug" data-i18n="p3Title">
             Multi-Threaded Network Recon & Port Auditor
           </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
+          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3" data-i18n="p3Sub">
             Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)
           </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
+          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6" data-i18n="p3Desc">
             An offensive security utility written in Python that scans target subnets, discovers live hosts, probes exposed TCP ports, and flags insecure service banners.
           </p>
         </div>
@@ -390,13 +394,13 @@
             <span class="text-[10px] text-slate-400">OSPF & VLAN Segmenting</span>
           </div>
 
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug" data-i18n="p4Title">
             High-Availability Enterprise Campus Network
           </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
+          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3" data-i18n="p4Sub">
             Built by Karim H. (Age 17 • Phase 2 Networking)
           </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
+          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6" data-i18n="p4Desc">
             A robust corporate infrastructure simulation featuring segmented VLANs, redundant trunking channels, OSPF dynamic routing, and ACL traffic security filters.
           </p>
         </div>
@@ -433,13 +437,13 @@
             <span class="text-[10px] text-slate-400">Python OOP & SQLite3</span>
           </div>
 
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug" data-i18n="p5Title">
             Automated Student Assessment & Grading Engine
           </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
+          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3" data-i18n="p5Sub">
             Built by Nour S. (Age 15 • Phase 1 Python Masterclass)
           </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
+          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6" data-i18n="p5Desc">
             A desktop application built with Python and SQLite that generates randomized quizzes, grades submissions in real-time, and exports statistical performance analytics.
           </p>
         </div>
@@ -476,13 +480,13 @@
             <span class="text-[10px] text-slate-400">Vector Logo & Brand Design</span>
           </div>
 
-          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug">
+          <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5 sm:mb-2 leading-snug" data-i18n="p6Title">
             Old Money Apparel Brand Identity & Visual Guidelines
           </h4>
-          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3">
+          <p class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2 sm:mb-3" data-i18n="p6Sub">
             Built by Malak E. (Age 15 • Phase 4 Graphic Design)
           </p>
-          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6">
+          <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed mb-5 sm:mb-6" data-i18n="p6Desc">
             A full commercial branding showcase encompassing vector logo construction, bespoke typography systems, social media assets, and luxury apparel mockups.
           </p>
         </div>
@@ -636,6 +640,24 @@
         ctaTitle: "Ready for your child to build real technology?",
         ctaDesc: "Skip the shallow drag-and-drop games. Enroll in a modular, project-centered engineering program where students graduate with actual portfolios and certified skills.",
         ctaTracks: "View Tracks & Syllabi", ctaServices: "Order As Client Service (-30%)", ctaWA: "WhatsApp Academy Direct",
+        p1Title: "Coen's Commercial Tech Redesign & Trade-In Platform",
+        p1Sub: "Advanced Full-Stack Engineering Capstone • Web Architecture Track",
+        p1Desc: "A production-grade commercial web platform redesign built with responsive component architecture, interactive trade-in device valuation workflows, and high-performance Vercel deployment.",
+        p2Title: "Native Apple HomeKit & Siri Smart Villa (IoT)",
+        p2Sub: "Academy Milestone Capstone • Embedded IoT & Robotics Track",
+        p2Desc: "A two-story smart villa physical model powered by an ESP32 microcontroller running Apple's native HomeKit Accessory Protocol (HAP) with responsive Siri voice commands and automated scene triggers.",
+        p3Title: "Multi-Threaded Network Recon & Port Auditor",
+        p3Sub: "Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)",
+        p3Desc: "An offensive security utility written in Python that scans target subnets, discovers live hosts, probes exposed TCP ports, and flags insecure service banners.",
+        p4Title: "High-Availability Enterprise Campus Network",
+        p4Sub: "Built by Karim H. (Age 17 • Phase 2 Networking)",
+        p4Desc: "A robust corporate infrastructure simulation featuring segmented VLANs, redundant trunking channels, OSPF dynamic routing, and ACL traffic security filters.",
+        p5Title: "Automated Student Assessment & Grading Engine",
+        p5Sub: "Built by Nour S. (Age 15 • Phase 1 Python Masterclass)",
+        p5Desc: "A desktop application built with Python and SQLite that generates randomized quizzes, grades submissions in real-time, and exports statistical performance analytics.",
+        p6Title: "Old Money Apparel Brand Identity & Visual Guidelines",
+        p6Sub: "Built by Malak E. (Age 15 • Phase 4 Graphic Design)",
+        p6Desc: "A full commercial branding showcase encompassing vector logo construction, bespoke typography systems, social media assets, and luxury apparel mockups.",
         rightsText: "© 2026 Fekra Tech Academy. All rights reserved."
       },
       ar: {
@@ -648,6 +670,24 @@
         ctaTitle: "جاهز إن ابنك يبني تكنولوجيا حقيقية؟",
         ctaDesc: "سيبك من ألعاب السحب والإفلات السطحية. سجّل في برنامج هندسي قائم على المشاريع يتخرج منه الطالب ببورتفوليو حقيقي ومهارات معتمدة.",
         ctaTracks: "شوف المسارات والمناهج", ctaServices: "اطلبها كخدمة للعملاء (-30%)", ctaWA: "واتساب الأكاديمية مباشرة",
+        p1Title: "إعادة تصميم منصة Coen's التجارية ونظام استبدال الأجهزة",
+        p1Sub: "مشروع تخرج متقدم في الهندسة المتكاملة • مسار بنية الويب",
+        p1Desc: "إعادة تصميم منصة ويب تجارية بمستوى إنتاجي، مبنية بمكونات متجاوبة، ونظام تفاعلي لتقييم الأجهزة المستبدلة، ونشر عالي الأداء على Vercel.",
+        p2Title: "فيلا ذكية بتقنية Apple HomeKit وأوامر Siri (إنترنت الأشياء)",
+        p2Sub: "مشروع تخرج رئيسي للأكاديمية • مسار إنترنت الأشياء والروبوتات",
+        p2Desc: "نموذج مادي لفيلا ذكية من طابقين يعمل بمتحكم ESP32 ببروتوكول HomeKit الأصلي من Apple، مع أوامر صوتية عبر Siri ومشاهد آلية.",
+        p3Title: "أداة استكشاف شبكات وفحص منافذ متعددة الخيوط",
+        p3Sub: "من تنفيذ زياد أ. (17 سنة • المرحلة الثالثة أمن سيبراني)",
+        p3Desc: "أداة أمن هجومي مكتوبة بـ Python تفحص الشبكات الفرعية، وتكتشف الأجهزة النشطة، وتختبر منافذ TCP المكشوفة، وترصد الخدمات غير الآمنة.",
+        p4Title: "شبكة مؤسسية عالية التوافر لحرم جامعي",
+        p4Sub: "من تنفيذ كريم ح. (17 سنة • المرحلة الثانية شبكات)",
+        p4Desc: "محاكاة لبنية تحتية مؤسسية قوية تشمل شبكات VLAN مقسمة، وقنوات Trunk احتياطية، وتوجيه ديناميكي OSPF، وقوائم ACL لتصفية الحركة.",
+        p5Title: "محرك آلي لتقييم الطلاب وتصحيح الاختبارات",
+        p5Sub: "من تنفيذ نور س. (15 سنة • المرحلة الأولى بايثون)",
+        p5Desc: "تطبيق سطح مكتب مبني بـ Python و SQLite يولّد اختبارات عشوائية، ويصحح الإجابات لحظياً، ويصدّر تحليلات إحصائية للأداء.",
+        p6Title: "هوية بصرية ودليل علامة Old Money Apparel",
+        p6Sub: "من تنفيذ ملك إ. (15 سنة • المرحلة الرابعة تصميم جرافيكي)",
+        p6Desc: "عرض متكامل لهوية تجارية يشمل بناء شعار فيكتور، ونظام خطوط مخصص، وأصول سوشيال ميديا، ونماذج ملابس فاخرة.",
         rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة."
       }
     };
@@ -660,7 +700,7 @@
         student: "Advanced Full-Stack Engineering Capstone • Web Architecture Track",
         category: "WEB & APPS",
         badgeColor: "bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400",
-        videoUrl: "./20261005-1703-48.3580028.mp4",
+        videoUrl: "./demo-coens.mp4",
         liveUrl: "https://coen-s-redesign-page.vercel.app/",
         voiceoverText: {
           en: "Welcome! This is the Coen's Commercial Platform redesign, built right here at Fekra Tech Academy. We completely redesigned the user experience from the ground up, featuring an interactive trade-in device pricing calculator and lightning-fast deployment on Vercel's edge network.",
@@ -680,7 +720,7 @@
         student: "Academy Milestone Capstone • Embedded IoT & Robotics Track",
         category: "ROBOTICS & IOT",
         badgeColor: "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400",
-        videoUrl: "./smart-home-demo-full.mp4",
+        videoUrl: "./demo-smart-home.mp4",
         liveUrl: "https://fekra-smart-home-kit.vercel.app/",
         voiceoverText: {
           en: "Check out our physical Smart Villa IoT model! Powered directly by an ESP32 microcontroller, it hooks up straight to Apple HomeKit and Siri. You get real-time room lighting control, motion detection, and fire alarm telemetry without any third-party hubs.",
@@ -700,7 +740,7 @@
         student: "Built by Ziad A. (Age 17 • Phase 3 Cybersecurity)",
         category: "NETWORKS & CYBER",
         badgeColor: "bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400",
-        videoUrl: "./recon-tool-demo.mp4",
+        videoUrl: "./demo-recon.mp4",
         liveUrl: "https://network-reconnaissance-tool.vercel.app/",
         voiceoverText: {
           en: "This is our high-speed Network Reconnaissance and Port Auditor tool, created by our student Ziad in the cybersecurity track. It uses Python multithreading to rapidly sweep subnets, identify open ports, and grab service banners to expose unpatched vulnerabilities.",

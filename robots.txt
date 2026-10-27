@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fekra-tech-acad.vercel.app/sitemap.xml
