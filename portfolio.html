@@ -81,8 +81,7 @@
 
     .video-card-container {
       width: 100% !important;
-      min-height: 220px !important;
-      max-height: 240px !important;
+      aspect-ratio: 16 / 9;
       background-color: #020617 !important;
       position: relative !important;
       border-radius: 12px !important;
@@ -93,7 +92,6 @@
     .video-card-container video {
       width: 100% !important;
       height: 100% !important;
-      min-height: 220px !important;
       object-fit: cover !important;
       display: block !important;
       background-color: #000 !important;
@@ -234,7 +232,7 @@
           </div>
 
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="none">
+            <video playsinline webkit-playsinline controls preload="none" poster="./poster-coens.jpg">
               <source src="./demo-coens.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
@@ -287,7 +285,7 @@
           </div>
 
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="none">
+            <video playsinline webkit-playsinline controls preload="none" poster="./poster-smart-home.jpg">
               <source src="./demo-smart-home.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
@@ -340,7 +338,7 @@
           </div>
 
           <div class="video-card-container mb-4 border border-slate-200 dark:border-slate-800">
-            <video playsinline webkit-playsinline controls preload="none">
+            <video playsinline webkit-playsinline controls preload="none" poster="./poster-recon.jpg">
               <source src="./demo-recon.mp4" type="video/mp4">
               Your browser does not support HTML5 video streaming.
             </video>
