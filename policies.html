@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Fekra Tech Academy | Policies & Terms</title>
+  <meta name="description" content="Fekra Tech Academy privacy policy, enrollment terms, refund and cancellation policy, student conduct and showcase consent, and client services terms.">
+  <meta name="theme-color" content="#0f172a">
+
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+    html[dir="rtl"] { font-family: 'Cairo', sans-serif; }
+    html[dir="rtl"] .logo-font { font-family: 'Cairo', sans-serif; }
+    .logo-font { font-family: 'Orbitron', sans-serif; }
+    .btn-premium { transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+    .btn-premium:hover { transform: translateY(-3px); }
+    .glow-blue:hover { box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35); }
+
+    /* Language blocks: only one is shown at a time */
+    html[lang="en"] [data-lang="ar"] { display: none; }
+    html[lang="ar"] [data-lang="en"] { display: none; }
+
+    .policy h2 { scroll-margin-top: 96px; }
+    .policy p, .policy li { line-height: 1.75; }
+    .policy ul { list-style: disc; padding-inline-start: 1.25rem; }
+    .policy ol { list-style: decimal; padding-inline-start: 1.25rem; }
+    .policy li + li { margin-top: 0.35rem; }
+    .policy h3 { margin-top: 1.25rem; margin-bottom: 0.4rem; }
+    .toc a.active { color: #2563eb; font-weight: 700; }
+  </style>
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') { document.documentElement.classList.add('dark'); }
+      else { document.documentElement.classList.remove('dark'); }
+    } catch (e) { document.documentElement.classList.add('dark'); }
+  </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-blue-500 selection:text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-white/95 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white p-3 sm:p-4 shadow-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800/60">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="./index.html" class="flex items-center gap-2 sm:gap-3 cursor-pointer">
+        <img src="./logo-main.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain dark:hidden" onerror="this.onerror=null;this.src='./icon-192.png'">
+        <img src="./logo-dark.png" alt="Fekra Tech Logo" class="h-9 sm:h-12 object-contain hidden dark:block" onerror="this.onerror=null;this.src='./icon-192.png'">
+        <h1 class="text-lg sm:text-2xl font-black tracking-widest text-blue-900 dark:text-blue-400 logo-font uppercase">Fekra Tech</h1>
+      </a>
+
+      <ul class="hidden lg:flex space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300 items-center rtl:space-x-reverse">
+        <li><a href="./index.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navHome">Home</a></li>
+        <li><a href="./courses.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTracks">Tracks</a></li>
+        <li><a href="./portfolio.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navPortfolio">Portfolio</a></li>
+        <li><a href="./services.html" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navServices">Services (-30%)</a></li>
+        <li><a href="./index.html#team" class="hover:text-blue-600 dark:hover:text-blue-400" data-i18n="navTeam">Team</a></li>
+        <li class="flex items-center gap-2">
+          <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="btn-premium flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-100 dark:bg-slate-800/60 w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <i class="darkBtnIcon fa-solid fa-moon"></i>
+          </button>
+          <button onclick="toggleLanguage()" aria-label="Toggle Language" class="btn-premium flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 font-bold bg-slate-100 dark:bg-slate-800/60 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700/80 shadow-sm">
+            <i class="fa-solid fa-globe"></i> <span class="langBtnText">عربي</span>
+          </button>
+        </li>
+        <li>
+          <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium glow-blue bg-blue-600 text-white hover:bg-blue-700 px-5 py-2 rounded-full shadow-md inline-block" data-i18n="navContact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="flex items-center gap-2 lg:hidden">
+        <button onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="flex items-center justify-center text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/70 w-8 h-8 rounded-full border border-slate-200 dark:border-slate-700">
+          <i class="darkBtnIcon fa-solid fa-moon text-xs"></i>
+        </button>
+        <button onclick="toggleLanguage()" aria-label="Toggle Language" class="flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-xs bg-slate-100 dark:bg-slate-800/70 px-2 py-1 rounded-full border border-slate-200 dark:border-slate-700">
+          <span class="langBtnText">عربي</span>
+        </button>
+        <button onclick="toggleMobileMenu()" aria-label="Open Navigation Menu" class="flex items-center justify-center text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 ml-1">
+          <i id="hamburgerIcon" class="fa-solid fa-bars text-base"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-3 space-y-3 px-2">
+      <a href="./index.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navHome">Home</a>
+      <a href="./courses.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navTracks">Tracks</a>
+      <a href="./portfolio.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navPortfolio">Portfolio</a>
+      <a href="./services.html" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navServices">Services (-30%)</a>
+      <a href="./index.html#team" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm" data-i18n="navTeam">Team</a>
+      <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()" class="block text-center bg-blue-600 text-white font-bold py-2.5 rounded-xl shadow-md text-sm" data-i18n="navContact">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="py-12 sm:py-16 bg-gradient-to-b from-slate-100/70 to-transparent dark:from-slate-900/30 border-b border-slate-200/40 dark:border-slate-900/60">
+    <div class="container mx-auto px-4 max-w-5xl text-center">
+      <span class="inline-block bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 text-[11px] sm:text-xs font-bold px-3 sm:px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 sm:mb-4 border border-blue-200 dark:border-blue-900/60" data-i18n="heroBadge">Transparency First</span>
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-2 sm:mb-3 logo-font uppercase tracking-tight" data-i18n="heroTitle">Policies & Terms</h2>
+      <div class="w-20 sm:w-24 h-1 bg-blue-600 mx-auto rounded-full mb-3 sm:mb-4"></div>
+      <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed" data-i18n="heroDesc">How we handle your data, your enrollment, your money, and our work together. Written in plain language for students, parents, and clients.</p>
+      <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-500 mt-4"><span data-i18n="updated">Last updated:</span> <time datetime="2026-10-28">28 October 2026</time></p>
+    </div>
+  </header>
+
+  <main class="flex-grow container mx-auto px-4 max-w-6xl py-10 sm:py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 lg:gap-12">
+
+      <!-- Table of contents -->
+      <aside class="lg:sticky lg:top-24 self-start">
+        <nav class="toc bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 text-sm">
+          <p class="text-[11px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-3" data-i18n="tocTitle">On this page</p>
+          <ol class="space-y-2 text-slate-600 dark:text-slate-300">
+            <li><a href="#privacy" class="hover:text-blue-600" data-i18n="toc1">1. Privacy Policy</a></li>
+            <li><a href="#enrollment" class="hover:text-blue-600" data-i18n="toc2">2. Enrollment Terms</a></li>
+            <li><a href="#refunds" class="hover:text-blue-600" data-i18n="toc3">3. Refunds & Cancellations</a></li>
+            <li><a href="#conduct" class="hover:text-blue-600" data-i18n="toc4">4. Student Conduct & Showcase Consent</a></li>
+            <li><a href="#services" class="hover:text-blue-600" data-i18n="toc5">5. Client Services Terms</a></li>
+            <li><a href="#contact" class="hover:text-blue-600" data-i18n="toc6">6. Contact & Questions</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <!-- ================= ENGLISH ================= -->
+      <article class="policy space-y-10 text-sm sm:text-[15px] text-slate-700 dark:text-slate-300" data-lang="en">
+
+        <section id="privacy" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">1.</span> Privacy Policy</h2>
+          <p>Fekra Tech Academy ("Fekra Tech", "we", "us") is a technology training academy based in Giza, Egypt. This policy explains what personal data we collect, why, and the choices you have. We handle personal data in line with Egypt's Personal Data Protection Law (Law No. 151 of 2020).</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">What we collect</h3>
+          <ul>
+            <li><strong>Enrollment applications:</strong> student full name, age, prior experience level, the student's or primary WhatsApp number, an optional parent or guardian WhatsApp number, and the track selected.</li>
+            <li><strong>Service requests:</strong> your name, business name, contact number, and the service you are asking about.</li>
+            <li><strong>Messages:</strong> anything you send us on WhatsApp, email, or social media.</li>
+            <li><strong>Website usage:</strong> this site does not use advertising trackers or analytics cookies. It stores one preference in your browser, your dark or light theme choice, which never leaves your device.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Why we use it</h3>
+          <ul>
+            <li>To contact you about scheduling, placement, and payment for the track you applied to.</li>
+            <li>To run the course: attendance, progress notes, and certificates of completion.</li>
+            <li>To respond to service enquiries and prepare proposals.</li>
+            <li>To meet legal and accounting obligations.</li>
+          </ul>
+          <p>We do not sell personal data, and we do not send marketing messages to numbers that only contacted us for support or enrollment unless you ask to receive them.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Where it is stored and who sees it</h3>
+          <ul>
+            <li>Enrollment and service forms are saved to a private Google Sheet owned by the academy, and a copy of your application is sent to the academy's WhatsApp number so our administration can reply quickly.</li>
+            <li>Only the academy's founders and administration staff have access. Instructors see only the names and progress of students in their own cohorts.</li>
+            <li>Our processors are Google (Workspace and Sheets), Meta (WhatsApp Business), and Vercel (website hosting). Each processes data under its own privacy terms.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Children and guardians</h3>
+          <p>Many of our students are under 18. For any student under 18, the enrollment application must be submitted by, or with the knowledge and consent of, a parent or legal guardian. By submitting an application for a minor, you confirm you are that student's parent or legal guardian and you consent to the processing described here. Guardians may contact us at any time to review, correct, or delete a minor's data.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">How long we keep it</h3>
+          <p>Applications that do not lead to enrollment are deleted within 6 months. Records of enrolled students are kept for the duration of study plus 2 years, so we can issue certificates and references. Financial records are kept for the period required by Egyptian tax law.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Your rights</h3>
+          <p>You can ask us to show you the data we hold about you or your child, correct it, delete it, or stop using it for a particular purpose. Email <a href="mailto:fekratechacademy@gmail.com" class="text-blue-600 dark:text-blue-400 underline">fekratechacademy@gmail.com</a> or message us on WhatsApp. We respond within 14 days.</p>
+        </section>
+
+        <section id="enrollment" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">2.</span> Enrollment Terms</h2>
+          <p>These terms apply when you enroll yourself or your child in any Fekra Tech track. Submitting an application and paying a phase fee means you accept them.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">What a phase includes</h3>
+          <ul>
+            <li>Each track is delivered in phases. A phase is <strong>8 live sessions of 2 hours each</strong>, normally 2 sessions per week over about one month, unless a different schedule is agreed for your cohort.</li>
+            <li>Tuition is <strong>4,000 EGP per phase</strong> unless a different price is shown on the Tracks page for a specific track. Prices are in Egyptian pounds and include all learning materials. Hardware kits, exam vouchers, and software licences are not included unless stated.</li>
+            <li>Students who complete a phase and its final project receive a Fekra Tech certificate of completion for that phase.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Payment</h3>
+          <ul>
+            <li>The phase fee is due in full before the first session of that phase. A seat is only confirmed once payment is received.</li>
+            <li>We accept bank transfer, Instapay, and cash at the academy. We will confirm every payment in writing on WhatsApp.</li>
+            <li>Discounts, sibling rates, or installment plans are only valid when confirmed in writing by the academy's administration.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Placement and age groups</h3>
+          <p>Tracks are split into age groups (8 to 12, 13 to 17, 18+). We may ask a student to take a short placement conversation or test to make sure they join the right level. We may recommend a different track or level if it will serve the student better.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Attendance and missed sessions</h3>
+          <ul>
+            <li>Students are expected to attend all 8 sessions. Session materials and tasks are shared after every session.</li>
+            <li>If a student misses a session with at least 24 hours' notice, we offer <strong>one make-up session per phase</strong>, subject to instructor availability. Missed sessions without notice are not made up, but materials are still provided.</li>
+            <li>If the <strong>academy</strong> cancels a session, it is always rescheduled at no cost.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Cohort size and start dates</h3>
+          <p>A cohort runs when it reaches a minimum of 4 students. If a cohort does not reach the minimum, we will offer you the next available start date or a full refund, your choice. Start dates shown on the website are indicative until confirmed to you in writing.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Instructors</h3>
+          <p>We make every effort to keep the same instructor for a whole phase. Where a change is unavoidable, the replacement will be a qualified Fekra Tech instructor and the curriculum will not change.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Transfers</h3>
+          <p>You may transfer a confirmed seat to a later cohort of the same track once, free of charge, with at least 48 hours' notice before the first session. Later transfers are treated under the refund policy below.</p>
+        </section>
+
+        <section id="refunds" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">3.</span> Refunds & Cancellations</h2>
+          <p>We want every family to feel safe trying a track. Our refund rules are based on how far into a phase the student is when they withdraw. Refunds are calculated on the phase fee actually paid.</p>
+
+          <div class="overflow-x-auto my-5 rounded-xl border border-slate-200 dark:border-slate-800">
+            <table class="w-full text-left rtl:text-right text-xs sm:text-sm">
+              <thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 uppercase text-[11px] tracking-wider">
+                <tr><th class="px-4 py-3 font-bold">When you withdraw</th><th class="px-4 py-3 font-bold">Refund</th><th class="px-4 py-3 font-bold">Or credit toward a later cohort</th></tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                <tr><td class="px-4 py-3">More than 48 hours before session 1</td><td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400">100%</td><td class="px-4 py-3">100%</td></tr>
+                <tr><td class="px-4 py-3">Less than 48 hours before session 1, or after session 1</td><td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400">75%</td><td class="px-4 py-3">100%</td></tr>
+                <tr><td class="px-4 py-3">After session 2</td><td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400">50%</td><td class="px-4 py-3">75%</td></tr>
+                <tr><td class="px-4 py-3">After session 3 or later</td><td class="px-4 py-3 font-semibold text-slate-500">No refund</td><td class="px-4 py-3">Considered case by case</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul>
+            <li><strong>Cancelled by the academy:</strong> if we cancel a cohort before it starts, or cannot complete a phase, you receive a <strong>full refund</strong> of the unused portion, or a transfer, whichever you prefer.</li>
+            <li><strong>Your legal rights:</strong> under Egypt's Consumer Protection Law (Law No. 181 of 2018) you may withdraw from a service bought remotely within 14 days of the purchase, provided the service has not yet begun. Nothing in this policy reduces that right.</li>
+            <li><strong>Medical or family emergencies:</strong> tell us as soon as you can. We will always offer at least a full credit to a later cohort, regardless of the table above.</li>
+            <li><strong>How refunds are paid:</strong> to the same method you paid with, within 14 business days of your written request on WhatsApp or email. Bank fees charged by your bank are not refundable.</li>
+            <li><strong>Removal for conduct:</strong> if a student is removed under the conduct rules in section 4, the refund table above applies as of the date of removal.</li>
+            <li><strong>Kits and vouchers:</strong> hardware kits that have been opened and exam vouchers that have been issued cannot be refunded.</li>
+          </ul>
+        </section>
+
+        <section id="conduct" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">4.</span> Student Conduct & Showcase Consent</h2>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Classroom conduct</h3>
+          <ul>
+            <li>Treat instructors and classmates with respect. Bullying, harassment, or discriminatory language leads to a warning, and on repeat, removal from the cohort.</li>
+            <li>Arrive on time with the required device and materials. Phones are used only for class activities.</li>
+            <li>Do not share course materials, recordings, or lab credentials outside your cohort. They are licensed to you for personal study.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Responsible use of security and networking tools</h3>
+          <p>Our Cybersecurity and Networking tracks teach offensive and defensive techniques. Students agree to use scanning, exploitation, and traffic analysis tools <strong>only</strong> on lab systems provided or explicitly authorised by the academy. Using these skills against any system you do not own or have written permission to test is illegal under Egypt's Anti-Cyber and Information Technology Crimes Law (Law No. 175 of 2018), and results in immediate removal from the academy with no refund.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Parents and guardians</h3>
+          <p>For students under 18, we communicate schedule changes, progress, and any conduct concerns to the guardian's WhatsApp number given at enrollment. Guardians are welcome to ask for a progress update at any time.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Showcasing student work</h3>
+          <p>We are proud of what our students build and we show selected projects on our website, social media, and in presentations. We only do this with consent:</p>
+          <ul>
+            <li>Project work may be shown with the student's <strong>first name, last initial, and age</strong>, as on our Portfolio page, only after the student (and the guardian, for students under 18) agrees in writing on WhatsApp or email.</li>
+            <li>Photos or videos that show a student's face are only published with separate, explicit consent for that specific photo or video.</li>
+            <li>You can withdraw consent at any time, and we will remove the content from channels we control within 14 days.</li>
+            <li>Students always keep ownership of the projects they create. We ask only for permission to display them.</li>
+          </ul>
+        </section>
+
+        <section id="services" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">5.</span> Client Services Terms</h2>
+          <p>These terms apply to web development, security, networking, and design work ordered through our Services page. A written proposal confirmed on WhatsApp or email, together with these terms, forms the agreement.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Pricing and the 30% saving</h3>
+          <p>Our listed prices are 30% below the typical Egyptian market rate shown next to each service. That comparison rate is our good-faith estimate based on quotes we have seen for comparable scope, not a guarantee of any particular competitor's price. Final pricing depends on your confirmed scope.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Payment schedule</h3>
+          <ul>
+            <li><strong>50% deposit</strong> to start work. The delivery timeline begins only after the deposit is received and all required content (text, images, logins, brand assets) has been provided.</li>
+            <li><strong>50% balance</strong> on delivery, before the final hand-over of source files and transfer to your own hosting or accounts.</li>
+            <li>Projects over 30,000 EGP may be split into three milestones by agreement.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Scope, revisions, and timelines</h3>
+          <ul>
+            <li>Each proposal lists what is included. Work outside that list is quoted separately before we start it.</li>
+            <li>Every project includes <strong>two rounds of revisions</strong> on the agreed scope. Further rounds are billed at an hourly rate stated in the proposal.</li>
+            <li>Delivery estimates (for example "3 to 5 days") assume timely feedback. Delays in client feedback or content extend the timeline by the same number of days.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Ownership and licences</h3>
+          <ul>
+            <li>On receipt of the final payment, you own the custom code, designs, and content we produced for you.</li>
+            <li>Third-party components (fonts, stock images, libraries, plugins, payment gateways) remain under their own licences, which we will identify in the hand-over.</li>
+            <li>We may show the finished work in our portfolio and mention you as a client unless you ask us not to in writing before delivery.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Cancellation</h3>
+          <p>You may cancel at any time in writing. Work completed up to that point is billed from the deposit on a pro-rata basis and any unused part of the deposit is refunded within 14 business days. If no work has started, the full deposit is refunded. If we cannot complete a project for reasons on our side, you receive a full refund of any amount not covered by delivered work.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Security work</h3>
+          <p>Security audits and penetration testing are carried out only against systems you own or are authorised to have tested, under a written authorisation you sign before testing starts. Findings are confidential and shared only with the contacts you name.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Warranty and support</h3>
+          <p>We fix defects in delivered work free of charge for <strong>30 days</strong> after delivery. Ongoing maintenance, hosting, and content updates are available under a separate monthly agreement.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">Liability</h3>
+          <p>Our total liability for any project is limited to the amount you paid us for that project. We are not liable for indirect losses such as lost revenue or data loss resulting from third-party services or from changes you or others make after hand-over.</p>
+        </section>
+
+        <section id="contact" class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold mb-3"><span class="text-blue-200">6.</span> Contact & Questions</h2>
+          <p class="text-blue-100 mb-5">Questions about any of these policies, a data request, or a refund? Reach the academy administration directly. These pages are governed by the laws of the Arab Republic of Egypt. We may update them from time to time and will show the date of the latest version at the top of this page.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm"><i class="fa-brands fa-whatsapp text-lg"></i> +20 109 999 5519</a>
+            <a href="mailto:fekratechacademy@gmail.com" class="btn-premium inline-flex items-center justify-center gap-2 bg-white text-blue-900 hover:bg-blue-50 font-bold px-6 py-3 rounded-full shadow-lg text-sm"><i class="fa-solid fa-envelope"></i> fekratechacademy@gmail.com</a>
+          </div>
+          <p class="text-blue-200/80 text-xs mt-5">Fekra Tech Academy · Giza, Egypt</p>
+        </section>
+      </article>
+
+      <!-- ================= ARABIC ================= -->
+      <article class="policy space-y-10 text-sm sm:text-[15px] text-slate-700 dark:text-slate-300" data-lang="ar">
+
+        <section id="privacy-ar" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">1.</span> سياسة الخصوصية</h2>
+          <p>أكاديمية فكرة تك ("فكرة تك"، "نحن") أكاديمية تدريب تقني مقرها الجيزة، مصر. توضح هذه السياسة البيانات الشخصية التي نجمعها، وسبب جمعها، والخيارات المتاحة لك. نتعامل مع البيانات الشخصية وفقاً لقانون حماية البيانات الشخصية المصري (القانون رقم 151 لسنة 2020).</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">البيانات التي نجمعها</h3>
+          <ul>
+            <li><strong>طلبات التسجيل:</strong> اسم الطالب الكامل، العمر، مستوى الخبرة السابقة، رقم واتساب الطالب أو الرقم الأساسي، رقم واتساب ولي الأمر (اختياري)، والمسار المختار.</li>
+            <li><strong>طلبات الخدمات:</strong> اسمك، اسم النشاط التجاري، رقم التواصل، والخدمة التي تستفسر عنها.</li>
+            <li><strong>الرسائل:</strong> أي شيء ترسله لنا عبر واتساب أو البريد الإلكتروني أو وسائل التواصل الاجتماعي.</li>
+            <li><strong>استخدام الموقع:</strong> هذا الموقع لا يستخدم أدوات تتبع إعلانية أو ملفات تعريف ارتباط تحليلية. يحفظ تفضيلاً واحداً فقط في متصفحك هو اختيارك للوضع الداكن أو الفاتح، ولا يغادر جهازك أبداً.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">لماذا نستخدمها</h3>
+          <ul>
+            <li>للتواصل معك بشأن المواعيد وتحديد المستوى والدفع للمسار الذي تقدمت إليه.</li>
+            <li>لتشغيل الدورة: الحضور، وملاحظات التقدم، وشهادات الإتمام.</li>
+            <li>للرد على استفسارات الخدمات وإعداد العروض.</li>
+            <li>للوفاء بالالتزامات القانونية والمحاسبية.</li>
+          </ul>
+          <p>لا نبيع البيانات الشخصية، ولا نرسل رسائل تسويقية إلى أرقام تواصلت معنا فقط للدعم أو التسجيل إلا إذا طلبت استلامها.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">أين تُحفظ ومن يطّلع عليها</h3>
+          <ul>
+            <li>تُحفظ نماذج التسجيل والخدمات في جدول Google Sheets خاص تملكه الأكاديمية، وتُرسل نسخة من طلبك إلى رقم واتساب الأكاديمية حتى ترد الإدارة بسرعة.</li>
+            <li>لا يطّلع عليها سوى مؤسسي الأكاديمية وموظفي الإدارة. يرى المدربون فقط أسماء وتقدم طلاب دفعاتهم.</li>
+            <li>معالجو البيانات لدينا هم Google (Workspace و Sheets)، و Meta (WhatsApp Business)، و Vercel (استضافة الموقع). يعالج كل منهم البيانات وفق شروط الخصوصية الخاصة به.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الأطفال وأولياء الأمور</h3>
+          <p>كثير من طلابنا دون سن 18. لأي طالب دون 18 عاماً، يجب أن يُقدَّم طلب التسجيل من قبل ولي الأمر أو الوصي القانوني أو بعلمه وموافقته. بتقديم طلب لقاصر، فإنك تؤكد أنك ولي أمره أو وصيه القانوني وتوافق على المعالجة الموضحة هنا. يمكن لأولياء الأمور التواصل معنا في أي وقت لمراجعة بيانات القاصر أو تصحيحها أو حذفها.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">مدة الاحتفاظ</h3>
+          <p>تُحذف الطلبات التي لا تؤدي إلى تسجيل خلال 6 أشهر. تُحفظ سجلات الطلاب المسجلين طوال مدة الدراسة بالإضافة إلى سنتين حتى نتمكن من إصدار الشهادات والتوصيات. تُحفظ السجلات المالية للمدة التي يتطلبها قانون الضرائب المصري.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">حقوقك</h3>
+          <p>يمكنك أن تطلب منا الاطلاع على البيانات التي نحتفظ بها عنك أو عن طفلك، أو تصحيحها، أو حذفها، أو التوقف عن استخدامها لغرض معين. راسلنا على <a href="mailto:fekratechacademy@gmail.com" class="text-blue-600 dark:text-blue-400 underline">fekratechacademy@gmail.com</a> أو عبر واتساب. نرد خلال 14 يوماً.</p>
+        </section>
+
+        <section id="enrollment-ar" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">2.</span> شروط التسجيل</h2>
+          <p>تنطبق هذه الشروط عند تسجيلك أو تسجيل طفلك في أي مسار من مسارات فكرة تك. تقديم الطلب ودفع رسوم المرحلة يعني موافقتك عليها.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">ما تشمله المرحلة</h3>
+          <ul>
+            <li>يُقدَّم كل مسار على مراحل. المرحلة هي <strong>8 محاضرات مباشرة مدة كل منها ساعتان</strong>، عادةً محاضرتان أسبوعياً على مدار شهر تقريباً، ما لم يُتفق على جدول مختلف لدفعتك.</li>
+            <li>المصاريف <strong>4,000 جنيه مصري للمرحلة</strong> ما لم يُعرض سعر مختلف في صفحة المسارات لمسار معين. الأسعار بالجنيه المصري وتشمل جميع المواد التعليمية. لا تشمل أطقم الهاردوير وقسائم الامتحانات وتراخيص البرامج إلا إذا نُص على ذلك.</li>
+            <li>يحصل الطلاب الذين يكملون المرحلة ومشروعها النهائي على شهادة إتمام من فكرة تك لتلك المرحلة.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الدفع</h3>
+          <ul>
+            <li>تُستحق رسوم المرحلة كاملة قبل المحاضرة الأولى من تلك المرحلة. يُؤكَّد المقعد فقط عند استلام الدفع.</li>
+            <li>نقبل التحويل البنكي وإنستاباي والدفع النقدي في الأكاديمية. نؤكد كل عملية دفع كتابياً على واتساب.</li>
+            <li>الخصومات وأسعار الأشقاء وخطط التقسيط سارية فقط عند تأكيدها كتابياً من إدارة الأكاديمية.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">تحديد المستوى والفئات العمرية</h3>
+          <p>تنقسم المسارات إلى فئات عمرية (8 إلى 12، 13 إلى 17، 18+). قد نطلب من الطالب إجراء محادثة أو اختبار قصير لتحديد المستوى للتأكد من انضمامه للمستوى المناسب. قد نوصي بمسار أو مستوى مختلف إذا كان ذلك أفضل للطالب.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الحضور والمحاضرات الفائتة</h3>
+          <ul>
+            <li>يُتوقع من الطلاب حضور المحاضرات الثماني جميعها. تُشارك مواد ومهام كل محاضرة بعد انتهائها.</li>
+            <li>إذا تغيب الطالب عن محاضرة بإخطار مسبق لا يقل عن 24 ساعة، نوفر <strong>محاضرة تعويضية واحدة لكل مرحلة</strong>، حسب توافر المدرب. المحاضرات الفائتة دون إخطار لا تُعوَّض، لكن المواد تُقدَّم في جميع الأحوال.</li>
+            <li>إذا ألغت <strong>الأكاديمية</strong> محاضرة، تُعاد جدولتها دائماً دون أي تكلفة.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">حجم الدفعة ومواعيد البدء</h3>
+          <p>تنطلق الدفعة عند وصولها إلى 4 طلاب كحد أدنى. إذا لم تصل الدفعة للحد الأدنى، نعرض عليك موعد البدء التالي المتاح أو استرداداً كاملاً، حسب اختيارك. مواعيد البدء المعروضة على الموقع استرشادية حتى تأكيدها لك كتابياً.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">المدربون</h3>
+          <p>نبذل كل جهد للإبقاء على نفس المدرب طوال المرحلة. وحين يكون التغيير حتمياً، يكون البديل مدرباً مؤهلاً من فكرة تك ولا يتغير المنهج.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">التحويل</h3>
+          <p>يمكنك تحويل مقعد مؤكد إلى دفعة لاحقة من نفس المسار مرة واحدة مجاناً، بإخطار قبل 48 ساعة على الأقل من المحاضرة الأولى. تُعامل التحويلات اللاحقة وفق سياسة الاسترداد أدناه.</p>
+        </section>
+
+        <section id="refunds-ar" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">3.</span> الاسترداد والإلغاء</h2>
+          <p>نريد أن تشعر كل أسرة بالأمان عند تجربة مسار. تعتمد قواعد الاسترداد على مدى تقدم الطالب في المرحلة عند الانسحاب. يُحسب الاسترداد على رسوم المرحلة المدفوعة فعلياً.</p>
+
+          <div class="overflow-x-auto my-5 rounded-xl border border-slate-200 dark:border-slate-800">
+            <table class="w-full text-right text-xs sm:text-sm">
+              <thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 text-[11px]">
+                <tr><th class="px-4 py-3 font-bold">وقت الانسحاب</th><th class="px-4 py-3 font-bold">الاسترداد</th><th class="px-4 py-3 font-bold">أو رصيد لدفعة لاحقة</th></tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                <tr><td class="px-4 py-3">قبل المحاضرة الأولى بأكثر من 48 ساعة</td><td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400">100%</td><td class="px-4 py-3">100%</td></tr>
+                <tr><td class="px-4 py-3">قبل المحاضرة الأولى بأقل من 48 ساعة، أو بعد المحاضرة الأولى</td><td class="px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400">75%</td><td class="px-4 py-3">100%</td></tr>
+                <tr><td class="px-4 py-3">بعد المحاضرة الثانية</td><td class="px-4 py-3 font-semibold text-amber-600 dark:text-amber-400">50%</td><td class="px-4 py-3">75%</td></tr>
+                <tr><td class="px-4 py-3">بعد المحاضرة الثالثة أو ما بعدها</td><td class="px-4 py-3 font-semibold text-slate-500">لا يوجد استرداد</td><td class="px-4 py-3">يُنظر فيه حالة بحالة</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <ul>
+            <li><strong>الإلغاء من جانب الأكاديمية:</strong> إذا ألغينا دفعة قبل بدئها، أو تعذر علينا إكمال مرحلة، تحصل على <strong>استرداد كامل</strong> للجزء غير المستخدم، أو تحويل، أيهما تفضل.</li>
+            <li><strong>حقوقك القانونية:</strong> بموجب قانون حماية المستهلك المصري (القانون رقم 181 لسنة 2018) يحق لك العدول عن خدمة تم شراؤها عن بُعد خلال 14 يوماً من الشراء، بشرط ألا تكون الخدمة قد بدأت. لا شيء في هذه السياسة ينتقص من هذا الحق.</li>
+            <li><strong>الظروف الطبية أو العائلية الطارئة:</strong> أخبرنا في أقرب وقت ممكن. سنعرض دائماً على الأقل رصيداً كاملاً لدفعة لاحقة، بغض النظر عن الجدول أعلاه.</li>
+            <li><strong>طريقة رد المبالغ:</strong> بنفس الوسيلة التي دفعت بها، خلال 14 يوم عمل من طلبك الكتابي على واتساب أو البريد الإلكتروني. رسوم البنك التي يفرضها بنكك غير قابلة للاسترداد.</li>
+            <li><strong>الفصل بسبب السلوك:</strong> إذا فُصل الطالب بموجب قواعد السلوك في القسم 4، يُطبَّق جدول الاسترداد أعلاه اعتباراً من تاريخ الفصل.</li>
+            <li><strong>الأطقم والقسائم:</strong> أطقم الهاردوير التي فُتحت وقسائم الامتحانات التي صدرت لا يمكن استردادها.</li>
+          </ul>
+        </section>
+
+        <section id="conduct-ar" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">4.</span> سلوك الطلاب وموافقة عرض الأعمال</h2>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">السلوك في الفصل</h3>
+          <ul>
+            <li>عامل المدربين والزملاء باحترام. يؤدي التنمر أو التحرش أو اللغة التمييزية إلى تحذير، وعند التكرار إلى الفصل من الدفعة.</li>
+            <li>احضر في الموعد ومعك الجهاز والمواد المطلوبة. تُستخدم الهواتف فقط لأنشطة الفصل.</li>
+            <li>لا تشارك مواد الدورة أو التسجيلات أو بيانات دخول المعامل خارج دفعتك. فهي مرخصة لك للدراسة الشخصية.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الاستخدام المسؤول لأدوات الأمن والشبكات</h3>
+          <p>تُعلِّم مسارات الأمن السيبراني والشبكات تقنيات هجومية ودفاعية. يوافق الطلاب على استخدام أدوات الفحص والاستغلال وتحليل الحركة <strong>فقط</strong> على أنظمة المعامل التي توفرها الأكاديمية أو تصرح بها صراحة. استخدام هذه المهارات ضد أي نظام لا تملكه أو ليس لديك إذن كتابي باختباره يُعد جريمة بموجب قانون مكافحة جرائم تقنية المعلومات المصري (القانون رقم 175 لسنة 2018)، ويؤدي إلى الفصل الفوري من الأكاديمية دون استرداد.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">أولياء الأمور</h3>
+          <p>للطلاب دون 18 عاماً، نُبلغ تغييرات الجدول والتقدم وأي ملاحظات سلوكية إلى رقم واتساب ولي الأمر المقدم عند التسجيل. نرحب بطلب أولياء الأمور تحديثاً عن التقدم في أي وقت.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">عرض أعمال الطلاب</h3>
+          <p>نفخر بما يبنيه طلابنا ونعرض مشاريع مختارة على موقعنا ووسائل التواصل الاجتماعي وفي العروض التقديمية. لا نفعل ذلك إلا بموافقة:</p>
+          <ul>
+            <li>قد يُعرض المشروع مع <strong>الاسم الأول للطالب والحرف الأول من اسم العائلة وعمره</strong>، كما في صفحة معرض المشاريع، فقط بعد موافقة الطالب (وولي الأمر للطلاب دون 18 عاماً) كتابياً على واتساب أو البريد الإلكتروني.</li>
+            <li>الصور أو الفيديوهات التي تُظهر وجه الطالب تُنشر فقط بموافقة منفصلة وصريحة على تلك الصورة أو الفيديو بعينه.</li>
+            <li>يمكنك سحب الموافقة في أي وقت، وسنزيل المحتوى من القنوات التي نتحكم فيها خلال 14 يوماً.</li>
+            <li>يحتفظ الطلاب دائماً بملكية المشاريع التي ينشئونها. نطلب فقط الإذن بعرضها.</li>
+          </ul>
+        </section>
+
+        <section id="services-ar" class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-4"><span class="text-blue-600 dark:text-blue-400">5.</span> شروط خدمات العملاء</h2>
+          <p>تنطبق هذه الشروط على أعمال تطوير الويب والأمن والشبكات والتصميم المطلوبة عبر صفحة الخدمات. يشكّل العرض الكتابي المؤكد على واتساب أو البريد الإلكتروني، مع هذه الشروط، الاتفاق بيننا.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">التسعير وخصم الـ 30%</h3>
+          <p>أسعارنا المعلنة أقل بنسبة 30% من متوسط سعر السوق المصري المعروض بجوار كل خدمة. سعر المقارنة هذا تقدير بحسن نية مبني على عروض أسعار رأيناها لنطاق عمل مماثل، وليس ضماناً لسعر أي منافس بعينه. يعتمد السعر النهائي على النطاق المؤكد لمشروعك.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">جدول الدفع</h3>
+          <ul>
+            <li><strong>دفعة مقدمة 50%</strong> لبدء العمل. يبدأ احتساب مدة التسليم فقط بعد استلام الدفعة المقدمة وتوفير كل المحتوى المطلوب (النصوص، الصور، بيانات الدخول، عناصر الهوية).</li>
+            <li><strong>الـ 50% المتبقية</strong> عند التسليم، قبل التسليم النهائي لملفات المصدر والنقل إلى استضافتك أو حساباتك.</li>
+            <li>يمكن تقسيم المشاريع التي تتجاوز 30,000 جنيه إلى ثلاث مراحل بالاتفاق.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">النطاق والتعديلات والمدد</h3>
+          <ul>
+            <li>يحدد كل عرض ما هو مشمول. أي عمل خارج تلك القائمة يُسعَّر بشكل منفصل قبل البدء فيه.</li>
+            <li>يشمل كل مشروع <strong>جولتي تعديلات</strong> على النطاق المتفق عليه. تُحتسب الجولات الإضافية بسعر الساعة المذكور في العرض.</li>
+            <li>تفترض تقديرات التسليم (مثل "3 إلى 5 أيام") تلقي الملاحظات في وقتها. أي تأخير في ملاحظات العميل أو المحتوى يمد المدة بنفس عدد الأيام.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الملكية والتراخيص</h3>
+          <ul>
+            <li>عند استلام الدفعة النهائية، تمتلك الكود المخصص والتصاميم والمحتوى الذي أنتجناه لك.</li>
+            <li>تبقى المكونات الخارجية (الخطوط، الصور المرخصة، المكتبات، الإضافات، بوابات الدفع) خاضعة لتراخيصها الخاصة، وسنحددها عند التسليم.</li>
+            <li>يحق لنا عرض العمل المنجز في معرض أعمالنا وذكرك كعميل ما لم تطلب خلاف ذلك كتابياً قبل التسليم.</li>
+          </ul>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الإلغاء</h3>
+          <p>يمكنك الإلغاء في أي وقت كتابياً. يُحتسب العمل المنجز حتى ذلك الوقت من الدفعة المقدمة بالتناسب، ويُرد أي جزء غير مستخدم منها خلال 14 يوم عمل. إذا لم يبدأ أي عمل، تُرد الدفعة المقدمة كاملة. إذا تعذر علينا إكمال مشروع لأسباب من جانبنا، تحصل على استرداد كامل لأي مبلغ لا يغطيه العمل المسلَّم.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الأعمال الأمنية</h3>
+          <p>تُجرى عمليات التدقيق الأمني واختبار الاختراق فقط على الأنظمة التي تملكها أو المصرح لك باختبارها، بموجب تفويض كتابي توقعه قبل بدء الاختبار. النتائج سرية ولا تُشارك إلا مع جهات الاتصال التي تحددها.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">الضمان والدعم</h3>
+          <p>نصلح العيوب في العمل المسلَّم مجاناً لمدة <strong>30 يوماً</strong> بعد التسليم. تتوفر الصيانة المستمرة والاستضافة وتحديثات المحتوى بموجب اتفاق شهري منفصل.</p>
+
+          <h3 class="font-bold text-slate-900 dark:text-white">المسؤولية</h3>
+          <p>تقتصر مسؤوليتنا الإجمالية عن أي مشروع على المبلغ الذي دفعته لنا مقابل ذلك المشروع. لسنا مسؤولين عن الخسائر غير المباشرة مثل فقدان الإيرادات أو فقدان البيانات الناتج عن خدمات خارجية أو عن تغييرات تجريها أنت أو غيرك بعد التسليم.</p>
+        </section>
+
+        <section id="contact-ar" class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-2xl p-6 sm:p-8">
+          <h2 class="text-xl sm:text-2xl font-extrabold mb-3"><span class="text-blue-200">6.</span> التواصل والاستفسارات</h2>
+          <p class="text-blue-100 mb-5">عندك سؤال عن أي من هذه السياسات، أو طلب بخصوص بياناتك، أو استرداد؟ تواصل مع إدارة الأكاديمية مباشرة. تخضع هذه الصفحات لقوانين جمهورية مصر العربية. قد نحدّثها من وقت لآخر وسنعرض تاريخ أحدث نسخة أعلى هذه الصفحة.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://wa.me/201099995519" target="_blank" rel="noopener noreferrer" class="btn-premium inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-full shadow-lg text-sm"><i class="fa-brands fa-whatsapp text-lg"></i> <span dir="ltr">+20 109 999 5519</span></a>
+            <a href="mailto:fekratechacademy@gmail.com" class="btn-premium inline-flex items-center justify-center gap-2 bg-white text-blue-900 hover:bg-blue-50 font-bold px-6 py-3 rounded-full shadow-lg text-sm"><i class="fa-solid fa-envelope"></i> fekratechacademy@gmail.com</a>
+          </div>
+          <p class="text-blue-200/80 text-xs mt-5">أكاديمية فكرة تك · الجيزة، مصر</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/60 dark:border-slate-800/60 py-8 text-slate-500 text-xs sm:text-sm">
+    <div class="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left rtl:md:text-right">
+      <p><span data-i18n="rightsText">&copy; 2026 Fekra Tech Academy. All rights reserved.</span> · <a href="./policies.html" class="hover:text-blue-600 dark:hover:text-blue-400 font-semibold" data-i18n="ftPolicies">Policies & Terms</a></p>
+      <div class="flex gap-5 items-center justify-center">
+        <a href="https://www.linkedin.com/company/fekra-tech-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="hover:text-[#0A66C2] transition text-xl"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61591829812306" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-[#1877F2] transition text-xl"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/fekratechacadmey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-[#E4405F] transition text-xl"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@fekratechacad" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="hover:text-black dark:hover:text-white transition text-xl"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = 'en';
+
+    const i18n = {
+      en: {
+        navHome: "Home", navTracks: "Tracks", navPortfolio: "Portfolio", navServices: "Services (-30%)", navTeam: "Team", navContact: "Contact Us",
+        heroBadge: "Transparency First", heroTitle: "Policies & Terms",
+        heroDesc: "How we handle your data, your enrollment, your money, and our work together. Written in plain language for students, parents, and clients.",
+        updated: "Last updated:", tocTitle: "On this page",
+        toc1: "1. Privacy Policy", toc2: "2. Enrollment Terms", toc3: "3. Refunds & Cancellations", toc4: "4. Student Conduct & Showcase Consent", toc5: "5. Client Services Terms", toc6: "6. Contact & Questions",
+        rightsText: "© 2026 Fekra Tech Academy. All rights reserved.", ftPolicies: "Policies & Terms"
+      },
+      ar: {
+        navHome: "الرئيسية", navTracks: "المسارات", navPortfolio: "معرض المشاريع", navServices: "الخدمات (-30%)", navTeam: "فريقنا", navContact: "تواصل معانا",
+        heroBadge: "الشفافية أولاً", heroTitle: "السياسات والشروط",
+        heroDesc: "كيف نتعامل مع بياناتك وتسجيلك وأموالك وعملنا معاً. مكتوبة بلغة واضحة للطلاب وأولياء الأمور والعملاء.",
+        updated: "آخر تحديث:", tocTitle: "في هذه الصفحة",
+        toc1: "1. سياسة الخصوصية", toc2: "2. شروط التسجيل", toc3: "3. الاسترداد والإلغاء", toc4: "4. سلوك الطلاب وموافقة عرض الأعمال", toc5: "5. شروط خدمات العملاء", toc6: "6. التواصل والاستفسارات",
+        rightsText: "© 2026 أكاديمية فكرة تك. جميع الحقوق محفوظة.", ftPolicies: "السياسات والشروط"
+      }
+    };
+
+    const tocTargets = { en: ["#privacy", "#enrollment", "#refunds", "#conduct", "#services", "#contact"], ar: ["#privacy-ar", "#enrollment-ar", "#refunds-ar", "#conduct-ar", "#services-ar", "#contact-ar"] };
+
+    function applyLanguage() {
+      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', currentLang);
+      document.querySelectorAll('.langBtnText').forEach(el => { el.textContent = currentLang === 'ar' ? 'EN' : 'عربي'; });
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+      });
+      document.querySelectorAll('.toc a').forEach((a, idx) => { a.setAttribute('href', tocTargets[currentLang][idx]); });
+      try { localStorage.setItem('lang', currentLang); } catch (e) {}
+    }
+
+    function toggleLanguage() { currentLang = currentLang === 'en' ? 'ar' : 'en'; applyLanguage(); }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu'); const icon = document.getElementById('hamburgerIcon');
+      menu.classList.toggle('hidden');
+      icon.className = menu.classList.contains('hidden') ? "fa-solid fa-bars text-base" : "fa-solid fa-xmark text-base";
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+      document.getElementById('hamburgerIcon').className = "fa-solid fa-bars text-base";
+    }
+    function toggleDarkMode() {
+      const goingDark = !document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', goingDark);
+      try { localStorage.setItem('theme', goingDark ? 'dark' : 'light'); } catch (e) {}
+      updateDarkModeButton();
+    }
+    function updateDarkModeButton() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('.darkBtnIcon').forEach(icon => {
+        icon.className = isDark ? "darkBtnIcon fa-solid fa-sun text-amber-400" : "darkBtnIcon fa-solid fa-moon text-slate-600";
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDarkModeButton();
+      // Open in Arabic when the link carried ?lang=ar or the visitor last chose Arabic here
+      const params = new URLSearchParams(location.search);
+      let saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+      if (params.get('lang') === 'ar' || (params.get('lang') !== 'en' && saved === 'ar')) { currentLang = 'ar'; }
+      applyLanguage();
+      // Highlight the section in view
+      const links = [...document.querySelectorAll('.toc a')];
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(en => {
+            if (en.isIntersecting) {
+              const id = '#' + en.target.id;
+              links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+            }
+          });
+        }, { rootMargin: "-20% 0px -70% 0px" });
+        document.querySelectorAll('.policy section').forEach(s => io.observe(s));
+      }
+    });
+  </script>
+</body>
+
+</html>
